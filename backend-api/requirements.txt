@@ -1,0 +1,5 @@
+# 🚀 requirements.txt
+# Dipendenze per avviare il backend FastAPI
+
+fastapi
+uvicorn[standard]
