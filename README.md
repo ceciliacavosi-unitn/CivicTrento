@@ -1,5 +1,5 @@
 # CivicTrento
-# 🚀 CivicCoinsApp
+# 🚀 CivicTrento
 
 CivicTrento è un’app Flutter con backend FastAPI progettata per premiare comportamenti virtuosi e sostenibili dei cittadini. L'app permette di:
 
