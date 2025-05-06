@@ -3,8 +3,8 @@
 CivicTrento è un’app Flutter con backend FastAPI progettata per premiare comportamenti virtuosi e sostenibili dei cittadini. L'app permette di:
 
 - ✅ Registrarsi e autenticarsi
-- ✅ Gestire il profilo personale e i dati civici (abbonamenti, POD, patente)
-- ✅ Accumulare Civic-Coins tramite attività sostenibili (es. mobilità ecologica, pagamento puntuale)
+- ✅ Gestire il profilo personale e i dati (codice abbonamenti, codice POD, numero patente)
+- ✅ Accumulare Civic-Coins tramite attività sostenibili (es. mobilità ecologica, consumi bassi domestici)
 - ✅ Monitorare multe, bollette e spostamenti
 - ✅ Riscattare premi e offerte
 
