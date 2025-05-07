@@ -1,6 +1,22 @@
 version: '3.9'
 
 services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    restart: always
+    volumes:
+      - ./backend-api/mongo-data_loc:/data/db
+      - ./mongodb-data:/docker-entrypoint-initdb.d
+
+    working_dir: /data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: db
+    networks:
+      - app-network
+
   backend-api:
     build: ./backend-api
     container_name: backend-api
@@ -11,6 +27,8 @@ services:
     working_dir: /app
     networks:
       - app-network
+    depends_on:
+      - mongo
 
   flutter-dev:
     build: .
