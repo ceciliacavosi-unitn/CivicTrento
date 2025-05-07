@@ -35,6 +35,7 @@ L'intero progetto è containerizzato: **non è necessario installare Flutter o P
    ```
 
 2. **Avvia l'applicazione con docker-compose:**
+   
    **IMPORTANTE:** la prima volta che avvii il progetto (oppure ogni volta che modifichi i file Docker), è necessario costruire le immagini usando:
    ```bash
    docker-compose up --build
@@ -44,12 +45,14 @@ L'intero progetto è containerizzato: **non è necessario installare Flutter o P
    ./docker_compose_start.sh
    ```
 3. **Accesso all'app:**
+   
    **Backend API (Swagger UI):** [http://localhost:8000/docs](http://localhost:8000/docs)
+
    **Frontend (solo Android):**
    ```bash
    flutter run -d <id-device>
    ```
-5. **Stop dei container (senza eliminarli):**
+4. **Stop dei container (senza eliminarli):**
    Per fermare i container mantenendo le immagini:
    ```bash
    ./docker_compose_stop.sh
