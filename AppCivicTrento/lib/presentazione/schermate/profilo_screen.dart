@@ -4,12 +4,14 @@
 // 📌 Funzione del file:
 // - Mostra i dati specifici del cittadino (Abbonamento, POD, Patente).
 // - Permette di aggiungere/modificare/rimuovere ogni campo.
-// - Utilizza servizi API per sincronizzare i dati. 
+// - Utilizza servizi API per sincronizzare i dati.
 //
 // ======================================================
 
 import 'package:flutter/material.dart';
 import '../../config/costanti.dart';  // ✅ Importa le costanti
+import '../../servizi/cittadino_service.dart';
+import 'edit_field_screen.dart';
 
 class DatiCittadinoScreen extends StatefulWidget {
   final String email;
@@ -26,13 +28,84 @@ class DatiCittadinoScreen extends StatefulWidget {
 }
 
 class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
-  bool _loading = false; // 🔄 Nessun caricamento da remoto
+  bool _loading = true;
   String? _error;
 
-  // 🔧 Dati temporanei simulati
   String _subscriptionCode = '';
   String _podCode = '';
   String _licenseNumber = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadData();
+  }
+
+  /// 🔄 Carica i dati del cittadino tramite UserService.
+  Future<void> _loadData() async {
+    try {
+      final data = await CittadinoService.fetchMyData(
+        email: widget.email,
+        password: widget.password,
+      );
+
+      setState(() {
+        _subscriptionCode = data['subscription_code'] ?? '';
+        _podCode = data['pod_code'] ?? '';
+        _licenseNumber = data['driver_license'] ?? '';
+        _error = null;
+        _loading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _error = 'Errore nel caricamento dati: \${e.toString()}';
+        _loading = false;
+      });
+    }
+  }
+
+  /// ✏️ Modifica o aggiunge un valore specifico.
+  Future<void> _editValue(String label, String currentValue) async {
+    final newValue = await Navigator.push<String?>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => EditSingleFieldScreen(
+          label: label,
+          initialValue: currentValue,
+        ),
+      ),
+    );
+
+    if (newValue != null && newValue != currentValue) {
+      setState(() => _loading = true);
+      try {
+        if (currentValue.isEmpty) {
+          await CittadinoService.insertData(
+            email: widget.email,
+            password: widget.password,
+            field: _fieldKeyFromLabel(label),
+            value: newValue,
+          );
+        } else {
+          await CittadinoService.modifyData(
+            email: widget.email,
+            password: widget.password,
+            field: _fieldKeyFromLabel(label),
+            value: newValue,
+          );
+        }
+        await _loadData();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('$label aggiornato con successo')),
+        );
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Errore: ${e.toString()}')),
+        );
+        setState(() => _loading = false);
+      }
+    }
+  }
 
   /// 🗑️ Rimuove un valore (lo resetta a stringa vuota).
   Future<void> _removeValue(String label) async {
@@ -50,16 +123,35 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
 
     if (confirm != true) return;
 
-    setState(() {
-      if (label == labelCodiceAbbonamento) _subscriptionCode = '';
-      if (label == labelCodicePOD) _podCode = '';
-      if (label == labelNumeroPatente) _licenseNumber = '';
-    });
+    final fieldKey = _fieldKeyFromLabel(label);
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$label rimosso')));
+    setState(() => _loading = true);
+
+    try {
+      await CittadinoService.modifyData(
+        email: widget.email,
+        password: widget.password,
+        field: fieldKey,
+        value: '',
+      );
+      await _loadData();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$label rimosso')));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Errore: ${e.toString()}')));
+      setState(() => _loading = false);
+    }
   }
 
-  /// 🧱 Costruisce la riga con dati + bottoni Azione (Modifica/Rimuovi).
+  /// 📊 Converte un'etichetta visiva nel nome del campo API.
+  String _fieldKeyFromLabel(String label) {
+    return {
+      labelCodiceAbbonamento: 'subscription_code',
+      labelCodicePOD: 'pod_code',
+      labelNumeroPatente: 'driver_license',
+    }[label]!;
+  }
+
+  /// 🧱️ Costruisce la riga con dati + bottoni Azione (Modifica/Rimuovi).
   Widget _buildRow(String label, String value) {
     final isEmpty = value.trim().isEmpty;
     return Padding(
@@ -72,6 +164,21 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
               style: const TextStyle(fontSize: 16),
             ),
           ),
+          if (!isEmpty) ...[
+            TextButton(
+              onPressed: _loading ? null : () => _editValue(label, value),
+              child: const Text('Modifica'),
+            ),
+            TextButton(
+              onPressed: _loading ? null : () => _removeValue(label),
+              child: const Text('Rimuovi'),
+            ),
+          ],
+          if (isEmpty)
+            TextButton(
+              onPressed: _loading ? null : () => _editValue(label, value),
+              child: const Text('Aggiungi'),
+            ),
         ],
       ),
     );
@@ -102,4 +209,3 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     );
   }
 }
-

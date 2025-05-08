@@ -103,18 +103,18 @@ class CittadinoService {
   // 📝 POST /cittadino/inserisci_dati - Inserisce dati civici
   static Future<void> insertData({
     required String email,
-    required String subscriptionCode,
-    required String podCode,
-    required String driverLicense,
+    required String password,
+    required String field,
+    required String value,
   }) async {
     final resp = await http.post(
       Uri.parse(insertDataUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         'email': email,
-        'subscription_code': subscriptionCode,
-        'pod_code': podCode,
-        'driver_license': driverLicense,
+        'password': password,
+        'field': field,
+        'value': value,
       }),
     );
     if (resp.statusCode != 200) {
@@ -123,22 +123,23 @@ class CittadinoService {
     }
   }
 
+
   // ======================================================
   // ✏️ PUT /cittadino/modifica_dati - Modifica dati civici
   static Future<void> modifyData({
     required String email,
-    required String subscriptionCode,
-    required String podCode,
-    required String driverLicense,
+    required String password,
+    required String field,
+    required String value,
   }) async {
     final resp = await http.put(
       Uri.parse(modifyDataUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
         'email': email,
-        'subscription_code': subscriptionCode,
-        'pod_code': podCode,
-        'driver_license': driverLicense,
+        'password': password,
+        'field': field,
+        'value': value,
       }),
     );
     if (resp.statusCode != 200) {
@@ -146,6 +147,7 @@ class CittadinoService {
       throw Exception('Modifica dati fallita: $detail');
     }
   }
+
 
   // ======================================================
   // 🛠️ Funzione privata: parsing errori

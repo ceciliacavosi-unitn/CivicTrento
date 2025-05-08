@@ -13,13 +13,25 @@ import 'package:flutter/material.dart';
 import '../../config/costanti.dart';  // ✅ Importa le costanti
 import '../widget/pulsante_home.dart';
 import '../widget/storico_elemento.dart';
-import 'impostazioni_screen.dart';
+import 'main_screen.dart';
 import 'profilo_screen.dart';
-import 'premi_screen.dart';
+import 'impostazioni_screen.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  final String email;
+  final String password;
 
+  const HomeScreen({
+    super.key,
+    required this.email,
+    required this.password,
+  });
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,7 +55,7 @@ class HomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                '900', // Mock value
+                '900',  // 👀 Valore mockup fisso, da rendere dinamico in futuro
                 style: TextStyle(
                   fontSize: 36,
                   fontWeight: FontWeight.bold,
@@ -60,7 +72,7 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(height: 20),
 
-          // 🚀 Due pulsanti rapidi (solo UI, senza logica)
+          // 🚀 Due pulsanti rapidi (Profilo/Dati & Premi)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -71,9 +83,9 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const DatiCittadinoScreen(
-                        email: 'mock@email.com',   // 🔄 puoi passare valori reali se disponibili
-                        password: 'mockPassword',
+                      builder: (context) => DatiCittadinoScreen(
+                        email: widget.email,
+                        password: widget.password,
                       ),
                     ),
                   );
@@ -83,19 +95,15 @@ class HomeScreen extends StatelessWidget {
                 icon: Icons.card_giftcard,
                 label: 'Premi',
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) => const PremiScreen(),
-                    ),
-                  );
+                  final state = context.findAncestorStateOfType<MainScreenState>()!;
+                  state.selectTab(1);
                 },
               ),
             ],
           ),
           const SizedBox(height: 16),
 
-          // ⚙️ Pulsante Impostazioni (naviga alla schermata)
+          // ⚙️ Pulsante Impostazioni
           Center(
             child: PulsanteHome(
               icon: Icons.settings,
@@ -103,15 +111,16 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const ImpostazioniScreen()),
+                  MaterialPageRoute(
+                    builder: (_) => ImpostazioniScreen(),
+                  ),
                 );
               },
             ),
           ),
-
           const SizedBox(height: 16),
 
-          // 📜 Storico Generico scrollabile (mock)
+          // 📜 Storico Generico scrollabile
           Expanded(
             child: Container(
               width: double.infinity,
@@ -134,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 8),
                   Expanded(
                     child: ListView(
-                      children: [
+                      children: const [
                         ElementoStorico(
                           title: 'Voto amministrativo',
                           subtitle: '01/04/2025 10:00',
@@ -168,4 +177,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-

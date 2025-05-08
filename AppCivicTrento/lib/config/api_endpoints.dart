@@ -27,3 +27,29 @@ const String registerUrl = '$baseUrl/auth/register';
 
 /// Login utente (autenticazione)
 const String loginUrl = '$baseUrl/auth/login';
+
+/// Logout utente (termina la sessione)
+const String logoutUrl = '$baseUrl/auth/logout';
+
+/// ======================================================
+/// 📂 Gestione del profilo utente (/utente/)
+/// ======================================================
+
+/// Ottiene i dati del profilo utente (nome, cognome, email ecc.)
+const String myAccountUrl = '$baseUrl/utente/profilo';
+
+/// Modifica i dati del profilo utente
+const String modifyProfileUrl = '$baseUrl/utente/modifica_profilo';
+
+/// ======================================================
+/// 📂 Dati specifici del cittadino (/cittadino/)
+/// ======================================================
+
+/// Recupera dati specifici del cittadino (abbonamenti, POD, patente ecc.)
+const String myDataUrl = '$baseUrl/cittadino/dati';
+
+/// Inserisce nuovi dati del cittadino (SINGOLO campo)
+const String insertDataUrl = '$baseUrl/cittadino/aggiungi_dato';
+
+/// Modifica i dati esistenti del cittadino (SINGOLO campo)
+const String modifyDataUrl = '$baseUrl/cittadino/modifica_dato';
