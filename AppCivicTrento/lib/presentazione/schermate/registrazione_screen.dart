@@ -4,12 +4,14 @@
 // 📌 Funzione del file:
 // - Schermata di registrazione per nuovi utenti.
 // - Raccoglie i dati personali e le credenziali di accesso.
-// - Esegue la registrazione tramite UserService. 
-// - Se completata con successo, reindirizza al login. 
+// - Esegue la registrazione tramite UserService.
+// - Se completata con successo, reindirizza al login.
 //
 // ======================================================
 
 import 'package:flutter/material.dart';
+import '../../presentazione/schermate/login_screen.dart';
+import '../../servizi/utente_service.dart';
 
 /// 📝 Schermata di registrazione utente per CivicCoins.
 class RegistrazioneScreen extends StatefulWidget {
@@ -31,19 +33,42 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
   final _fiscalCodeController = TextEditingController();
   final _idCardController = TextEditingController();
 
-  /// 🔄 Metodo che simula la registrazione:
+  /// 🔄 Metodo che esegue la registrazione:
   /// - Valida il form.
-  /// - Mostra un messaggio di successo fittizio.
-  void _register() {
+  /// - Esegue la chiamata API tramite UserService.
+  /// - Mostra un messaggio di successo o errore.
+  /// - Reindirizza al LoginScreen in caso di successo.
+  Future<void> _register() async {
     if (!_formKey.currentState!.validate()) return;
 
     // 🔎 Manca controllo coerenza input:
     // ➔ Es. validazione email formale, password sicura, codice fiscale valido ecc.
 
-    // ✅ Simulazione di successo
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Registrazione completata (simulata)")),
-    );
+    try {
+      // ✅ Esegue la registrazione passando i dati raccolti
+      await UtenteService.register(
+        name: _nameController.text,
+        surname: _surnameController.text,
+        email: _emailController.text,
+        password: _passwordController.text,
+        fiscalCode: _fiscalCodeController.text,
+        idCardNumber: _idCardController.text,
+      );
+
+      // ✅ Mostra conferma e, dopo la chiusura dello SnackBar, naviga al Login
+      final snack = ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Registrazione completata")),
+      );
+      snack.closed.then((_) => Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginScreen()),
+      ));
+    } catch (e) {
+      // ❌ Mostra eventuale errore durante la registrazione
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
+    }
   }
 
   @override
@@ -101,4 +126,3 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
     );
   }
 }
-
