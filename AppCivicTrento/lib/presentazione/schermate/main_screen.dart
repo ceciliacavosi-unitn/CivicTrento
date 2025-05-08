@@ -20,7 +20,13 @@ import 'premi_screen.dart';
 import 'storico_bollette_screen.dart';
 import 'storico_multe_screen.dart';
 import 'storico_spostamenti_screen.dart';
+import '../../dominio/premi/premio.dart';
 import 'account_screen.dart';
+/*import '../../dominio/storico/bollette.dart';
+import '../../dominio/storico/multe.dart';
+import '../../dominio/storico/spostamenti.dart';
+import '../../dominio/utenti/utente.dart';*/
+import '../../servizi/utente_service.dart';
 
 class MainScreen extends StatefulWidget {
   final String email, password;
@@ -56,7 +62,7 @@ class MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     _screens = [
-      HomeScreen(),
+      HomeScreen(email: widget.email, password: widget.password),
       const PremiScreen(),
       const StoricoMulteScreen(),
       const StoricoBolletteScreen(),
@@ -64,9 +70,25 @@ class MainScreenState extends State<MainScreen> {
       const ImpostazioniScreen(),
       DatiCittadinoScreen(email: widget.email, password: widget.password),
     ];
+    _fetchUserInitials();
+  }
 
-    // 🔄 Mock delle iniziali (nessuna chiamata API)
-    _initials = "CC";
+  Future<void> _fetchUserInitials() async {
+    try {
+      final profile = await UtenteService.fetchProfile(
+        email: widget.email,
+        password: widget.password,
+      );
+      final name = profile['name'] ?? '';
+      final surname = profile['surname'] ?? '';
+      setState(() {
+        _initials = '${name.isNotEmpty ? name[0] : ''}${surname.isNotEmpty ? surname[0] : ''}'.toUpperCase();
+      });
+    } catch (e) {
+      setState(() {
+        _initials = null;
+      });
+    }
   }
 
   @override
@@ -108,7 +130,10 @@ class MainScreenState extends State<MainScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AccountScreen(),
+                      builder: (context) => AccountScreen(
+                        email: widget.email,
+                        password: widget.password,
+                      ),
                     ),
                   );
                 },
@@ -164,7 +189,7 @@ class MainScreenState extends State<MainScreen> {
               leading: Image.asset(assetIconPolice, width: 24, height: 24),
               title: const Text('Storico Multe'),
               onTap: () {
-                setState(() => _selectedIndex = 2); // ✅ indice corretto
+                setState(() => _selectedIndex = 2);
                 Navigator.pop(context);
               },
             ),
@@ -172,7 +197,7 @@ class MainScreenState extends State<MainScreen> {
               leading: Image.asset(assetIconLight, width: 24, height: 24),
               title: const Text('Storico Bollette'),
               onTap: () {
-                setState(() => _selectedIndex = 3); // ✅
+                setState(() => _selectedIndex = 3);
                 Navigator.pop(context);
               },
             ),
@@ -180,11 +205,10 @@ class MainScreenState extends State<MainScreen> {
               leading: Image.asset(assetIconBike, width: 24, height: 24),
               title: const Text('Storico Spostamenti'),
               onTap: () {
-                setState(() => _selectedIndex = 4); // ✅
+                setState(() => _selectedIndex = 4);
                 Navigator.pop(context);
               },
             ),
-
           ],
         ),
       ),
@@ -192,4 +216,3 @@ class MainScreenState extends State<MainScreen> {
     );
   }
 }
-

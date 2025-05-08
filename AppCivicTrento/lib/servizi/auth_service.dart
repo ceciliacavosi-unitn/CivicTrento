@@ -68,6 +68,24 @@ class AuthService {
   }
 
   // ======================================================
+  // 🔐 POST /logout (opzionale)
+  static Future<void> logout({
+    required String token,
+  }) async {
+    final resp = await http.post(
+      Uri.parse(logoutUrl),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+    );
+    if (resp.statusCode != 200) {
+      final detail = _parseError(resp.body);
+      throw Exception('Logout fallito: $detail');
+    }
+  }
+
+  // ======================================================
   // 🛠️ Funzione privata: parsing errori dal server
   static String _parseError(String body) {
     try {
