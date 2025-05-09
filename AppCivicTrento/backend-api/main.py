@@ -4,7 +4,9 @@ from enum import Enum
 import os
 import csv
 
+
 app = FastAPI()
+
 
 # ======================================================
 # 📦 MODELLI DI RICHIESTA: AUTENTICAZIONE (/auth)
@@ -28,6 +30,7 @@ class AuthDeleteUserRequest(BaseModel):
 
 class AuthLogoutRequest(BaseModel):
     email: str
+
 
 # ======================================================
 # 📦 MODELLI DI RICHIESTA: PROFILO UTENTE (/utente)
