@@ -11,7 +11,6 @@
 //
 // ✅ Dipendenze dirette:
 // - Flutter Material.
-//
 // ======================================================
 
 import 'package:flutter/material.dart';
@@ -25,33 +24,20 @@ import 'package:flutter/material.dart';
 ///   - ✅ Etichetta di testo sotto.
 /// - Gestire:
 ///   - ✅ Callback `onTap` quando il pulsante viene premuto.
+/// - Personalizzabile con colore del testo tramite [color].
 ///
-/// 🛠️ Dettagli implementativi:
-/// - Usa un `GestureDetector` per catturare i tap.
-/// - L'icona è grande (30 px) e colorata di bianco.
-/// - Il contenitore ha forma circolare e colore di sfondo blu scuro.
-/// - L'etichetta ha font size 14 e colore nero (87% opacità).
-///
-/// 👉 Esempio di utilizzo:
-/// ```dart
-/// PulsanteHome(
-///   icon: Icons.directions_bike,
-///   label: 'Spostamenti',
-///   onTap: () {
-///     Navigator.push(...);
-///   },
-/// )
-/// ```
 class PulsanteHome extends StatelessWidget {
-  final IconData icon; // Icona da mostrare (es: Icons.person)
-  final String label; // Etichetta sotto l'icona
-  final VoidCallback onTap; // Funzione callback quando premuto
+  final IconData icon;           // Icona centrale
+  final String label;            // Etichetta sotto
+  final VoidCallback onTap;      // Callback al tap
+  final Color? color;            // Colore personalizzabile per il testo
 
   const PulsanteHome({
     super.key,
     required this.icon,
     required this.label,
     required this.onTap,
+    this.color, // 👈 Parametro opzionale aggiunto
   });
 
   @override
@@ -60,7 +46,7 @@ class PulsanteHome extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          // 🔘 Contenitore circolare con l'icona
+          // 🔘 Cerchio con icona
           Container(
             decoration: const BoxDecoration(
               color: Color(0xFF264A67), // Blu scuro
@@ -70,12 +56,12 @@ class PulsanteHome extends StatelessWidget {
             child: Icon(icon, size: 30, color: Colors.white),
           ),
           const SizedBox(height: 8),
-          // 🏷️ Testo sotto l'icona
+          // 🏷️ Etichetta testuale sotto
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 14,
-              color: Colors.black87,
+              color: color ?? Colors.black87, // 👈 Usa il colore se presente
             ),
           ),
         ],

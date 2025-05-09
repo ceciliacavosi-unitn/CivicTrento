@@ -1,121 +1,122 @@
-# Documentazione del Progetto
+# 📘 Documentazione del Progetto CivicCoins
 
-## Panoramica
+## 🔍 Panoramica
 
-Il progetto è suddiviso in due macro-componenti:
+Il progetto CivicCoins è suddiviso in due macro-componenti:
 
-1. **Frontend Flutter**: la cartella `lib/` contiene tutto il codice sorgente dell’app mobile/web.
-2. **Backend FastAPI**: la cartella `backend-api/` gestisce API e persistenza dati.
+1. **Frontend Flutter** (`lib/`): app mobile (e potenzialmente web) che gestisce interfaccia utente, logica di presentazione e comunicazione con il backend.
+2. **Backend FastAPI** (`backend-api/`): espone API REST per autenticazione, profilo utente, gestione dei dati civici e premi.
 
-Entrambi i componenti comunicano tramite HTTP.
-
----
-
-## Struttura principale
-
-| Cartella / File                   | Descrizione                                                                                           |
-|-----------------------------------|-------------------------------------------------------------------------------------------------------|
-| `backend-api/`                    | Codice backend (FastAPI): definisce gli endpoint API per autenticazione, profilo utente e dati civici. |
-| `lib/`                            | Codice sorgente Flutter, cuore dell’app. Organizzato in moduli: `config`, `dominio`, `presentazione`, `servizi`. |
-| `test/`                           | Test automatici (unit, widget).                                                                        |
-| `pubspec.yaml`                    | Configurazione Flutter (dipendenze, asset).                                                            |
-| `docker-compose.yml`, `Dockerfile`| Configurazioni per containerizzare sia frontend sia backend.                                           |
-| `README.md`                       | Guida introduttiva.                                                                                   |
+Le due componenti comunicano tramite richieste HTTP.
 
 ---
 
-## backend-api/
+## 🗂️ Struttura generale del progetto
 
-- `main.py`: file principale che definisce tutti gli endpoint (login, registrazione, profilo, dati civici).
-- `requirements.txt`: elenco dipendenze Python.
-- `users.txt` / `data.txt`: file CSV per salvare utenti e dati civici.
-- `Dockerfile`: containerizzazione backend.
-
-Collegamenti: gli endpoint sono consumati dai servizi Dart in `lib/servizi/`.
-
----
-
-## lib/
-
-### 1. config/
-
-- `api_endpoints.dart`: definisce tutti gli endpoint API.
-- `costanti.dart`: costanti generali (colori, dimensioni, stringhe fisse).
-- `enums.dart`: enum condivisi tra più parti dell’app.
-
-Collegamenti: utilizzato da `servizi/`, `dominio/` e `presentazione/`.
-
-### 2. dominio/
-
-Contiene la logica di business:
-
-#### gestione/
-- `sistema_autenticazione.dart`: regole autenticazione.
-- `sistema_civic_coins.dart`: logica Civic-Coins.
-
-#### monitoraggio/
-- `gravita_multa.dart`, `servizio_bollette.dart`, `servizio_multe.dart` ecc.: gestione monitoraggio.
-
-#### premi/
-- `premio.dart`, `premio_abbonamento.dart`, `tipo_premio.dart` ecc.: gestione premi.
-
-#### storico/
-- `bollette.dart`, `multe.dart`, `spostamenti.dart`: storico operazioni.
-
-#### utenti/
-- `utente.dart`: classe generica Utente.
-- `cittadino.dart`: cittadino.
-- `amministratore.dart`: amministratore.
-
-Collegamenti: i modelli sono usati da `presentazione/` e `servizi/`.
-
-### 3. presentazione/
-
-#### schermate/
-- Schermate come `login_screen.dart`, `home_screen.dart`, `profilo_screen.dart` ecc.
-
-#### widget/
-- Componenti riutilizzabili: `dialogo_conferma.dart`, `storico_elemento.dart` ecc.
-
-Collegamenti: le schermate usano widget e servizi.
-
-### 4. servizi/
-
-- `auth_service.dart`: login e registrazione.
-- `cittadino_service.dart`: profilo e dati civici.
-- `utente_service.dart`: preferenze utente.
-- Altri servizi: `admin_service.dart`, `premio_service.dart`, ecc.
-
-Collegamenti: usano `api_endpoints.dart` e restituiscono modelli di `dominio/`.
+| Percorso                  | Descrizione                                                                 |
+|---------------------------|-----------------------------------------------------------------------------|
+| `lib/`                    | Codice sorgente Flutter.                                                    |
+| `lib/config/`             | Costanti e configurazione API centralizzate.                               |
+| `lib/dominio/`            | Logica di dominio e modelli dati (utenti, premi, storico, monitoraggio).   |
+| `lib/presentazione/`      | Schermate, widget e gestione UI.                                           |
+| `lib/servizi/`            | Servizi di comunicazione HTTP verso il backend.                            |
+| `backend-api/`            | Codice backend FastAPI (API REST, persistenza su file CSV).                |
 
 ---
 
-## Differenze tra file simili
+## 📦 Dettaglio cartelle principali (Flutter)
 
-Esempio:
-- `utente.dart` (dominio/utenti): modello dati Utente.
-- `utente_service.dart` (servizi): servizio HTTP per operazioni sull'utente.
+### `lib/config/`
 
-Uno rappresenta **la struttura dati**, l’altro **la logica di comunicazione**.
+- `api_endpoints.dart`: definisce le URL delle API per ogni risorsa (`/auth`, `/utente`, `/cittadino`).
+- `costanti.dart`: colori, icone, stringhe statiche.
+- `enums.dart`: definizioni centralizzate di enum riutilizzabili.
+
+### `lib/dominio/`
+
+#### `gestione/`  
+- `sistema_autenticazione.dart`: stato e sessione dell'utente loggato.
+- `sistema_civic_coins.dart`: logica e regole per calcolare e visualizzare le Civic Coins.
+
+#### `monitoraggio/`
+- Moduli per seguire eventi come multe, bollette, spostamenti:
+  - `servizio_bollette.dart`, `servizio_multe.dart`, `servizio_spostamenti.dart`, ecc.
+  - `gravita_multa.dart`: enum e classificazione delle multe.
+  - `servizio_esterno.dart`: estensione per provider terzi.
+
+#### `premi/`
+- Definizione dei premi e logica associata:
+  - `premio.dart`, `tipo_premio.dart`, `premio_abbonamento.dart`, ecc.
+  - Gestione premi legati a tasse, trasporti, negozi locali.
+
+#### `storico/`
+- Rappresenta lo storico delle attività utente:
+  - `bollette.dart`, `multe.dart`, `spostamenti.dart`, `storico_operazione.dart`.
+
+#### `utenti/`
+- Modelli utente:
+  - `utente.dart`: base astratta.
+  - `cittadino.dart`, `amministratore.dart`: ruoli specifici.
 
 ---
 
-## Flusso tipico
+## 🎨 `lib/presentazione/`
 
-1. L’utente apre l’app (presentazione/).
-2. Una schermata (es. `login_screen.dart`) chiama `auth_service.dart`.
-3. Il servizio contatta il backend e riceve dati.
-4. I dati sono modellati (es. `cittadino.dart`).
-5. I widget mostrano i dati.
+### `gestione/`
+- `theme_provider.dart`: provider per gestire il tema chiaro/scuro e memorizzazione via `SharedPreferences`.
+
+### `schermate/`
+- Schermate dell'app: login, registrazione, home, storico, profilo, premi, impostazioni.
+- `impostazioni_screen.dart`: include logout e cancellazione account (chiamate ai servizi).
+
+### `widget/`
+- Componenti riutilizzabili:
+  - `pulsante_home.dart`: pulsanti rapidi su home.
+  - `storico_elemento.dart`: elemento grafico dello storico.
+  - `dialogo_conferma.dart`: popup di conferma.
 
 ---
 
-## Conclusione
+## 🔌 `lib/servizi/`
 
-La struttura è ben separata in:
-- Config e servizi (`config/`, `servizi/`)
-- Business logic (`dominio/`)
-- UI e widget (`presentazione/`)
+- `auth_service.dart`: login, registrazione, logout, cancellazione utente.
+- `cittadino_service.dart`: inserimento, modifica e cancellazione **singola** o **completa** dei dati.
+- `utente_service.dart`: operazioni sul profilo.
+- `premio_service.dart`, `storico_service.dart`, `monitoraggio_service.dart`: API specifiche per ogni dominio.
+- Tutti i servizi usano `api_endpoints.dart` per comporre le URL.
 
-Permette una manutenzione modulare e chiara.
+---
+
+## ✅ Novità recenti (aggiornamenti 2025)
+
+- ✅ Aggiunto endpoint e logica per il **logout** dell’utente.
+- ✅ Implementata la **cancellazione completa** dell’account (`/auth/delete_user`) + eliminazione dei dati in `data.txt`.
+- ✅ Aggiornata la UI `impostazioni_screen.dart` per:
+  - richiamare `AuthService.logout()` e `AuthService.deleteAccount()`
+  - rimuovere anche i dati con `CittadinoService.deleteData(...)` per ogni campo.
+- ✅ Implementata gestione tema chiaro/scuro con `Provider`.
+
+---
+
+## ▶️ Flusso di autenticazione
+
+1. Registrazione (`/auth/register`)
+2. Login (`/auth/login`)
+3. Salvataggio credenziali in `SistemaAutenticazione`
+4. Accesso all’app
+5. Logout ➜ `AuthService.logout()` + pulizia cache
+6. Cancellazione ➜ `AuthService.deleteAccount()` + `CittadinoService.deleteData(...)`
+
+---
+
+## 📌 Conclusione
+
+Il progetto segue un'architettura chiara e modulare:
+
+- Separazione tra **logica di dominio** e **UI**.
+- Servizi HTTP centralizzati e facilmente estendibili.
+- Documentazione e costanti centralizzate.
+- Supporto a tema dinamico e sessione utente persistente.
+
+Perfetto per un'app pubblica o prototipale in ambito civico.
 

@@ -107,7 +107,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     }
   }
 
-  /// 🗑️ Rimuove un valore (lo resetta a stringa vuota).
+  /// 🗑️ Rimuove un valore chiamando l’API DELETE.
   Future<void> _removeValue(String label) async {
     final confirm = await showDialog<bool>(
       context: context,
@@ -115,8 +115,14 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
         title: const Text('Conferma rimozione'),
         content: Text('Vuoi davvero rimuovere $label?'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Annulla')),
-          TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Rimuovi')),
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Annulla'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Rimuovi'),
+          ),
         ],
       ),
     );
@@ -128,19 +134,23 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     setState(() => _loading = true);
 
     try {
-      await CittadinoService.modifyData(
+      await CittadinoService.deleteData(
         email: widget.email,
         password: widget.password,
         field: fieldKey,
-        value: '',
       );
       await _loadData();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$label rimosso')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('$label rimosso con successo')),
+      );
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Errore: ${e.toString()}')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Errore: ${e.toString()}')),
+      );
       setState(() => _loading = false);
     }
   }
+
 
   /// 📊 Converte un'etichetta visiva nel nome del campo API.
   String _fieldKeyFromLabel(String label) {

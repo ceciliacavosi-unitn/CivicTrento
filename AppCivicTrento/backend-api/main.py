@@ -343,3 +343,29 @@ def rimuovi_dato(data: CittadinoSingoloCampoRequest):
         writer.writerows(rows)
 
     return {"status": "success", "message": f"{data.field} rimosso"}
+
+
+@app.delete("/cittadino/rimuovi_tutti")
+def rimuovi_tutti_i_dati(data: CittadinoDatiRequest):
+    if not verifica_utente(data.email, data.password):
+        raise HTTPException(status_code=401, detail="Credenziali non valide")
+
+    if not os.path.exists("data.txt"):
+        return {"status": "success", "message": "Nessun dato da rimuovere"}
+
+    header = ["email", "subscription_code", "pod_code", "driver_license"]
+    rows = []
+
+    with open("data.txt", "r", newline="") as f:
+        reader = csv.reader(f)
+        existing_header = next(reader, None)
+        for row in reader:
+            if row[0] != data.email:
+                rows.append(row)
+
+    with open("data.txt", "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(header)
+        writer.writerows(rows)
+
+    return {"status": "success", "message": "Tutti i dati civici eliminati"}

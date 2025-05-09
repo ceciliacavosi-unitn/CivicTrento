@@ -11,7 +11,7 @@
 
 import 'package:flutter/material.dart';
 import '../../presentazione/schermate/login_screen.dart';
-import '../../servizi/utente_service.dart';
+import '../../servizi/auth_service.dart';
 
 /// 📝 Schermata di registrazione utente per CivicCoins.
 class RegistrazioneScreen extends StatefulWidget {
@@ -46,7 +46,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
 
     try {
       // ✅ Esegue la registrazione passando i dati raccolti
-      await UtenteService.register(
+      await AuthService.register(
         name: _nameController.text,
         surname: _surnameController.text,
         email: _emailController.text,

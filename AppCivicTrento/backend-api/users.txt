@@ -1,2 +1,3 @@
 
 Cecilia,Cavosi,ceci_email,ceci_pwd,ceci_cf,ceci_ci
+LOVELY,BIASI,agatacavosi1@gmail.com,bacino2,BSILLY80C41Z222L,AX4925312

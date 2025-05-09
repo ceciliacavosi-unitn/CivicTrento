@@ -20,33 +20,6 @@ import 'package:http/http.dart' as http;
 import '../config/api_endpoints.dart';
 
 class UtenteService {
-  // ======================================================
-  // 📝 POST /auth/register - Registra un nuovo utente
-  static Future<void> register({
-    required String name,
-    required String surname,
-    required String email,
-    required String password,
-    required String fiscalCode,
-    required String idCardNumber,
-  }) async {
-    final resp = await http.post(
-      Uri.parse(registerUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'name': name.trim(),
-        'surname': surname.trim(),
-        'email': email.trim(),
-        'password': password.trim(),
-        'fiscal_code': fiscalCode.trim(),
-        'id_card_number': idCardNumber.trim(),
-      }),
-    );
-    if (resp.statusCode != 200) {
-      final detail = _parseError(resp.body);
-      throw Exception('Registrazione fallita: $detail');
-    }
-  }
 
   // ======================================================
   // 🗂️ POST /utente/profilo - Recupera profilo utente

@@ -15,20 +15,26 @@
 //
 // ✅ Dipendenze dirette:
 // - `presentazione/schermate/schermata_login.dart`: la schermata iniziale.
-// - `config`: le configurazioni (opzionale, se si vorranno integrare a tema).
+// - `presentazione/gestione/theme_provider.dart`: per il tema dinamico.
 //
 // ======================================================
 
 import 'package:flutter/material.dart';
-// Pacchetto Google Fonts (non ancora usato qui, previsto per futuri ampliamenti)
+import 'package:provider/provider.dart'; // ✅ Aggiunto
 import 'package:google_fonts/google_fonts.dart';
+import 'presentazione/gestione/theme_provider.dart'; // ✅ Aggiunto
 
 // Import della schermata iniziale: Schermata di Login
 import 'presentazione/schermate/login_screen.dart';
 
 void main() {
-  // Avvia l'app CivicCoins
-  runApp(const CivicCoinsApp());
+  // Avvia l'app CivicCoins con il provider per il tema
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: const CivicCoinsApp(),
+    ),
+  );
 }
 
 ///
@@ -52,6 +58,8 @@ class CivicCoinsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       // Nome dell'app visualizzato in contesti di sistema e multitasking
       title: 'CivicCoins App',
@@ -59,17 +67,29 @@ class CivicCoinsApp extends StatelessWidget {
       // Nasconde il banner di debug visibile in alto a destra in modalità sviluppo
       debugShowCheckedModeBanner: false,
 
-      // Tema globale: definisce i colori, la palette e lo stile dei testi
+      // 🔄 Tema dinamico (chiaro/scuro)
+      themeMode: themeProvider.themeMode,
+
+      // Tema chiaro
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFE9E9E9), // Colore sfondo base
+        scaffoldBackgroundColor: const Color(0xFFE9E9E9),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal, // Colore principale (accent color)
-          brightness: Brightness.light, // Modalità chiara
+          seedColor: Colors.teal,
+          brightness: Brightness.light,
         ),
-        textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.black87),
+        textTheme: GoogleFonts.robotoTextTheme().copyWith(
+          bodyMedium: const TextStyle(color: Colors.black87),
         ),
-        useMaterial3: true, // Abilita il design Material 3
+        useMaterial3: true,
+      ),
+
+      // Tema scuro
+      darkTheme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.teal,
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
       ),
 
       // ✅ Schermata iniziale dell'app: la pagina di login

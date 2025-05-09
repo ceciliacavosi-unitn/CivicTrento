@@ -19,7 +19,7 @@ class StoricoMulteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const ElementoStorico(
-      title: 'Pagamento multa divieto di sosta',
+      title: 'Pagamento multa divieto di\nsosta',
       subtitle: '12/02/2025 15:30',
       points: '+2',
     );

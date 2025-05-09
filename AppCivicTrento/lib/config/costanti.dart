@@ -27,6 +27,6 @@ const String testoStoricoGenerico = 'Storico Generico';
 const String testoAppName = 'CivicTrento';
 
 /// 🏷️ Etichette dati cittadino
-const String labelCodiceAbbonamento = 'Codice Abbonamento';
+const String labelCodiceAbbonamento = 'Codice Abbonamento Trasporto pubblico';
 const String labelCodicePOD = 'Codice POD';
 const String labelNumeroPatente = 'Numero Patente';

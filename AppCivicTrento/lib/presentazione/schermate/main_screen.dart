@@ -5,12 +5,11 @@
 // - Gestisce la navigazione principale a tab.
 // - Include le schermate: Home, Premi, Profilo, Storico (Multe, Bollette, Spostamenti), Impostazioni.
 // - Ha anche un Drawer laterale per navigazione rapida.
-//
 // ======================================================
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../config/costanti.dart'; // ✅ Importa le costanti
+import '../../config/costanti.dart';
 import '../widget/pulsante_home.dart';
 import '../widget/storico_elemento.dart';
 import 'home_screen.dart';
@@ -22,10 +21,6 @@ import 'storico_multe_screen.dart';
 import 'storico_spostamenti_screen.dart';
 import '../../dominio/premi/premio.dart';
 import 'account_screen.dart';
-/*import '../../dominio/storico/bollette.dart';
-import '../../dominio/storico/multe.dart';
-import '../../dominio/storico/spostamenti.dart';
-import '../../dominio/utenti/utente.dart';*/
 import '../../servizi/utente_service.dart';
 
 class MainScreen extends StatefulWidget {
@@ -64,11 +59,11 @@ class MainScreenState extends State<MainScreen> {
     _screens = [
       HomeScreen(email: widget.email, password: widget.password),
       const PremiScreen(),
+      DatiCittadinoScreen(email: widget.email, password: widget.password),
       const StoricoMulteScreen(),
       const StoricoBolletteScreen(),
       const StoricoSpostamentiScreen(),
       const ImpostazioniScreen(),
-      DatiCittadinoScreen(email: widget.email, password: widget.password),
     ];
     _fetchUserInitials();
   }
@@ -93,17 +88,19 @@ class MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
-      backgroundColor: coloreSfondoChiaro,
+      backgroundColor: theme.scaffoldBackgroundColor,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(80),
         child: AppBar(
-          backgroundColor: coloreSfondoChiaro,
+          backgroundColor: theme.scaffoldBackgroundColor,
           elevation: 0,
           centerTitle: true,
           leading: Builder(
             builder: (context) => IconButton(
-              icon: const Icon(Icons.menu, size: 30, color: Colors.black),
+              icon: Icon(Icons.menu, size: 30, color: theme.iconTheme.color),
               onPressed: () => Scaffold.of(context).openDrawer(),
             ),
           ),
@@ -112,13 +109,9 @@ class MainScreenState extends State<MainScreen> {
             children: [
               Image.asset(assetLogo, height: 44),
               const SizedBox(width: 12),
-              const Text(
+              Text(
                 testoAppName,
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black,
-                ),
+                style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -140,26 +133,26 @@ class MainScreenState extends State<MainScreen> {
                 child: _initials != null
                     ? CircleAvatar(
                         radius: 18,
-                        backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
+                        backgroundColor: theme.primaryColor,
+                        foregroundColor: theme.colorScheme.onPrimary,
                         child: Text(
                           _initials!,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                       )
-                    : const Icon(Icons.account_circle, size: 34, color: Colors.black),
+                    : Icon(Icons.account_circle, size: 34, color: theme.iconTheme.color),
               ),
             ),
           ],
         ),
       ),
       drawer: Drawer(
-        backgroundColor: coloreSfondoChiaro,
+        backgroundColor: theme.scaffoldBackgroundColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(color: colorePrimario),
+              decoration: BoxDecoration(color: theme.colorScheme.primary),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -189,7 +182,7 @@ class MainScreenState extends State<MainScreen> {
               leading: Image.asset(assetIconPolice, width: 24, height: 24),
               title: const Text('Storico Multe'),
               onTap: () {
-                setState(() => _selectedIndex = 2);
+                setState(() => _selectedIndex = 3);
                 Navigator.pop(context);
               },
             ),
@@ -197,7 +190,7 @@ class MainScreenState extends State<MainScreen> {
               leading: Image.asset(assetIconLight, width: 24, height: 24),
               title: const Text('Storico Bollette'),
               onTap: () {
-                setState(() => _selectedIndex = 3);
+                setState(() => _selectedIndex = 4);
                 Navigator.pop(context);
               },
             ),
@@ -205,7 +198,7 @@ class MainScreenState extends State<MainScreen> {
               leading: Image.asset(assetIconBike, width: 24, height: 24),
               title: const Text('Storico Spostamenti'),
               onTap: () {
-                setState(() => _selectedIndex = 4);
+                setState(() => _selectedIndex = 5);
                 Navigator.pop(context);
               },
             ),
