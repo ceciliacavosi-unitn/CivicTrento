@@ -4,12 +4,12 @@
         "source": "com.example.app-main-1:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.app-debug-6:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.example.app-main-1:/mipmap-xhdpi/ic_launcher.png"
-    },
-    {
         "merged": "com.example.app-debug-6:/mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "com.example.app-main-1:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.app-debug-6:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.app-main-1:/mipmap-xhdpi/ic_launcher.png"
     },
     {
         "merged": "com.example.app-debug-6:/drawable-v21_launch_background.xml.flat",

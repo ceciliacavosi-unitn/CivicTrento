@@ -47,12 +47,11 @@ import 'package:flutter/material.dart';
 ///   points: '+3',
 /// )
 /// ```
-///
 class ElementoStorico extends StatelessWidget {
-  final String title; // Titolo principale (es: Pagamento multa)
-  final String subtitle; // Data/ora o dettagli secondari
-  final String points; // Punti (+3, -2 ecc.)
-  final bool showDot; // Mostra un dot rosso opzionale accanto al titolo
+  final String title;      // Titolo principale (es: Pagamento multa)
+  final String subtitle;   // Data/ora o dettagli secondari
+  final String points;     // Punti (+3, -2 ecc.)
+  final bool showDot;      // Mostra un dot rosso opzionale accanto al titolo
 
   const ElementoStorico({
     super.key,
@@ -64,16 +63,14 @@ class ElementoStorico extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 🔍 Verifica se i punti sono negativi leggendo il primo carattere
-    final isNegative = points.startsWith('-');
-
-    // 🧹 Ripulisce la stringa dei punti per mostrare solo numeri e +/-
-    final cleanPts = points.replaceAll(RegExp(r'[^0-9+-]'), '');
+    final theme = Theme.of(context); // 🎨 Recupera il tema corrente
+    final isNegative = points.startsWith('-'); // 🔍 Determina se è una penalità
+    final cleanPts = points.replaceAll(RegExp(r'[^0-9+-]'), ''); // 🔢 Pulisce simboli
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
       child: Material(
-        color: Colors.white,
+        color: theme.colorScheme.surface, // ✅ Sfondo adattivo al tema
         elevation: 1.5,
         borderRadius: BorderRadius.circular(12),
         child: ListTile(
@@ -82,13 +79,12 @@ class ElementoStorico extends StatelessWidget {
           // 👉 TITOLO: principale + dot opzionale
           title: Row(
             children: [
-              // 🔤 Testo del titolo
               Text(
                 title,
-                style: const TextStyle(fontWeight: FontWeight.w500),
+                style: theme.textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-
-              // 🔴 Dot rosso (se showDot è true)
               if (showDot)
                 Padding(
                   padding: const EdgeInsets.only(left: 6),
@@ -105,7 +101,12 @@ class ElementoStorico extends StatelessWidget {
           ),
 
           // 🗓️ SOTTOTITOLO: data o dettagli secondari
-          subtitle: Text(subtitle),
+          subtitle: Text(
+            subtitle,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
 
           // ➕/➖ TRAILING: punti + icona CivicCoin
           trailing: Row(

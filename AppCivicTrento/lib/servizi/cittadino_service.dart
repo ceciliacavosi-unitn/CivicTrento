@@ -150,6 +150,47 @@ class CittadinoService {
 
 
   // ======================================================
+  // ❌ DELETE /cittadino/rimuovi_dato - Elimina un dato civico
+  static Future<void> deleteData({
+    required String email,
+    required String password,
+    required String field,
+  }) async {
+    final resp = await http.delete(
+      Uri.parse(deleteDataUrl),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'email': email,
+        'password': password,
+        'field': field,
+        'value': '', 
+      }),
+    );
+
+    if (resp.statusCode != 200) {
+      final detail = _parseError(resp.body);
+      throw Exception('Eliminazione dati fallita: $detail');
+    }
+  }
+
+  // 🧹 DELETE /cittadino/rimuovi_tutti - Elimina tutti i dati civici
+  static Future<void> deleteAllData({
+    required String email,
+    required String password,
+  }) async {
+    final resp = await http.delete(
+      Uri.parse(deleteAllDataUrl),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'email': email, 'password': password}),
+    );
+
+    if (resp.statusCode != 200) {
+      final detail = _parseError(resp.body);
+      throw Exception('Eliminazione completa dei dati fallita: $detail');
+    }
+  }
+
+  // ======================================================
   // 🛠️ Funzione privata: parsing errori
   static String _parseError(String body) {
     try {

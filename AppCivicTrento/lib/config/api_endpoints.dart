@@ -18,7 +18,7 @@ const String apiHost = '192.168.0.108:8000';
 /// 🌐 URL base completo (protocollo + host + porta)
 const String baseUrl = 'http://$apiHost';
 
-/// ======================================================
+//// ======================================================
 /// 📂 Endpoint di autenticazione (/auth/)
 /// ======================================================
 
@@ -30,6 +30,9 @@ const String loginUrl = '$baseUrl/auth/login';
 
 /// Logout utente (termina la sessione)
 const String logoutUrl = '$baseUrl/auth/logout';
+
+/// Cancellazione account utente
+const String deleteUserUrl = '$baseUrl/auth/delete_user';
 
 /// ======================================================
 /// 📂 Gestione del profilo utente (/utente/)
@@ -53,3 +56,10 @@ const String insertDataUrl = '$baseUrl/cittadino/aggiungi_dato';
 
 /// Modifica i dati esistenti del cittadino (SINGOLO campo)
 const String modifyDataUrl = '$baseUrl/cittadino/modifica_dato';
+
+/// Rimuove un singolo dato del cittadino (es. codice POD, patente)
+const String deleteDataUrl = '$baseUrl/cittadino/rimuovi_dato';
+
+/// Elimina tutti i dati civici 
+const String deleteAllDataUrl = '$baseUrl/cittadino/rimuovi_tutti';
+

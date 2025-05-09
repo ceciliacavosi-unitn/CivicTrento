@@ -6,7 +6,6 @@
 //     • Le Civic Coins accumulate.
 //     • Pulsanti rapidi: Profilo/Dati, Premi, Impostazioni.
 //     • Storico generico scrollabile.
-//
 // ======================================================
 
 import 'package:flutter/material.dart';
@@ -34,6 +33,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final accentColor = theme.colorScheme.onSurfaceVariant;
+
     return Padding(
       padding: const EdgeInsets.all(12),
       child: Column(
@@ -42,10 +44,9 @@ class _HomeScreenState extends State<HomeScreen> {
           // 🏅 Titolo Civic Coins
           Text(
             testoTitoloCoins,
-            style: const TextStyle(
-              fontSize: 24,
+            style: theme.textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.bold,
-              color: colorePrimario,
+              color: accentColor,
             ),
           ),
           const SizedBox(height: 12),
@@ -54,12 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                '900',  // 👀 Valore mockup fisso, da rendere dinamico in futuro
-                style: TextStyle(
-                  fontSize: 36,
+              Text(
+                '800',
+                style: theme.textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: colorePrimario,
+                  color: accentColor,
                 ),
               ),
               const SizedBox(width: 8),
@@ -79,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
               PulsanteHome(
                 icon: Icons.person,
                 label: 'Aggiungi/Modifica Dati',
+                color: accentColor,
                 onTap: () {
                   Navigator.push(
                     context,
@@ -94,6 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
               PulsanteHome(
                 icon: Icons.card_giftcard,
                 label: 'Premi',
+                color: accentColor,
                 onTap: () {
                   final state = context.findAncestorStateOfType<MainScreenState>()!;
                   state.selectTab(1);
@@ -108,11 +110,12 @@ class _HomeScreenState extends State<HomeScreen> {
             child: PulsanteHome(
               icon: Icons.settings,
               label: 'Impostazioni',
+              color: accentColor,
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => ImpostazioniScreen(),
+                    builder: (_) => const ImpostazioniScreen(),
                   ),
                 );
               },
@@ -126,49 +129,53 @@ class _HomeScreenState extends State<HomeScreen> {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: theme.colorScheme.surfaceVariant,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    testoStoricoGenerico,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: colorePrimario,
+              child: DefaultTextStyle(
+                style: theme.textTheme.bodyMedium!.copyWith(
+                  color: accentColor,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      testoStoricoGenerico,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.primary,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Expanded(
-                    child: ListView(
-                      children: const [
-                        ElementoStorico(
-                          title: 'Voto amministrativo',
-                          subtitle: '01/04/2025 10:00',
-                          points: '+100',
-                          showDot: true,
-                        ),
-                        ElementoStorico(
-                          title: 'Multa per sosta vietata',
-                          subtitle: '29/03/2025 08:45',
-                          points: '-40',
-                        ),
-                        ElementoStorico(
-                          title: 'Camminata monitorata',
-                          subtitle: '28/03/2025 18:30',
-                          points: '+2',
-                        ),
-                        ElementoStorico(
-                          title: 'Bolletta elettrica\ngen/feb',
-                          subtitle: '27/03/2025 09:00',
-                          points: '+15',
-                        ),
-                      ],
+                    const SizedBox(height: 8),
+                    Expanded(
+                      child: ListView(
+                        children: const [
+                          ElementoStorico(
+                            title: 'Voto amministrativo',
+                            subtitle: '01/04/2025 10:00',
+                            points: '+100',
+                            showDot: true,
+                          ),
+                          ElementoStorico(
+                            title: 'Multa per sosta vietata',
+                            subtitle: '29/03/2025 08:45',
+                            points: '-40',
+                          ),
+                          ElementoStorico(
+                            title: 'Camminata monitorata',
+                            subtitle: '28/03/2025 18:30',
+                            points: '+2',
+                          ),
+                          ElementoStorico(
+                            title: 'Bolletta elettrica\ngen/feb',
+                            subtitle: '27/03/2025 09:00',
+                            points: '+15',
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

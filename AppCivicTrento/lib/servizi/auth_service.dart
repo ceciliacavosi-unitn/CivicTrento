@@ -5,7 +5,8 @@
 // - Gestisce tutte le richieste HTTP di autenticazione:
 //   ✅ Registrazione
 //   ✅ Login
-//   ✅ Logout (se previsto)
+//   ✅ Logout
+//   ✅ Cancellazione account
 //
 // 📦 Collegamento alla struttura del progetto:
 // - Si trova in `servizi/`.
@@ -68,16 +69,14 @@ class AuthService {
   }
 
   // ======================================================
-  // 🔐 POST /logout (opzionale)
+  // 🔐 POST /logout
   static Future<void> logout({
-    required String token,
+    required String email,
   }) async {
     final resp = await http.post(
       Uri.parse(logoutUrl),
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'email': email}),
     );
     if (resp.statusCode != 200) {
       final detail = _parseError(resp.body);
@@ -86,7 +85,27 @@ class AuthService {
   }
 
   // ======================================================
-  // 🛠️ Funzione privata: parsing errori dal server
+  // ❌ DELETE /delete_user
+  static Future<void> deleteAccount({
+    required String email,
+    required String password,
+  }) async {
+    final resp = await http.delete(
+      Uri.parse(deleteUserUrl),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        'email': email,
+        'password': password,
+      }),
+    );
+    if (resp.statusCode != 200) {
+      final detail = _parseError(resp.body);
+      throw Exception('Cancellazione fallita: $detail');
+    }
+  }
+
+  // ======================================================
+  // 🛠️ Parsing errori dal server
   static String _parseError(String body) {
     try {
       final jsonBody = json.decode(body) as Map<String, dynamic>;
