@@ -5,7 +5,7 @@
 Il progetto CivicCoins è suddiviso in due macro-componenti:
 
 1. **Frontend Flutter** (`lib/`): app mobile (e potenzialmente web) che gestisce interfaccia utente, logica di presentazione e comunicazione con il backend.
-2. **Backend FastAPI** (`backend-api/`): espone API REST per autenticazione, profilo utente, gestione dei dati civici e premi.
+2. **Backend Node.js** (`backend-api/`): server API REST sviluppato in JavaScript con test API condotti tramite APIary.
 
 Le due componenti comunicano tramite richieste HTTP.
 
@@ -20,7 +20,7 @@ Le due componenti comunicano tramite richieste HTTP.
 | `lib/dominio/`            | Logica di dominio e modelli dati (utenti, premi, storico, monitoraggio).   |
 | `lib/presentazione/`      | Schermate, widget e gestione UI.                                           |
 | `lib/servizi/`            | Servizi di comunicazione HTTP verso il backend.                            |
-| `backend-api/`            | Codice backend FastAPI (API REST, persistenza su file CSV).                |
+| `backend-api/`            | Codice backend Node.js (API REST, persistenza su file, test su APIary).    |
 
 ---
 
