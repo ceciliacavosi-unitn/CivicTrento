@@ -6,7 +6,7 @@ services:
     container_name: mongo
     restart: always
     volumes:
-      - ./backend-api/mongo-data_loc:/data/db
+      - ./backend-api/data:/data
       - ./mongodb-data:/docker-entrypoint-initdb.d
 
     working_dir: /data/db

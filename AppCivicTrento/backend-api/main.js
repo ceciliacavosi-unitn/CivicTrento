@@ -27,6 +27,25 @@ function verificaUtente(email, password) {
     return false;
   }
 
+//pagina principale
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>Benvenuto nell'API CivicTrento</h1>
+    <p>Queste sono le principali rotte disponibili:</p>
+    <ul>
+      <li><strong>POST</strong> /auth/register</li>
+      <li><strong>POST</strong> /auth/login</li>
+      <li><strong>POST</strong> /auth/logout</li>
+      <li><strong>DELETE</strong> /auth/delete_user</li>
+      <li><strong>POST</strong> /utente/profilo</li>
+      <li><strong>PUT</strong> /utente/modifica_profilo</li>
+      <li><strong>POST</strong> /cittadino/dati</li>
+    </ul>
+    <p>⚠️ Le rotte vanno testate con strumenti come Postman, curl o una frontend app, poiché la maggior parte richiede <code>POST</code> o <code>DELETE</code> con JSON nel body.</p>
+  `);
+});
+
+
 //autenticazione
 
 app.post("/auth/register", (req, res) => {
@@ -182,7 +201,7 @@ app.post("/cittadino/dati", (req, res) => {
 
 //avvio server: non so come farlo 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server avviato su http://localhost:${PORT}`);
 });
