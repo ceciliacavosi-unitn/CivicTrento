@@ -19,7 +19,7 @@ CivicTrento è un’app Flutter con backend FastAPI progettata per premiare comp
 
 ## Avvio rapido
 
-L'intero progetto è containerizzato: **non è necessario installare Flutter o Python sul proprio sistema**.
+L'intero progetto è containerizzato: **non è necessario installare Flutter o JavaScript sul proprio sistema**.
 
 ### Prerequisiti
 
