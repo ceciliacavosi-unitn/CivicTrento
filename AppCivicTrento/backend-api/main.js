@@ -64,12 +64,13 @@ app.post("/auth/register", (req, res) => {
         return res.status(400).json({ detail: "Email non valida" });
     }
 
-    // Controllo codice fiscale
+    // controllo codice fiscale
     const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
     if (!cfRegex.test(fiscal_code)) {
         return res.status(400).json({ detail: "Codice fiscale non valido" });
     }
 
+    //controllo numero carta d'identità
     const idCardRegex = /^\d{8}$/;
     if (!idCardRegex.test(id_card_number)) {
         return res.status(400).json({ detail: "Numero carta d'identità non valido" });
