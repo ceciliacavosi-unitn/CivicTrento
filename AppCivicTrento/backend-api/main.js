@@ -46,10 +46,35 @@ app.get("/", (req, res) => {
 });
 
 
+
 //autenticazione
 
 app.post("/auth/register", (req, res) => {
     const { name, surname, email, password, fiscal_code, id_card_number } = req.body;
+    
+    //controllo password
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+    if(!passwordRegex(password)){
+      return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza"});
+    }
+    
+    //controllo email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ detail: "Email non valida" });
+    }
+
+    // Controllo codice fiscale
+    const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
+    if (!cfRegex.test(fiscal_code)) {
+        return res.status(400).json({ detail: "Codice fiscale non valido" });
+    }
+
+    const idCardRegex = /^\d{8}$/;
+    if (!idCardRegex.test(id_card_number)) {
+        return res.status(400).json({ detail: "Numero carta d'identità non valido" });
+    }
+
     const newUser = `${name.trim()},${surname.trim()},${email.trim()},${password.trim()},${fiscal_code.trim()},${id_card_number.trim()}\n`;
     fs.appendFileSync(USERS_FILE, newUser);
     res.json({ status: "success", message: "Registrazione completata" });
