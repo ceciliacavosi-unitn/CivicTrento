@@ -13,12 +13,7 @@ async function run() {
     // Tenta di aprire una connessione al server MongoDB
     await client.connect();
 
-    // Accede al database chiamato "sample_guides"
-    // Se non esiste, MongoDB lo crea al primo inserimento
     const db = client.db("civicTrento");
-
-    // Accede alla collezione chiamata "planets"
-    // Anche questa viene creata automaticamente se non esiste
     const coll = db.collection("utenti");
 
     // Recupera tutti i documenti presenti nella collezione
@@ -32,5 +27,30 @@ async function run() {
   }
 }
 
-// Avvia la funzione "run" e stampa eventuali errori sulla console
 run().catch(console.dir);
+
+// Importa la libreria mongoose che facilita la comunicazione con MongoDB
+const mongoose = require('mongoose');
+
+// Connessione al database 'test' in MongoDB sulla porta predefinita (27017)
+mongoose.connect('mongodb://localhost:27017/test');
+
+// Crea un modello chiamato 'Utente'
+const Utente = mongoose.model('Utente', { 
+  nome: String, 
+  cognome: String, 
+  email: String, 
+  password: String, 
+  CF: String, 
+  cartaID: String
+}, 'utenti');
+
+// Crea un nuovo documento 'utente1'
+const utente1 = new Utente({
+  nome: 'nome1',
+  cognome: 'cognome1', 
+  email: 'email1', 
+  password: 'password1', 
+  CF: 'CF1', cartaID: 
+  'cartaID1'
+});
