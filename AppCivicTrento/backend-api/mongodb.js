@@ -29,11 +29,14 @@ async function run() {
 
 run().catch(console.dir);
 
+//Carica le variabili di ambiente
+require('dotenv').config();
+
 // Importa la libreria mongoose che facilita la comunicazione con MongoDB
 const mongoose = require('mongoose');
 
 // Connessione al database 'test' in MongoDB sulla porta predefinita (27017)
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect(process.env.DB_URL).then(() => console.log('Connesso a MongoDB')).catch(err => console.error('Errore nella connessione a MongoDB', err));
 
 // Crea un modello chiamato 'Utente'
 const Utente = mongoose.model('Utente', { 
