@@ -33,6 +33,9 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
   final _fiscalCodeController = TextEditingController();
   final _idCardController = TextEditingController();
 
+  //variabile per consenso GDPR
+  bool _consensoGDPR = false;
+
   /// 🔄 Metodo che esegue la registrazione:
   /// - Valida il form.
   /// - Esegue la chiamata API tramite UserService.
@@ -40,6 +43,15 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
   /// - Reindirizza al LoginScreen in caso di successo.
   Future<void> _register() async {
     if (!_formKey.currentState!.validate()) return;
+
+    //controllo consenso GDPR
+    if (!_consensoGDPR) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Devi accettare l'informativa privacy per registrarti.")),
+      );
+      return;
+    }
+
 
     // 🔎 Manca controllo coerenza input:
     // ➔ Es. validazione email formale, password sicura, codice fiscale valido ecc.
@@ -112,6 +124,27 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
                 ),
 
                 const SizedBox(height: 20),
+
+                //consenso GDPR
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Checkbox(
+                      value: _consensoGDPR,
+                      onChanged: (value) {
+                        setState(() {
+                          _consensoGDPR = value ?? false;
+                        });
+                      },
+                    ),
+                    Expanded(
+                      child: Text(
+                        "Acconsento al trattamento dei miei dati personali secondo l'informativa privacy.",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ),
+                  ],
+                ),
 
                 // 🔘 Pulsante di invio registrazione
                 ElevatedButton(

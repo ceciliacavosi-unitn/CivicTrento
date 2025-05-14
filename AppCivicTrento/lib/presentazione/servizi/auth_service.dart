@@ -42,6 +42,7 @@ class AuthService {
         'password': password.trim(),
         'fiscal_code': fiscalCode.trim(),
         'id_card_number': idCardNumber.trim(),
+        'gdrpConsent': true,
       }),
     );
     if (resp.statusCode != 200) {
