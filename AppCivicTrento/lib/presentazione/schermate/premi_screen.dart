@@ -71,32 +71,19 @@ class PremiScreen extends StatefulWidget {
 }
 
 class _PremiScreenState extends State<PremiScreen> {
-  late Future<List<String>> _premi;
+  late Future<List<Map<String, dynamic>>> _premi;
 
   @override
   void initState() {
     super.initState();
-    _premi = PremioService().caricaPremi(); // Simulazione caricamento premi reali
+    _premi = PremioService().caricaPremi();
   }
-  
-  //DA MODIFICARE Quando avremo un backend vero, potremo sostituirla con una GET API call.
-  Future<List<String>> caricaPremi() async {
-  // Simula il caricamento da backend
-  return Future.delayed(const Duration(seconds: 1), () {
-    return [
-      "Detrazione TARI 50€",
-      "Buono spesa 20€",
-      "Accesso gratuito musei",
-    ];
-  });
-}
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Premi disponibili")),
-      body: FutureBuilder<List<String>>(
+      body: FutureBuilder<List<Map<String, dynamic>>>(
         future: _premi,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -110,31 +97,38 @@ class _PremiScreenState extends State<PremiScreen> {
           return ListView.builder(
             padding: const EdgeInsets.all(16),
             itemCount: premi.length,
-            itemBuilder: (_, i) => Card(
-              margin: const EdgeInsets.symmetric(vertical: 8),
-              elevation: 4,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-              child: ListTile(
-                title: Text(premi[i]),
-                trailing: ElevatedButton(
-                  onPressed: () async {
-                    final success = await PremioService().riscattaPremio(premi[i]);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(success
-                            ? 'Premio riscattato con successo!'
-                            : 'Errore nel riscatto del premio'),
-                      ),
-                    );
-                  },
-                  child: const Text('Riscuoti'),
+            itemBuilder: (_, i) {
+              final premio = premi[i];
+              final nome = premio['nome'];
+              final descrizione = premio['descrizione'];
+              final id = premio['id'];
+
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                elevation: 4,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                child: ListTile(
+                  title: Text(nome),
+                  subtitle: Text(descrizione),
+                  trailing: ElevatedButton(
+                    onPressed: () async {
+                      final success = await PremioService().riscattaPremio(id);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(success
+                              ? 'Premio riscattato con successo!'
+                              : 'Errore nel riscatto del premio'),
+                        ),
+                      );
+                    },
+                    child: const Text('Riscuoti'),
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           );
         },
       ),
     );
   }
 }
-
