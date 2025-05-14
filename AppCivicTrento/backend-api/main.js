@@ -205,3 +205,38 @@ const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server avviato su http://localhost:${PORT}`);
 });
+
+// === PREMI ===
+
+const PREMI_FILE = path.join(__dirname, 'data', 'premi.json');
+
+// GET /premi → restituisce l'elenco dei premi
+app.get("/premi", (req, res) => {
+  if (!fs.existsSync(PREMI_FILE)) {
+    return res.status(404).json({ detail: "Nessun premio disponibile" });
+  }
+
+  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
+  res.json(premi);
+});
+
+// POST /premi/riscatta/:id → simula il riscatto del premio
+app.post("/premi/riscatta/:id", (req, res) => {
+  const premioId = req.params.id;
+  if (!fs.existsSync(PREMI_FILE)) {
+    return res.status(404).json({ detail: "Nessun premio disponibile" });
+  }
+
+  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
+  const premio = premi.find(p => p.id === premioId);
+
+  if (!premio) {
+    return res.status(404).json({ detail: "Premio non trovato" });
+  }
+
+  // (Opzionale: loggare il riscatto)
+  console.log(`✅ Premio riscattato: ${premio.nome}`);
+
+  res.json({ status: "success", message: `Premio "${premio.nome}" riscattato` });
+});
+

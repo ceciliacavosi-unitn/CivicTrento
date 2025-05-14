@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "nome": "Detrazione TARI 50€",
+    "descrizione": "Risparmia sulla tassa rifiuti",
+    "costoCivicCoins": 100
+  },
+  {
+    "id": "2",
+    "nome": "Buono spesa 20€",
+    "descrizione": "Spendibile nei negozi locali",
+    "costoCivicCoins": 70
+  }
+]

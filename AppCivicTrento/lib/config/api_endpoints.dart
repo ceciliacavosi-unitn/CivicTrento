@@ -63,3 +63,8 @@ const String deleteDataUrl = '$baseUrl/cittadino/rimuovi_dato';
 /// Elimina tutti i dati civici 
 const String deleteAllDataUrl = '$baseUrl/cittadino/rimuovi_tutti';
 
+/// ======================================================
+/// 📂 Premi (/premi/)
+/// ======================================================
+const String premiUrl = '$baseUrl/premi';
+const String riscattaPremioUrl = '$baseUrl/premi/riscatta';

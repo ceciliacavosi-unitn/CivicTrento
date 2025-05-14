@@ -23,7 +23,7 @@ import 'tipo_premio.dart';
 /// - [validoFino]: data di scadenza (facoltativo).
 /// - [valore]: valore numerico (es. sconto in euro, punti richiesti).
 ///
-class Premio {
+abstract class Premio {
   final String id;
   final String titolo;
   final String? descrizione;
@@ -39,6 +39,8 @@ class Premio {
     this.validoFino,
     this.valore,
   });
+
+ 
 
   /// 🔄 Factory per creare un Premio da una mappa JSON.
   factory Premio.fromJson(Map<String, dynamic> json) {
