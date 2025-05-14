@@ -69,7 +69,7 @@ app.post("/auth/register", (req, res) => {
     if (!cfRegex.test(fiscal_code)) {
         return res.status(400).json({ detail: "Codice fiscale non valido" });
     }
-
+    
     //controllo numero carta d'identità
     const idCardRegex = /^\d{8}$/;
     if (!idCardRegex.test(id_card_number)) {
@@ -170,7 +170,20 @@ app.post("/utente/profilo", (req, res) => {
     if (!fs.existsSync(USERS_FILE)) {
       return res.status(404).json({ detail: "Nessun utente registrato" });
     }
+
+    //Regex per email e password
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
   
+    //verifica criteri
+    if (field === "email" && !emailRegex.test(new_value)) {
+      return res.status(400).json({ detail: "Formato email non valido" });
+    }
+
+    if (field === "password" && !passwordRegex.test(new_value)) {
+      return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza" });
+    }
+
     const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
     let updated = false;
   
