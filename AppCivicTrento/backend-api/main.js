@@ -6,9 +6,13 @@ const fs = require("fs");
 const path = require("path");
 const csv = require("csv-parser");
 const { createObjectCsvWriter } = require("csv-writer");
+const crypto = require('crypto');
+const { inviaEmailRecuperoPassword } = require('./mailer');
 
 const app = express();
 app.use(bodyParser.json());
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 const USERS_FILE = "users.txt";
 const DATA_FILE = "data.txt"; 
@@ -111,6 +115,89 @@ app.post("/auth/logout", (req, res) => {
     res.status(404).json({ detail: "Utente non trovato" });
 });
 
+app.post("/auth/recupero_password", (req, res) => {
+  const { email } = req.body;
+
+  if (!fs.existsSync(USERS_FILE)) {
+    return res.status(404).json({ detail: "Nessun utente registrato" });
+  }
+
+  const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
+  let userFound = false;
+
+  for (let line of lines) {
+    const [name, surname, em] = line.split(",");
+    if (em === email) {
+      userFound = true;
+      break;
+    }
+  }
+
+  if (!userFound) {
+    return res.status(404).json({ detail: "Email non trovata" });
+  }
+
+  // Genera un token di recupero
+  const token = crypto.randomBytes(20).toString('hex');
+
+  fs.writeFileSync('password_reset_tokens.txt', `${email},${token}\n`, { flag: 'a' });
+
+  const resetLink = `http://backend-api:8000/reset_password?token=${token}`;
+
+  inviaEmailRecuperoPassword(email, resetLink)
+    .then(info => {
+      res.json({ status: "success", message: "Email di recupero inviata" });
+    })
+    .catch(error => {
+      res.status(500).json({ detail: "Errore nell'invio dell'email", error: error.message });
+    });
+});
+
+app.post("/auth/reset_password", (req, res) => {
+  const { token, newPassword } = req.body;
+
+  // Leggi i token salvati
+  const tokens = fs.readFileSync('password_reset_tokens.txt', 'utf-8').split("\n").filter(Boolean);
+  let tokenValid = false;
+  let userEmail = "";
+
+  for (let line of tokens) {
+    const [email, storedToken, expirationTime] = line.split(",");
+    
+    if (storedToken === token) {
+      if (Date.now() < expirationTime) {  // Verifica se il token non è scaduto
+        tokenValid = true;
+        userEmail = email;
+      } else {
+        return res.status(400).json({ detail: "Token scaduto" });
+      }
+    }
+  }
+
+  if (!tokenValid) {
+    return res.status(400).json({ detail: "Token non valido" });
+  }
+
+  // Se il token è valido, aggiorna la password
+  const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
+  let updated = false;
+
+  const updatedLines = lines.map(line => {
+    const [name, surname, em, pw, fiscal, idCard] = line.split(",");
+    if (em === userEmail) {
+      updated = true;
+      return `${name},${surname},${em},${newPassword},${fiscal},${idCard}`;
+    }
+    return line;
+  });
+
+  if (updated) {
+    fs.writeFileSync(USERS_FILE, updatedLines.join("\n") + "\n");
+    res.json({ status: "success", message: "Password reimpostata con successo" });
+  } else {
+    res.status(400).json({ detail: "Utente non trovato" });
+  }
+});
 
 //profilo utente 
 app.post("/utente/profilo", (req, res) => {
