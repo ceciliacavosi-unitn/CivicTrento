@@ -1,14 +1,14 @@
 // ======================================================
-// account_screen.dart (presentazione/schermate/)
+// 📄 account_screen.dart (presentazione/schermate/)
 //
-// Funzione del file:
+// 📌 Funzione del file:
 // - Mostra e permette di modificare i dati anagrafici/account:
-//   Nome
-//   Cognome
-//   Email
-//   Password
-//   Codice fiscale
-//   Numero carta d'identità
+//   ✅ Nome
+//   ✅ Cognome
+//   ✅ Email
+//   ✅ Password
+//   ✅ Codice fiscale
+//   ✅ Numero carta d'identità
 //
 // - Usa UtenteService per caricare e salvare i dati.
 // ======================================================
@@ -16,6 +16,7 @@
 import 'package:flutter/material.dart';
 import '../../config/costanti.dart';
 import '../../servizi/utente_service.dart';
+import '../../dominio/gestione/sistema_autenticazione.dart';
 import 'edit_field_screen.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -46,32 +47,38 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   void initState() {
     super.initState();
-    _password = widget.password; // inizializza subito
+    _password = widget.password;
     _loadProfile();
   }
 
-  ///  Carica i dati anagrafici tramite UtenteService
+  /// 🔄 Carica i dati anagrafici tramite UtenteService
   Future<void> _loadProfile() async {
-    print(" [_loadProfile] Email: ${widget.email}, Password: $_password");
+    print("🔄 [_loadProfile] Email: ${widget.email}, Password: $_password");
+
     try {
       final data = await UtenteService.fetchProfile(
         email: widget.email,
         password: _password,
       );
 
-      print(" Profilo caricato: $data");
+      print("✅ Profilo caricato (grezzo): $data");
+
+      final nome = data['nome'];
+      final cognome = data['cognome'];
+      final codiceFiscale = data['CF'];
+      final cartaID = data['cartaID'];
 
       setState(() {
-        _name = data['nome'] ?? '';
-        _surname = data['cognome'] ?? '';
+        _name = nome ?? '';
+        _surname = cognome ?? '';
         _email = data['email'] ?? '';
-        _fiscalCode = data['CF'] ?? '';
-        _idCardNumber = data['cartaID'] ?? '';
+        _fiscalCode = codiceFiscale ?? '';
+        _idCardNumber = cartaID ?? '';
         _error = null;
         _loading = false;
       });
     } catch (e) {
-      print(" Errore nel caricamento profilo: $e");
+      print("❌ Errore nel caricamento profilo: $e");
       setState(() {
         _error = 'Errore nel caricamento dati: ${e.toString()}';
         _loading = false;
@@ -79,7 +86,7 @@ class _AccountScreenState extends State<AccountScreen> {
     }
   }
 
-  ///  Modifica un campo specifico
+  /// ✏️ Modifica un campo specifico
   Future<void> _editField(String label, String currentValue, String fieldKey) async {
     final newValue = await Navigator.push<String?>(
       context,
@@ -94,7 +101,7 @@ class _AccountScreenState extends State<AccountScreen> {
     if (newValue != null && newValue != currentValue) {
       setState(() => _loading = true);
       try {
-        print(" Modifica $fieldKey → $newValue (con password attuale: $_password)");
+        print("✏️ Modifica $fieldKey → $newValue (con password attuale: $_password)");
 
         await UtenteService.modifyProfile(
           email: widget.email,
@@ -104,8 +111,16 @@ class _AccountScreenState extends State<AccountScreen> {
         );
 
         if (fieldKey == 'password') {
-          print(" Password aggiornata localmente");
-          _password = newValue; //  aggiorna la password locale
+          print("🔐 Password aggiornata localmente");
+          _password = newValue;
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Password aggiornata con successo')),
+          );
+
+          SistemaAutenticazione.login(widget.email, _password);
+          Navigator.pop(context, _password);
+          return; // evita _loadProfile con password vecchia
         }
 
         await _loadProfile();
@@ -114,7 +129,7 @@ class _AccountScreenState extends State<AccountScreen> {
           SnackBar(content: Text('$label aggiornato con successo')),
         );
       } catch (e) {
-        print(" Errore nella modifica di $fieldKey: $e");
+        print("❌ Errore nella modifica di $fieldKey: $e");
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Errore: ${e.toString()}')),
         );
@@ -127,8 +142,8 @@ class _AccountScreenState extends State<AccountScreen> {
     final isEmpty = value.trim().isEmpty;
     final isPassword = fieldKey == 'password';
     final displayValue = isEmpty
-      ? '(vuoto)'
-      : (isPassword ? '●' * value.length : value);
+        ? '(vuoto)'
+        : (isPassword ? '●' * value.length : value);
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
@@ -159,7 +174,12 @@ class _AccountScreenState extends State<AccountScreen> {
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : (_error != null)
-              ? Center(child: Text(_error!, style: const TextStyle(color: Colors.red)))
+              ? Center(
+                  child: Text(
+                    _error!,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                )
               : Padding(
                   padding: const EdgeInsets.all(24),
                   child: SingleChildScrollView(
