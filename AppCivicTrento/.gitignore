@@ -1,1 +1,6 @@
 backend-api/mongo-data_loc/
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
