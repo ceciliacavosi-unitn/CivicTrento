@@ -2,19 +2,19 @@ require('dotenv').config();
 const fs = require("fs");
 const path = require("path");
 
-// 📂 Percorso del file premi.json
+// Percorso del file premi.json
 const PREMI_FILE = path.join(__dirname, "data", "premi.json");
 
-// 🌐 Connessione MongoDB disabilitata (commentata)
+// Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
 // mongoose.connect(process.env.DB_URL, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true
 // })
-// .then(() => console.log('✅ Connesso a MongoDB (premi)'))
-// .catch(err => console.error('❌ Errore connessione MongoDB (premi):', err));
+// .then(() => console.log(' Connesso a MongoDB (premi)'))
+// .catch(err => console.error(' Errore connessione MongoDB (premi):', err));
 
-// 📄 Schema e modello Mongoose per i premi (commentati)
+// Schema e modello Mongoose per i premi (commentati)
 // const premioSchema = new mongoose.Schema({
 //   id: String,
 //   nome: String,
