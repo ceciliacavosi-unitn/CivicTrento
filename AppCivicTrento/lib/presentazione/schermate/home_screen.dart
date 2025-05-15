@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 home_screen.dart (presentazione/schermate/)
+// home_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Schermata principale che mostra:
 //     • Le Civic Coins accumulate.
 //     • Pulsanti rapidi: Profilo/Dati, Premi, Impostazioni.
@@ -9,7 +9,7 @@
 // ======================================================
 
 import 'package:flutter/material.dart';
-import '../../config/costanti.dart';  // ✅ Importa le costanti
+import '../../config/costanti.dart';  //  Importa le costanti
 import '../widget/pulsante_home.dart';
 import '../widget/storico_elemento.dart';
 import 'main_screen.dart';
