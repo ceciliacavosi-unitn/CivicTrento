@@ -1,12 +1,12 @@
 // ======================================================
-// 📄 premi_screen.dart (da spostare in presentazione/schermate/)
+//  premi_screen.dart (da spostare in presentazione/schermate/)
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Definisce la schermata che mostra la lista dei premi disponibili
 //   per il cittadino nell'app CivicCoins.
 // - Permette all'utente di riscattare un premio cliccando il pulsante.
 //
-// 📦 Collegamento alla struttura del progetto:
+//  Collegamento alla struttura del progetto:
 // - Fa parte dell'interfaccia utente (UI), quindi deve essere posizionato
 //   nella cartella `presentazione/schermate/`.
 // - NON rappresenta il modello di dominio `Premio`.
@@ -15,12 +15,12 @@
 
 import 'package:flutter/material.dart';
 
-/// 🏆 Schermata che mostra la lista di premi riscattabili.
+/// Schermata che mostra la lista di premi riscattabili.
 class PremiScreen extends StatelessWidget {
   const PremiScreen({super.key});
 
-  /// 🔖 Elenco statico di premi disponibili.
-  /// 👉 Hey, questo array di stringhe potrebbe essere spostato in `costanti.dart`
+  ///  Elenco statico di premi disponibili.
+  ///  Questo array di stringhe potrebbe essere spostato in `costanti.dart`
   /// per mantenerlo centralizzato e modificabile facilmente!
   static const _options = [
     "Sconto abbonamento trasporti",

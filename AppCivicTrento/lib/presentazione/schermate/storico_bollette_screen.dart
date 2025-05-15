@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 storico_bollette_screen.dart (presentazione/schermate/)
+//  storico_bollette_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Mostra la lista delle bollette pagate nello storico.
 // - Attualmente è un ESEMPIO BASE che andrà esteso per visualizzare
 //   più elementi dinamicamente.
@@ -11,9 +11,9 @@
 import 'package:flutter/material.dart';
 import '../widget/storico_elemento.dart'; 
 
-/// 🧾 Schermata che mostra lo storico delle bollette.
+///  Schermata che mostra lo storico delle bollette.
 ///
-/// 👉 Al momento è solo un esempio base. Da estendere per:
+///  Al momento è solo un esempio base. Da estendere per:
 /// - Ciclo su una lista di `Bolletta` (modello dati)
 /// - Recupero dinamico da servizio o database
 ///

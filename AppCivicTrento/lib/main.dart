@@ -1,31 +1,34 @@
 // ======================================================
-// 📄 main.dart
+//  main.dart
 // Punto di ingresso dell'app CivicCoins.
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Definisce la root dell'app Flutter CivicCoins.
 // - Imposta il tema globale e le configurazioni principali.
 // - Specifica quale schermata viene mostrata per prima.
 //
-// 📦 Collegamento alla struttura del progetto:
+//  Collegamento alla struttura del progetto:
 // - Questo file si trova alla radice di `lib/` e rappresenta
 //   il cuore dell'inizializzazione dell'app.
 // - Collega la parte di interfaccia utente (presentazione)
 //   con la configurazione iniziale.
 //
-// ✅ Dipendenze dirette:
+//  Dipendenze dirette:
 // - `presentazione/schermate/schermata_login.dart`: la schermata iniziale.
 // - `presentazione/gestione/theme_provider.dart`: per il tema dinamico.
 //
 // ======================================================
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // ✅ Aggiunto
+import 'package:provider/provider.dart'; // Aggiunto
 import 'package:google_fonts/google_fonts.dart';
-import 'presentazione/gestione/theme_provider.dart'; // ✅ Aggiunto
+import 'presentazione/gestione/theme_provider.dart'; //  Aggiunto
 
 // Import della schermata iniziale: Schermata di Login
 import 'presentazione/schermate/login_screen.dart';
+
+// Chiave globale per la navigazione (usata per navigare anche senza context)
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   // Avvia l'app CivicCoins con il provider per il tema
@@ -40,14 +43,14 @@ void main() {
 ///
 /// Classe principale che rappresenta l'app CivicCoins.
 ///
-/// 🔑 Responsabilità chiave:
+///  Responsabilità chiave:
 /// - Costruisce l'albero widget principale dell'applicazione.
 /// - Definisce:
 ///   - Titolo dell'app (per sistema/OS)
 ///   - Tema grafico globale (colori, font, Material Design 3)
 ///   - Schermata iniziale da visualizzare al lancio.
 ///
-/// 🔗 Connessioni nel progetto:
+///  Connessioni nel progetto:
 /// - Questo widget è il **contenitore di tutto** ciò che riguarda
 ///   la parte visiva (UI) e viene esteso nel resto del progetto.
 /// - Si appoggia principalmente ai file nella cartella
@@ -67,7 +70,10 @@ class CivicCoinsApp extends StatelessWidget {
       // Nasconde il banner di debug visibile in alto a destra in modalità sviluppo
       debugShowCheckedModeBanner: false,
 
-      // 🔄 Tema dinamico (chiaro/scuro)
+      //  Collegamento alla chiave globale per la navigazione
+      navigatorKey: navigatorKey,
+
+      //  Tema dinamico (chiaro/scuro)
       themeMode: themeProvider.themeMode,
 
       // Tema chiaro
@@ -92,7 +98,7 @@ class CivicCoinsApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      // ✅ Schermata iniziale dell'app: la pagina di login
+      //  Schermata iniziale dell'app: la pagina di login
       home: const LoginScreen(),
     );
   }

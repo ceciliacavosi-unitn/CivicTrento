@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 storico_multe_screen.dart (presentazione/schermate/)
+// storico_multe_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Mostra la lista delle multe pagate nello storico.
 // - Attualmente è un ESEMPIO BASE che andrà esteso.
 //
@@ -10,9 +10,9 @@
 import 'package:flutter/material.dart';
 import '../widget/storico_elemento.dart';
 
-/// 🚔 Schermata che mostra lo storico delle multe.
+/// Schermata che mostra lo storico delle multe.
 ///
-/// 👉 Esempio base. Da estendere per mostrare dati dinamici.
+/// Esempio base. Da estendere per mostrare dati dinamici.
 class StoricoMulteScreen extends StatelessWidget {
   const StoricoMulteScreen({super.key});
 
