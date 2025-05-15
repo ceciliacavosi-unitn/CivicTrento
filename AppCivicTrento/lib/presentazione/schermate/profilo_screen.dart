@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 profilo_screen.dart (presentazione/schermate/)
+//  profilo_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Mostra i dati specifici del cittadino (Abbonamento, POD, Patente).
 // - Permette di aggiungere/modificare/rimuovere ogni campo.
 // - Utilizza servizi API per sincronizzare i dati.
@@ -9,7 +9,7 @@
 // ======================================================
 
 import 'package:flutter/material.dart';
-import '../../config/costanti.dart';  // ✅ Importa le costanti
+import '../../config/costanti.dart';  //  Importa le costanti
 import '../../servizi/cittadino_service.dart';
 import 'edit_field_screen.dart';
 
@@ -41,7 +41,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     _loadData();
   }
 
-  /// 🔄 Carica i dati del cittadino tramite UserService.
+  ///  Carica i dati del cittadino tramite UserService.
   Future<void> _loadData() async {
     try {
       final data = await CittadinoService.fetchMyData(
@@ -64,7 +64,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     }
   }
 
-  /// ✏️ Modifica o aggiunge un valore specifico.
+  ///  Modifica o aggiunge un valore specifico.
   Future<void> _editValue(String label, String currentValue) async {
     final newValue = await Navigator.push<String?>(
       context,
@@ -107,7 +107,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     }
   }
 
-  /// 🗑️ Rimuove un valore chiamando l’API DELETE.
+  /// Rimuove un valore chiamando l’API DELETE.
   Future<void> _removeValue(String label) async {
     final confirm = await showDialog<bool>(
       context: context,
@@ -152,7 +152,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
   }
 
 
-  /// 📊 Converte un'etichetta visiva nel nome del campo API.
+  /// Converte un'etichetta visiva nel nome del campo API.
   String _fieldKeyFromLabel(String label) {
     return {
       labelCodiceAbbonamento: 'subscription_code',
@@ -161,7 +161,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     }[label]!;
   }
 
-  /// 🧱️ Costruisce la riga con dati + bottoni Azione (Modifica/Rimuovi).
+  ///  Costruisce la riga con dati + bottoni Azione (Modifica/Rimuovi).
   Widget _buildRow(String label, String value) {
     final isEmpty = value.trim().isEmpty;
     return Padding(
