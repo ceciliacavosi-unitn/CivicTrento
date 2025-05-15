@@ -1,0 +1,1 @@
+ /Users/matilde/Desktop/Programmazione/CivicTrento/AppCivicTrento/.dart_tool/flutter_build/b31afcafa599bb6eae9e656638bf5add/native_assets.json: 

@@ -1,4 +1,4 @@
-name: app
+name: civiccoins
 description: A new Flutter project.
 publish_to: 'none' # per evitare pubblicazione accidentale su pub.dev
 version: 1.0.0+1

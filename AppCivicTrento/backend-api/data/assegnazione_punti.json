@@ -1,0 +1,19 @@
+{
+  "bonus_iniziale": 800,
+  "bollette": {
+    "acqua": 10,
+    "elettrica": 15,
+    "gas": 15
+  },
+  "multe": {
+    "1_anno_senza_multe": 80,
+    "medie": -40,
+    "gravi": "perdita_totale"
+  },
+  "spostamenti_bici_piedi": {
+    "0_5_km": 0.5,
+    "oltre_5_km": 1.0
+  },
+  "voto_elettorale": 100,
+  "abbonamento_mezzi_pubblici": 50
+}
