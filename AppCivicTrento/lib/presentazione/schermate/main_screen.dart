@@ -1,12 +1,3 @@
-// ======================================================
-// 📄 main_screen.dart (presentazione/schermate/)
-//
-// 📌 Funzione del file:
-// - Gestisce la navigazione principale a tab.
-// - Include le schermate: Home, Premi, Profilo, Storico (Multe, Bollette, Spostamenti), Impostazioni.
-// - Ha anche un Drawer laterale per navigazione rapida.
-// ======================================================
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../config/costanti.dart';
@@ -22,10 +13,13 @@ import 'storico_spostamenti_screen.dart';
 import '../../dominio/premi/premio.dart';
 import 'account_screen.dart';
 import '../../servizi/utente_service.dart';
+import '../../dominio/gestione/sistema_autenticazione.dart'; // ✅ import necessario
 
 class MainScreen extends StatefulWidget {
-  final String email, password;
   const MainScreen({super.key, required this.email, required this.password});
+
+  final String email;
+  final String password;
 
   @override
   State<MainScreen> createState() => MainScreenState();
@@ -35,13 +29,10 @@ class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   String? _initials;
 
-  void selectTab(int tabIndex) {
-    setState(() {
-      _selectedIndex = tabIndex;
-    });
-  }
+  late String email;
+  late String password;
 
-  late final List<Widget> _screens;
+  late List<Widget> _screens;
 
   final _titles = const [
     'Home',
@@ -53,31 +44,46 @@ class MainScreenState extends State<MainScreen> {
     'Impostazioni',
   ];
 
+  void selectTab(int tabIndex) {
+    setState(() {
+      _selectedIndex = tabIndex;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    _screens = [
-      HomeScreen(email: widget.email, password: widget.password),
+
+    // ✅ Recupera da SistemaAutenticazione
+    email = SistemaAutenticazione.email ?? widget.email;
+    password = SistemaAutenticazione.password ?? widget.password;
+
+    _screens = _buildScreens();
+    _fetchUserInitials();
+  }
+
+  List<Widget> _buildScreens() {
+    return [
+      HomeScreen(email: email, password: password),
       const PremiScreen(),
-      DatiCittadinoScreen(email: widget.email, password: widget.password),
+      DatiCittadinoScreen(email: email, password: password),
       const StoricoMulteScreen(),
       const StoricoBolletteScreen(),
       const StoricoSpostamentiScreen(),
       const ImpostazioniScreen(),
     ];
-    _fetchUserInitials();
   }
 
   Future<void> _fetchUserInitials() async {
     try {
       final profile = await UtenteService.fetchProfile(
-        email: widget.email,
-        password: widget.password,
+        email: email,
+        password: password,
       );
-      final name = profile['name'] ?? '';
-      final surname = profile['surname'] ?? '';
+      final nome = profile['nome'] ?? '';
+      final cognome = profile['cognome'] ?? '';
       setState(() {
-        _initials = '${name.isNotEmpty ? name[0] : ''}${surname.isNotEmpty ? surname[0] : ''}'.toUpperCase();
+        _initials = '${nome.isNotEmpty ? nome[0] : ''}${cognome.isNotEmpty ? cognome[0] : ''}'.toUpperCase();
       });
     } catch (e) {
       setState(() {
@@ -119,16 +125,30 @@ class MainScreenState extends State<MainScreen> {
             Padding(
               padding: const EdgeInsets.only(right: 16),
               child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
+                onTap: () async {
+                  final nuovaPassword = await Navigator.push<String?>(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AccountScreen(
-                        email: widget.email,
-                        password: widget.password,
+                      builder: (_) => AccountScreen(
+                        email: email,
+                        password: password,
                       ),
                     ),
                   );
+
+                  if (nuovaPassword != null && nuovaPassword != password) {
+                    print("🔐 Password aggiornata: $nuovaPassword");
+
+                    // ✅ Salva globalmente
+                    SistemaAutenticazione.login(email, nuovaPassword);
+
+                    setState(() {
+                      password = nuovaPassword;
+                      _screens = _buildScreens();
+                    });
+
+                    _fetchUserInitials();
+                  }
                 },
                 child: _initials != null
                     ? CircleAvatar(

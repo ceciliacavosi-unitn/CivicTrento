@@ -27,6 +27,9 @@ import 'presentazione/gestione/theme_provider.dart'; // ✅ Aggiunto
 // Import della schermata iniziale: Schermata di Login
 import 'presentazione/schermate/login_screen.dart';
 
+// ✅ Chiave globale per la navigazione (usata per navigare anche senza context)
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() {
   // Avvia l'app CivicCoins con il provider per il tema
   runApp(
@@ -66,6 +69,9 @@ class CivicCoinsApp extends StatelessWidget {
 
       // Nasconde il banner di debug visibile in alto a destra in modalità sviluppo
       debugShowCheckedModeBanner: false,
+
+      // ✅ Collegamento alla chiave globale per la navigazione
+      navigatorKey: navigatorKey,
 
       // 🔄 Tema dinamico (chiaro/scuro)
       themeMode: themeProvider.themeMode,

@@ -11,12 +11,12 @@
 //   ✅ Numero carta d'identità
 //
 // - Usa UtenteService per caricare e salvare i dati.
-//
 // ======================================================
 
 import 'package:flutter/material.dart';
 import '../../config/costanti.dart';
 import '../../servizi/utente_service.dart';
+import '../../dominio/gestione/sistema_autenticazione.dart';
 import 'edit_field_screen.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -47,28 +47,38 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   void initState() {
     super.initState();
+    _password = widget.password;
     _loadProfile();
   }
 
   /// 🔄 Carica i dati anagrafici tramite UtenteService
   Future<void> _loadProfile() async {
+    print("🔄 [_loadProfile] Email: ${widget.email}, Password: $_password");
+
     try {
       final data = await UtenteService.fetchProfile(
         email: widget.email,
-        password: widget.password,
+        password: _password,
       );
 
+      print("✅ Profilo caricato (grezzo): $data");
+
+      final nome = data['nome'];
+      final cognome = data['cognome'];
+      final codiceFiscale = data['CF'];
+      final cartaID = data['cartaID'];
+
       setState(() {
-        _name = data['name'] ?? '';
-        _surname = data['surname'] ?? '';
+        _name = nome ?? '';
+        _surname = cognome ?? '';
         _email = data['email'] ?? '';
-        _fiscalCode = data['fiscal_code'] ?? '';
-        _idCardNumber = data['id_card_number'] ?? '';
-        _password = widget.password;
+        _fiscalCode = codiceFiscale ?? '';
+        _idCardNumber = cartaID ?? '';
         _error = null;
         _loading = false;
       });
     } catch (e) {
+      print("❌ Errore nel caricamento profilo: $e");
       setState(() {
         _error = 'Errore nel caricamento dati: ${e.toString()}';
         _loading = false;
@@ -91,17 +101,35 @@ class _AccountScreenState extends State<AccountScreen> {
     if (newValue != null && newValue != currentValue) {
       setState(() => _loading = true);
       try {
+        print("✏️ Modifica $fieldKey → $newValue (con password attuale: $_password)");
+
         await UtenteService.modifyProfile(
           email: widget.email,
-          password: widget.password,
+          password: _password,
           field: fieldKey,
           newValue: newValue,
         );
+
+        if (fieldKey == 'password') {
+          print("🔐 Password aggiornata localmente");
+          _password = newValue;
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Password aggiornata con successo')),
+          );
+
+          SistemaAutenticazione.login(widget.email, _password);
+          Navigator.pop(context, _password);
+          return; // evita _loadProfile con password vecchia
+        }
+
         await _loadProfile();
+
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('$label aggiornato con successo')),
         );
       } catch (e) {
+        print("❌ Errore nella modifica di $fieldKey: $e");
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Errore: ${e.toString()}')),
         );
@@ -112,13 +140,18 @@ class _AccountScreenState extends State<AccountScreen> {
 
   Widget _buildRow(String label, String value, String fieldKey) {
     final isEmpty = value.trim().isEmpty;
+    final isPassword = fieldKey == 'password';
+    final displayValue = isEmpty
+        ? '(vuoto)'
+        : (isPassword ? '●' * value.length : value);
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(
         children: [
           Expanded(
             child: Text(
-              '$label: ${isEmpty ? '(vuoto)' : value}',
+              '$label: $displayValue',
               style: const TextStyle(fontSize: 16),
             ),
           ),
@@ -141,19 +174,24 @@ class _AccountScreenState extends State<AccountScreen> {
       body: _loading
           ? const Center(child: CircularProgressIndicator())
           : (_error != null)
-              ? Center(child: Text(_error!, style: const TextStyle(color: Colors.red)))
+              ? Center(
+                  child: Text(
+                    _error!,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                )
               : Padding(
                   padding: const EdgeInsets.all(24),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildRow('Nome', _name, 'name'),
-                        _buildRow('Cognome', _surname, 'surname'),
+                        _buildRow('Nome', _name, 'nome'),
+                        _buildRow('Cognome', _surname, 'cognome'),
                         _buildRow('Email', _email, 'email'),
                         _buildRow('Password', _password, 'password'),
-                        _buildRow('Codice Fiscale', _fiscalCode, 'fiscal_code'),
-                        _buildRow('Carta d\'Identità', _idCardNumber, 'id_card_number'),
+                        _buildRow('Codice Fiscale', _fiscalCode, 'CF'),
+                        _buildRow('Carta d\'Identità', _idCardNumber, 'cartaID'),
                       ],
                     ),
                   ),

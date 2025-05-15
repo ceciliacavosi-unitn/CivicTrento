@@ -1,2 +1,0 @@
-email,subscription_code,pod_code,driver_license
-agatacavosi1@gmail.com,cad,,

@@ -37,12 +37,12 @@ class AuthService {
       Uri.parse(registerUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
-        'name': name.trim(),
-        'surname': surname.trim(),
+        'nome': name.trim(),
+        'cognome': surname.trim(),
         'email': email.trim(),
         'password': password.trim(),
-        'fiscal_code': fiscalCode.trim(),
-        'id_card_number': idCardNumber.trim(),
+        'CF': fiscalCode.trim(),
+        'cartaID': idCardNumber.trim(),
       }),
     );
     if (resp.statusCode != 200) {
@@ -57,6 +57,9 @@ class AuthService {
     required String email,
     required String password,
   }) async {
+    print('📩 Email inviata: $email');
+    print('📥 Password inviata: $password');
+
     final resp = await http.post(
       Uri.parse(loginUrl),
       headers: {'Content-Type': 'application/json'},
@@ -67,7 +70,7 @@ class AuthService {
       throw Exception('Login fallito: $detail');
     }
   }
-
+  
   // ======================================================
   // 🔐 POST /logout
   static Future<void> logout({

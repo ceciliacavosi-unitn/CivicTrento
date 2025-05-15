@@ -35,11 +35,12 @@ class UtenteService {
     if (resp.statusCode == 200) {
       final data = json.decode(resp.body) as Map<String, dynamic>;
       return {
-        'name': data['name'] as String? ?? '',
-        'surname': data['surname'] as String? ?? '',
+        'nome': data['nome'] as String? ?? '',
+        'cognome': data['cognome'] as String? ?? '',
         'email': data['email'] as String? ?? '',
-        'fiscal_code': data['fiscal_code'] as String? ?? '',
-        'id_card_number': data['id_card_number'] as String? ?? '',
+        'password':data['password'] as String? ?? '',
+        'CF': data['CF'] as String? ?? '',
+        'cartaID': data['cartaID'] as String? ?? '',
       };
     }
     final detail = _parseError(resp.body);
