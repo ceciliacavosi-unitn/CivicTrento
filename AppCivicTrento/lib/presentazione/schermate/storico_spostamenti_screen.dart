@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 storico_spostamenti_screen.dart (presentazione/schermate/)
+// storico_spostamenti_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Mostra la lista degli spostamenti registrati nello storico.
 // - Attualmente è un ESEMPIO BASE che andrà esteso.
 //
@@ -10,9 +10,9 @@
 import 'package:flutter/material.dart';
 import '../widget/storico_elemento.dart';
 
-/// 🚶‍♂️ Schermata che mostra lo storico degli spostamenti.
+///  Schermata che mostra lo storico degli spostamenti.
 ///
-/// 👉 Esempio base. Da estendere per mostrare dati dinamici.
+/// Esempio base. Da estendere per mostrare dati dinamici.
 class StoricoSpostamentiScreen extends StatelessWidget {
   const StoricoSpostamentiScreen({super.key});
 

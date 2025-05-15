@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 edit_field_screen.dart (presentazione/schermate/)
+// edit_field_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Schermata semplice e generica per modificare un singolo campo di testo.
 // - Riceve:
 //     • label: la descrizione del campo (es. "Nome").
@@ -12,7 +12,7 @@
 
 import 'package:flutter/material.dart';
 
-/// ✏️ Schermata per modificare un singolo campo di input.
+///  Schermata per modificare un singolo campo di input.
 ///
 /// Parametri obbligatori:
 /// - [label]: titolo del campo da modificare.
