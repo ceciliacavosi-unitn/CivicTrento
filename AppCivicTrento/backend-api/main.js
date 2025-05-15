@@ -29,6 +29,18 @@ const {
   rimuoviTutti
 } = require("./gestione_cittadino");
 
+// === Percorsi e funzioni monitoraggio comportamenti ===
+const utentiPath = path.join(__dirname, 'utenti.json');
+const punteggi = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/assegnazione_punti.json')));
+
+function caricaUtenti() {
+  return JSON.parse(fs.readFileSync(utentiPath));
+}
+
+function salvaUtenti(utenti) {
+  fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+}
+
 //pagina principale
 app.get("/", (req, res) => {
   res.send(`
@@ -259,9 +271,87 @@ app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
   res.json({ status: "success", message: ok ? "Tutti i dati eliminati" : "Nessun dato da rimuovere" });
 });
 
+// === Monitoraggio comportamenti ===
+app.post('/monitoraggio/voto', (req, res) => {
+  const { email } = req.body;
+  const utenti = caricaUtenti();
+  const utente = utenti.find(u => u.email === email);
+  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
+  utente.saldo += punteggi.voto_elettorale;
+  salvaUtenti(utenti);
+  res.json({ nuovoSaldo: utente.saldo });
+});
+
+app.post('/monitoraggio/bolletta', (req, res) => {
+  const { email, tipo } = req.body;
+  const utenti = caricaUtenti();
+  const utente = utenti.find(u => u.email === email);
+  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
+  const punti = punteggi.bollette[tipo] || 0;
+  utente.saldo += punti;
+  salvaUtenti(utenti);
+  res.json({ nuovoSaldo: utente.saldo });
+});
+
+app.post('/monitoraggio/movimento', (req, res) => {
+  const { email, distanza_km } = req.body;
+  const utenti = caricaUtenti();
+  const utente = utenti.find(u => u.email === email);
+  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
+  const punti = distanza_km <= 5
+    ? punteggi.spostamenti_bici_piedi["0_5_km"]
+    : punteggi.spostamenti_bici_piedi["oltre_5_km"];
+  utente.saldo += punti;
+  salvaUtenti(utenti);
+  res.json({ nuovoSaldo: utente.saldo });
+});
+
+app.post('/monitoraggio/trasporti', (req, res) => {
+  const { email } = req.body;
+  const utenti = caricaUtenti();
+  const utente = utenti.find(u => u.email === email);
+  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
+  utente.saldo += punteggi.abbonamento_mezzi_pubblici;
+  salvaUtenti(utenti);
+  res.json({ nuovoSaldo: utente.saldo });
+});
+
+app.post('/monitoraggio/multa', (req, res) => {
+  const { email, gravita } = req.body;
+  const utenti = caricaUtenti();
+  const utente = utenti.find(u => u.email === email);
+  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
+  const penalita = punteggi.multe[gravita];
+  if (penalita === "perdita_totale") {
+    utente.saldo = 0;
+  } else {
+    utente.saldo += penalita;
+  }
+  utente.dataUltimaMulta = new Date().toISOString();
+  salvaUtenti(utenti);
+  res.json({ nuovoSaldo: utente.saldo });
+});
+
+app.post('/monitoraggio/bonus-annuale', (req, res) => {
+  const { email } = req.body;
+  const utenti = caricaUtenti();
+  const utente = utenti.find(u => u.email === email);
+  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
+  const ultimaMulta = utente.dataUltimaMulta ? new Date(utente.dataUltimaMulta) : null;
+  const oggi = new Date();
+  const diff = ultimaMulta ? oggi - ultimaMulta : Infinity;
+  if (diff >= 365 * 24 * 60 * 60 * 1000) {
+    utente.saldo += punteggi.multe["1_anno_senza_multe"];
+    salvaUtenti(utenti);
+    return res.json({ nuovoSaldo: utente.saldo });
+  }
+  res.status(400).json({ error: "Hai ricevuto una multa negli ultimi 12 mesi" });
+});
+
 
 //avvio server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`✅ Server avviato su http://localhost:${PORT}`);
 });
+
