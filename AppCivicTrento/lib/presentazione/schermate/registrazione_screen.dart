@@ -125,7 +125,6 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
 
                 const SizedBox(height: 20),
 
-<<<<<<< HEAD
                 //consenso GDPR
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

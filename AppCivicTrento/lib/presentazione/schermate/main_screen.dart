@@ -60,9 +60,9 @@ class MainScreenState extends State<MainScreen> {
       HomeScreen(email: widget.email, password: widget.password),
       const PremiScreen(),
       DatiCittadinoScreen(email: widget.email, password: widget.password),
-      const StoricoMulteScreen(),
-      const StoricoBolletteScreen(),
-      const StoricoSpostamentiScreen(),
+      StoricoMulteScreen(email: widget.email, password: widget.password),
+      StoricoBolletteScreen(email: widget.email, password: widget.password),
+      StoricoSpostamentiScreen(email: widget.email, password: widget.password),
       const ImpostazioniScreen(),
     ];
     _fetchUserInitials();

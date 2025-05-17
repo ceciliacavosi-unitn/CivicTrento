@@ -32,8 +32,6 @@ const {
 
 const { inviaEmailRecuperoPassword } = require("./mailer");
 
-const { getPremi, riscattaPremio } = require("./gestione_premi");
-
 const {
   getStoricoVoto,
   getStoricoBolletta,
@@ -42,6 +40,10 @@ const {
   getStoricoMulta
 } = require("./gestione_punti");
 
+const {
+  getPremi,
+  riscattaPremio
+} = require("./gestione_premi");
 
 //pagina principale
 app.get("/", (req, res) => {
@@ -68,86 +70,64 @@ app.get("/", (req, res) => {
 
 
 //autenticazione
-app.post("/auth/register", (req, res) => {
-    const { name, surname, email, password, fiscal_code, id_card_number } = req.body;
-    
-    //controllo password
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-    if(!passwordRegex(password)){
-      return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza"});
-    }
-    
-    //controllo email
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    if (!emailRegex.test(email)) {
-        return res.status(400).json({ detail: "Email non valida" });
-    }
+app.post("/auth/register", async (req, res) => {
+  console.log("📥 [REGISTER] Richiesta ricevuta");
+  console.log("📦 Dati ricevuti:", req.body);
 
-    // controllo codice fiscale
-    const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
-    if (!cfRegex.test(fiscal_code)) {
-        return res.status(400).json({ detail: "Codice fiscale non valido" });
-    }
-    
-    //controllo numero carta d'identità
-    const idCardRegex = /^\d{8}$/;
-    if (!idCardRegex.test(id_card_number)) {
-        return res.status(400).json({ detail: "Numero carta d'identità non valido" });
-    }
+  const { name, surname, email, password, fiscal_code, id_card_number, gdprConsent } = req.body;
 
-    const newUser = `${name.trim()},${surname.trim()},${email.trim()},${password.trim()},${fiscal_code.trim()},${id_card_number.trim()}\n`;
-    fs.appendFileSync(USERS_FILE, newUser);
-    res.json({ status: "success", message: "Registrazione completata" });
-    if (!gdprConsent) {
-      return res.status(400).json({ error: "È necessario accettare l'informativa GDPR per registrarsi." });
-    }
-  });
-  
-app.post("/auth/login", (req, res) => {
-    const { email, password } = req.body;
-    if (verificaUtente(email, password)) {
-      res.json({ status: "success", message: "Login effettuato" });
-    } else {
-      res.status(401).json({ detail: "Credenziali non valide" });
-    }
-  });
-  
-app.delete("/auth/delete_user", (req, res) => {
-    const { email, password } = req.body;
-  
-    if (!fs.existsSync(USERS_FILE)) {
-      return res.status(404).json({ detail: "Nessun utente registrato" });
-    }
-  
-    const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
-    const updated = [];
-    let found = false;
-  
-    for (let line of lines) {
-      const fields = line.split(",");
-      if (fields[2] === email && fields[3] === password) {
-        found = true;
-      } else {
-        updated.push(line);
-      }
-    }
-  
-    if (!found) {
-      return res.status(404).json({ detail: "Utente non trovato o credenziali errate" });
-    }
-  
-    fs.writeFileSync(USERS_FILE, updated.join("\n") + "\n");
-    res.json({ status: "success", message: `Utente ${email} eliminato correttamente` });
-  });
+  const errori = [];
 
+  // Regex di validazione
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
+  const idCardRegex = /^([A-Z]{2}\d{5,6}[A-Z]{1,2}|\d{8})$/i;
 
-  if (success) {
-    console.log(`✅ [REGISTRAZIONE] Utente ${email} registrato`);
-    res.json({ status: "success", message: "Registrazione completata" });
-  } else {
-    console.warn(`⚠️ [REGISTRAZIONE] Utente ${email} già registrato`);
-    res.status(409).json({ detail: "Utente già registrato" });
+  if (!passwordRegex.test(password)) {
+    errori.push("🔐 La password non rispetta i criteri di sicurezza:\n- Min 8 caratteri, una maiuscola, una minuscola, un numero, un simbolo");
   }
+
+  if (!emailRegex.test(email)) {
+    errori.push("📧 Email non valida");
+  }
+
+  if (!cfRegex.test(fiscal_code)) {
+    errori.push("🆔 Codice fiscale non valido");
+  }
+
+  if (!idCardRegex.test(id_card_number)) {
+    errori.push("🪪 Numero carta d'identità non valido");
+  }
+
+  // Se ci sono errori, restituiscili tutti
+  if (errori.length > 0) {
+    console.warn("❌ [REGISTER] Errori validazione:\n" + errori.join("\n"));
+    return res.status(400).json({ detail: errori });
+  }
+
+  // Registrazione
+  try {
+    registraUtente({ name, surname, email, password, fiscal_code, id_card_number });
+    console.log(`✅ [REGISTER] Registrazione completata per: ${email}`);
+    res.json({ status: "success", message: "Registrazione completata" });
+  } catch (error) {
+    console.error("❌ [REGISTER] Errore durante la registrazione:", error);
+    res.status(500).json({ error: "Errore interno del server durante la registrazione." });
+  }
+});
+
+  
+app.delete("/auth/delete_user", async (req, res) => {
+  const { email, password } = req.body;
+
+  const success = await cancellaUtente(email?.trim(), password?.trim());
+
+  if (!success) {
+    return res.status(404).json({ detail: "Utente non trovato o credenziali errate" });
+  }
+
+  res.json({ status: "success", message: `Utente ${email} eliminato correttamente` });
 });
 
   
@@ -213,63 +193,64 @@ app.post("/auth/logout", async (req, res) => {
 
 
 //profilo utente 
-app.post("/utente/profilo", (req, res) => {
-    const { email, password } = req.body;
-  
-    if (!fs.existsSync(USERS_FILE)) {
-      return res.status(404).json({ detail: "Nessun utente registrato" });
-    }
-  
-    const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
-  
-    for (let line of lines) {
-      const [name, surname, em, pw, fiscal, idCard] = line.split(",");
-      if (em === email && pw === password) {
-        return res.json({ name, surname, email: em, fiscal_code: fiscal, id_card_number: idCard });
-      }
-    }
-  
-    res.status(401).json({ detail: "Credenziali non valide" });
+app.post("/utente/profilo", async (req, res) => {
+  const { email, password } = req.body;
+
+  // 🔒 Autenticazione
+  const profilo = await getProfiloUtente(email?.trim(), password?.trim());
+
+  if (!profilo) {
+    return res.status(401).json({ detail: "Credenziali non valide" });
+  }
+
+  // ✅ Restituisci tutti i campi del profilo
+  res.json({
+    nome: profilo.nome,
+    cognome: profilo.cognome,
+    email: profilo.email,
+    password: profilo.password,
+    CF: profilo.CF,
+    cartaID: profilo.cartaID
   });
-  app.put("/utente/modifica_profilo", (req, res) => {
-    const { email, password, field, new_value } = req.body;
-    const fieldMap = {
-      name: 0,
-      surname: 1,
-      email: 2,
-      fiscal_code: 4,
-      id_card_number: 5,
-    };
-  
-    if (!fs.existsSync(USERS_FILE)) {
-      return res.status(404).json({ detail: "Nessun utente registrato" });
+});
+
+
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+
+app.put("/utente/modifica_profilo", async (req, res) => {
+  console.log("✏️ [MODIFICA PROFILO] Body ricevuto:", req.body);
+
+  const { email, password, field, new_value } = req.body;
+
+  // Validazione solo se si modifica email o password
+  if (field === "email" && !emailRegex.test(new_value)) {
+    return res.status(400).json({ detail: "Formato email non valido" });
+  }
+
+  if (field === "password" && !passwordRegex.test(new_value)) {
+    return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza,: - lunghezza minima di 8 caratteri\n\
+      - deve includere almeno una lettera maiuscola\n\
+      - deve includere almeno una lettera minuscola\n\
+      - deve includere almeno un numero\n\
+      - deve includere almeno un carattere speciale\n\
+      - non deve contenere spazi vuoti" });
+  }
+
+  try {
+    const successo = await modificaProfiloUtente(email?.trim(), password?.trim(), field, new_value?.trim());
+
+    if (!successo) {
+      console.warn(`❌ [MODIFICA PROFILO] Fallita per ${email}`);
+      return res.status(401).json({ detail: "Utente non trovato o credenziali errate" });
     }
 
-    //Regex per email e password
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-  
-    //verifica criteri
-    if (field === "email" && !emailRegex.test(new_value)) {
-      return res.status(400).json({ detail: "Formato email non valido" });
-    }
-
-    if (field === "password" && !passwordRegex.test(new_value)) {
-      return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza" });
-    }
-
-    const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
-    let updated = false;
-  
-    const newLines = lines.map(line => {
-      const parts = line.split(",");
-      if (parts[2] === email && parts[3] === password) {
-        const idx = fieldMap[field];
-        parts[idx] = new_value.trim();
-        updated = true;
-      }
-      return parts.join(",");
-    });
+    console.log(`✅ [MODIFICA PROFILO] ${field} modificato per ${email}`);
+    res.json({ status: "success", field, new_value });
+  } catch (error) {
+    console.error("❌ Errore interno nella modifica del profilo:", error);
+    res.status(500).json({ detail: "Errore interno del server" });
+  }
 });
 
 
@@ -440,7 +421,6 @@ app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
 });
 
 // === PREMI ===
-const PREMI_FILE = path.join(__dirname, 'data', 'premi.json');
 
 // GET /premi → restituisce l'elenco dei premi
 app.get("/premi", (req, res) => {

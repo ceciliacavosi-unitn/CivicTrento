@@ -35,40 +35,64 @@ const filePath = path.join(__dirname, 'utenti.json');
 /**
  * ✅ REGISTRA UTENTE
  */
-async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
-  // ✅ Verifica se già esiste nel file
+async function registraUtente({ name, surname, email, password, fiscal_code, id_card_number }) {
   let utenti = [];
+
+  // ✅ Carica utenti da file JSON
   if (fs.existsSync(filePath)) {
     const contenuto = fs.readFileSync(filePath, 'utf8');
     utenti = contenuto ? JSON.parse(contenuto) : [];
-    if (utenti.some(u => u.email === email)) return false;
+
+    if (utenti.some(u => u.email === email)) {
+      console.warn("❌ Email già registrata:", email);
+      return false;
+    }
   }
 
   // 🔐 Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-
-  // ✅ Aggiungi utente al file JSON
-  utenti.push({
+  const nuovoUtente = {
     nome,
     cognome,
     email,
     password: hashedPassword,
     CF,
-    cartaID
-  });
+    cartID
+  };
 
-   // ✅ Aggiungi log prima di salvare
-  console.log("📝 Salvataggio utente:", {
-    nome,
-    cognome,
-    email,
-    password: '[HASHED]',
-    CF,
-    cartaID
+  // ✅ Salva su file JSON
+  utenti.push(nuovoUtente);
+
+  console.log("📝 Salvataggio utente nel file:", {
+    ...nuovoUtente,
+    password: '[HASHED]'
   });
 
   fs.writeFileSync(filePath, JSON.stringify(utenti, null, 2));
+
+  // 🟨 Salva su MongoDB (opzionale - attiva se vuoi)
+  /*
+  try {
+    await mongoClient.connect();
+    const db = mongoClient.db("civictrento");
+    const collection = db.collection("utenti");
+
+    const emailEsiste = await collection.findOne({ email });
+    if (emailEsiste) {
+      console.warn("❌ [MongoDB] Email già registrata:", email);
+      return false;
+    }
+
+    await collection.insertOne(nuovoUtente);
+    console.log("✅ [MongoDB] Utente registrato anche nel database.");
+  } catch (err) {
+    console.error("❌ [MongoDB] Errore durante la registrazione:", err);
+  } finally {
+    await mongoClient.close();
+  }
+  */
+
   return true;
 }
 
