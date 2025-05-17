@@ -64,7 +64,22 @@ const String deleteDataUrl = '$baseUrl/cittadino/rimuovi_dato';
 const String deleteAllDataUrl = '$baseUrl/cittadino/rimuovi_tutti';
 
 /// ======================================================
+<<<<<<< HEAD
 /// 📂 Premi (/premi/)
 /// ======================================================
 const String premiUrl = '$baseUrl/premi';
 const String riscattaPremioUrl = '$baseUrl/premi/riscatta';
+=======
+/// 📂 Monitoraggio dati (/cittadino/)
+/// ======================================================
+
+// Monitoraggio comportamenti
+  static const String voto = "$baseUrl/monitoraggio/voto";
+  static const String bolletta = "$baseUrl/monitoraggio/bolletta";
+  static const String movimento = "$baseUrl/monitoraggio/movimento";
+  static const String trasporti = "$baseUrl/monitoraggio/trasporti";
+  static const String multa = "$baseUrl/monitoraggio/multa";
+  static const String bonusAnnuale = "$baseUrl/monitoraggio/bonus-annuale";
+
+
+>>>>>>> feature_guadagno_punti

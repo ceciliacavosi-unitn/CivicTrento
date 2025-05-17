@@ -34,6 +34,15 @@ const { inviaEmailRecuperoPassword } = require("./mailer");
 
 const { getPremi, riscattaPremio } = require("./gestione_premi");
 
+const {
+  getStoricoVoto,
+  getStoricoBolletta,
+  getStoricoSpostamento,
+  getStoricoAbbonamentoMezziPubblici,
+  getStoricoMulta
+} = require("./gestione_punti");
+
+
 //pagina principale
 app.get("/", (req, res) => {
   res.send(`
@@ -356,32 +365,159 @@ app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
 });
 
 // === PREMI ===
+const PREMI_FILE = path.join(__dirname, 'data', 'premi.json');
 
+// GET /premi → restituisce l'elenco dei premi
 app.get("/premi", (req, res) => {
-  console.log("📥 [GET /premi] Richiesta ricevuta");
-
-  try {
-    const premi = getPremi();
-    if (!premi) return res.status(404).json({ detail: "Nessun premio disponibile" });
-    res.json(premi);
-  } catch (err) {
-    console.error("❌ [GET /premi] Errore:", err);
-    res.status(500).json({ detail: "Errore nella lettura dei premi" });
+  if (!fs.existsSync(PREMI_FILE)) {
+    return res.status(404).json({ detail: "Nessun premio disponibile" });
   }
+
+  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
+  res.json(premi);
 });
 
+// POST /premi/riscatta/:id → simula il riscatto del premio
 app.post("/premi/riscatta/:id", (req, res) => {
   const premioId = req.params.id;
-  console.log(`📥 [POST /premi/riscatta/${premioId}] Richiesta di riscatto ricevuta`);
-
-  try {
-    const premio = riscattaPremio(premioId);
-    if (!premio) return res.status(404).json({ detail: "Premio non trovato" });
-    res.json({ status: "success", message: `Premio "${premio.nome}" riscattato` });
-  } catch (err) {
-    console.error("❌ [POST /premi/riscatta] Errore:", err);
-    res.status(500).json({ detail: "Errore durante il riscatto del premio" });
+  if (!fs.existsSync(PREMI_FILE)) {
+    return res.status(404).json({ detail: "Nessun premio disponibile" });
   }
+
+  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
+  const premio = premi.find(p => p.id === premioId);
+
+  if (!premio) {
+    return res.status(404).json({ detail: "Premio non trovato" });
+  }
+
+  // (Opzionale: loggare il riscatto)
+  console.log(`✅ Premio riscattato: ${premio.nome}`);
+
+  res.json({ status: "success", message: `Premio "${premio.nome}" riscattato` });
+});
+
+// === Monitoraggio comportamenti ===
+// 🗳️ Voto elettorale
+app.post('/monitoraggio/voto', async (req, res) => {
+  const { email, password } = req.body;
+  console.log(`🗳️ [VOTO] Richiesta da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [VOTO] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const voto = getStoricoVoto();
+  if (!voto || voto.punti == null) {
+    return res.status(400).json({ error: 'Configurazione voto mancante' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + voto.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [VOTO] ${voto.punti} punti assegnati a ${email}`);
+  res.json(voto);
+});
+
+// 💧 Bolletta pagata
+app.post('/monitoraggio/bolletta', async (req, res) => {
+  const { email, password, tipo } = req.body;
+  console.log(`💧 [BOLLETTA] ${tipo} richiesta da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [BOLLETTA] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const bolletta = getStoricoBolletta(tipo);
+  if (!bolletta || bolletta.punti == null) {
+    return res.status(400).json({ error: 'Tipo bolletta non valido' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + bolletta.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [BOLLETTA] ${bolletta.punti} punti per ${tipo}`);
+  res.json(bolletta);
+});
+
+// 🚶‍♂️ Movimento a piedi o bici
+app.post('/monitoraggio/movimento', async (req, res) => {
+  const { email, password, distanza_km } = req.body;
+  console.log(`🚶‍♂️ [MOVIMENTO] ${distanza_km} km da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [MOVIMENTO] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const movimento = getStoricoSpostamento(parseFloat(distanza_km));
+  if (!movimento || movimento.punti == null) {
+    return res.status(400).json({ error: 'Distanza non valida' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + movimento.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [MOVIMENTO] ${movimento.punti} punti per ${email}`);
+  res.json(movimento);
+});
+
+// 🚌 Abbonamento mezzi pubblici
+app.post('/monitoraggio/trasporti', async (req, res) => {
+  const { email, password } = req.body;
+  console.log(`🚌 [TRASPORTI] Rilevato abbonamento da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [TRASPORTI] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const trasporti = getStoricoAbbonamentoMezziPubblici();
+  if (!trasporti || trasporti.punti == null) {
+    return res.status(400).json({ error: 'Configurazione trasporti mancante' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + trasporti.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [TRASPORTI] ${trasporti.punti} punti assegnati a ${email}`);
+  res.json(trasporti);
+});
+
+// 🚨 Multa ricevuta
+app.post('/monitoraggio/multa', async (req, res) => {
+  const { email, password, gravita } = req.body;
+  console.log(`🚨 [MULTA] Gravità ${gravita} per: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [MULTA] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const multa = getStoricoMulta(gravita, new Date().toISOString());
+  if (!multa || multa.punti == null) {
+    return res.status(400).json({ error: 'Gravità non valida' });
+  }
+
+  if (multa.punti === 'perdita_totale') {
+    utente.saldo = 0;
+    console.log(`⚠️ [MULTA] Saldo azzerato per ${email}`);
+  } else {
+    utente.saldo = (utente.saldo || 0) + multa.punti;
+    console.log(`✅ [MULTA] Penalità ${multa.punti} per ${email}`);
+  }
+
+  utente.dataUltimaMulta = multa.dataUltimaMulta;
+
+  // salvaUtenti([...]);
+  res.json(multa);
 });
 
 //avvio server
