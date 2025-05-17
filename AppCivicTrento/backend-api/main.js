@@ -66,23 +66,75 @@ app.get("/", (req, res) => {
 });
 
 
+
 //autenticazione
+app.post("/auth/register", (req, res) => {
+    const { name, surname, email, password, fiscal_code, id_card_number } = req.body;
+    
+    //controllo password
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+    if(!passwordRegex(password)){
+      return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza"});
+    }
+    
+    //controllo email
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ detail: "Email non valida" });
+    }
 
-/**
- * ✅ REGISTRAZIONE: salva nel DB + file JSON
- */
-app.post("/auth/register", async (req, res) => {
-  console.log("📥 [REGISTRAZIONE] Body ricevuto:", req.body);
+    // controllo codice fiscale
+    const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
+    if (!cfRegex.test(fiscal_code)) {
+        return res.status(400).json({ detail: "Codice fiscale non valido" });
+    }
+    
+    //controllo numero carta d'identità
+    const idCardRegex = /^\d{8}$/;
+    if (!idCardRegex.test(id_card_number)) {
+        return res.status(400).json({ detail: "Numero carta d'identità non valido" });
+    }
 
-  const { nome, cognome, email, password, CF, cartaID } = req.body;
-
-  const success = await registraUtente({
-    nome: nome?.trim(),
-    cognome: cognome?.trim(),
-    email: email?.trim(),
-    password: password?.trim(),
-    CF: CF?.trim(),
-    cartaID: cartaID?.trim()
+    const newUser = `${name.trim()},${surname.trim()},${email.trim()},${password.trim()},${fiscal_code.trim()},${id_card_number.trim()}\n`;
+    fs.appendFileSync(USERS_FILE, newUser);
+    res.json({ status: "success", message: "Registrazione completata" });
+  });
+  
+app.post("/auth/login", (req, res) => {
+    const { email, password } = req.body;
+    if (verificaUtente(email, password)) {
+      res.json({ status: "success", message: "Login effettuato" });
+    } else {
+      res.status(401).json({ detail: "Credenziali non valide" });
+    }
+  });
+  
+app.delete("/auth/delete_user", (req, res) => {
+    const { email, password } = req.body;
+  
+    if (!fs.existsSync(USERS_FILE)) {
+      return res.status(404).json({ detail: "Nessun utente registrato" });
+    }
+  
+    const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
+    const updated = [];
+    let found = false;
+  
+    for (let line of lines) {
+      const fields = line.split(",");
+      if (fields[2] === email && fields[3] === password) {
+        found = true;
+      } else {
+        updated.push(line);
+      }
+    }
+  
+    if (!found) {
+      return res.status(404).json({ detail: "Utente non trovato o credenziali errate" });
+    }
+  
+    fs.writeFileSync(USERS_FILE, updated.join("\n") + "\n");
+    res.json({ status: "success", message: `Utente ${email} eliminato correttamente` });
   });
 
 
@@ -157,43 +209,63 @@ app.post("/auth/logout", async (req, res) => {
 });
 
 
-//recupero password
-app.post("/auth/recupero_password", async (req, res) => {
-  console.log("📧 [RECUPERO PASSWORD] Body ricevuto:", req.body);
+//profilo utente 
+app.post("/utente/profilo", (req, res) => {
+    const { email, password } = req.body;
+  
+    if (!fs.existsSync(USERS_FILE)) {
+      return res.status(404).json({ detail: "Nessun utente registrato" });
+    }
+  
+    const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
+  
+    for (let line of lines) {
+      const [name, surname, em, pw, fiscal, idCard] = line.split(",");
+      if (em === email && pw === password) {
+        return res.json({ name, surname, email: em, fiscal_code: fiscal, id_card_number: idCard });
+      }
+    }
+  
+    res.status(401).json({ detail: "Credenziali non valide" });
+  });
+  app.put("/utente/modifica_profilo", (req, res) => {
+    const { email, password, field, new_value } = req.body;
+    const fieldMap = {
+      name: 0,
+      surname: 1,
+      email: 2,
+      fiscal_code: 4,
+      id_card_number: 5,
+    };
+  
+    if (!fs.existsSync(USERS_FILE)) {
+      return res.status(404).json({ detail: "Nessun utente registrato" });
+    }
 
-  const { email } = req.body;
+    //Regex per email e password
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+  
+    //verifica criteri
+    if (field === "email" && !emailRegex.test(new_value)) {
+      return res.status(400).json({ detail: "Formato email non valido" });
+    }
 
-  // Carica utenti da utenti.json
-  let utenti;
-  try {
-    utenti = JSON.parse(fs.readFileSync("utenti.json", "utf-8"));
-  } catch (error) {
-    console.error("❌ [RECUPERO] Errore lettura utenti.json:", error);
-    return res.status(500).json({ detail: "Errore del server" });
-  }
+    if (field === "password" && !passwordRegex.test(new_value)) {
+      return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza" });
+    }
 
-  // Cerca l'utente
-  const utente = utenti.find(u => u.email === email);
-  if (!utente) {
-    console.warn(`❌ [RECUPERO] Email ${email} non trovata`);
-    return res.status(404).json({ detail: "Email non trovata" });
-  }
-
-  // Genera token e salva
-  const token = require("crypto").randomBytes(20).toString("hex");
-  fs.writeFileSync("password_reset_tokens.txt", `${email},${token}\n`, { flag: "a" });
-
-  const resetLink = `http://backend-api:8000/reset_password?token=${token}`;
-  console.log(`🔗 [RECUPERO] Link generato per ${email}: ${resetLink}`);
-
-  inviaEmailRecuperoPassword(email, resetLink)
-    .then(info => {
-      console.log(`✅ [RECUPERO] Email inviata a ${email}`);
-      res.json({ status: "success", message: "Email di recupero inviata" });
-    })
-    .catch(error => {
-      console.error("❌ [RECUPERO] Errore invio email:", error);
-      res.status(500).json({ detail: "Errore nell'invio dell'email", error: error.message });
+    const lines = fs.readFileSync(USERS_FILE, "utf-8").split("\n").filter(Boolean);
+    let updated = false;
+  
+    const newLines = lines.map(line => {
+      const parts = line.split(",");
+      if (parts[2] === email && parts[3] === password) {
+        const idx = fieldMap[field];
+        parts[idx] = new_value.trim();
+        updated = true;
+      }
+      return parts.join(",");
     });
 });
 
