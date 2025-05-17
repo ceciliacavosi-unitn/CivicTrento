@@ -1,27 +1,86 @@
 // ======================================================
-// storico_multe_screen.dart (presentazione/schermate/)
+// 📄 storico_multe_screen.dart (presentazione/schermate/)
 //
-// Funzione del file:
-// - Mostra la lista delle multe pagate nello storico.
-// - Attualmente è un ESEMPIO BASE che andrà esteso.
-//
+// 📌 Funzione del file:
+// - Mostra la lista delle multe ricevute nello storico.
+// - Recupera i dati dinamicamente dal backend (fase test).
 // ======================================================
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import '../../servizi/storico_service.dart';
 import '../widget/storico_elemento.dart';
 
-/// Schermata che mostra lo storico delle multe.
-///
-/// Esempio base. Da estendere per mostrare dati dinamici.
-class StoricoMulteScreen extends StatelessWidget {
-  const StoricoMulteScreen({super.key});
+class StoricoMulteScreen extends StatefulWidget {
+  final String email;
+  final String password;
+
+  const StoricoMulteScreen({
+    super.key,
+    required this.email,
+    required this.password,
+  });
+
+  @override
+  State<StoricoMulteScreen> createState() => _StoricoMulteScreenState();
+}
+
+class _StoricoMulteScreenState extends State<StoricoMulteScreen> {
+  Map<String, dynamic>? multa;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    caricaMulta();
+  }
+
+  Future<void> caricaMulta() async {
+    try {
+      final response = await StoricoService.getStoricoMulte(
+        email: widget.email,
+        password: widget.password,
+      );
+
+      setState(() {
+        multa = response;
+        isLoading = false;
+      });
+    } catch (e) {
+      debugPrint('❌ Errore caricamento multa: $e');
+      setState(() => isLoading = false);
+    }
+  }
+
+  String formattaData(String iso) {
+    try {
+      return DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(iso));
+    } catch (_) {
+      return 'Data sconosciuta';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const ElementoStorico(
-      title: 'Pagamento multa divieto di\nsosta',
-      subtitle: '12/02/2025 15:30',
-      points: '+2',
+    return Scaffold(
+      appBar: AppBar(title: const Text('Storico Multe')),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : multa == null
+              ? const Center(child: Text('Nessuna multa trovata.'))
+              : ListView(
+                  children: [
+                    ElementoStorico(
+                      title: 'Multa (${multa!['gravita'] ?? 'non specificata'})',
+                      subtitle: formattaData(multa!['dataUltimaMulta'] ?? DateTime.now().toIso8601String()),
+                      points: multa!['gravita'] == 'gravi'
+                          ? 'Saldo azzerato'
+                          : multa!['gravita'] == 'medie'
+                              ? '-40'
+                              : '-10',
+                    )
+                  ],
+                ),
     );
   }
 }
