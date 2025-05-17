@@ -326,13 +326,13 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "app",
+      "name": "civiccoins",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2025-05-09T09:52:36.803090Z",
+  "generated": "2025-05-15T14:31:15.997861Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///flutter",

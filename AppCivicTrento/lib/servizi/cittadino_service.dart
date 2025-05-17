@@ -1,15 +1,15 @@
 // ======================================================
-// 📄 cittadino_service.dart (servizi/)
+//  cittadino_service.dart (servizi/)
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Gestisce tutte le richieste HTTP legate al cittadino:
-//   ✅ Registrazione e login
-//   ✅ Recupero e modifica dei dati civici
+//   Registrazione e login
+//   Recupero e modifica dei dati civici
 //
-// 📦 Collegamento alla struttura del progetto:
+//  Collegamento alla struttura del progetto:
 // - Si trova in `servizi/`.
 //
-// ✅ Dipendenze dirette:
+//  Dipendenze dirette:
 // - Pacchetto HTTP
 // - Configurazione API
 //
@@ -21,7 +21,7 @@ import '../config/api_endpoints.dart';
 
 class CittadinoService {
   // ======================================================
-  // 🔐 POST /register - Registra un nuovo cittadino
+  //  POST /register - Registra un nuovo cittadino
   static Future<void> register({
     required String name,
     required String surname,
@@ -34,12 +34,12 @@ class CittadinoService {
       Uri.parse(registerUrl),
       headers: {'Content-Type': 'application/json'},
       body: json.encode({
-        'name': name.trim(),
-        'surname': surname.trim(),
+        'nome': name.trim(),
+        'cognome': surname.trim(),
         'email': email.trim(),
         'password': password.trim(),
-        'fiscal_code': fiscalCode.trim(),
-        'id_card_number': idCardNumber.trim(),
+        'CF': fiscalCode.trim(),
+        'cartaID': idCardNumber.trim(),
       }),
     );
     if (resp.statusCode != 200) {
@@ -49,7 +49,7 @@ class CittadinoService {
   }
 
   // ======================================================
-  // 🔐 POST /login - Effettua login
+  //  POST /login - Effettua login
   static Future<void> login({
     required String email,
     required String password,
@@ -66,7 +66,7 @@ class CittadinoService {
   }
 
   // ======================================================
-  // 🗂️ POST /cittadino/dati - Recupera dati civici
+  //  POST /cittadino/dati - Recupera dati civici
   static Future<Map<String, String>> fetchMyData({
     required String email,
     required String password,
@@ -100,7 +100,7 @@ class CittadinoService {
   }
 
   // ======================================================
-  // 📝 POST /cittadino/inserisci_dati - Inserisce dati civici
+  //  POST /cittadino/inserisci_dati - Inserisce dati civici
   static Future<void> insertData({
     required String email,
     required String password,
@@ -125,7 +125,7 @@ class CittadinoService {
 
 
   // ======================================================
-  // ✏️ PUT /cittadino/modifica_dati - Modifica dati civici
+  //  PUT /cittadino/modifica_dati - Modifica dati civici
   static Future<void> modifyData({
     required String email,
     required String password,
@@ -150,7 +150,7 @@ class CittadinoService {
 
 
   // ======================================================
-  // ❌ DELETE /cittadino/rimuovi_dato - Elimina un dato civico
+  //  DELETE /cittadino/rimuovi_dato - Elimina un dato civico
   static Future<void> deleteData({
     required String email,
     required String password,
@@ -173,7 +173,7 @@ class CittadinoService {
     }
   }
 
-  // 🧹 DELETE /cittadino/rimuovi_tutti - Elimina tutti i dati civici
+  //  DELETE /cittadino/rimuovi_tutti - Elimina tutti i dati civici
   static Future<void> deleteAllData({
     required String email,
     required String password,
@@ -191,7 +191,7 @@ class CittadinoService {
   }
 
   // ======================================================
-  // 🛠️ Funzione privata: parsing errori
+  //  Funzione privata: parsing errori
   static String _parseError(String body) {
     try {
       final jsonBody = json.decode(body) as Map<String, dynamic>;

@@ -1,18 +1,18 @@
 // ======================================================
-// 📄 auth_service.dart (servizi/)
+//  auth_service.dart (servizi/)
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Gestisce tutte le richieste HTTP di autenticazione:
-//   ✅ Registrazione
-//   ✅ Login
-//   ✅ Logout
-//   ✅ Cancellazione account
+//   Registrazione
+//   Login
+//   Logout
+//   Cancellazione account
 //
-// 📦 Collegamento alla struttura del progetto:
+//  Collegamento alla struttura del progetto:
 // - Si trova in `servizi/`.
 // - Utilizzato da tutte le schermate di login/registrazione.
 //
-// ✅ Dipendenze dirette:
+//  Dipendenze dirette:
 // - Pacchetto HTTP
 // - Configurazione API
 //
@@ -24,7 +24,7 @@ import '../config/api_endpoints.dart';
 
 class AuthService {
   // ======================================================
-  // 🔐 POST /register
+  //  POST /register
   static Future<void> register({
     required String name,
     required String surname,
@@ -52,11 +52,14 @@ class AuthService {
   }
 
   // ======================================================
-  // 🔐 POST /login
+  //  POST /login
   static Future<void> login({
     required String email,
     required String password,
   }) async {
+    print('📩 Email inviata: $email');
+    print('📥 Password inviata: $password');
+
     final resp = await http.post(
       Uri.parse(loginUrl),
       headers: {'Content-Type': 'application/json'},
@@ -67,9 +70,9 @@ class AuthService {
       throw Exception('Login fallito: $detail');
     }
   }
-
+  
   // ======================================================
-  // 🔐 POST /logout
+  //  POST /logout
   static Future<void> logout({
     required String email,
   }) async {
@@ -85,7 +88,7 @@ class AuthService {
   }
 
   // ======================================================
-  // ❌ DELETE /delete_user
+  //  DELETE /delete_user
   static Future<void> deleteAccount({
     required String email,
     required String password,
@@ -105,7 +108,7 @@ class AuthService {
   }
 
   // ======================================================
-  // 🛠️ Parsing errori dal server
+  //  Parsing errori dal server
   static String _parseError(String body) {
     try {
       final jsonBody = json.decode(body) as Map<String, dynamic>;

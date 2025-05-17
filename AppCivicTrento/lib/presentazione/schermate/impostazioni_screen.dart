@@ -1,13 +1,13 @@
-// ======================================================
-// 📄 impostazioni_screen.dart
+/// ======================================================
+// impostazioni_screen.dart
 // Schermata delle Impostazioni dell'app CivicCoins.
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Permette di:
-//     ✅ Cambiare tema
-//     ✅ Invitare utenti
-//     ✅ Effettuare logout
-//     ✅ Cancellare account e dati civici
+//     Cambiare tema
+//     Invitare utenti
+//     Effettuare logout
+//     Cancellare account e dati civici
 // ======================================================
 
 import 'package:flutter/material.dart';
@@ -18,6 +18,7 @@ import '../../servizi/auth_service.dart';
 import '../../servizi/cittadino_service.dart';
 import '../schermate/login_screen.dart';
 import '../../dominio/gestione/sistema_autenticazione.dart';
+import '../../main.dart'; //  Import della navigatorKey globale
 
 class ImpostazioniScreen extends StatefulWidget {
   const ImpostazioniScreen({super.key});
@@ -58,7 +59,9 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Logout effettuato con successo")),
       );
-      Navigator.of(context).pushAndRemoveUntil(
+
+      //  Navigazione sicura con navigatorKey
+      navigatorKey.currentState!.pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => const LoginScreen()),
         (route) => false,
       );
@@ -70,8 +73,10 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
     }
   }
 
-  /// ❌ Cancella definitivamente account e dati civici
+  ///  Cancella definitivamente account e dati civici
   void _deleteAccount() {
+    final scaffoldMessenger = ScaffoldMessenger.of(context); //  salviamo il messenger PRIMA
+
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -79,43 +84,56 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
         content: const Text('Vuoi cancellare definitivamente il tuo account e tutti i dati?'),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              print(" Cancellazione annullata");
+              Navigator.pop(context);
+            },
             child: const Text('Annulla'),
           ),
           TextButton(
-            onPressed: () async {
+            onPressed: () {
               Navigator.pop(context);
-              try {
-                final email = SistemaAutenticazione.email!;
-                final password = SistemaAutenticazione.password!;
+              Future.delayed(const Duration(milliseconds: 200), () async {
+                print(" Cancellazione avviata");
+                try {
+                  final email = SistemaAutenticazione.email!;
+                  final password = SistemaAutenticazione.password!;
+                  print(" Email: $email");
 
-                // ❌ Rimuove ogni campo dati cittadino
-                await CittadinoService.deleteAllData(
-                  email: SistemaAutenticazione.email!,
-                  password: SistemaAutenticazione.password!,
-                );
+                  await CittadinoService.deleteAllData(email: email, password: password);
+                  print(" Dati civici eliminati");
 
-                // ❌ Elimina account
-                await AuthService.deleteAccount(email: email, password: password);
-                SistemaAutenticazione.logout();
+                  await AuthService.deleteAccount(email: email, password: password);
+                  print(" Account eliminato");
 
-                final prefs = await SharedPreferences.getInstance();
-                await prefs.clear();
+                  SistemaAutenticazione.logout();
+                  final prefs = await SharedPreferences.getInstance();
+                  await prefs.clear();
+                  print(" Preferenze locali cancellate");
 
-                if (!mounted) return;
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Account eliminato con successo"), backgroundColor: Colors.red),
-                );
-                Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (_) => const LoginScreen()),
-                  (route) => false,
-                );
-              } catch (e) {
-                if (!mounted) return;
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Errore nella cancellazione: $e"), backgroundColor: Colors.red),
-                );
-              }
+                  scaffoldMessenger.showSnackBar(
+                    const SnackBar(
+                      content: Text("Account eliminato con successo"),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+
+                  print(" Navigazione verso LoginScreen...");
+                  //  Navigazione sicura con navigatorKey
+                  navigatorKey.currentState!.pushAndRemoveUntil(
+                    MaterialPageRoute(builder: (_) => const LoginScreen()),
+                    (route) => false,
+                  );
+                } catch (e) {
+                  print(" Errore nella cancellazione: $e");
+                  scaffoldMessenger.showSnackBar(
+                    SnackBar(
+                      content: Text("Errore nella cancellazione: $e"),
+                      backgroundColor: Colors.red,
+                    ),
+                  );
+                }
+              });
             },
             style: TextButton.styleFrom(foregroundColor: Colors.red),
             child: const Text('Conferma'),
