@@ -98,6 +98,9 @@ app.post("/auth/register", (req, res) => {
     const newUser = `${name.trim()},${surname.trim()},${email.trim()},${password.trim()},${fiscal_code.trim()},${id_card_number.trim()}\n`;
     fs.appendFileSync(USERS_FILE, newUser);
     res.json({ status: "success", message: "Registrazione completata" });
+    if (!gdprConsent) {
+      return res.status(400).json({ error: "È necessario accettare l'informativa GDPR per registrarsi." });
+    }
   });
   
 app.post("/auth/login", (req, res) => {

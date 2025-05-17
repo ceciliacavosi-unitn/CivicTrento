@@ -45,7 +45,9 @@ const Utente = mongoose.model('Utente', {
   email: String, 
   password: String, 
   CF: String, 
-  cartaID: String
+  cartaID: String,
+  gdprConsent: {type: Boolean, required: true},
+  gdprConsentDate: {type: Date, requide: true},
 }, 'utenti');
 
 // Crea un nuovo documento 'utente1'
@@ -54,6 +56,10 @@ const utente1 = new Utente({
   cognome: 'cognome1', 
   email: 'email1', 
   password: 'password1', 
-  CF: 'CF1', cartaID: 
-  'cartaID1'
+  CF: 'CF1',
+  cartaID: 'cartaID1',
+  gdprConsent: true,
+  gdprConsentDate: new Date(),
 });
+
+await utente1.save();
