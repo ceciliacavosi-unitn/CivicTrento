@@ -12,7 +12,8 @@ const {
   registraUtente,
   trovaCredenziali,
   cancellaUtente,
-  utenteEsiste
+  utenteEsiste,
+  reimpostaPasswordConToken
 } = require("./gestione_autenticazione");
 
 const { 
@@ -29,17 +30,15 @@ const {
   rimuoviTutti
 } = require("./gestione_cittadino");
 
-// === Percorsi e funzioni monitoraggio comportamenti ===
-const utentiPath = path.join(__dirname, 'utenti.json');
-const punteggi = JSON.parse(fs.readFileSync(path.join(__dirname, 'data/assegnazione_punti.json')));
+const { inviaEmailRecuperoPassword } = require("./mailer");
 
-function caricaUtenti() {
-  return JSON.parse(fs.readFileSync(utentiPath));
-}
-
-function salvaUtenti(utenti) {
-  fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
-}
+const {
+  getStoricoVoto,
+  getStoricoBolletta,
+  getStoricoSpostamento,
+  getStoricoAbbonamentoMezziPubblici,
+  getStoricoMulta
+} = require("./gestione_punti");
 
 //pagina principale
 app.get("/", (req, res) => {
@@ -70,20 +69,25 @@ app.get("/", (req, res) => {
  * ✅ REGISTRAZIONE: salva nel DB + file JSON
  */
 app.post("/auth/register", async (req, res) => {
-  const { name, surname, email, password, fiscal_code, id_card_number } = req.body;
+  console.log("📥 [REGISTRAZIONE] Body ricevuto:", req.body);
+
+  const { nome, cognome, email, password, CF, cartaID } = req.body;
 
   const success = await registraUtente({
-    nome: name.trim(),
-    cognome: surname.trim(),
-    email: email.trim(),
-    password: password.trim(),
-    CF: fiscal_code.trim(),
-    cartaID: id_card_number.trim()
+    nome: nome?.trim(),
+    cognome: cognome?.trim(),
+    email: email?.trim(),
+    password: password?.trim(),
+    CF: CF?.trim(),
+    cartaID: cartaID?.trim()
   });
 
+
   if (success) {
+    console.log(`✅ [REGISTRAZIONE] Utente ${email} registrato`);
     res.json({ status: "success", message: "Registrazione completata" });
   } else {
+    console.warn(`⚠️ [REGISTRAZIONE] Utente ${email} già registrato`);
     res.status(409).json({ detail: "Utente già registrato" });
   }
 });
@@ -93,17 +97,20 @@ app.post("/auth/register", async (req, res) => {
  * ✅ LOGIN: verifica le credenziali nel DB
  */
 app.post("/auth/login", async (req, res) => {
+  console.log("📥 [LOGIN] Body ricevuto:", req.body);
+
   const { email, password } = req.body;
+  console.log("📩 Email:", email);
+  console.log("🔑 Password:", password);
 
-  console.log("📩 Email ricevuta:", email);
-  console.log("📥 Password ricevuta:", password);
-
-  const credenziali = await trovaCredenziali(email.trim(), password.trim());
+  const credenziali = await trovaCredenziali(email?.trim(), password?.trim());
 
   if (!credenziali) {
+    console.warn("❌ [LOGIN] Credenziali non valide");
     return res.status(404).json({ detail: "Utente non trovato o credenziali non valide" });
   }
 
+  console.log(`✅ [LOGIN] Login riuscito per ${email}`);
   res.json({ status: "success", message: "Login effettuato" });
 });
 
@@ -112,14 +119,18 @@ app.post("/auth/login", async (req, res) => {
  * ✅ DELETE: elimina da DB e file JSON
  */
 app.delete("/auth/delete_user", async (req, res) => {
+  console.log("🗑️ [DELETE] Body ricevuto:", req.body);
+
   const { email, password } = req.body;
 
-  const success = await cancellaUtente(email.trim(), password.trim());
+  const success = await cancellaUtente(email?.trim(), password?.trim());
 
   if (!success) {
+    console.warn(`❌ [DELETE] Utente ${email} non trovato o credenziali errate`);
     return res.status(404).json({ detail: "Utente non trovato o credenziali errate" });
   }
 
+  console.log(`✅ [DELETE] Utente ${email} eliminato`);
   res.json({ status: "success", message: `Utente ${email} eliminato correttamente` });
 });
   
@@ -127,53 +138,118 @@ app.delete("/auth/delete_user", async (req, res) => {
 ✅ LOGOUT: verifica esistenza nel DB o JSON
  */
 app.post("/auth/logout", async (req, res) => {
+  console.log("🚪 [LOGOUT] Body ricevuto:", req.body);
+
   const { email } = req.body;
 
-  const esiste = await utenteEsiste(email.trim());
+  const esiste = await utenteEsiste(email?.trim());
 
   if (!esiste) {
+    console.warn(`❌ [LOGOUT] Utente ${email} non trovato`);
     return res.status(404).json({ detail: "Utente non trovato" });
   }
 
+  console.log(`✅ [LOGOUT] Logout effettuato per ${email}`);
   res.json({ status: "success", message: `Logout effettuato per ${email}` });
 });
+
+
+//recupero password
+app.post("/auth/recupero_password", async (req, res) => {
+  console.log("📧 [RECUPERO PASSWORD] Body ricevuto:", req.body);
+
+  const { email } = req.body;
+
+  // Carica utenti da utenti.json
+  let utenti;
+  try {
+    utenti = JSON.parse(fs.readFileSync("utenti.json", "utf-8"));
+  } catch (error) {
+    console.error("❌ [RECUPERO] Errore lettura utenti.json:", error);
+    return res.status(500).json({ detail: "Errore del server" });
+  }
+
+  // Cerca l'utente
+  const utente = utenti.find(u => u.email === email);
+  if (!utente) {
+    console.warn(`❌ [RECUPERO] Email ${email} non trovata`);
+    return res.status(404).json({ detail: "Email non trovata" });
+  }
+
+  // Genera token e salva
+  const token = require("crypto").randomBytes(20).toString("hex");
+  fs.writeFileSync("password_reset_tokens.txt", `${email},${token}\n`, { flag: "a" });
+
+  const resetLink = `http://backend-api:8000/reset_password?token=${token}`;
+  console.log(`🔗 [RECUPERO] Link generato per ${email}: ${resetLink}`);
+
+  inviaEmailRecuperoPassword(email, resetLink)
+    .then(info => {
+      console.log(`✅ [RECUPERO] Email inviata a ${email}`);
+      res.json({ status: "success", message: "Email di recupero inviata" });
+    })
+    .catch(error => {
+      console.error("❌ [RECUPERO] Errore invio email:", error);
+      res.status(500).json({ detail: "Errore nell'invio dell'email", error: error.message });
+    });
+});
+
+
+
+//reset password
+app.post("/auth/reset_password", async (req, res) => {
+  console.log("🔁 [RESET PASSWORD] Body ricevuto:", req.body);
+
+  const { token, newPassword } = req.body;
+
+  const result = await reimpostaPasswordConToken(token, newPassword);
+
+  if (result.success) {
+    console.log(`✅ [RESET] Password aggiornata per ${result.email}`);
+    res.json({ status: "success", message: "Password reimpostata con successo" });
+  } else {
+    console.warn("❌ [RESET] Fallita:", result.reason);
+    res.status(400).json({ detail: result.reason });
+  }
+});
+
 
 
 //profilo utente 
 /**
  * ✅ RETURN UTENTE
- * - Riceve email e password
- * - Cerca i dati utente in utenti.json (e anche in MongoDB, ma solo commentato)
- * - Restituisce i dati (nome, cognome, email, CF, cartaID)
  */
 app.post("/utente/profilo", async (req, res) => {
-  const { email, password } = req.body;
+  console.log("📤 [GET PROFILO] Body ricevuto:", req.body);
 
-  const profilo = await getProfiloUtente(email.trim(), password.trim());
+  const { email, password } = req.body;
+  const profilo = await getProfiloUtente(email?.trim(), password?.trim());
 
   if (!profilo) {
+    console.warn(`❌ [GET PROFILO] Credenziali non valide per ${email}`);
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
 
+  console.log(`✅ [GET PROFILO] Profilo restituito per ${email}`);
   res.json(profilo);
 });
 
 
 /**
  * ✅ MODIFICA PROFILO UTENTE
- * - Riceve email, password, campo da modificare e nuovo valore
- * - Aggiorna sia MongoDB che il file utenti.json
- * - Restituisce conferma solo se almeno uno dei due è stato aggiornato
  */
 app.put("/utente/modifica_profilo", async (req, res) => {
-  const { email, password, field, new_value } = req.body;
+  console.log("✏️ [MODIFICA PROFILO] Body ricevuto:", req.body);
 
-  const successo = await modificaProfiloUtente(email.trim(), password.trim(), field, new_value);
+  const { email, password, field, new_value } = req.body;
+  const successo = await modificaProfiloUtente(email?.trim(), password?.trim(), field, new_value);
 
   if (!successo) {
+    console.warn(`❌ [MODIFICA PROFILO] Fallita per ${email}`);
     return res.status(401).json({ detail: "Utente non trovato o credenziali errate" });
   }
 
+  console.log(`✅ [MODIFICA PROFILO] ${field} modificato per ${email}`);
   res.json({ status: "success", field, new_value });
 });
 
@@ -181,12 +257,13 @@ app.put("/utente/modifica_profilo", async (req, res) => {
 //cittadino
 /**
  * ✅ GET DATI CITTADINO
- * - Restituisce i dati civici da dati_cittadino.json
  */
 app.post("/cittadino/dati", async (req, res) => {
-  const { email, password } = req.body;
+  console.log("📥 [GET DATI CITTADINO] Body ricevuto:", req.body);
 
-  const autenticato = await verificaUtente(email.trim(), password.trim());
+  const { email, password } = req.body;
+  const autenticato = await verificaUtente(email?.trim(), password?.trim());
+
   if (!autenticato) {
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
@@ -196,6 +273,7 @@ app.post("/cittadino/dati", async (req, res) => {
     return res.status(404).json({ detail: "Dati utente non trovati" });
   }
 
+  console.log(`✅ [GET DATI CITTADINO] Dati restituiti per ${email}`);
   res.json(dati);
 });
 
@@ -203,9 +281,11 @@ app.post("/cittadino/dati", async (req, res) => {
  * ✅ AGGIUNGI DATO CIVICO
  */
 app.post("/cittadino/aggiungi_dato", async (req, res) => {
-  const { email, password, field, value } = req.body;
+  console.log("➕ [AGGIUNGI DATO] Body ricevuto:", req.body);
 
-  const autenticato = await verificaUtente(email.trim(), password.trim());
+  const { email, password, field, value } = req.body;
+  const autenticato = await verificaUtente(email?.trim(), password?.trim());
+
   if (!autenticato) {
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
@@ -215,6 +295,7 @@ app.post("/cittadino/aggiungi_dato", async (req, res) => {
     return res.status(400).json({ detail: "Dato già esistente o campo non valido" });
   }
 
+  console.log(`✅ [AGGIUNGI DATO] ${field} aggiunto per ${email}`);
   res.json({ status: "success", message: `${field} aggiunto` });
 });
 
@@ -222,9 +303,11 @@ app.post("/cittadino/aggiungi_dato", async (req, res) => {
  * ✅ MODIFICA DATO CIVICO
  */
 app.put("/cittadino/modifica_dato", async (req, res) => {
-  const { email, password, field, value } = req.body;
+  console.log("📝 [MODIFICA DATO] Body ricevuto:", req.body);
 
-  const autenticato = await verificaUtente(email.trim(), password.trim());
+  const { email, password, field, value } = req.body;
+  const autenticato = await verificaUtente(email?.trim(), password?.trim());
+
   if (!autenticato) {
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
@@ -234,6 +317,7 @@ app.put("/cittadino/modifica_dato", async (req, res) => {
     return res.status(404).json({ detail: "Campo non valido o utente inesistente" });
   }
 
+  console.log(`✅ [MODIFICA DATO] ${field} aggiornato per ${email}`);
   res.json({ status: "success", message: `${field} modificato` });
 });
 
@@ -241,9 +325,11 @@ app.put("/cittadino/modifica_dato", async (req, res) => {
  * ✅ RIMUOVI DATO SINGOLO
  */
 app.delete("/cittadino/rimuovi_dato", async (req, res) => {
-  const { email, password, field } = req.body;
+  console.log("❌ [RIMUOVI DATO] Body ricevuto:", req.body);
 
-  const autenticato = await verificaUtente(email.trim(), password.trim());
+  const { email, password, field } = req.body;
+  const autenticato = await verificaUtente(email?.trim(), password?.trim());
+
   if (!autenticato) {
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
@@ -253,6 +339,7 @@ app.delete("/cittadino/rimuovi_dato", async (req, res) => {
     return res.status(404).json({ detail: "Dato non trovato" });
   }
 
+  console.log(`✅ [RIMUOVI DATO] ${field} rimosso per ${email}`);
   res.json({ status: "success", message: `${field} rimosso` });
 });
 
@@ -260,98 +347,179 @@ app.delete("/cittadino/rimuovi_dato", async (req, res) => {
  * ✅ RIMUOVI TUTTI I DATI CIVICI
  */
 app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
-  const { email, password } = req.body;
+  console.log("🧹 [RIMUOVI TUTTI] Body ricevuto:", req.body);
 
-  const autenticato = await verificaUtente(email.trim(), password.trim());
+  const { email, password } = req.body;
+  const autenticato = await verificaUtente(email?.trim(), password?.trim());
+
   if (!autenticato) {
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
 
   const ok = rimuoviTutti(email.trim());
+  console.log(`✅ [RIMUOVI TUTTI] Tutti i dati rimossi per ${email}`);
   res.json({ status: "success", message: ok ? "Tutti i dati eliminati" : "Nessun dato da rimuovere" });
 });
 
+// === PREMI ===
+
+const PREMI_FILE = path.join(__dirname, 'data', 'premi.json');
+
+// GET /premi → restituisce l'elenco dei premi
+app.get("/premi", (req, res) => {
+  if (!fs.existsSync(PREMI_FILE)) {
+    return res.status(404).json({ detail: "Nessun premio disponibile" });
+  }
+
+  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
+  res.json(premi);
+});
+
+// POST /premi/riscatta/:id → simula il riscatto del premio
+app.post("/premi/riscatta/:id", (req, res) => {
+  const premioId = req.params.id;
+  if (!fs.existsSync(PREMI_FILE)) {
+    return res.status(404).json({ detail: "Nessun premio disponibile" });
+  }
+
+  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
+  const premio = premi.find(p => p.id === premioId);
+
+  if (!premio) {
+    return res.status(404).json({ detail: "Premio non trovato" });
+  }
+
+  // (Opzionale: loggare il riscatto)
+  console.log(`✅ Premio riscattato: ${premio.nome}`);
+
+  res.json({ status: "success", message: `Premio "${premio.nome}" riscattato` });
+});
+
 // === Monitoraggio comportamenti ===
-app.post('/monitoraggio/voto', (req, res) => {
-  const { email } = req.body;
-  const utenti = caricaUtenti();
-  const utente = utenti.find(u => u.email === email);
-  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
-  utente.saldo += punteggi.voto_elettorale;
-  salvaUtenti(utenti);
-  res.json({ nuovoSaldo: utente.saldo });
+// 🗳️ Voto elettorale
+app.post('/monitoraggio/voto', async (req, res) => {
+  const { email, password } = req.body;
+  console.log(`🗳️ [VOTO] Richiesta da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [VOTO] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const voto = getStoricoVoto();
+  if (!voto || voto.punti == null) {
+    return res.status(400).json({ error: 'Configurazione voto mancante' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + voto.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [VOTO] ${voto.punti} punti assegnati a ${email}`);
+  res.json(voto);
 });
 
-app.post('/monitoraggio/bolletta', (req, res) => {
-  const { email, tipo } = req.body;
-  const utenti = caricaUtenti();
-  const utente = utenti.find(u => u.email === email);
-  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
-  const punti = punteggi.bollette[tipo] || 0;
-  utente.saldo += punti;
-  salvaUtenti(utenti);
-  res.json({ nuovoSaldo: utente.saldo });
+// 💧 Bolletta pagata
+app.post('/monitoraggio/bolletta', async (req, res) => {
+  const { email, password, tipo } = req.body;
+  console.log(`💧 [BOLLETTA] ${tipo} richiesta da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [BOLLETTA] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const bolletta = getStoricoBolletta(tipo);
+  if (!bolletta || bolletta.punti == null) {
+    return res.status(400).json({ error: 'Tipo bolletta non valido' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + bolletta.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [BOLLETTA] ${bolletta.punti} punti per ${tipo}`);
+  res.json(bolletta);
 });
 
-app.post('/monitoraggio/movimento', (req, res) => {
-  const { email, distanza_km } = req.body;
-  const utenti = caricaUtenti();
-  const utente = utenti.find(u => u.email === email);
-  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
-  const punti = distanza_km <= 5
-    ? punteggi.spostamenti_bici_piedi["0_5_km"]
-    : punteggi.spostamenti_bici_piedi["oltre_5_km"];
-  utente.saldo += punti;
-  salvaUtenti(utenti);
-  res.json({ nuovoSaldo: utente.saldo });
+// 🚶‍♂️ Movimento a piedi o bici
+app.post('/monitoraggio/movimento', async (req, res) => {
+  const { email, password, distanza_km } = req.body;
+  console.log(`🚶‍♂️ [MOVIMENTO] ${distanza_km} km da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [MOVIMENTO] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const movimento = getStoricoSpostamento(parseFloat(distanza_km));
+  if (!movimento || movimento.punti == null) {
+    return res.status(400).json({ error: 'Distanza non valida' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + movimento.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [MOVIMENTO] ${movimento.punti} punti per ${email}`);
+  res.json(movimento);
 });
 
-app.post('/monitoraggio/trasporti', (req, res) => {
-  const { email } = req.body;
-  const utenti = caricaUtenti();
-  const utente = utenti.find(u => u.email === email);
-  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
-  utente.saldo += punteggi.abbonamento_mezzi_pubblici;
-  salvaUtenti(utenti);
-  res.json({ nuovoSaldo: utente.saldo });
+// 🚌 Abbonamento mezzi pubblici
+app.post('/monitoraggio/trasporti', async (req, res) => {
+  const { email, password } = req.body;
+  console.log(`🚌 [TRASPORTI] Rilevato abbonamento da: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [TRASPORTI] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const trasporti = getStoricoAbbonamentoMezziPubblici();
+  if (!trasporti || trasporti.punti == null) {
+    return res.status(400).json({ error: 'Configurazione trasporti mancante' });
+  }
+
+  utente.saldo = (utente.saldo || 0) + trasporti.punti;
+
+  // salvaUtenti([...]);
+  console.log(`✅ [TRASPORTI] ${trasporti.punti} punti assegnati a ${email}`);
+  res.json(trasporti);
 });
 
-app.post('/monitoraggio/multa', (req, res) => {
-  const { email, gravita } = req.body;
-  const utenti = caricaUtenti();
-  const utente = utenti.find(u => u.email === email);
-  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
-  const penalita = punteggi.multe[gravita];
-  if (penalita === "perdita_totale") {
+// 🚨 Multa ricevuta
+app.post('/monitoraggio/multa', async (req, res) => {
+  const { email, password, gravita } = req.body;
+  console.log(`🚨 [MULTA] Gravità ${gravita} per: ${email}`);
+
+  const utente = await getProfiloUtente(email, password);
+  if (!utente) {
+    console.warn(`❌ [MULTA] Credenziali non valide`);
+    return res.status(401).json({ error: 'Credenziali non valide' });
+  }
+
+  const multa = getStoricoMulta(gravita, new Date().toISOString());
+  if (!multa || multa.punti == null) {
+    return res.status(400).json({ error: 'Gravità non valida' });
+  }
+
+  if (multa.punti === 'perdita_totale') {
     utente.saldo = 0;
+    console.log(`⚠️ [MULTA] Saldo azzerato per ${email}`);
   } else {
-    utente.saldo += penalita;
+    utente.saldo = (utente.saldo || 0) + multa.punti;
+    console.log(`✅ [MULTA] Penalità ${multa.punti} per ${email}`);
   }
-  utente.dataUltimaMulta = new Date().toISOString();
-  salvaUtenti(utenti);
-  res.json({ nuovoSaldo: utente.saldo });
-});
 
-app.post('/monitoraggio/bonus-annuale', (req, res) => {
-  const { email } = req.body;
-  const utenti = caricaUtenti();
-  const utente = utenti.find(u => u.email === email);
-  if (!utente) return res.status(404).json({ error: 'Utente non trovato' });
-  const ultimaMulta = utente.dataUltimaMulta ? new Date(utente.dataUltimaMulta) : null;
-  const oggi = new Date();
-  const diff = ultimaMulta ? oggi - ultimaMulta : Infinity;
-  if (diff >= 365 * 24 * 60 * 60 * 1000) {
-    utente.saldo += punteggi.multe["1_anno_senza_multe"];
-    salvaUtenti(utenti);
-    return res.json({ nuovoSaldo: utente.saldo });
-  }
-  res.status(400).json({ error: "Hai ricevuto una multa negli ultimi 12 mesi" });
-});
+  utente.dataUltimaMulta = multa.dataUltimaMulta;
 
+  // salvaUtenti([...]);
+  res.json(multa);
+});
 
 //avvio server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`✅ Server avviato su http://localhost:${PORT}`);
 });
-
