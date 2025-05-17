@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 main_screen.dart (presentazione/schermate/)
+// main_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Gestisce la navigazione principale a tab.
 // - Include le schermate: Home, Premi, Profilo, Storico (Multe, Bollette, Spostamenti), Impostazioni.
 // - Ha anche un Drawer laterale per navigazione rapida.
@@ -74,10 +74,10 @@ class MainScreenState extends State<MainScreen> {
         email: widget.email,
         password: widget.password,
       );
-      final name = profile['name'] ?? '';
-      final surname = profile['surname'] ?? '';
+      final nome = profile['nome'] ?? '';
+      final cognome = profile['cognome'] ?? '';
       setState(() {
-        _initials = '${name.isNotEmpty ? name[0] : ''}${surname.isNotEmpty ? surname[0] : ''}'.toUpperCase();
+        _initials = '${nome.isNotEmpty ? nome[0] : ''}${cognome.isNotEmpty ? cognome[0] : ''}'.toUpperCase();
       });
     } catch (e) {
       setState(() {

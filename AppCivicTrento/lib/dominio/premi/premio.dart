@@ -17,40 +17,32 @@ import 'tipo_premio.dart';
 ///
 /// ✅ Campi principali:
 /// - [id]: identificativo univoco del premio.
-/// - [titolo]: nome o descrizione breve del premio.
+/// - [nome]: nome o descrizione breve del premio.
 /// - [descrizione]: dettagli aggiuntivi (facoltativo).
-/// - [tipo]: tipo di premio (vedi `TipoPremio` in enums.dart).
-/// - [validoFino]: data di scadenza (facoltativo).
-/// - [valore]: valore numerico (es. sconto in euro, punti richiesti).
+/// - [costoCivicCoins]: costo in CivicCoins.
 ///
 class Premio {
   final String id;
-  final String titolo;
+  final String nome;
   final String? descrizione;
-  final TipoPremio tipo;
-  final DateTime? validoFino;
-  final double? valore;
+  final double costoCivicCoins;
 
   Premio({
     required this.id,
-    required this.titolo,
+    required this.nome,
     this.descrizione,
-    required this.tipo,
-    this.validoFino,
-    this.valore,
+    required this.costoCivicCoins,
   });
+
+ 
 
   /// 🔄 Factory per creare un Premio da una mappa JSON.
   factory Premio.fromJson(Map<String, dynamic> json) {
     return Premio(
       id: json['id'],
-      titolo: json['titolo'],
+      nome: json['nome'],
       descrizione: json['descrizione'],
-      tipo: TipoPremio.values.firstWhere(
-        (e) => e.toString() == 'TipoPremio.${json['tipo']}',
-      ),
-      validoFino: json['validoFino'] != null ? DateTime.parse(json['validoFino']) : null,
-      valore: (json['valore'] as num?)?.toDouble(),
+      costoCivicCoins: json['costoCivicCoins'],
     );
   }
 
@@ -58,11 +50,9 @@ class Premio {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'titolo': titolo,
+      'nome': nome,
       'descrizione': descrizione,
-      'tipo': tipo.name,
-      'validoFino': validoFino?.toIso8601String(),
-      'valore': valore,
+      'costoCivicCoins': costoCivicCoins,
     };
   }
 }

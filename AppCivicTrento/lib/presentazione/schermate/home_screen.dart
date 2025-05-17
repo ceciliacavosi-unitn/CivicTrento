@@ -1,15 +1,14 @@
 // ======================================================
-// 📄 home_screen.dart (presentazione/schermate/)
+// 📄 home_screen.dart (versione aggiornata)
 //
-// 📌 Funzione del file:
-// - Schermata principale che mostra:
-//     • Le Civic Coins accumulate.
-//     • Pulsanti rapidi: Profilo/Dati, Premi, Impostazioni.
-//     • Storico generico scrollabile.
+// 📌 Mostra lo storico dei comportamenti civici usando email/password,
+//     formattando i dati secondo i punteggi configurati in storico.json.
 // ======================================================
 
 import 'package:flutter/material.dart';
-import '../../config/costanti.dart';  // ✅ Importa le costanti
+import 'package:intl/intl.dart';
+import '../../config/costanti.dart';
+import '../../servizi/storico_service.dart';
 import '../widget/pulsante_home.dart';
 import '../widget/storico_elemento.dart';
 import 'main_screen.dart';
@@ -31,6 +30,116 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<Map<String, dynamic>> storico = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    caricaStorico();
+  }
+
+  String formattaData(String iso) {
+    return DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(iso));
+  }
+
+  Future<void> caricaStorico() async {
+    try {
+      final email = widget.email;
+      final password = widget.password;
+
+      final unificato = <Map<String, dynamic>>[];
+
+      // 🗳️ Voto elettorale
+      final voto = await StoricoService.getStoricoVoto(email: email, password: password);
+      if (voto['punti'] != null) {
+        unificato.add({
+          'titolo': 'Voto elettorale',
+          'data': '2025-04-10T09:30:00', // ← data fissa da json
+          'punti': '+100',
+          'showDot': true,
+        });
+      }
+
+      // 💧 Bolletta
+      final bolletta = await StoricoService.getStoricoBolletta(
+        email: email,
+        password: password,
+        tipo: 'elettrica',
+      );
+
+      if (bolletta['tipo'] != null) {
+        final tipo = bolletta['tipo'];
+        final punti = {
+          'acqua': 10,
+          'elettrica': 15,
+          'gas': 15,
+        }[tipo] ?? 0;
+
+        unificato.add({
+          'titolo': 'Pagamento bolletta $tipo',
+          'data': '2025-04-01T10:00:00',
+          'punti': '+$punti',
+        });
+      }
+
+      // 🚶‍♂️ Spostamento sostenibile
+      final movimento = await StoricoService.getStoricoMovimento(email: email, password: password);
+      if (movimento['distanza_km'] != null) {
+        final distanza = double.tryParse(movimento['distanza_km'].toString()) ?? 0;
+        final punti = distanza <= 5 ? 0.5 : 1.0;
+
+        unificato.add({
+          'titolo': 'Percorso sostenibile (${distanza.toStringAsFixed(1)} km)',
+          'data': '2025-04-03T08:45:00',
+          'punti': '+${punti.toString()}',
+        });
+      }
+
+      // 🚌 Abbonamento mezzi pubblici
+      final trasporti = await StoricoService.getStoricoTrasporti(email: email, password: password);
+      if (trasporti['punti'] != null) {
+        unificato.add({
+          'titolo': 'Abbonamento mezzi pubblici',
+          'data': '2025-03-15T12:00:00',
+          'punti': '+50',
+        });
+      }
+
+      // 🚨 Multe
+      final multa = await StoricoService.getStoricoMulte(email: email, password: password);
+      if (multa['gravita'] != null) {
+        final gravita = multa['gravita'];
+        final dataMulta = multa['dataUltimaMulta'] ?? '2025-03-28T14:20:00';
+        String punti;
+        if (gravita == 'gravi') {
+          punti = 'saldo azzerato';
+        } else if (gravita == 'medie') {
+          punti = '-40';
+        } else {
+          punti = 'errore';
+        }
+
+        unificato.add({
+          'titolo': 'Multa ($gravita)',
+          'data': dataMulta,
+          'punti': punti,
+        });
+      }
+
+      unificato.sort((a, b) => DateTime.parse(b['data']).compareTo(DateTime.parse(a['data'])));
+
+      setState(() {
+        storico = unificato;
+        isLoading = false;
+      });
+    } catch (e) {
+      debugPrint('❌ Errore caricamento storico: $e');
+      setState(() => isLoading = false);
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -41,7 +150,6 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // 🏅 Titolo Civic Coins
           Text(
             testoTitoloCoins,
             style: theme.textTheme.titleLarge?.copyWith(
@@ -50,8 +158,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SizedBox(height: 12),
-
-          // 💰 Numero Civic Coins + icona
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -71,8 +177,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           const SizedBox(height: 20),
-
-          // 🚀 Due pulsanti rapidi (Profilo/Dati & Premi)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -104,8 +208,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           const SizedBox(height: 16),
-
-          // ⚙️ Pulsante Impostazioni
           Center(
             child: PulsanteHome(
               icon: Icons.settings,
@@ -122,8 +224,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           const SizedBox(height: 16),
-
-          // 📜 Storico Generico scrollabile
           Expanded(
             child: Container(
               width: double.infinity,
@@ -132,51 +232,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: theme.colorScheme.surfaceVariant,
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: DefaultTextStyle(
-                style: theme.textTheme.bodyMedium!.copyWith(
-                  color: accentColor,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      testoStoricoGenerico,
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: theme.colorScheme.primary,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Expanded(
-                      child: ListView(
-                        children: const [
-                          ElementoStorico(
-                            title: 'Voto amministrativo',
-                            subtitle: '01/04/2025 10:00',
-                            points: '+100',
-                            showDot: true,
-                          ),
-                          ElementoStorico(
-                            title: 'Multa per sosta vietata',
-                            subtitle: '29/03/2025 08:45',
-                            points: '-40',
-                          ),
-                          ElementoStorico(
-                            title: 'Camminata monitorata',
-                            subtitle: '28/03/2025 18:30',
-                            points: '+2',
-                          ),
-                          ElementoStorico(
-                            title: 'Bolletta elettrica\ngen/feb',
-                            subtitle: '27/03/2025 09:00',
-                            points: '+15',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : storico.isEmpty
+                      ? const Center(child: Text('Nessuna attività registrata.'))
+                      : ListView.builder(
+                          itemCount: storico.length,
+                          itemBuilder: (context, index) {
+                            final e = storico[index];
+                            return ElementoStorico(
+                              title: e['titolo'],
+                              subtitle: formattaData(e['data']),
+                              points: e['punti'],
+                              showDot: e['showDot'] ?? false,
+                            );
+                          },
+                        ),
             ),
           ),
         ],

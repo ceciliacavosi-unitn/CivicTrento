@@ -1,0 +1,33 @@
+{
+  "storico": [
+    {
+      "azione": "voto_elettorale",
+      "data": "2025-04-10T09:30:00",
+      "punti": 100
+    },
+    {
+      "azione": "bolletta",
+      "tipo": "elettrica",
+      "data": "2025-04-01T10:00:00",
+      "punti": 15
+    },
+    {
+      "azione": "spostamento",
+      "distanza_km": 7.2,
+      "data": "2025-04-03T08:45:00",
+      "punti": 1.0
+    },
+    {
+      "azione": "abbonamento_mezzi_pubblici",
+      "data": "2025-03-15T12:00:00",
+      "punti": 50
+    },
+    {
+      "azione": "multa",
+      "gravita": "medie",
+      "data": "2025-03-28T14:20:00",
+      "punti": -40
+    }
+  ],
+  "saldo_attuale": 126.0
+}

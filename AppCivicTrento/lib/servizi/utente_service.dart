@@ -1,15 +1,15 @@
 // ======================================================
-// 📄 utente_service.dart (servizi/)
+//  utente_service.dart (servizi/)
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Gestisce i dati anagrafici del profilo utente.
 // - Permette di registrare un nuovo utente.
 //
-// 📦 Collegamento alla struttura del progetto:
+//  Collegamento alla struttura del progetto:
 // - Si trova in `servizi/`.
 // - Usato nelle schermate Impostazioni, Profilo e Registrazione.
 //
-// ✅ Dipendenze dirette:
+//  Dipendenze dirette:
 // - Pacchetto HTTP
 // - Configurazione API
 //
@@ -22,7 +22,7 @@ import '../config/api_endpoints.dart';
 class UtenteService {
 
   // ======================================================
-  // 🗂️ POST /utente/profilo - Recupera profilo utente
+  //  POST /utente/profilo - Recupera profilo utente
   static Future<Map<String, String>> fetchProfile({
     required String email,
     required String password,
@@ -35,11 +35,12 @@ class UtenteService {
     if (resp.statusCode == 200) {
       final data = json.decode(resp.body) as Map<String, dynamic>;
       return {
-        'name': data['name'] as String? ?? '',
-        'surname': data['surname'] as String? ?? '',
+        'nome': data['nome'] as String? ?? '',
+        'cognome': data['cognome'] as String? ?? '',
         'email': data['email'] as String? ?? '',
-        'fiscal_code': data['fiscal_code'] as String? ?? '',
-        'id_card_number': data['id_card_number'] as String? ?? '',
+        'password':data['password'] as String? ?? '',
+        'CF': data['CF'] as String? ?? '',
+        'cartaID': data['cartaID'] as String? ?? '',
       };
     }
     final detail = _parseError(resp.body);
@@ -47,7 +48,7 @@ class UtenteService {
   }
 
   // ======================================================
-  // ✏️ PUT /utente/modifica_profilo - Modifica profilo utente
+  //  PUT /utente/modifica_profilo - Modifica profilo utente
   static Future<void> modifyProfile({
     required String email,
     required String password,
@@ -71,7 +72,7 @@ class UtenteService {
   }
 
   // ======================================================
-  // 🛠️ Funzione privata: parsing errori dal server
+  //  Funzione privata: parsing errori dal server
   static String _parseError(String body) {
     try {
       final jsonBody = json.decode(body) as Map<String, dynamic>;

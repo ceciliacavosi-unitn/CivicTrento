@@ -2,30 +2,82 @@
 // 📄 storico_bollette_screen.dart (presentazione/schermate/)
 //
 // 📌 Funzione del file:
-// - Mostra la lista delle bollette pagate nello storico.
-// - Attualmente è un ESEMPIO BASE che andrà esteso per visualizzare
-//   più elementi dinamicamente.
-//
+// - Mostra lo storico delle bollette pagate.
+// - Recupera i dati dinamicamente dal backend.
 // ======================================================
 
 import 'package:flutter/material.dart';
-import '../widget/storico_elemento.dart'; 
+import 'package:intl/intl.dart';
+import '../../servizi/storico_service.dart';
+import '../widget/storico_elemento.dart';
 
-/// 🧾 Schermata che mostra lo storico delle bollette.
-///
-/// 👉 Al momento è solo un esempio base. Da estendere per:
-/// - Ciclo su una lista di `Bolletta` (modello dati)
-/// - Recupero dinamico da servizio o database
-///
-class StoricoBolletteScreen extends StatelessWidget {
-  const StoricoBolletteScreen({super.key});
+class StoricoBolletteScreen extends StatefulWidget {
+  final String email;
+  final String password;
+
+  const StoricoBolletteScreen({
+    super.key,
+    required this.email,
+    required this.password,
+  });
+
+  @override
+  State<StoricoBolletteScreen> createState() => _StoricoBolletteScreenState();
+}
+
+class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
+  Map<String, dynamic>? bolletta;
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    caricaBolletta();
+  }
+
+  Future<void> caricaBolletta() async {
+    try {
+      final response = await StoricoService.getStoricoBolletta(
+        email: widget.email,
+        password: widget.password,
+        tipo: 'elettrica', // 🔧 per ora valore fisso per esempio
+      );
+
+      setState(() {
+        bolletta = response;
+        isLoading = false;
+      });
+    } catch (e) {
+      debugPrint('❌ Errore caricamento bolletta: $e');
+      setState(() => isLoading = false);
+    }
+  }
+
+  String formattaData(String iso) {
+    try {
+      return DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(iso));
+    } catch (_) {
+      return 'Data sconosciuta';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const ElementoStorico(
-      title: 'Pagamento bolletta elettrica marzo',
-      subtitle: '27/03/2025 09:00',
-      points: '+3',
+    return Scaffold(
+      appBar: AppBar(title: const Text('Storico Bollette')),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : bolletta == null
+              ? const Center(child: Text('Nessuna bolletta trovata.'))
+              : ListView(
+                  children: [
+                    ElementoStorico(
+                      title: 'Pagamento bolletta ${bolletta!['tipo'] ?? 'sconosciuta'}',
+                      subtitle: formattaData(DateTime.now().toIso8601String()),
+                      points: '+${bolletta!['punti'].toString()}',
+                    )
+                  ],
+                ),
     );
   }
 }

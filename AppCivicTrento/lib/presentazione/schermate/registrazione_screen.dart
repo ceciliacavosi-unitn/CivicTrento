@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 registrazione_screen.dart (presentazione/schermate/)
+//  registrazione_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+//  Funzione del file:
 // - Schermata di registrazione per nuovi utenti.
 // - Raccoglie i dati personali e le credenziali di accesso.
 // - Esegue la registrazione tramite UserService.
@@ -22,7 +22,7 @@ class RegistrazioneScreen extends StatefulWidget {
 }
 
 class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
-  // 🔑 Form key per validare il form
+  //  Form key per validare il form
   final _formKey = GlobalKey<FormState>();
 
   // 📥 Controller per i vari campi del form
@@ -57,7 +57,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
     // ➔ Es. validazione email formale, password sicura, codice fiscale valido ecc.
 
     try {
-      // ✅ Esegue la registrazione passando i dati raccolti
+      //  Esegue la registrazione passando i dati raccolti
       await AuthService.register(
         name: _nameController.text,
         surname: _surnameController.text,
@@ -67,7 +67,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
         idCardNumber: _idCardController.text,
       );
 
-      // ✅ Mostra conferma e, dopo la chiusura dello SnackBar, naviga al Login
+      //  Mostra conferma e, dopo la chiusura dello SnackBar, naviga al Login
       final snack = ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Registrazione completata")),
       );
@@ -76,7 +76,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
         MaterialPageRoute(builder: (_) => const LoginScreen()),
       ));
     } catch (e) {
-      // ❌ Mostra eventuale errore durante la registrazione
+      //  Mostra eventuale errore durante la registrazione
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.toString())),
       );
@@ -113,7 +113,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
                     ),
                   ),
 
-                // 🆔 Campo di input per numero carta d'identità
+                //  Campo di input per numero carta d'identità
                 Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: TextFormField(
@@ -125,6 +125,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
 
                 const SizedBox(height: 20),
 
+<<<<<<< HEAD
                 //consenso GDPR
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,53 +1,106 @@
 // ======================================================
-// 📄 premi_screen.dart (da spostare in presentazione/schermate/)
+// 📄 premi_screen.dart (presentazione/schermate/)
 //
 // 📌 Funzione del file:
-// - Definisce la schermata che mostra la lista dei premi disponibili
-//   per il cittadino nell'app CivicCoins.
-// - Permette all'utente di riscattare un premio cliccando il pulsante.
+// - Mostra i premi disponibili caricati dal backend.
+// - Permette di riscattare un premio con un tap.
 //
-// 📦 Collegamento alla struttura del progetto:
-// - Fa parte dell'interfaccia utente (UI), quindi deve essere posizionato
-//   nella cartella `presentazione/schermate/`.
-// - NON rappresenta il modello di dominio `Premio`.
-//
+// ✅ Debug incluso:
+// - Caricamento premi, errori, premi visualizzati e riscatto.
 // ======================================================
 
 import 'package:flutter/material.dart';
+import 'package:civiccoins/servizi/premio_service.dart';
 
-/// 🏆 Schermata che mostra la lista di premi riscattabili.
-class PremiScreen extends StatelessWidget {
+class PremiScreen extends StatefulWidget {
   const PremiScreen({super.key});
 
-  /// 🔖 Elenco statico di premi disponibili.
-  /// 👉 Hey, questo array di stringhe potrebbe essere spostato in `costanti.dart`
-  /// per mantenerlo centralizzato e modificabile facilmente!
-  static const _options = [
-    "Sconto abbonamento trasporti",
-    "Accesso gratuito a musei",
-    "Buono spesa 20€",
-    "Sconto su bolletta luce",
-    "Biglietti cinema 2x1"
-  ];
+  @override
+  State<PremiScreen> createState() => _PremiScreenState();
+}
+
+class _PremiScreenState extends State<PremiScreen> {
+  late Future<List<Map<String, dynamic>>> _premi;
+
+  @override
+  void initState() {
+    super.initState();
+    print("🔄 [initState] Avvio caricamento premi...");
+    _premi = PremioService().caricaPremi();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      padding: const EdgeInsets.all(16),
-      itemCount: _options.length,
-      itemBuilder: (_, i) => Card(
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: ListTile(
-          title: Text(_options[i]),
-          trailing: ElevatedButton(
-            onPressed: () => ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Hai riscattato: ${_options[i]}')),
-            ),
-            child: const Text('Riscuoti'),
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(title: const Text("Premi disponibili")),
+      body: FutureBuilder<List<Map<String, dynamic>>>(
+        future: _premi,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            print("⏳ [FutureBuilder] In attesa dei dati...");
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (snapshot.hasError) {
+            print("❌ [FutureBuilder] Errore: ${snapshot.error}");
+            return Center(child: Text("Errore: ${snapshot.error}"));
+          }
+
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            print("⚠️ [FutureBuilder] Nessun premio trovato");
+            return const Center(child: Text("Nessun premio disponibile."));
+          }
+
+          final premi = snapshot.data!;
+          print("✅ [FutureBuilder] Premi ricevuti: ${premi.length}");
+
+          return ListView.builder(
+            padding: const EdgeInsets.all(16),
+            itemCount: premi.length,
+            itemBuilder: (_, i) {
+              final premio = premi[i];
+              final id = premio['id'].toString();
+              final nome = premio['nome'];
+              final descrizione = premio['descrizione'];
+              final costo = premio['costoCivicCoins'];
+
+              print("📦 Premio $i → ID: $id | Nome: $nome | Costo: $costo");
+
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ListTile(
+                  title: Text(nome),
+                  subtitle: Text("$descrizione\n💰 Costo: $costo CivicCoins"),
+                  isThreeLine: true,
+                  trailing: ElevatedButton(
+                    onPressed: () async {
+                      print("🟢 [Riscuoti] Toccato premio con ID: $id");
+                      final success = await PremioService().riscattaPremio(id);
+                      print(success
+                          ? "✅ Premio $id riscattato con successo"
+                          : "❌ Errore durante il riscatto di $id");
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            success
+                                ? '✅ Premio riscattato con successo!'
+                                : '❌ Errore nel riscatto del premio',
+                          ),
+                        ),
+                      );
+                    },
+                    child: const Text("Riscuoti"),
+                  ),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
