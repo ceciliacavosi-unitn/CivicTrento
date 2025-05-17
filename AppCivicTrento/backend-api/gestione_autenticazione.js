@@ -3,19 +3,19 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require("bcrypt");
 
-//  Percorso del file utenti.json
+// 📂 Percorso del file utenti.json
 const filePath = path.join(__dirname, 'utenti.json');
 
-//  Connessione MongoDB disabilitata (commentata)
+// 🌐 Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
 // mongoose.connect(process.env.DB_URL, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true
 // })
-// .then(() => console.log(' Connesso a MongoDB'))
-// .catch(err => console.error(' Errore connessione MongoDB:', err));
+// .then(() => console.log('✅ Connesso a MongoDB'))
+// .catch(err => console.error('❌ Errore connessione MongoDB:', err));
 
-//  Schema e modello Mongoose disabilitati (commentati)
+// 📄 Schema e modello Mongoose disabilitati (commentati)
 // const utenteSchema = new mongoose.Schema({
 //   nome: String,
 //   cognome: String,
@@ -29,14 +29,14 @@ const filePath = path.join(__dirname, 'utenti.json');
 // const Utente = mongoose.model('Utente', utenteSchema);
 
 //
-//  FUNZIONI DI AUTENTICAZIONE (solo con file JSON)
+// 🟢 FUNZIONI DI AUTENTICAZIONE (solo con file JSON)
 //
 
 /**
- *  REGISTRA UTENTE
+ * ✅ REGISTRA UTENTE
  */
 async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
-  //  Verifica se già esiste nel file
+  // ✅ Verifica se già esiste nel file
   let utenti = [];
   if (fs.existsSync(filePath)) {
     const contenuto = fs.readFileSync(filePath, 'utf8');
@@ -44,15 +44,26 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
     if (utenti.some(u => u.email === email)) return false;
   }
 
-  //  Hash password
+  // 🔐 Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  //  Aggiungi utente al file JSON
+
+  // ✅ Aggiungi utente al file JSON
   utenti.push({
     nome,
     cognome,
     email,
     password: hashedPassword,
+    CF,
+    cartaID
+  });
+
+   // ✅ Aggiungi log prima di salvare
+  console.log("📝 Salvataggio utente:", {
+    nome,
+    cognome,
+    email,
+    password: '[HASHED]',
     CF,
     cartaID
   });
@@ -63,7 +74,7 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
 
 
 /**
- *  LOGIN (verifica credenziali nel file)
+ * ✅ LOGIN (verifica credenziali nel file)
  */
 async function trovaCredenziali(email, plainPassword) {
   if (fs.existsSync(filePath)) {
@@ -78,7 +89,7 @@ async function trovaCredenziali(email, plainPassword) {
         if (match) return trovato;
       }
     } catch (err) {
-      console.error(" Errore parsing utenti.json:", err);
+      console.error("❌ Errore parsing utenti.json:", err);
     }
   }
   return null;
@@ -86,7 +97,7 @@ async function trovaCredenziali(email, plainPassword) {
 
 
 /**
- *  CANCELLA UTENTE (solo nel file JSON)
+ * ✅ CANCELLA UTENTE (solo nel file JSON)
  */
 async function cancellaUtente(email, password) {
   let eliminato = false;
@@ -106,7 +117,7 @@ async function cancellaUtente(email, password) {
 
 
 /**
- *  LOGOUT / VERIFICA PRESENZA (solo nel file JSON)
+ * ✅ LOGOUT / VERIFICA PRESENZA (solo nel file JSON)
  */
 async function utenteEsiste(email) {
   if (fs.existsSync(filePath)) {
@@ -116,10 +127,55 @@ async function utenteEsiste(email) {
   return false;
 }
 
-//  Esportazione
+//reimposta password
+async function reimpostaPasswordConToken(token, nuovaPassword) {
+  const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
+  const utentiPath = path.join(__dirname, "utenti.json");
+
+  if (!fs.existsSync(tokenPath) || !fs.existsSync(utentiPath)) {
+    return { success: false, reason: "File mancante" };
+  }
+
+  const tokenLines = fs.readFileSync(tokenPath, "utf-8").split("\n").filter(Boolean);
+  let email = null;
+
+  const tokenLinesFiltered = tokenLines.filter(line => {
+    const [e, savedToken, expiration] = line.split(",");
+    if (savedToken === token && Date.now() < parseInt(expiration)) {
+      email = e;
+      return false; // rimuove il token usato
+    }
+    return true;
+  });
+
+  if (!email) return { success: false, reason: "Token non valido o scaduto" };
+
+  const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
+  const hashedPassword = await bcrypt.hash(nuovaPassword, 10);
+
+  let updated = false;
+  const aggiornati = utenti.map(u => {
+    if (u.email === email) {
+      updated = true;
+      return { ...u, password: hashedPassword };
+    }
+    return u;
+  });
+
+  if (!updated) return { success: false, reason: "Utente non trovato" };
+
+  fs.writeFileSync(utentiPath, JSON.stringify(aggiornati, null, 2));
+  fs.writeFileSync(tokenPath, tokenLinesFiltered.join("\n") + "\n"); // salva senza il token usato
+
+  return { success: true, email };
+}
+
+
+// 🧾 Esportazione
 module.exports = {
   registraUtente,
   trovaCredenziali,
   cancellaUtente,
-  utenteEsiste
+  utenteEsiste,
+  reimpostaPasswordConToken
 };

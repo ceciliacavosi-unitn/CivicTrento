@@ -16,5 +16,4 @@
 enum TipoTrasporto {
   AUTOBUS,
   TRENO,
-  TRAM,
 }

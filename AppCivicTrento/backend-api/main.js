@@ -32,6 +32,8 @@ const {
 
 const { inviaEmailRecuperoPassword } = require("./mailer");
 
+const { getPremi, riscattaPremio } = require("./gestione_premi");
+
 const {
   getStoricoVoto,
   getStoricoBolletta,
@@ -39,6 +41,7 @@ const {
   getStoricoAbbonamentoMezziPubblici,
   getStoricoMulta
 } = require("./gestione_punti");
+
 
 //pagina principale
 app.get("/", (req, res) => {
@@ -362,7 +365,6 @@ app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
 });
 
 // === PREMI ===
-
 const PREMI_FILE = path.join(__dirname, 'data', 'premi.json');
 
 // GET /premi → restituisce l'elenco dei premi
