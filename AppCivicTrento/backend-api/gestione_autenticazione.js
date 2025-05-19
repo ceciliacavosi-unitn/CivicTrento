@@ -35,7 +35,7 @@ const filePath = path.join(__dirname, 'utenti.json');
 /**
  * ✅ REGISTRA UTENTE
  */
-async function registraUtente({ name, surname, email, password, fiscal_code, id_card_number }) {
+async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
   let utenti = [];
 
   // ✅ Carica utenti da file JSON
@@ -58,7 +58,7 @@ async function registraUtente({ name, surname, email, password, fiscal_code, id_
     email,
     password: hashedPassword,
     CF,
-    cartID
+    cartaID
   };
 
   // ✅ Salva su file JSON

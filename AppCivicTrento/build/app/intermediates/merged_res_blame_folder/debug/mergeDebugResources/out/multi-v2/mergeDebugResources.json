@@ -208,10 +208,10 @@
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
-                        "startOffsets": "172,817",
+                        "startOffsets": "175,831",
                         "endLines": "7,16",
                         "endColumns": "12,12",
-                        "endOffsets": "475,981"
+                        "endOffsets": "482,997"
                     },
                     "to": {
                         "startLines": "2,6",
@@ -3087,10 +3087,10 @@
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
-                        "startOffsets": "173,818",
+                        "startOffsets": "176,832",
                         "endLines": "7,16",
                         "endColumns": "12,12",
-                        "endOffsets": "476,982"
+                        "endOffsets": "483,998"
                     },
                     "to": {
                         "startLines": "1488,1492",

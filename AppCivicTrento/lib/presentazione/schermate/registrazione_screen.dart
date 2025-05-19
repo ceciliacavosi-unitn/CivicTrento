@@ -59,12 +59,12 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
     try {
       //  Esegue la registrazione passando i dati raccolti
       await AuthService.register(
-        name: _nameController.text,
-        surname: _surnameController.text,
-        email: _emailController.text,
-        password: _passwordController.text,
-        fiscalCode: _fiscalCodeController.text,
-        idCardNumber: _idCardController.text,
+        name: _nameController.text.trim(),
+        surname: _surnameController.text.trim(),
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+        fiscalCode: _fiscalCodeController.text.trim(),
+        idCardNumber: _idCardController.text.trim(),
       );
 
       //  Mostra conferma e, dopo la chiusura dello SnackBar, naviga al Login

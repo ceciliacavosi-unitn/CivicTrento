@@ -74,7 +74,7 @@ app.post("/auth/register", async (req, res) => {
   console.log("📥 [REGISTER] Richiesta ricevuta");
   console.log("📦 Dati ricevuti:", req.body);
 
-  const { name, surname, email, password, fiscal_code, id_card_number, gdprConsent } = req.body;
+  const { nome, cognome, email, password, CF, cartaID, gdprConsent } = req.body;
 
   const errori = [];
 
@@ -82,7 +82,7 @@ app.post("/auth/register", async (req, res) => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
-  const idCardRegex = /^([A-Z]{2}\d{5,6}[A-Z]{1,2}|\d{8})$/i;
+  const idCardRegex = /^([A-Z]{2}\d{5,6}[A-Z]{1,2}|\d{9})$/i;
 
   if (!passwordRegex.test(password)) {
     errori.push("🔐 La password non rispetta i criteri di sicurezza:\n- Min 8 caratteri, una maiuscola, una minuscola, un numero, un simbolo");
@@ -92,11 +92,11 @@ app.post("/auth/register", async (req, res) => {
     errori.push("📧 Email non valida");
   }
 
-  if (!cfRegex.test(fiscal_code)) {
+  if (!cfRegex.test(CF)) {
     errori.push("🆔 Codice fiscale non valido");
   }
 
-  if (!idCardRegex.test(id_card_number)) {
+  if (!idCardRegex.test(cartaID)) {
     errori.push("🪪 Numero carta d'identità non valido");
   }
 
@@ -108,7 +108,7 @@ app.post("/auth/register", async (req, res) => {
 
   // Registrazione
   try {
-    registraUtente({ name, surname, email, password, fiscal_code, id_card_number });
+    registraUtente({ nome, cognome, email, password, CF, cartaID });
     console.log(`✅ [REGISTER] Registrazione completata per: ${email}`);
     res.json({ status: "success", message: "Registrazione completata" });
   } catch (error) {
