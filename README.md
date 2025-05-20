@@ -30,8 +30,8 @@ L'intero progetto è containerizzato: **non è necessario installare Flutter o J
 
 1. **Clona repository:**
    ```bash
-   git clone <URL_DEL_TUO_REPO>
-   cd <nome_cartella_repo>
+   git clone https://github.com/ceciliacavosi-unitn/CivicTrento.git
+   cd CivicTrento/appCivicTrento
    ```
 
 2. **Avvia l'applicazione con docker-compose:**
@@ -46,9 +46,13 @@ L'intero progetto è containerizzato: **non è necessario installare Flutter o J
    ```
 3. **Accesso all'app:**
    
-   **Backend API (Swagger UI):** [http://localhost:8000/docs](http://localhost:8000/docs)
+   **Backend API (Apiary):** [http://localhost:8000/docs](http://localhost:8000/docs)
 
    **Frontend (solo Android):**
+   ```bash
+   flutter run -d <id-device>
+   ```
+   **Frontend (solo Apple):**
    ```bash
    flutter run -d <id-device>
    ```
