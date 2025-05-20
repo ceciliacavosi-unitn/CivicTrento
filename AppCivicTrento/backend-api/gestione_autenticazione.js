@@ -4,7 +4,7 @@ const path = require('path');
 const bcrypt = require("bcrypt");
 
 // 📂 Percorso del file utenti.json
-const filePath = path.join(__dirname, 'utenti.json');
+const filePath = path.join(__dirname,'data', 'utenti.json');
 
 // 🌐 Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
