@@ -137,3 +137,16 @@ Il progetto segue un'architettura chiara e modulare:
 
 Perfetto per un'app pubblica o prototipale in ambito civico.
 
+User story per ogni branch
+-main: Compatibilità dispositivi
+-feature_delete-account_logout_data-cittadino: Logout sicuro, Cancellazione account
+-feature_guadagnoCC_storici: Guadagno punti, Penalità punti, Storico punti generico, Storico multe, Storico bollette, Storico spostamenti
+-feature_login_reg: Registrazione Utente, Login Utente, Modifica dati personali, Modifica password
+-feature_data-validation: Password sicura, Validazione dati
+-feature_premi: Premi: detrazioni fiscali o buoni sconto, Elenco ricompense
+-feature_consesoGDPR: Consenso GDPR
+-feature_recupero-password: Recupero password
+-feature_mongodb: Criptazine password, Salvataggio dati, Database locale dati
+-feature_setting: Modalità chiaro/scuro
+-feature_GUI: Dashboard utente, Interfaccia intuitiva, Interfaccia italiana
+
