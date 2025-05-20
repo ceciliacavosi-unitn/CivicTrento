@@ -70,22 +70,6 @@ class AuthService {
       throw Exception('Login fallito: $detail');
     }
   }
-  
-  // ======================================================
-  //  POST /logout
-  static Future<void> logout({
-    required String email,
-  }) async {
-    final resp = await http.post(
-      Uri.parse(logoutUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'email': email}),
-    );
-    if (resp.statusCode != 200) {
-      final detail = _parseError(resp.body);
-      throw Exception('Logout fallito: $detail');
-    }
-  }
 
   // ======================================================
   //  DELETE /delete_user
