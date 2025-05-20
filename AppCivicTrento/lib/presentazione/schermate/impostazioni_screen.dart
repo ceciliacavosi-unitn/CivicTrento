@@ -50,17 +50,19 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
 
   Future<void> _logout() async {
     try {
-      await AuthService.logout(email: SistemaAutenticazione.email!);
-      SistemaAutenticazione.logout();
       final prefs = await SharedPreferences.getInstance();
-      await prefs.clear();
+
+      // Salva il tema scuro prima di cancellare le preferenze
+      final isDark = prefs.getBool('darkMode') ?? false;
+
+      await prefs.clear(); // Pulisce tutte le preferenze
+      await prefs.setBool('darkMode', isDark); // Ripristina il tema
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Logout effettuato con successo")),
       );
 
-      //  Navigazione sicura con navigatorKey
       navigatorKey.currentState!.pushAndRemoveUntil(
         MaterialPageRoute(builder: (_) => const LoginScreen()),
         (route) => false,
@@ -72,6 +74,7 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
       );
     }
   }
+
 
   ///  Cancella definitivamente account e dati civici
   void _deleteAccount() {
