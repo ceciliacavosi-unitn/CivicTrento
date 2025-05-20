@@ -1,30 +1,43 @@
-# 📘 Documentazione del Progetto CivicCoins
+#Documentazione del Progetto CivicCoins
 
-## 🔍 Panoramica
+##Panoramica
 
 Il progetto CivicCoins è suddiviso in due macro-componenti:
 
-1. **Frontend Flutter** (`lib/`): app mobile (e potenzialmente web) che gestisce interfaccia utente, logica di presentazione e comunicazione con il backend.
+1. **Frontend Flutter** (`lib/`): app mobile (e potenzialmente web) che gestisce interfaccia utente, logica di presentazione e comunicazione con il backend ('config/').
 2. **Backend Node.js** (`backend-api/`): server API REST sviluppato in JavaScript con test API condotti tramite APIary.
 
 Le due componenti comunicano tramite richieste HTTP.
 
 ---
 
-## 🗂️ Struttura generale del progetto
+##Struttura generale del progetto
 
-| Percorso                  | Descrizione                                                                 |
-|---------------------------|-----------------------------------------------------------------------------|
-| `lib/`                    | Codice sorgente Flutter.                                                    |
-| `lib/config/`             | Costanti e configurazione API centralizzate.                               |
-| `lib/dominio/`            | Logica di dominio e modelli dati (utenti, premi, storico, monitoraggio).   |
-| `lib/presentazione/`      | Schermate, widget e gestione UI.                                           |
-| `lib/servizi/`            | Servizi di comunicazione HTTP verso il backend.                            |
-| `backend-api/`            | Codice backend Node.js (API REST, persistenza su file, test su APIary).    |
+| Percorso                  | Descrizione                                                                           |
+|---------------------------|---------------------------------------------------------------------------------------|
+| `lib/`                    | Codice sorgente Flutter.                                                              |
+| `lib/config/`             | Costanti e configurazione API centralizzate.                                          |
+| `lib/dominio/`            | Logica di dominio e modelli dati (utenti, premi, storico, monitoraggio, gestione).    |
+| `lib/presentazione/`      | Schermate, widget e gestione UI.                                                      |
+| `lib/servizi/`            | Servizi di comunicazione HTTP verso il backend attraverso URL in lib/config           |
+
+| Percorso                   | Descrizione                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| `backend-api/`             | Codice backend Node.js (API REST, persistenza su file, test su APIary).     |
+| `backend-api/data/`        |                                 |
+| `backend-api/node_modules` |     |
+| `backend-api/`             |                                             |
+| `backend-api/`             |                              |
+| `backend-api/`             |      |
+
+-> crerei delle cartelle dove mettiamo dentro tutti i:
+  -.json
+  -.js
+  -.txt
 
 ---
 
-## 📦 Dettaglio cartelle principali (Flutter)
+##Dettaglio cartelle principali (Flutter)
 
 ### `lib/config/`
 
@@ -74,6 +87,10 @@ Le due componenti comunicano tramite richieste HTTP.
   - `pulsante_home.dart`: pulsanti rapidi su home.
   - `storico_elemento.dart`: elemento grafico dello storico.
   - `dialogo_conferma.dart`: popup di conferma.
+### `servizi/`
+- 'auth_service.dart' :
+- 'premio_service_dart' :
+
 
 ---
 
