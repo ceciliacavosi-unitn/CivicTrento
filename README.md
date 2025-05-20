@@ -1,9 +1,9 @@
 # CivicTrento
 
-CivicTrento è un’app Flutter con backend FastAPI progettata per premiare comportamenti virtuosi e sostenibili dei cittadini. L'app permette di:
+CivicTrento è un’app Flutter con backend Node.js progettata per premiare comportamenti virtuosi e sostenibili dei cittadini. L'app permette di:
 - Registrarsi e autenticarsi
 - Gestire il profilo personale e i dati (codice abbonamenti, codice POD, numero patente)
-- Accumulare CivicCoins tramite attività sostenibili (es. mobilità ecologica, consumi bassi domestici)
+- Accumulare CivicCoins tramite attività sostenibili (es. mobilità, consumi bassi domestici)
 - Monitorare multe, bollette e spostamenti
 - Riscattare premi e offerte
 
@@ -12,7 +12,7 @@ CivicTrento è un’app Flutter con backend FastAPI progettata per premiare comp
 ## Struttura del progetto
 
 - **Frontend Flutter (`lib/`)**: contiene UI, logica di business e servizi.
-- **Backend FastAPI (`backend-api/`)**: API + gestione dei dati salvati (MongoDB).
+- **Backend Node.js (`backend-api/`)**: API + gestione dei dati salvati (MongoDB).
 - **Docker / Docker Compose**: orchestrazione dei container per avviare l'intero sistema in modo semplice e rapido.
 
 ---
@@ -26,7 +26,7 @@ L'intero progetto è containerizzato: **non è necessario installare Flutter o J
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Procedura di avvio (solo Linux)
+### Procedura di avvio
 
 1. **Clona repository:**
    ```bash
