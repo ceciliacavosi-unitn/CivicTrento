@@ -424,33 +424,34 @@ app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
 
 // GET /premi → restituisce l'elenco dei premi
 app.get("/premi", (req, res) => {
-  if (!fs.existsSync(PREMI_FILE)) {
-    return res.status(404).json({ detail: "Nessun premio disponibile" });
+  try {
+    const premi = getPremi(); // usa la funzione importata
+    res.json(premi);
+  } catch (error) {
+    console.error("❌ Errore nel recupero dei premi:", error);
+    res.status(500).json({ detail: "Errore interno nel recupero dei premi" });
   }
-
-  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
-  res.json(premi);
 });
+
 
 // POST /premi/riscatta/:id → simula il riscatto del premio
 app.post("/premi/riscatta/:id", (req, res) => {
   const premioId = req.params.id;
-  if (!fs.existsSync(PREMI_FILE)) {
-    return res.status(404).json({ detail: "Nessun premio disponibile" });
+
+  try {
+    const risultato = riscattaPremio(premioId); // usa la funzione
+    if (!risultato) {
+      return res.status(404).json({ detail: "Premio non trovato" });
+    }
+
+    console.log(`✅ Premio riscattato: ${risultato.nome}`);
+    res.json({ status: "success", message: `Premio "${risultato.nome}" riscattato` });
+  } catch (error) {
+    console.error("❌ Errore durante il riscatto:", error);
+    res.status(500).json({ detail: "Errore interno durante il riscatto del premio" });
   }
-
-  const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
-  const premio = premi.find(p => p.id === premioId);
-
-  if (!premio) {
-    return res.status(404).json({ detail: "Premio non trovato" });
-  }
-
-  // (Opzionale: loggare il riscatto)
-  console.log(`✅ Premio riscattato: ${premio.nome}`);
-
-  res.json({ status: "success", message: `Premio "${premio.nome}" riscattato` });
 });
+
 
 // === Monitoraggio comportamenti ===
 // 🗳️ Voto elettorale
