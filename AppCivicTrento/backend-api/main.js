@@ -12,7 +12,6 @@ const {
   registraUtente,
   trovaCredenziali,
   cancellaUtente,
-  utenteEsiste,
   reimpostaPasswordConToken
 } = require("./gestione_autenticazione");
 
@@ -171,26 +170,6 @@ app.delete("/auth/delete_user", async (req, res) => {
   console.log(`✅ [DELETE] Utente ${email} eliminato`);
   res.json({ status: "success", message: `Utente ${email} eliminato correttamente` });
 });
-  
-/*
-✅ LOGOUT: verifica esistenza nel DB o JSON
- */
-app.post("/auth/logout", async (req, res) => {
-  console.log("🚪 [LOGOUT] Body ricevuto:", req.body);
-
-  const { email } = req.body;
-
-  const esiste = await utenteEsiste(email?.trim());
-
-  if (!esiste) {
-    console.warn(`❌ [LOGOUT] Utente ${email} non trovato`);
-    return res.status(404).json({ detail: "Utente non trovato" });
-  }
-
-  console.log(`✅ [LOGOUT] Logout effettuato per ${email}`);
-  res.json({ status: "success", message: `Logout effettuato per ${email}` });
-});
-
 
 //profilo utente 
 app.post("/utente/profilo", async (req, res) => {
