@@ -46,7 +46,7 @@ L'intero progetto è containerizzato: **non è necessario installare Flutter o J
    ```
 3. **Accesso all'app:**
    
-   **Backend API (Apiary):** [http://localhost:8000/docs](http://localhost:8000/docs)
+   **Backend API (Apiary):** [https://civictrentoappapis.docs.apiary.io/#reference](https://civictrentoappapis.docs.apiary.io/#reference)
 
    **Frontend (solo Android):**
    ```bash
