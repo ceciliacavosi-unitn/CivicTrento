@@ -1,109 +1,44 @@
 // ======================================================
-// 📄 storico_service.dart
+// 📄 premio_service.dart (servizi/)
 //
-// 📌 Funzione:
-// - Recupera lo storico simulato inviando email e password nel body.
-// - Funziona solo in fase di test, finché JWT non è implementato.
+// 📌 Funzione del file:
+// - Gestisce le richieste HTTP relative ai premi.
+// - Fornisce metodi per caricare e riscattare premi.
 //
-// 📦 Restituisce Map<String, dynamic> con chiavi come "nuovoSaldo", ecc.
+// ✅ Debug integrato a livello logico:
+// - Caricamento dati da API e gestione errori.
+// - Simulazione del riscatto premio.
 // ======================================================
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config/api_endpoints.dart';
 
-class StoricoService {
-  /// 🌐 Header comune per tutte le richieste
-  static Map<String, String> get _headers => {
-        'Content-Type': 'application/json',
-      };
+class PremioService {
+  /// 🔄 Carica i premi da backend (GET /premi)
+  ///
+  /// Ritorna una lista di mappe contenenti i dati dei premi.
+  /// Se la risposta è valida (statusCode 200), effettua il parsing JSON.
+  /// In caso contrario, lancia un'eccezione con il codice errore.
+  Future<List<Map<String, dynamic>>> caricaPremi() async {
+    final uri = Uri.parse(premiUrl);
+    final response = await http.get(uri);
 
-  /// 📥 Voto elettorale
-  static Future<Map<String, dynamic>> getStoricoVoto({
-    required String email,
-    required String password,
-  }) async {
-    final response = await http.post(
-      Uri.parse(voto),
-      headers: _headers,
-      body: jsonEncode({'email': email, 'password': password}),
-    );
-    return _gestisciRispostaSingola(response, 'voti');
-  }
-
-  /// 📥 Bolletta (acqua, luce, gas)
-  static Future<Map<String, dynamic>> getStoricoBolletta({
-    required String email,
-    required String password,
-    String tipo = 'elettrica', // 👈 default per test
-  }) async {
-    final response = await http.post(
-      Uri.parse(bolletta),
-      headers: _headers,
-      body: jsonEncode({
-        'email': email,
-        'password': password,
-        'tipo': tipo, // 👈 essenziale!
-      }),
-    );
-    return _gestisciRispostaSingola(response, 'bolletta');
-  }
-
-  /// 📥 Movimento monitorato (km a piedi/bici)
-  static Future<Map<String, dynamic>> getStoricoMovimento({
-    required String email,
-    required String password,
-  }) async {
-    final response = await http.post(
-      Uri.parse(movimento),
-      headers: _headers,
-      body: jsonEncode({'email': email, 'password': password}),
-    );
-    return _gestisciRispostaSingola(response, 'movimento');
-  }
-
-  /// 📥 Abbonamento mezzi pubblici
-  static Future<Map<String, dynamic>> getStoricoTrasporti({
-    required String email,
-    required String password,
-  }) async {
-    final response = await http.post(
-      Uri.parse(trasporti),
-      headers: _headers,
-      body: jsonEncode({'email': email, 'password': password}),
-    );
-    return _gestisciRispostaSingola(response, 'trasporti');
-  }
-
-  /// 📥 Multa ricevuta
-  static Future<Map<String, dynamic>> getStoricoMulte({
-    required String email,
-    required String password,
-    String gravita = 'medie', // ✅ default per test
-  }) async {
-    final response = await http.post(
-      Uri.parse(multa),
-      headers: _headers,
-      body: jsonEncode({
-        'email': email,
-        'password': password,
-        'gravita': gravita, // ✅ campo obbligatorio
-      }),
-    );
-    return _gestisciRispostaSingola(response, 'multa');
-  }
-
-  /// 🔁 Gestione risposta JSON generica
-  static Map<String, dynamic> _gestisciRispostaSingola(http.Response response, String tipo) {
     if (response.statusCode == 200) {
-      final json = jsonDecode(response.body);
-      if (json is Map<String, dynamic>) {
-        return json;
-      } else {
-        throw Exception('La risposta per "$tipo" non è un oggetto JSON valido: ${response.body}');
-      }
+      final List premi = jsonDecode(response.body);
+      return premi.cast<Map<String, dynamic>>();
     } else {
-      throw Exception('Errore nello storico $tipo: ${response.statusCode}\n${response.body}');
+      throw Exception('Errore nel caricamento premi: ${response.statusCode}');
     }
+  }
+
+  /// ✅ Simula il riscatto di un premio (POST /premi/:id)
+  ///
+  /// Invia una richiesta POST all'endpoint per riscattare il premio con l'ID specificato.
+  /// Ritorna true se lo statusCode è 200 (successo), altrimenti false.
+  Future<bool> riscattaPremio(String idPremio) async {
+    final uri = Uri.parse('$riscattaPremioUrl/$idPremio');
+    final response = await http.post(uri);
+    return response.statusCode == 200;
   }
 }
