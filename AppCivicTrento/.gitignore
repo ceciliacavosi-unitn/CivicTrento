@@ -12,3 +12,6 @@ app.dill
 *.lock
 *.zip
 *.json
+
+# mongoDB
+mongo-data
