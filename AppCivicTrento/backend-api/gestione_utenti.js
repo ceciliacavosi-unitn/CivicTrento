@@ -13,7 +13,7 @@ const bcrypt = require("bcrypt");
 // .catch(err => console.error('❌ Errore connessione MongoDB:', err));
 
 // 📂 Percorso del file JSON
-const filePath = path.join(__dirname, 'utenti.json');
+const filePath = path.join(__dirname, 'data', 'utenti.json');
 
 // 📄 Modello Mongoose disabilitato
 // const utenteSchema = new mongoose.Schema({
