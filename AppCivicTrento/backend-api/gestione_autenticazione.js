@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 
 // 📂 Percorso del file utenti.json
 const filePath = path.join(__dirname,'data', 'utenti.json');
+const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
+
 
 // 🌐 Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
@@ -141,8 +143,6 @@ async function cancellaUtente(email, password) {
 
 //reimposta password
 async function reimpostaPasswordConToken(token, nuovaPassword) {
-  const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
-  const utentiPath = path.join(__dirname, "utenti.json");
 
   if (!fs.existsSync(tokenPath) || !fs.existsSync(utentiPath)) {
     return { success: false, reason: "File mancante" };
