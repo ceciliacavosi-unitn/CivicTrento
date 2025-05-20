@@ -3,7 +3,7 @@ const path = require("path");
 // const mongoose = require("mongoose"); // 🔧 MongoDB disattivato
 
 // 📂 Percorso del file JSON
-const JSON_FILE = path.join(__dirname, "dati_cittadino.json");
+const JSON_FILE = path.join(__dirname, 'data', "dati_cittadino.json");
 
 // 📌 Campi previsti nei dati
 const header = ["email", "subscription_code", "pod_code", "driver_license"];
