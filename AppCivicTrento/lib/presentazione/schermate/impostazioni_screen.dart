@@ -109,7 +109,7 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
                   await AuthService.deleteAccount(email: email, password: password);
                   print(" Account eliminato");
 
-                  SistemaAutenticazione.logout();
+                  _logout();
                   final prefs = await SharedPreferences.getInstance();
                   await prefs.clear();
                   print(" Preferenze locali cancellate");
