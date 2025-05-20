@@ -17,12 +17,6 @@ class SistemaAutenticazione {
     _password = password;
   }
 
-  /// 🔓 Rimuove le credenziali (logout)
-  static void logout() {
-    _email = null;
-    _password = null;
-  }
-
   /// 📧 Ottiene l'email dell'utente loggato (null se non loggato)
   static String? get email => _email;
 
