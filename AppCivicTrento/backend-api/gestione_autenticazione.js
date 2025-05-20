@@ -139,18 +139,6 @@ async function cancellaUtente(email, password) {
   return eliminato;
 }
 
-
-/**
- * ✅ LOGOUT / VERIFICA PRESENZA (solo nel file JSON)
- */
-async function utenteEsiste(email) {
-  if (fs.existsSync(filePath)) {
-    const utenti = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    return utenti.some(u => u.email === email);
-  }
-  return false;
-}
-
 //reimposta password
 async function reimpostaPasswordConToken(token, nuovaPassword) {
   const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
@@ -200,6 +188,5 @@ module.exports = {
   registraUtente,
   trovaCredenziali,
   cancellaUtente,
-  utenteEsiste,
   reimpostaPasswordConToken
 };
