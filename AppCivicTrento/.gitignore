@@ -1,1 +1,14 @@
-mongo-data
+# macOS
+.DS_Store
+
+# Flutter & Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+build/
+pubspec.lock
+app.dill
+*.lock
+*.zip
+*.json
