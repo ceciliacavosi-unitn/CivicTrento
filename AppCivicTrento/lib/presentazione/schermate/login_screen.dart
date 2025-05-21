@@ -9,7 +9,7 @@
 //     • Memorizza le credenziali globalmente in SistemaAutenticazione.
 //     • Reindirizza alla schermata Home.
 // - Mostra eventuali errori tramite SnackBar.
-// - ➕ In fondo: link per registrarsi se non si ha un account.
+// - In fondo: link per registrarsi se non si ha un account.
 //
 // ======================================================
 
@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 32),
 
-              // 🖊️ Campo di input per l'email
+              // Campo di input per l'email
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(labelText: "Email"),
