@@ -1,27 +1,27 @@
 // =======================================================
-// 📦 gestione_punti.js
-// ✅ Gestione punteggi da file JSON (storico.json)
-// ✅ Restituisce oggetti completi per frontend (tipo, distanza_km, gravita, data...)
+// gestione_punti.js
+// Gestione punteggi da file JSON (storico.json)
+// Restituisce oggetti completi per frontend (tipo, distanza_km, gravita, data...)
 // =======================================================
 
 const fs = require('fs');
 const path = require('path');
 
-// 📂 Percorso del file JSON attivo
+// Percorso del file JSON attivo
 const punteggiPath = path.join(__dirname, 'data', 'storico.json');
 
-// 🌐 Connessione MongoDB disabilitata (commentata)
+// Connessione MongoDB disabilitata (commentata)
 /*
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(() => console.log('✅ Connesso a MongoDB per assegnazione punti'))
-.catch(err => console.error('❌ Errore connessione MongoDB:', err));
+.then(() => console.log('Connesso a MongoDB per assegnazione punti'))
+.catch(err => console.error('Errore connessione MongoDB:', err));
 */
 
-// 📄 Schema MongoDB (commentato)
+// Schema MongoDB (commentato)
 /*
 const puntiSchema = new mongoose.Schema({
   bonus_iniziale: Number,
@@ -49,13 +49,13 @@ const ConfigurazionePunti = mongoose.model('ConfigurazionePunti', puntiSchema);
 */
 
 // =======================================================
-// 🔄 Caricamento configurazione (JSON attivo, MongoDB commentato)
+// Caricamento configurazione (JSON attivo, MongoDB commentato)
 // =======================================================
 
 function caricaConfigurazionePunti() {
-  // ✅ VERSIONE FILE JSON (attiva)
+  // VERSIONE FILE JSON (attiva)
   if (!fs.existsSync(punteggiPath)) {
-    console.error("❌ File storico.json non trovato.");
+    console.error("File storico.json non trovato.");
     return null;
   }
 
@@ -64,7 +64,7 @@ function caricaConfigurazionePunti() {
     const json = JSON.parse(rawData);
     const storico = json.storico;
 
-    // 🎯 Configurazione estratta dinamicamente dallo storico
+    // Configurazione estratta dinamicamente dallo storico
     const config = {
       voto_elettorale: storico.find(e => e.azione === "voto_elettorale")?.punti ?? null,
       bollette: {},
@@ -95,21 +95,21 @@ function caricaConfigurazionePunti() {
 
     return config;
   } catch (err) {
-    console.error("❌ Errore lettura storico.json:", err);
+    console.error("Errore lettura storico.json:", err);
     return null;
   }
 
-  // 🌐 VERSIONE MONGODB (commentata)
+  // VERSIONE MONGODB (commentata)
   /*
   try {
     const config = await ConfigurazionePunti.findOne();
     if (!config) {
-      console.warn("⚠️ Nessuna configurazione trovata nel database.");
+      console.warn("Nessuna configurazione trovata nel database.");
       return null;
     }
     return config.toObject();
   } catch (err) {
-    console.error("❌ Errore lettura configurazione MongoDB:", err);
+    console.error("Errore lettura configurazione MongoDB:", err);
     return null;
   }
   */
@@ -117,17 +117,17 @@ function caricaConfigurazionePunti() {
 
 
 // =======================================================
-// 🎯 FUNZIONI PUNTI PURI (solo valore numerico)
+// FUNZIONI PUNTI PURI (solo valore numerico)
 // =======================================================
 
 function getPuntiBolletta(tipo) {
   const config = caricaConfigurazionePunti();
   if (!config) return null;
 
-  // 🔧 JSON
+  // JSON
   return config?.bollette?.[tipo] ?? null;
 
-  // 🌐 MongoDB (commentato)
+  // MongoDB (commentato)
   // return config.bollette?.[tipo] ?? null;
 }
 
@@ -137,7 +137,7 @@ function getPuntiMulta(gravita) {
 
   return config?.multe?.[gravita] ?? null;
 
-  // 🌐 MongoDB
+  // MongoDB
   // return config.multe?.[gravita] ?? null;
 }
 
@@ -151,7 +151,7 @@ function getPuntiSpostamento(distanzaKm) {
     return config?.spostamenti_bici_piedi?.["oltre_5_km"] ?? null;
   }
 
-  // 🌐 MongoDB
+  // MongoDB
   /*
   return distanzaKm <= 5
     ? config.spostamenti_bici_piedi?.["0_5_km"] ?? null
@@ -165,7 +165,7 @@ function getPuntiVoto() {
 
   return config?.voto_elettorale ?? null;
 
-  // 🌐 MongoDB
+  // MongoDB
   // return config.voto_elettorale ?? null;
 }
 
@@ -175,7 +175,7 @@ function getPuntiAbbonamentoMezziPubblici() {
 
   return config?.abbonamento_mezzi_pubblici ?? null;
 
-  // 🌐 MongoDB
+  // MongoDB
   // return config.abbonamento_mezzi_pubblici ?? null;
 }
 
@@ -185,12 +185,12 @@ function getBonusIniziale() {
 
   return config?.bonus_iniziale ?? null;
 
-  // 🌐 MongoDB
+  // MongoDB
   // return config.bonus_iniziale ?? null;
 }
 
 // =======================================================
-// 📦 FUNZIONI COMPLETE (per storico frontend)
+// FUNZIONI COMPLETE (per storico frontend)
 // =======================================================
 
 function getStoricoBolletta(tipo) {
@@ -255,11 +255,11 @@ function getStoricoAbbonamentoMezziPubblici() {
 }
 
 // =======================================================
-// 🧾 Esportazione
+// Esportazione
 // =======================================================
 
 module.exports = {
-  // ✅ Metodi numerici puri
+  // Metodi numerici puri
   getPuntiBolletta,
   getPuntiMulta,
   getPuntiSpostamento,
@@ -267,7 +267,7 @@ module.exports = {
   getPuntiAbbonamentoMezziPubblici,
   getBonusIniziale,
 
-  // ✅ Metodi arricchiti per storico
+  // Metodi arricchiti per storico
   getStoricoBolletta,
   getStoricoSpostamento,
   getStoricoMulta,

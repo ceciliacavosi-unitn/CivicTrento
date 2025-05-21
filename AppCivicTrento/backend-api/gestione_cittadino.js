@@ -2,21 +2,21 @@ const fs = require("fs");
 const path = require("path");
 // const mongoose = require("mongoose"); // 🔧 MongoDB disattivato
 
-// 📂 Percorso del file JSON
+// Percorso del file JSON
 const JSON_FILE = path.join(__dirname, 'data', "dati_cittadino.json");
 
-// 📌 Campi previsti nei dati
+// Campi previsti nei dati
 const header = ["email", "subscription_code", "pod_code", "driver_license"];
 
 // ===================================================
-// 🛠️ MongoDB disattivato (puoi riattivare se necessario)
+// MongoDB disattivato (puoi riattivare se necessario)
 // ===================================================
 
 // mongoose.connect(process.env.DB_URL, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true
-// }).then(() => console.log("✅ Connesso a MongoDB"))
-//   .catch(err => console.error("❌ Errore connessione MongoDB:", err));
+// }).then(() => console.log("Connesso a MongoDB"))
+//   .catch(err => console.error("Errore connessione MongoDB:", err));
 
 // const cittadinoSchema = new mongoose.Schema({
 //   email: String,
@@ -34,7 +34,7 @@ const header = ["email", "subscription_code", "pod_code", "driver_license"];
 // ===================================================
 
 /**
- * ✅ Recupera i dati da JSON
+ * Recupera i dati da JSON
  */
 function getDatiCittadino(email) {
   if (!fs.existsSync(JSON_FILE)) return null;
@@ -55,13 +55,13 @@ function getDatiCittadino(email) {
 }
 
 /**
- * ✅ Aggiunge un campo se non presente
+ * Aggiunge un campo se non presente
  */
 function aggiungiDato(email, field, value) {
-  console.log("🟡 [aggiungiDato] Richiesta ricevuta:", { email, field, value });
+  console.log("[aggiungiDato] Richiesta ricevuta:", { email, field, value });
 
   if (!header.includes(field)) {
-    console.warn(`⚠️ [aggiungiDato] Campo '${field}' non ammesso.`);
+    console.warn(`[aggiungiDato] Campo '${field}' non ammesso.`);
     return false;
   }
 
@@ -70,35 +70,35 @@ function aggiungiDato(email, field, value) {
     try {
       dati = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
     } catch (err) {
-      console.error("❌ [aggiungiDato] Errore nella lettura del file JSON:", err);
+      console.error("[aggiungiDato] Errore nella lettura del file JSON:", err);
       return false;
     }
   }
 
   let utente = dati.find(u => u.email === email);
   if (!utente) {
-    console.log(`📌 [aggiungiDato] Nessun utente trovato con email '${email}'. Creazione nuovo record.`);
+    console.log(`[aggiungiDato] Nessun utente trovato con email '${email}'. Creazione nuovo record.`);
     utente = { email };
     dati.push(utente);
   }
 
   if (utente[field]) {
-    console.warn(`⚠️ [aggiungiDato] Il campo '${field}' esiste già per '${email}'`);
+    console.warn(`[aggiungiDato] Il campo '${field}' esiste già per '${email}'`);
     return false;
   }
 
   utente[field] = value.trim();
-  console.log(`✅ [aggiungiDato] Aggiunto campo '${field}' con valore '${value.trim()}'`);
+  console.log(`[aggiungiDato] Aggiunto campo '${field}' con valore '${value.trim()}'`);
 
   try {
     fs.writeFileSync(JSON_FILE, JSON.stringify(dati, null, 2));
-    console.log("💾 [aggiungiDato] File aggiornato correttamente.");
+    console.log("[aggiungiDato] File aggiornato correttamente.");
   } catch (err) {
-    console.error("❌ [aggiungiDato] Errore nella scrittura del file JSON:", err);
+    console.error("[aggiungiDato] Errore nella scrittura del file JSON:", err);
     return false;
   }
 
-  // // 🔄 Salva anche nel DB (disattivato)
+  // // Salva anche nel DB (disattivato)
   // DatiCittadino.findOneAndUpdate(
   //   { email },
   //   utente,
@@ -110,18 +110,18 @@ function aggiungiDato(email, field, value) {
 
 
 /**
- * ✅ Modifica un campo esistente
+ * Modifica un campo esistente
  */
 function modificaDato(email, field, value) {
-  console.log("🟡 [modificaDato] Richiesta ricevuta:", { email, field, value });
+  console.log("[modificaDato] Richiesta ricevuta:", { email, field, value });
 
   if (!header.includes(field)) {
-    console.warn(`⚠️ [modificaDato] Campo '${field}' non ammesso.`);
+    console.warn(`[modificaDato] Campo '${field}' non ammesso.`);
     return false;
   }
 
   if (!fs.existsSync(JSON_FILE)) {
-    console.error("❌ [modificaDato] File JSON non trovato.");
+    console.error("[modificaDato] File JSON non trovato.");
     return false;
   }
 
@@ -129,29 +129,29 @@ function modificaDato(email, field, value) {
   try {
     dati = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
   } catch (err) {
-    console.error("❌ [modificaDato] Errore nella lettura del file JSON:", err);
+    console.error("[modificaDato] Errore nella lettura del file JSON:", err);
     return false;
   }
 
   let utente = dati.find(u => u.email === email);
   if (!utente) {
-    console.warn(`⚠️ [modificaDato] Nessun utente trovato con email '${email}'`);
+    console.warn(`[modificaDato] Nessun utente trovato con email '${email}'`);
     return false;
   }
 
   const precedente = utente[field];
   utente[field] = value.trim();
-  console.log(`✏️ [modificaDato] Campo '${field}' modificato da '${precedente}' a '${value.trim()}'`);
+  console.log(`[modificaDato] Campo '${field}' modificato da '${precedente}' a '${value.trim()}'`);
 
   try {
     fs.writeFileSync(JSON_FILE, JSON.stringify(dati, null, 2));
-    console.log("💾 [modificaDato] File aggiornato correttamente.");
+    console.log("[modificaDato] File aggiornato correttamente.");
   } catch (err) {
-    console.error("❌ [modificaDato] Errore nella scrittura del file JSON:", err);
+    console.error("[modificaDato] Errore nella scrittura del file JSON:", err);
     return false;
   }
 
-  // // 🔄 Aggiorna nel DB (disattivato)
+  // // Aggiorna nel DB (disattivato)
   // DatiCittadino.findOneAndUpdate(
   //   { email },
   //   utente,
@@ -163,7 +163,7 @@ function modificaDato(email, field, value) {
 
 
 /**
- * ✅ Rimuove un campo specifico
+ * Rimuove un campo specifico
  */
 function rimuoviDato(email, field) {
   if (!header.includes(field)) return false;
@@ -177,7 +177,7 @@ function rimuoviDato(email, field) {
   delete utente[field];
   fs.writeFileSync(JSON_FILE, JSON.stringify(dati, null, 2));
 
-  // // 🔄 Aggiorna nel DB (disattivato)
+  // // Aggiorna nel DB (disattivato)
   // DatiCittadino.findOneAndUpdate(
   //   { email },
   //   utente,
@@ -188,7 +188,7 @@ function rimuoviDato(email, field) {
 }
 
 /**
- * ✅ Rimuove tutti i dati dell’utente
+ * Rimuove tutti i dati dell’utente
  */
 function rimuoviTutti(email) {
   if (!fs.existsSync(JSON_FILE)) return false;
@@ -197,14 +197,14 @@ function rimuoviTutti(email) {
   const nuoviDati = dati.filter(u => u.email !== email);
   fs.writeFileSync(JSON_FILE, JSON.stringify(nuoviDati, null, 2));
 
-  // // 🔄 Elimina dal DB (disattivato)
+  // // Elimina dal DB (disattivato)
   // DatiCittadino.deleteOne({ email }).exec();
 
   return true;
 }
 
 // ===================================================
-// 🧾 Export delle funzioni
+// Export delle funzioni
 // ===================================================
 module.exports = {
   getDatiCittadino,

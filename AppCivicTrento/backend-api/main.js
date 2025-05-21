@@ -62,7 +62,7 @@ app.get("/", (req, res) => {
       <li><strong>DELETE</strong> /cittadino/rimuovi_dato</li>
       <li><strong>DELETE</strong> /cittadino/rimuovi_tutti</li>
     </ul>
-    <p>⚠️ Le rotte vanno testate con strumenti come Postman, curl o una frontend app, poiché la maggior parte richiede <code>POST</code> o <code>DELETE</code> con JSON nel body.</p>
+    <p>Le rotte vanno testate con strumenti come Postman, curl o una frontend app, poiché la maggior parte richiede <code>POST</code> o <code>DELETE</code> con JSON nel body.</p>
   `);
 });
 
@@ -70,8 +70,8 @@ app.get("/", (req, res) => {
 
 //autenticazione
 app.post("/auth/register", async (req, res) => {
-  console.log("📥 [REGISTER] Richiesta ricevuta");
-  console.log("📦 Dati ricevuti:", req.body);
+  console.log("[REGISTER] Richiesta ricevuta");
+  console.log("Dati ricevuti:", req.body);
 
   const { nome, cognome, email, password, CF, cartaID, gdprConsent } = req.body;
 
@@ -84,34 +84,34 @@ app.post("/auth/register", async (req, res) => {
   const idCardRegex = /^([A-Z]{2}\d{5,6}[A-Z]{1,2}|\d{9})$/i;
 
   if (!passwordRegex.test(password)) {
-    errori.push("🔐 La password non rispetta i criteri di sicurezza:\n- Min 8 caratteri, una maiuscola, una minuscola, un numero, un simbolo");
+    errori.push("La password non rispetta i criteri di sicurezza:\n- Min 8 caratteri, una maiuscola, una minuscola, un numero, un simbolo");
   }
 
   if (!emailRegex.test(email)) {
-    errori.push("📧 Email non valida");
+    errori.push("Email non valida");
   }
 
   if (!cfRegex.test(CF)) {
-    errori.push("🆔 Codice fiscale non valido");
+    errori.push("Codice fiscale non valido");
   }
 
   if (!idCardRegex.test(cartaID)) {
-    errori.push("🪪 Numero carta d'identità non valido");
+    errori.push("Numero carta d'identità non valido");
   }
 
   // Se ci sono errori, restituiscili tutti
   if (errori.length > 0) {
-    console.warn("❌ [REGISTER] Errori validazione:\n" + errori.join("\n"));
+    console.warn("[REGISTER] Errori validazione:\n" + errori.join("\n"));
     return res.status(400).json({ detail: errori });
   }
 
   // Registrazione
   try {
     registraUtente({ nome, cognome, email, password, CF, cartaID });
-    console.log(`✅ [REGISTER] Registrazione completata per: ${email}`);
+    console.log(`[REGISTER] Registrazione completata per: ${email}`);
     res.json({ status: "success", message: "Registrazione completata" });
   } catch (error) {
-    console.error("❌ [REGISTER] Errore durante la registrazione:", error);
+    console.error("[REGISTER] Errore durante la registrazione:", error);
     res.status(500).json({ error: "Errore interno del server durante la registrazione." });
   }
 });
@@ -131,43 +131,43 @@ app.delete("/auth/delete_user", async (req, res) => {
 
   
 /**
- * ✅ LOGIN: verifica le credenziali nel DB
+ * LOGIN: verifica le credenziali nel DB
  */
 app.post("/auth/login", async (req, res) => {
-  console.log("📥 [LOGIN] Body ricevuto:", req.body);
+  console.log("[LOGIN] Body ricevuto:", req.body);
 
   const { email, password } = req.body;
-  console.log("📩 Email:", email);
-  console.log("🔑 Password:", password);
+  console.log("Email:", email);
+  console.log("Password:", password);
 
   const credenziali = await trovaCredenziali(email?.trim(), password?.trim());
 
   if (!credenziali) {
-    console.warn("❌ [LOGIN] Credenziali non valide");
+    console.warn("[LOGIN] Credenziali non valide");
     return res.status(404).json({ detail: "Utente non trovato o credenziali non valide" });
   }
 
-  console.log(`✅ [LOGIN] Login riuscito per ${email}`);
+  console.log(`[LOGIN] Login riuscito per ${email}`);
   res.json({ status: "success", message: "Login effettuato" });
 });
 
   
 /**
- * ✅ DELETE: elimina da DB e file JSON
+ * DELETE: elimina da DB e file JSON
  */
 app.delete("/auth/delete_user", async (req, res) => {
-  console.log("🗑️ [DELETE] Body ricevuto:", req.body);
+  console.log("[DELETE] Body ricevuto:", req.body);
 
   const { email, password } = req.body;
 
   const success = await cancellaUtente(email?.trim(), password?.trim());
 
   if (!success) {
-    console.warn(`❌ [DELETE] Utente ${email} non trovato o credenziali errate`);
+    console.warn(`[DELETE] Utente ${email} non trovato o credenziali errate`);
     return res.status(404).json({ detail: "Utente non trovato o credenziali errate" });
   }
 
-  console.log(`✅ [DELETE] Utente ${email} eliminato`);
+  console.log(`[DELETE] Utente ${email} eliminato`);
   res.json({ status: "success", message: `Utente ${email} eliminato correttamente` });
 });
 
@@ -175,14 +175,14 @@ app.delete("/auth/delete_user", async (req, res) => {
 app.post("/utente/profilo", async (req, res) => {
   const { email, password } = req.body;
 
-  // 🔒 Autenticazione
+  // Autenticazione
   const profilo = await getProfiloUtente(email?.trim(), password?.trim());
 
   if (!profilo) {
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
 
-  // ✅ Restituisci tutti i campi del profilo
+  // Restituisci tutti i campi del profilo
   res.json({
     nome: profilo.nome,
     cognome: profilo.cognome,
@@ -198,7 +198,7 @@ app.post("/utente/profilo", async (req, res) => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
 
 app.put("/utente/modifica_profilo", async (req, res) => {
-  console.log("✏️ [MODIFICA PROFILO] Body ricevuto:", req.body);
+  console.log("[MODIFICA PROFILO] Body ricevuto:", req.body);
 
   const { email, password, field, new_value } = req.body;
 
@@ -220,14 +220,14 @@ app.put("/utente/modifica_profilo", async (req, res) => {
     const successo = await modificaProfiloUtente(email?.trim(), password?.trim(), field, new_value?.trim());
 
     if (!successo) {
-      console.warn(`❌ [MODIFICA PROFILO] Fallita per ${email}`);
+      console.warn(`[MODIFICA PROFILO] Fallita per ${email}`);
       return res.status(401).json({ detail: "Utente non trovato o credenziali errate" });
     }
 
-    console.log(`✅ [MODIFICA PROFILO] ${field} modificato per ${email}`);
+    console.log(`[MODIFICA PROFILO] ${field} modificato per ${email}`);
     res.json({ status: "success", field, new_value });
   } catch (error) {
-    console.error("❌ Errore interno nella modifica del profilo:", error);
+    console.error("Errore interno nella modifica del profilo:", error);
     res.status(500).json({ detail: "Errore interno del server" });
   }
 });
@@ -236,17 +236,17 @@ app.put("/utente/modifica_profilo", async (req, res) => {
 
 //reset password
 app.post("/auth/reset_password", async (req, res) => {
-  console.log("🔁 [RESET PASSWORD] Body ricevuto:", req.body);
+  console.log("[RESET PASSWORD] Body ricevuto:", req.body);
 
   const { token, newPassword } = req.body;
 
   const result = await reimpostaPasswordConToken(token, newPassword);
 
   if (result.success) {
-    console.log(`✅ [RESET] Password aggiornata per ${result.email}`);
+    console.log(`[RESET] Password aggiornata per ${result.email}`);
     res.json({ status: "success", message: "Password reimpostata con successo" });
   } else {
-    console.warn("❌ [RESET] Fallita:", result.reason);
+    console.warn("[RESET] Fallita:", result.reason);
     res.status(400).json({ detail: result.reason });
   }
 });
@@ -255,49 +255,49 @@ app.post("/auth/reset_password", async (req, res) => {
 
 //profilo utente 
 /**
- * ✅ RETURN UTENTE
+ * RETURN UTENTE
  */
 app.post("/utente/profilo", async (req, res) => {
-  console.log("📤 [GET PROFILO] Body ricevuto:", req.body);
+  console.log("[GET PROFILO] Body ricevuto:", req.body);
 
   const { email, password } = req.body;
   const profilo = await getProfiloUtente(email?.trim(), password?.trim());
 
   if (!profilo) {
-    console.warn(`❌ [GET PROFILO] Credenziali non valide per ${email}`);
+    console.warn(`[GET PROFILO] Credenziali non valide per ${email}`);
     return res.status(401).json({ detail: "Credenziali non valide" });
   }
 
-  console.log(`✅ [GET PROFILO] Profilo restituito per ${email}`);
+  console.log(`[GET PROFILO] Profilo restituito per ${email}`);
   res.json(profilo);
 });
 
 
 /**
- * ✅ MODIFICA PROFILO UTENTE
+ * MODIFICA PROFILO UTENTE
  */
 app.put("/utente/modifica_profilo", async (req, res) => {
-  console.log("✏️ [MODIFICA PROFILO] Body ricevuto:", req.body);
+  console.log("[MODIFICA PROFILO] Body ricevuto:", req.body);
 
   const { email, password, field, new_value } = req.body;
   const successo = await modificaProfiloUtente(email?.trim(), password?.trim(), field, new_value);
 
   if (!successo) {
-    console.warn(`❌ [MODIFICA PROFILO] Fallita per ${email}`);
+    console.warn(`[MODIFICA PROFILO] Fallita per ${email}`);
     return res.status(401).json({ detail: "Utente non trovato o credenziali errate" });
   }
 
-  console.log(`✅ [MODIFICA PROFILO] ${field} modificato per ${email}`);
+  console.log(`[MODIFICA PROFILO] ${field} modificato per ${email}`);
   res.json({ status: "success", field, new_value });
 });
 
 
 //cittadino
 /**
- * ✅ GET DATI CITTADINO
+ * GET DATI CITTADINO
  */
 app.post("/cittadino/dati", async (req, res) => {
-  console.log("📥 [GET DATI CITTADINO] Body ricevuto:", req.body);
+  console.log("[GET DATI CITTADINO] Body ricevuto:", req.body);
 
   const { email, password } = req.body;
   const autenticato = await verificaUtente(email?.trim(), password?.trim());
@@ -311,15 +311,15 @@ app.post("/cittadino/dati", async (req, res) => {
     return res.status(404).json({ detail: "Dati utente non trovati" });
   }
 
-  console.log(`✅ [GET DATI CITTADINO] Dati restituiti per ${email}`);
+  console.log(`[GET DATI CITTADINO] Dati restituiti per ${email}`);
   res.json(dati);
 });
 
 /**
- * ✅ AGGIUNGI DATO CIVICO
+ * AGGIUNGI DATO CIVICO
  */
 app.post("/cittadino/aggiungi_dato", async (req, res) => {
-  console.log("➕ [AGGIUNGI DATO] Body ricevuto:", req.body);
+  console.log("[AGGIUNGI DATO] Body ricevuto:", req.body);
 
   const { email, password, field, value } = req.body;
   const autenticato = await verificaUtente(email?.trim(), password?.trim());
@@ -333,15 +333,15 @@ app.post("/cittadino/aggiungi_dato", async (req, res) => {
     return res.status(400).json({ detail: "Dato già esistente o campo non valido" });
   }
 
-  console.log(`✅ [AGGIUNGI DATO] ${field} aggiunto per ${email}`);
+  console.log(`[AGGIUNGI DATO] ${field} aggiunto per ${email}`);
   res.json({ status: "success", message: `${field} aggiunto` });
 });
 
 /**
- * ✅ MODIFICA DATO CIVICO
+ * MODIFICA DATO CIVICO
  */
 app.put("/cittadino/modifica_dato", async (req, res) => {
-  console.log("📝 [MODIFICA DATO] Body ricevuto:", req.body);
+  console.log("[MODIFICA DATO] Body ricevuto:", req.body);
 
   const { email, password, field, value } = req.body;
   const autenticato = await verificaUtente(email?.trim(), password?.trim());
@@ -355,15 +355,15 @@ app.put("/cittadino/modifica_dato", async (req, res) => {
     return res.status(404).json({ detail: "Campo non valido o utente inesistente" });
   }
 
-  console.log(`✅ [MODIFICA DATO] ${field} aggiornato per ${email}`);
+  console.log(`[MODIFICA DATO] ${field} aggiornato per ${email}`);
   res.json({ status: "success", message: `${field} modificato` });
 });
 
 /**
- * ✅ RIMUOVI DATO SINGOLO
+ * RIMUOVI DATO SINGOLO
  */
 app.delete("/cittadino/rimuovi_dato", async (req, res) => {
-  console.log("❌ [RIMUOVI DATO] Body ricevuto:", req.body);
+  console.log("[RIMUOVI DATO] Body ricevuto:", req.body);
 
   const { email, password, field } = req.body;
   const autenticato = await verificaUtente(email?.trim(), password?.trim());
@@ -377,15 +377,15 @@ app.delete("/cittadino/rimuovi_dato", async (req, res) => {
     return res.status(404).json({ detail: "Dato non trovato" });
   }
 
-  console.log(`✅ [RIMUOVI DATO] ${field} rimosso per ${email}`);
+  console.log(`[RIMUOVI DATO] ${field} rimosso per ${email}`);
   res.json({ status: "success", message: `${field} rimosso` });
 });
 
 /**
- * ✅ RIMUOVI TUTTI I DATI CIVICI
+ * RIMUOVI TUTTI I DATI CIVICI
  */
 app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
-  console.log("🧹 [RIMUOVI TUTTI] Body ricevuto:", req.body);
+  console.log("[RIMUOVI TUTTI] Body ricevuto:", req.body);
 
   const { email, password } = req.body;
   const autenticato = await verificaUtente(email?.trim(), password?.trim());
@@ -395,7 +395,7 @@ app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
   }
 
   const ok = rimuoviTutti(email.trim());
-  console.log(`✅ [RIMUOVI TUTTI] Tutti i dati rimossi per ${email}`);
+  console.log(`[RIMUOVI TUTTI] Tutti i dati rimossi per ${email}`);
   res.json({ status: "success", message: ok ? "Tutti i dati eliminati" : "Nessun dato da rimuovere" });
 });
 
@@ -407,7 +407,7 @@ app.get("/premi", (req, res) => {
     const premi = getPremi(); // usa la funzione importata
     res.json(premi);
   } catch (error) {
-    console.error("❌ Errore nel recupero dei premi:", error);
+    console.error("Errore nel recupero dei premi:", error);
     res.status(500).json({ detail: "Errore interno nel recupero dei premi" });
   }
 });
@@ -423,24 +423,24 @@ app.post("/premi/riscatta/:id", (req, res) => {
       return res.status(404).json({ detail: "Premio non trovato" });
     }
 
-    console.log(`✅ Premio riscattato: ${risultato.nome}`);
+    console.log(`Premio riscattato: ${risultato.nome}`);
     res.json({ status: "success", message: `Premio "${risultato.nome}" riscattato` });
   } catch (error) {
-    console.error("❌ Errore durante il riscatto:", error);
+    console.error("Errore durante il riscatto:", error);
     res.status(500).json({ detail: "Errore interno durante il riscatto del premio" });
   }
 });
 
 
 // === Monitoraggio comportamenti ===
-// 🗳️ Voto elettorale
+// Voto elettorale
 app.post('/monitoraggio/voto', async (req, res) => {
   const { email, password } = req.body;
-  console.log(`🗳️ [VOTO] Richiesta da: ${email}`);
+  console.log(`[VOTO] Richiesta da: ${email}`);
 
   const utente = await getProfiloUtente(email, password);
   if (!utente) {
-    console.warn(`❌ [VOTO] Credenziali non valide`);
+    console.warn(`[VOTO] Credenziali non valide`);
     return res.status(401).json({ error: 'Credenziali non valide' });
   }
 
@@ -456,14 +456,14 @@ app.post('/monitoraggio/voto', async (req, res) => {
   res.json(voto);
 });
 
-// 💧 Bolletta pagata
+// Bolletta pagata
 app.post('/monitoraggio/bolletta', async (req, res) => {
   const { email, password, tipo } = req.body;
-  console.log(`💧 [BOLLETTA] ${tipo} richiesta da: ${email}`);
+  console.log(`[BOLLETTA] ${tipo} richiesta da: ${email}`);
 
   const utente = await getProfiloUtente(email, password);
   if (!utente) {
-    console.warn(`❌ [BOLLETTA] Credenziali non valide`);
+    console.warn(`[BOLLETTA] Credenziali non valide`);
     return res.status(401).json({ error: 'Credenziali non valide' });
   }
 
@@ -475,18 +475,18 @@ app.post('/monitoraggio/bolletta', async (req, res) => {
   utente.saldo = (utente.saldo || 0) + bolletta.punti;
 
   // salvaUtenti([...]);
-  console.log(`✅ [BOLLETTA] ${bolletta.punti} punti per ${tipo}`);
+  console.log(`[BOLLETTA] ${bolletta.punti} punti per ${tipo}`);
   res.json(bolletta);
 });
 
-// 🚶‍♂️ Movimento a piedi o bici
+// Movimento a piedi o bici
 app.post('/monitoraggio/movimento', async (req, res) => {
   const { email, password, distanza_km } = req.body;
-  console.log(`🚶‍♂️ [MOVIMENTO] ${distanza_km} km da: ${email}`);
+  console.log(`[MOVIMENTO] ${distanza_km} km da: ${email}`);
 
   const utente = await getProfiloUtente(email, password);
   if (!utente) {
-    console.warn(`❌ [MOVIMENTO] Credenziali non valide`);
+    console.warn(`[MOVIMENTO] Credenziali non valide`);
     return res.status(401).json({ error: 'Credenziali non valide' });
   }
 
@@ -498,18 +498,18 @@ app.post('/monitoraggio/movimento', async (req, res) => {
   utente.saldo = (utente.saldo || 0) + movimento.punti;
 
   // salvaUtenti([...]);
-  console.log(`✅ [MOVIMENTO] ${movimento.punti} punti per ${email}`);
+  console.log(`[MOVIMENTO] ${movimento.punti} punti per ${email}`);
   res.json(movimento);
 });
 
-// 🚌 Abbonamento mezzi pubblici
+// Abbonamento mezzi pubblici
 app.post('/monitoraggio/trasporti', async (req, res) => {
   const { email, password } = req.body;
-  console.log(`🚌 [TRASPORTI] Rilevato abbonamento da: ${email}`);
+  console.log(`[TRASPORTI] Rilevato abbonamento da: ${email}`);
 
   const utente = await getProfiloUtente(email, password);
   if (!utente) {
-    console.warn(`❌ [TRASPORTI] Credenziali non valide`);
+    console.warn(`[TRASPORTI] Credenziali non valide`);
     return res.status(401).json({ error: 'Credenziali non valide' });
   }
 
@@ -521,18 +521,18 @@ app.post('/monitoraggio/trasporti', async (req, res) => {
   utente.saldo = (utente.saldo || 0) + trasporti.punti;
 
   // salvaUtenti([...]);
-  console.log(`✅ [TRASPORTI] ${trasporti.punti} punti assegnati a ${email}`);
+  console.log(`[TRASPORTI] ${trasporti.punti} punti assegnati a ${email}`);
   res.json(trasporti);
 });
 
-// 🚨 Multa ricevuta
+// Multa ricevuta
 app.post('/monitoraggio/multa', async (req, res) => {
   const { email, password, gravita } = req.body;
-  console.log(`🚨 [MULTA] Gravità ${gravita} per: ${email}`);
+  console.log(`[MULTA] Gravità ${gravita} per: ${email}`);
 
   const utente = await getProfiloUtente(email, password);
   if (!utente) {
-    console.warn(`❌ [MULTA] Credenziali non valide`);
+    console.warn(`[MULTA] Credenziali non valide`);
     return res.status(401).json({ error: 'Credenziali non valide' });
   }
 
@@ -543,10 +543,10 @@ app.post('/monitoraggio/multa', async (req, res) => {
 
   if (multa.punti === 'perdita_totale') {
     utente.saldo = 0;
-    console.log(`⚠️ [MULTA] Saldo azzerato per ${email}`);
+    console.log(`[MULTA] Saldo azzerato per ${email}`);
   } else {
     utente.saldo = (utente.saldo || 0) + multa.punti;
-    console.log(`✅ [MULTA] Penalità ${multa.punti} per ${email}`);
+    console.log(`[MULTA] Penalità ${multa.punti} per ${email}`);
   }
 
   utente.dataUltimaMulta = multa.dataUltimaMulta;
@@ -558,5 +558,5 @@ app.post('/monitoraggio/multa', async (req, res) => {
 //avvio server
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
-  console.log(`✅ Server avviato su http://localhost:${PORT}`);
+  console.log(`Server avviato su http://localhost:${PORT}`);
 });

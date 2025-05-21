@@ -3,21 +3,21 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require("bcrypt");
 
-// 📂 Percorso del file utenti.json
+// Percorso del file utenti.json
 const filePath = path.join(__dirname,'data', 'utenti.json');
 const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
 
 
-// 🌐 Connessione MongoDB disabilitata (commentata)
+// Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
 // mongoose.connect(process.env.DB_URL, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true
 // })
-// .then(() => console.log('✅ Connesso a MongoDB'))
-// .catch(err => console.error('❌ Errore connessione MongoDB:', err));
+// .then(() => console.log('Connesso a MongoDB'))
+// .catch(err => console.error('Errore connessione MongoDB:', err));
 
-// 📄 Schema e modello Mongoose disabilitati (commentati)
+// Schema e modello Mongoose disabilitati (commentati)
 // const utenteSchema = new mongoose.Schema({
 //   nome: String,
 //   cognome: String,
@@ -31,27 +31,27 @@ const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
 // const Utente = mongoose.model('Utente', utenteSchema);
 
 //
-// 🟢 FUNZIONI DI AUTENTICAZIONE (solo con file JSON)
+// FUNZIONI DI AUTENTICAZIONE (solo con file JSON)
 //
 
 /**
- * ✅ REGISTRA UTENTE
+ * REGISTRA UTENTE
  */
 async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
   let utenti = [];
 
-  // ✅ Carica utenti da file JSON
+  // Carica utenti da file JSON
   if (fs.existsSync(filePath)) {
     const contenuto = fs.readFileSync(filePath, 'utf8');
     utenti = contenuto ? JSON.parse(contenuto) : [];
 
     if (utenti.some(u => u.email === email)) {
-      console.warn("❌ Email già registrata:", email);
+      console.warn("Email già registrata:", email);
       return false;
     }
   }
 
-  // 🔐 Hash password
+  // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const nuovoUtente = {
@@ -63,7 +63,7 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
     cartaID
   };
 
-  // ✅ Salva su file JSON
+  // Salva su file JSON
   utenti.push(nuovoUtente);
 
   console.log("📝 Salvataggio utente nel file:", {
@@ -73,7 +73,7 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
 
   fs.writeFileSync(filePath, JSON.stringify(utenti, null, 2));
 
-  // 🟨 Salva su MongoDB (opzionale - attiva se vuoi)
+  // Salva su MongoDB (opzionale - attiva se vuoi)
   /*
   try {
     await mongoClient.connect();
@@ -82,14 +82,14 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
 
     const emailEsiste = await collection.findOne({ email });
     if (emailEsiste) {
-      console.warn("❌ [MongoDB] Email già registrata:", email);
+      console.warn("[MongoDB] Email già registrata:", email);
       return false;
     }
 
     await collection.insertOne(nuovoUtente);
-    console.log("✅ [MongoDB] Utente registrato anche nel database.");
+    console.log("[MongoDB] Utente registrato anche nel database.");
   } catch (err) {
-    console.error("❌ [MongoDB] Errore durante la registrazione:", err);
+    console.error("[MongoDB] Errore durante la registrazione:", err);
   } finally {
     await mongoClient.close();
   }
@@ -100,7 +100,7 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
 
 
 /**
- * ✅ LOGIN (verifica credenziali nel file)
+ * LOGIN (verifica credenziali nel file)
  */
 async function trovaCredenziali(email, plainPassword) {
   if (fs.existsSync(filePath)) {
@@ -115,7 +115,7 @@ async function trovaCredenziali(email, plainPassword) {
         if (match) return trovato;
       }
     } catch (err) {
-      console.error("❌ Errore parsing utenti.json:", err);
+      console.error("Errore parsing utenti.json:", err);
     }
   }
   return null;
@@ -123,7 +123,7 @@ async function trovaCredenziali(email, plainPassword) {
 
 
 /**
- * ✅ CANCELLA UTENTE (solo nel file JSON)
+ * CANCELLA UTENTE (solo nel file JSON)
  */
 async function cancellaUtente(email, password) {
   let eliminato = false;
@@ -183,7 +183,7 @@ async function reimpostaPasswordConToken(token, nuovaPassword) {
 }
 
 
-// 🧾 Esportazione
+// Esportazione
 module.exports = {
   registraUtente,
   trovaCredenziali,
