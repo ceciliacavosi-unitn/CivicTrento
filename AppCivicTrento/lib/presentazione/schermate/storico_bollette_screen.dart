@@ -40,7 +40,7 @@ class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
       final response = await StoricoService.getStoricoBolletta(
         email: widget.email,
         password: widget.password,
-        tipo: 'elettrica', // 🔧 per ora valore fisso per esempio
+        tipo: 'elettrica', // per ora valore fisso per esempio
       );
 
       setState(() {

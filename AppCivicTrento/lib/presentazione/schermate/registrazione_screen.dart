@@ -95,7 +95,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // 🖊️ Campi di input principali: nome, cognome, email, password, codice fiscale
+                // Campi di input principali: nome, cognome, email, password, codice fiscale
                 for (var item in [
                   [_nameController, 'Nome'],
                   [_surnameController, 'Cognome'],

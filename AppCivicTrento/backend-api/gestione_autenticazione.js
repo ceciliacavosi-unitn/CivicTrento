@@ -66,7 +66,7 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID }) {
   // Salva su file JSON
   utenti.push(nuovoUtente);
 
-  console.log("📝 Salvataggio utente nel file:", {
+  console.log("Salvataggio utente nel file:", {
     ...nuovoUtente,
     password: '[HASHED]'
   });

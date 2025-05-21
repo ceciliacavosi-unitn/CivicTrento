@@ -57,8 +57,8 @@ class AuthService {
     required String email,
     required String password,
   }) async {
-    print('📩 Email inviata: $email');
-    print('📥 Password inviata: $password');
+    print('Email inviata: $email');
+    print('Password inviata: $password');
 
     final resp = await http.post(
       Uri.parse(loginUrl),

@@ -21,7 +21,7 @@
 import 'package:flutter/material.dart';
 
 ///
-/// 🪙 Widget che rappresenta un singolo elemento visivo dello storico.
+/// Widget che rappresenta un singolo elemento visivo dello storico.
 ///
 /// Responsabilità principali:
 /// - Visualizzare:

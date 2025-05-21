@@ -35,7 +35,7 @@ class StoricoService {
   static Future<Map<String, dynamic>> getStoricoBolletta({
     required String email,
     required String password,
-    String tipo = 'elettrica', // 👈 default per test
+    String tipo = 'elettrica', //default per test
   }) async {
     final response = await http.post(
       Uri.parse(bolletta),
@@ -43,7 +43,7 @@ class StoricoService {
       body: jsonEncode({
         'email': email,
         'password': password,
-        'tipo': tipo, // 👈 essenziale!
+        'tipo': tipo, //essenziale!
       }),
     );
     return _gestisciRispostaSingola(response, 'bolletta');

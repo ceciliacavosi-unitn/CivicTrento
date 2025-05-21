@@ -452,7 +452,7 @@ app.post('/monitoraggio/voto', async (req, res) => {
   utente.saldo = (utente.saldo || 0) + voto.punti;
 
   // salvaUtenti([...]);
-  console.log(`✅ [VOTO] ${voto.punti} punti assegnati a ${email}`);
+  console.log(`[VOTO] ${voto.punti} punti assegnati a ${email}`);
   res.json(voto);
 });
 

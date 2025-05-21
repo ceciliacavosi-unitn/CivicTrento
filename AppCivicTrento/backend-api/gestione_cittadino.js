@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-// const mongoose = require("mongoose"); // 🔧 MongoDB disattivato
+// const mongoose = require("mongoose"); // MongoDB disattivato
 
 // Percorso del file JSON
 const JSON_FILE = path.join(__dirname, 'data', "dati_cittadino.json");
@@ -30,7 +30,7 @@ const header = ["email", "subscription_code", "pod_code", "driver_license"];
 // const DatiCittadino = mongoose.model('DatiCittadino', cittadinoSchema);
 
 // ===================================================
-// 📘 FUNZIONI BASATE SU FILE JSON
+// FUNZIONI BASATE SU FILE JSON
 // ===================================================
 
 /**
@@ -42,7 +42,7 @@ function getDatiCittadino(email) {
   const dati = contenuto ? JSON.parse(contenuto) : [];
   const utente = dati.find(d => d.email === email) || null;
 
-  // // 🔄 Salva anche su MongoDB (disattivato)
+  // // Salva anche su MongoDB (disattivato)
   // if (utente) {
   //   DatiCittadino.findOneAndUpdate(
   //     { email },
