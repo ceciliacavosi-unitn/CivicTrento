@@ -1,13 +1,13 @@
 // ======================================================
-// 📄 tipo_operazione.dart (dominio/storico/)
+// tipo_operazione.dart (dominio/storico/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce l'enumerazione `TipoOperazione`, che classifica
 //   le varie tipologie di operazioni registrate nello storico punti.
 //
 // ======================================================
 
-/// 🔄 Enum che rappresenta le categorie di operazioni storiche.
+/// Enum che rappresenta le categorie di operazioni storiche.
 ///
 /// Valori:
 /// - ACQUISTO_PREMIO: quando viene riscattato un premio.

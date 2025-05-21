@@ -1,13 +1,13 @@
 // ======================================================
-// 📄 bollette.dart (dominio/storico/)
+// bollette.dart (dominio/storico/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce il modello `Bolletta`, che rappresenta i dettagli
 //   di una bolletta registrata nello storico dell'app CivicCoins.
 //
 // ======================================================
 
-/// 💡 Modello dati per una Bolletta.
+/// Modello dati per una Bolletta.
 ///
 /// - [id]: identificativo univoco.
 /// - [descrizione]: descrizione sintetica della bolletta.

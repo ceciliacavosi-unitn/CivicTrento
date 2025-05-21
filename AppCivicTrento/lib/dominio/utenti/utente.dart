@@ -1,13 +1,13 @@
 // ======================================================
-// 📄 utente.dart (dominio/utenti/)
+// utente.dart (dominio/utenti/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce la classe base `Utente`, che rappresenta un utente
 //   generico del sistema CivicCoins.
 //
 // ======================================================
 
-/// 🧑 Classe base per rappresentare un utente del sistema.
+/// Classe base per rappresentare un utente del sistema.
 ///
 /// Campi comuni:
 /// - [nome]

@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 cittadino.dart (dominio/utenti/)
+// cittadino.dart (dominio/utenti/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce la classe `Cittadino`, che estende `Utente`
 //   con attributi specifici del cittadino (codice fiscale,
 //   numero carta d'identità, punti CivicCoins).
@@ -10,7 +10,7 @@
 
 import 'utente.dart';
 
-/// 🏛️ Classe `Cittadino`, estende `Utente`.
+/// Classe `Cittadino`, estende `Utente`.
 ///
 /// Campi aggiuntivi:
 /// - [codiceFiscale]

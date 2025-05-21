@@ -1,5 +1,3 @@
-//non so se volete farlo -> perchè ce ne stavamo dimenticando 
-
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../../config/api_endpoints.dart';

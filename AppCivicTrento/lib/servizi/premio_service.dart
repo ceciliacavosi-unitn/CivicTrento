@@ -1,11 +1,11 @@
 // ======================================================
-// 📄 premio_service.dart (servizi/)
+// premio_service.dart (servizi/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Gestisce le richieste HTTP relative ai premi.
 // - Fornisce metodi per caricare e riscattare premi.
 //
-// ✅ Debug integrato a livello logico:
+// Debug integrato a livello logico:
 // - Caricamento dati da API e gestione errori.
 // - Simulazione del riscatto premio.
 // ======================================================
@@ -15,7 +15,7 @@ import 'package:http/http.dart' as http;
 import '../config/api_endpoints.dart';
 
 class PremioService {
-  /// 🔄 Carica i premi da backend (GET /premi)
+  /// Carica i premi da backend (GET /premi)
   ///
   /// Ritorna una lista di mappe contenenti i dati dei premi.
   /// Se la risposta è valida (statusCode 200), effettua il parsing JSON.
@@ -32,7 +32,7 @@ class PremioService {
     }
   }
 
-  /// ✅ Simula il riscatto di un premio (POST /premi/:id)
+  /// Simula il riscatto di un premio (POST /premi/:id)
   ///
   /// Invia una richiesta POST all'endpoint per riscattare il premio con l'ID specificato.
   /// Ritorna true se lo statusCode è 200 (successo), altrimenti false.

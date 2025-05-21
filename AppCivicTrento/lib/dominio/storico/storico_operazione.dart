@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 storico_operazione.dart (dominio/storico/)
+// storico_operazione.dart (dominio/storico/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce la classe `StoricoOperazione`, che rappresenta
 //   un'operazione registrata nello storico punti CivicCoins.
 //
@@ -9,7 +9,7 @@
 
 import 'tipo_operazione.dart'; 
 
-/// 📝 Modello dati per un'operazione dello storico.
+/// Modello dati per un'operazione dello storico.
 ///
 /// Campi:
 /// - [data]: data dell'operazione.
@@ -30,7 +30,7 @@ class StoricoOperazione {
     required String descrizione,
   }) : _descrizione = descrizione;
 
-  /// 🔎 Metodo pubblico per ottenere il tipo di operazione.
+  /// Metodo pubblico per ottenere il tipo di operazione.
   TipoOperazione getTipoOperazione() {
     return tipo;
   }

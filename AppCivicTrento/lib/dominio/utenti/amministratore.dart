@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 amministratore.dart (dominio/utenti/)
+// amministratore.dart (dominio/utenti/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce la classe `Amministratore`, che estende `Utente`
 //   e rappresenta un amministratore con privilegi aggiuntivi.
 //
@@ -9,7 +9,7 @@
 
 import 'utente.dart';
 
-/// 🛡️ Classe `Amministratore`, estende `Utente`.
+/// Classe `Amministratore`, estende `Utente`.
 ///
 /// Campi aggiuntivi (opzionale):
 /// - [permessi]: lista di permessi/azioni amministrative consentite.

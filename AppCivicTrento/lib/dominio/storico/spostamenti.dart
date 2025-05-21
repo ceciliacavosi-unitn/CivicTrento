@@ -1,13 +1,13 @@
 // ======================================================
-// 📄 spostamenti.dart (dominio/storico/)
+// spostamenti.dart (dominio/storico/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce la classe `Spostamento`, che rappresenta un
 //   movimento registrato nello storico dell'app CivicCoins.
 //
 // ======================================================
 
-/// 🚶‍♂️ Modello dati per uno Spostamento.
+/// Modello dati per uno Spostamento.
 ///
 /// Campi principali:
 /// - [id]: identificativo univoco.
@@ -20,7 +20,7 @@ class Spostamento {
   final String id;
   final String percorso;
   final DateTime data;
-  final String modalita; // 👉 Hey! Potresti creare un TipoSpostamento enum se diventa strutturato.
+  final String modalita; // Hey! Potresti creare un TipoSpostamento enum se diventa strutturato.
   final double distanzaKm;
   final int puntiAccumulati;
 

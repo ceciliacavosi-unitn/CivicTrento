@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 home_screen.dart (versione aggiornata)
+// home_screen.dart (versione aggiornata)
 //
-// 📌 Mostra lo storico dei comportamenti civici usando email/password,
+// Mostra lo storico dei comportamenti civici usando email/password,
 //     formattando i dati secondo i punteggi configurati in storico.json.
 // ======================================================
 
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       final unificato = <Map<String, dynamic>>[];
 
-      // 🗳️ Voto elettorale
+      // Voto elettorale
       final voto = await StoricoService.getStoricoVoto(email: email, password: password);
       if (voto['punti'] != null) {
         unificato.add({
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
 
-      // 💧 Bolletta
+      // Bolletta
       final bolletta = await StoricoService.getStoricoBolletta(
         email: email,
         password: password,
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
 
-      // 🚶‍♂️ Spostamento sostenibile
+      // Spostamento sostenibile
       final movimento = await StoricoService.getStoricoMovimento(email: email, password: password);
       if (movimento['distanza_km'] != null) {
         final distanza = double.tryParse(movimento['distanza_km'].toString()) ?? 0;
@@ -96,7 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
 
-      // 🚌 Abbonamento mezzi pubblici
+      // Abbonamento mezzi pubblici
       final trasporti = await StoricoService.getStoricoTrasporti(email: email, password: password);
       if (trasporti['punti'] != null) {
         unificato.add({
@@ -106,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
 
-      // 🚨 Multe
+      // Multe
       final multa = await StoricoService.getStoricoMulte(email: email, password: password);
       if (multa['gravita'] != null) {
         final gravita = multa['gravita'];
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('❌ Errore caricamento storico: $e');
+      debugPrint('Errore caricamento storico: $e');
       setState(() => isLoading = false);
     }
   }

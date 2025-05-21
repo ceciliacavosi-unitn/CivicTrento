@@ -1,14 +1,14 @@
 // ======================================================
-// 📄 account_screen.dart (presentazione/schermate/)
+// account_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Mostra e permette di modificare i dati anagrafici/account:
-//   ✅ Nome
-//   ✅ Cognome
-//   ✅ Email
-//   ✅ Password
-//   ✅ Codice fiscale
-//   ✅ Numero carta d'identità
+//   Nome
+//   Cognome
+//   Email
+//   Password
+//   Codice fiscale
+//   Numero carta d'identità
 //
 // - Usa UtenteService per caricare e salvare i dati.
 // ======================================================
@@ -51,9 +51,9 @@ class _AccountScreenState extends State<AccountScreen> {
     _loadProfile();
   }
 
-  /// 🔄 Carica i dati anagrafici tramite UtenteService
+  /// Carica i dati anagrafici tramite UtenteService
   Future<void> _loadProfile() async {
-    print("🔄 [_loadProfile] Email: ${widget.email}, Password: $_password");
+    print("[_loadProfile] Email: ${widget.email}, Password: $_password");
 
     try {
       final data = await UtenteService.fetchProfile(
@@ -61,7 +61,7 @@ class _AccountScreenState extends State<AccountScreen> {
         password: _password,
       );
 
-      print("✅ Profilo caricato (grezzo): $data");
+      print("Profilo caricato (grezzo): $data");
 
       final nome = data['nome'];
       final cognome = data['cognome'];
@@ -78,7 +78,7 @@ class _AccountScreenState extends State<AccountScreen> {
         _loading = false;
       });
     } catch (e) {
-      print("❌ Errore nel caricamento profilo: $e");
+      print("Errore nel caricamento profilo: $e");
       setState(() {
         _error = 'Errore nel caricamento dati: ${e.toString()}';
         _loading = false;
@@ -86,7 +86,7 @@ class _AccountScreenState extends State<AccountScreen> {
     }
   }
 
-  /// ✏️ Modifica un campo specifico
+  /// Modifica un campo specifico
   Future<void> _editField(String label, String currentValue, String fieldKey) async {
     final newValue = await Navigator.push<String?>(
       context,
@@ -101,7 +101,7 @@ class _AccountScreenState extends State<AccountScreen> {
     if (newValue != null && newValue != currentValue) {
       setState(() => _loading = true);
       try {
-        print("✏️ Modifica $fieldKey → $newValue (con password attuale: $_password)");
+        print("Modifica $fieldKey → $newValue (con password attuale: $_password)");
 
         await UtenteService.modifyProfile(
           email: widget.email,
@@ -111,7 +111,7 @@ class _AccountScreenState extends State<AccountScreen> {
         );
 
         if (fieldKey == 'password') {
-          print("🔐 Password aggiornata localmente");
+          print("Password aggiornata localmente");
           _password = newValue;
 
           ScaffoldMessenger.of(context).showSnackBar(
@@ -129,7 +129,7 @@ class _AccountScreenState extends State<AccountScreen> {
           SnackBar(content: Text('$label aggiornato con successo')),
         );
       } catch (e) {
-        print("❌ Errore nella modifica di $fieldKey: $e");
+        print("Errore nella modifica di $fieldKey: $e");
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Errore: ${e.toString()}')),
         );

@@ -1,11 +1,11 @@
 // ======================================================
-// 📄 premio.dart (dominio/premi/)
+// premio.dart (dominio/premi/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce la classe `Premio`, che rappresenta un premio riscattabile
 //   nel dominio dell'app CivicCoins.
 //
-// 📦 Collegamento alla struttura del progetto:
+// Collegamento alla struttura del progetto:
 // - Collocato nella cartella `dominio/premi/`, è il modello base di dati
 //   che viene usato dai servizi e dalla UI per gestire e visualizzare i premi.
 //
@@ -13,9 +13,9 @@
 
 import 'tipo_premio.dart';
 
-/// 🏆 Modello dati che rappresenta un Premio.
+/// Modello dati che rappresenta un Premio.
 ///
-/// ✅ Campi principali:
+/// Campi principali:
 /// - [id]: identificativo univoco del premio.
 /// - [nome]: nome o descrizione breve del premio.
 /// - [descrizione]: dettagli aggiuntivi (facoltativo).
@@ -36,7 +36,7 @@ class Premio {
 
  
 
-  /// 🔄 Factory per creare un Premio da una mappa JSON.
+  /// Factory per creare un Premio da una mappa JSON.
   factory Premio.fromJson(Map<String, dynamic> json) {
     return Premio(
       id: json['id'],
@@ -46,7 +46,7 @@ class Premio {
     );
   }
 
-  /// 📝 Converte il Premio in una mappa JSON.
+  /// Converte il Premio in una mappa JSON.
   Map<String, dynamic> toJson() {
     return {
       'id': id,

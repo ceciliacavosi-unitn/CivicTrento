@@ -1,7 +1,7 @@
 //======================================================
-// 📄 storico_spostamenti_screen.dart (presentazione/schermate/)
+// storico_spostamenti_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Mostra lo storico degli spostamenti registrati dinamicamente.
 // - Attualmente gestisce un singolo spostamento simulato.
 // ======================================================
@@ -47,7 +47,7 @@ class _StoricoSpostamentiScreenState extends State<StoricoSpostamentiScreen> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('❌ Errore caricamento spostamento: $e');
+      debugPrint('Errore caricamento spostamento: $e');
       setState(() => isLoading = false);
     }
   }

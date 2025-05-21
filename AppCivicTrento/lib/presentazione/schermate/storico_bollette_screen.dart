@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 storico_bollette_screen.dart (presentazione/schermate/)
+// storico_bollette_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Mostra lo storico delle bollette pagate.
 // - Recupera i dati dinamicamente dal backend.
 // ======================================================
@@ -48,7 +48,7 @@ class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('❌ Errore caricamento bolletta: $e');
+      debugPrint('Errore caricamento bolletta: $e');
       setState(() => isLoading = false);
     }
   }

@@ -1,18 +1,18 @@
 // ======================================================
-// 📄 storico_elemento.dart (presentazione/widget/)
+// storico_elemento.dart (presentazione/widget/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Rappresenta un singolo elemento della lista dello storico
 //   (operazioni registrate come multe, bollette, spostamenti).
 //
-// 📦 Collegamento alla struttura del progetto:
+// Collegamento alla struttura del progetto:
 // - Si trova in `presentazione/widget/`.
 // - Utilizzato da:
 //   - storico_bollette_screen.dart
 //   - storico_multe_screen.dart
 //   - storico_spostamenti_screen.dart
 //
-// ✅ Dipendenze dirette:
+// Dipendenze dirette:
 // - Flutter Material (UI base).
 // - Asset locale: `assets/images/civic_coin.png` (icona moneta).
 //
@@ -23,23 +23,23 @@ import 'package:flutter/material.dart';
 ///
 /// 🪙 Widget che rappresenta un singolo elemento visivo dello storico.
 ///
-/// 🔑 Responsabilità principali:
+/// Responsabilità principali:
 /// - Visualizzare:
-///   - ✅ Titolo (nome dell’operazione o evento registrato).
-///   - ✅ Data/ora (sottotitolo).
-///   - ✅ Punti guadagnati o persi (con + o -).
-///   - ✅ Icona CivicCoins accanto ai punti.
+///   - Titolo (nome dell’operazione o evento registrato).
+///   - Data/ora (sottotitolo).
+///   - Punti guadagnati o persi (con + o -).
+///   - Icona CivicCoins accanto ai punti.
 /// - Colora dinamicamente i punti:
-///   - 🟢 Verde ➔ punti positivi (premio guadagnato).
-///   - 🔴 Rosso ➔ punti negativi (ad esempio penalità o storno).
+///   - Verde ➔ punti positivi (premio guadagnato).
+///   - Rosso ➔ punti negativi (ad esempio penalità o storno).
 /// - Mostra un piccolo dot rosso opzionale (es. per notificare stato nuovo/non letto).
 ///
-/// 🛠️ Dettagli implementativi:
+/// Dettagli implementativi:
 /// - È costruito su `ListTile`, incapsulato in un `Material` con bordi arrotondati.
 /// - Asset immagine caricato da locale (verifica che sia incluso in `pubspec.yaml`).
 /// - Opzionale: estendibile con gesture (onTap, onLongPress…) in futuro.
 ///
-/// 👉 Esempio di utilizzo:
+/// Esempio di utilizzo:
 /// ```dart
 /// ElementoStorico(
 ///   title: 'Pagamento bolletta elettrica',
@@ -63,20 +63,20 @@ class ElementoStorico extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context); // 🎨 Recupera il tema corrente
-    final isNegative = points.startsWith('-'); // 🔍 Determina se è una penalità
-    final cleanPts = points.replaceAll(RegExp(r'[^0-9+-]'), ''); // 🔢 Pulisce simboli
+    final theme = Theme.of(context); // Recupera il tema corrente
+    final isNegative = points.startsWith('-'); // Determina se è una penalità
+    final cleanPts = points.replaceAll(RegExp(r'[^0-9+-]'), ''); // Pulisce simboli
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
       child: Material(
-        color: theme.colorScheme.surface, // ✅ Sfondo adattivo al tema
+        color: theme.colorScheme.surface, // Sfondo adattivo al tema
         elevation: 1.5,
         borderRadius: BorderRadius.circular(12),
         child: ListTile(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
 
-          // 👉 TITOLO: principale + dot opzionale
+          //TITOLO: principale + dot opzionale
           title: Row(
             children: [
               Text(
@@ -100,7 +100,7 @@ class ElementoStorico extends StatelessWidget {
             ],
           ),
 
-          // 🗓️ SOTTOTITOLO: data o dettagli secondari
+          // SOTTOTITOLO: data o dettagli secondari
           subtitle: Text(
             subtitle,
             style: theme.textTheme.bodyMedium?.copyWith(
@@ -108,11 +108,11 @@ class ElementoStorico extends StatelessWidget {
             ),
           ),
 
-          // ➕/➖ TRAILING: punti + icona CivicCoin
+          // TRAILING: punti + icona CivicCoin
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // 🔢 Punti (con colore dinamico)
+              // Punti (con colore dinamico)
               Text(
                 cleanPts,
                 style: TextStyle(
@@ -124,7 +124,7 @@ class ElementoStorico extends StatelessWidget {
 
               const SizedBox(width: 4),
 
-              // 🪙 Icona CivicCoin (asset locale)
+              // Icona CivicCoin (asset locale)
               ColorFiltered(
                 colorFilter: ColorFilter.mode(
                   isNegative ? Colors.red : Colors.green,

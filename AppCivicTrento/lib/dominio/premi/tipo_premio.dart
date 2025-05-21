@@ -1,14 +1,14 @@
 // ======================================================
-// 📄 tipo_premio.dart (dominio/premi/)
+// tipo_premio.dart (dominio/premi/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce l'enumerazione `TipoPremio`, che classifica i tipi
 //   di premi disponibili nell'app CivicCoins in modo coerente
 //   con il diagramma UML.
 //
 // ======================================================
 
-/// 🎯 Enum che rappresenta le categorie di premi.
+/// Enum che rappresenta le categorie di premi.
 ///
 /// Valori:
 /// - TASSA_COMUNALE: premio relativo a tasse comunali.

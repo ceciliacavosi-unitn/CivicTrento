@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import '../../presentazione/schermate/login_screen.dart';
 import '../../servizi/auth_service.dart';
 
-/// 📝 Schermata di registrazione utente per CivicCoins.
+/// Schermata di registrazione utente per CivicCoins.
 class RegistrazioneScreen extends StatefulWidget {
   const RegistrazioneScreen({super.key});
 
@@ -25,7 +25,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
   //  Form key per validare il form
   final _formKey = GlobalKey<FormState>();
 
-  // 📥 Controller per i vari campi del form
+  // Controller per i vari campi del form
   final _nameController = TextEditingController();
   final _surnameController = TextEditingController();
   final _emailController = TextEditingController();
@@ -36,7 +36,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
   //variabile per consenso GDPR
   bool _consensoGDPR = false;
 
-  /// 🔄 Metodo che esegue la registrazione:
+  /// Metodo che esegue la registrazione:
   /// - Valida il form.
   /// - Esegue la chiamata API tramite UserService.
   /// - Mostra un messaggio di successo o errore.
@@ -53,7 +53,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
     }
 
 
-    // 🔎 Manca controllo coerenza input:
+    // Manca controllo coerenza input:
     // ➔ Es. validazione email formale, password sicura, codice fiscale valido ecc.
 
     try {
@@ -146,7 +146,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
                   ],
                 ),
 
-                // 🔘 Pulsante di invio registrazione
+                // Pulsante di invio registrazione
                 ElevatedButton(
                   onPressed: _register,
                   child: const Text("Registrati"),

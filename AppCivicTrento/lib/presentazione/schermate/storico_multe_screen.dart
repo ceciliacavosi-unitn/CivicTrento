@@ -1,7 +1,7 @@
 // ======================================================
-// 📄 storico_multe_screen.dart (presentazione/schermate/)
+// storico_multe_screen.dart (presentazione/schermate/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Mostra la lista delle multe ricevute nello storico.
 // - Recupera i dati dinamicamente dal backend (fase test).
 // ======================================================
@@ -47,7 +47,7 @@ class _StoricoMulteScreenState extends State<StoricoMulteScreen> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('❌ Errore caricamento multa: $e');
+      debugPrint('Errore caricamento multa: $e');
       setState(() => isLoading = false);
     }
   }

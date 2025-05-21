@@ -1,13 +1,13 @@
 // ======================================================
-// 📄 multe.dart (dominio/storico/)
+// multe.dart (dominio/storico/)
 //
-// 📌 Funzione del file:
+// Funzione del file:
 // - Definisce la classe `Multa`, che rappresenta una multa registrata
 //   nello storico dell'app CivicCoins.
 //
 // ======================================================
 
-/// 🚔 Modello dati per una Multa.
+/// Modello dati per una Multa.
 ///
 /// Campi principali:
 /// - [id]: identificativo univoco.
