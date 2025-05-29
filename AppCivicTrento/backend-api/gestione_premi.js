@@ -72,6 +72,18 @@ function riscattaPremio(premioId) {
     }
 
     console.log(`[riscattaPremio] Premio riscattato: ${premio.nome}`);
+    
+    //Aggiorna ultimaAttivita dell'utente
+    if (fs.existsSync(utentiPath)){
+      const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
+      const indice = utenti. findIndex(u => u.email === emailUtente);
+      if (indice !== -1) {
+        utenti[indice].ultimaAttivita = new Date();
+        fs.writeFileSync(utentiPath), JSON.stringify(utenti, null, 2);
+        console.log('[riscattaPremio] Aggiornata ultimaAttivita per ${emailUtente}');
+      }
+    }
+    
     return premio;
   } catch (err) {
     console.error("[riscattaPremio] Errore nella gestione del riscatto:", err);

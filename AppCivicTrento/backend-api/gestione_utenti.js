@@ -129,6 +129,11 @@ async function modificaProfiloUtente(email, password, field, newValue) {
               u[chiave] = newValue.trim();
               console.log(`Campo '${chiave}' aggiornato a '${newValue.trim()}'`);
             }
+
+            //Aggiorno ultimaAttivita
+            u.ultimaAttivita = new Date();
+            console.log("ultimaAttivita aggiornata");
+            
             modificatoJSON = true;
           }
         }

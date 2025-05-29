@@ -44,6 +44,20 @@ const {
   riscattaPremio
 } = require("./gestione_premi");
 
+const utentiPath = path.join(__dirname, "data", "utenti.json");
+
+function aggiornaUltimaAttivita(email){
+  if (!fs.existsSync(utentiPath)) return;
+
+  const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
+  const indice = utenti.findIdex(u => u.email === email);
+  if (indice !== -1) {
+    utenti[indice].ultimaAttivita = new Date();
+    fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+    console.log('Aggiornata ultimaAttivita per ${email}');
+  }
+}
+
 //pagina principale
 app.get("/", (req, res) => {
   res.send(`
@@ -191,6 +205,8 @@ app.post("/utente/profilo", async (req, res) => {
     CF: profilo.CF,
     cartaID: profilo.cartaID
   });
+
+  aggiornaUltimaAttivita(email.trim());
 });
 
 
@@ -226,6 +242,7 @@ app.put("/utente/modifica_profilo", async (req, res) => {
 
     console.log(`[MODIFICA PROFILO] ${field} modificato per ${email}`);
     res.json({ status: "success", field, new_value });
+    aggiornaUltimaAttivita(email.trim());
   } catch (error) {
     console.error("Errore interno nella modifica del profilo:", error);
     res.status(500).json({ detail: "Errore interno del server" });
@@ -313,6 +330,8 @@ app.post("/cittadino/dati", async (req, res) => {
 
   console.log(`[GET DATI CITTADINO] Dati restituiti per ${email}`);
   res.json(dati);
+
+  aggiornaUltimaAttivita(email.trim());
 });
 
 /**
@@ -335,6 +354,8 @@ app.post("/cittadino/aggiungi_dato", async (req, res) => {
 
   console.log(`[AGGIUNGI DATO] ${field} aggiunto per ${email}`);
   res.json({ status: "success", message: `${field} aggiunto` });
+
+  aggiornaUltimaAttivita(email.trim());
 });
 
 /**
@@ -357,6 +378,8 @@ app.put("/cittadino/modifica_dato", async (req, res) => {
 
   console.log(`[MODIFICA DATO] ${field} aggiornato per ${email}`);
   res.json({ status: "success", message: `${field} modificato` });
+
+  aggiornaUltimaAttivita(email.trim());
 });
 
 /**
@@ -379,6 +402,8 @@ app.delete("/cittadino/rimuovi_dato", async (req, res) => {
 
   console.log(`[RIMUOVI DATO] ${field} rimosso per ${email}`);
   res.json({ status: "success", message: `${field} rimosso` });
+
+  aggiornaUltimaAttivita(email.trim());
 });
 
 /**
@@ -397,6 +422,8 @@ app.delete("/cittadino/rimuovi_tutti", async (req, res) => {
   const ok = rimuoviTutti(email.trim());
   console.log(`[RIMUOVI TUTTI] Tutti i dati rimossi per ${email}`);
   res.json({ status: "success", message: ok ? "Tutti i dati eliminati" : "Nessun dato da rimuovere" });
+
+  aggiornaUltimaAttivita(email.trim());
 });
 
 // === PREMI ===
@@ -416,6 +443,11 @@ app.get("/premi", (req, res) => {
 // POST /premi/riscatta/:id → simula il riscatto del premio
 app.post("/premi/riscatta/:id", (req, res) => {
   const premioId = req.params.id;
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({detail: "Email mancante"});
+  }
 
   try {
     const risultato = riscattaPremio(premioId); // usa la funzione
