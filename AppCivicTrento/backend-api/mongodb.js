@@ -60,6 +60,7 @@ const utente1 = new Utente({
   cartaID: 'cartaID1',
   gdprConsent: true,
   gdprConsentDate: new Date(),
+  ultimaAttivita: { type: Date, default: Date.now }
 });
 
 await utente1.save();

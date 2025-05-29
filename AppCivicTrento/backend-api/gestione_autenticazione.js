@@ -112,7 +112,16 @@ async function trovaCredenziali(email, plainPassword) {
       const trovato = utenti.find(u => u.email === email);
       if (trovato) {
         const match = await bcrypt.compare(plainPassword, trovato.password);
-        if (match) return trovato;
+        if (match)
+          //Aggiorna ultimaAttività
+          trovato.ultimaAttivita = new Date();
+
+          //Sovrascrive l'utente aggiornato nel file
+          const indice = utenti.findIndex(u => u.email === email);
+          utenti[indice] = trovato;
+          fs.writeFileSync(filePath, JSON.stringify(utenti, null, 2));
+          
+          return trovato;
       }
     } catch (err) {
       console.error("Errore parsing utenti.json:", err);
