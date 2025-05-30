@@ -7,6 +7,13 @@ class ServizioMovimento {
   static final _health = HealthFactory();
 
   static Future<double> leggiKmPercorsiOggi() async {
+    //richiesta permesso ACTIVITY_RECOGNITION per Android
+    final status = await Permission.activityRecognition.request();
+    if (!status.isGranted) {
+      print("Permesso ACTIVITY_RECOGNITION negato");
+      return 0;
+    }
+    
     final types = [HealthDataType.DISTANCE_DELTA];
 
     final isAuthorized = await _health.requestAuthorization(types);
