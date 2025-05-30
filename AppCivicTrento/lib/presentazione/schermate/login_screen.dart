@@ -45,17 +45,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _login() async {
     setState(() => _isLoading = true);
     try {
-      // Esegue la chiamata di login al servizio
+      // ✅ Solo chiamata al servizio: il token viene gestito internamente
       await AuthService.login(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
-      // Se ok, memorizza le credenziali globalmente
-      SistemaAutenticazione.login(
-        _emailController.text,
-        _passwordController.text,
-      );
+      // ✅ Nessuna chiamata a SistemaAutenticazione.login qui: già fatto in AuthService
 
       // Reindirizza alla schermata Home
       Navigator.of(context).pushReplacement(
@@ -72,10 +68,10 @@ class _LoginScreenState extends State<LoginScreen> {
         SnackBar(content: Text(e.toString())),
       );
     } finally {
-      // Sempre alla fine: disattiva la modalità di caricamento
       setState(() => _isLoading = false);
     }
   }
+
 
   @override
   Widget build(BuildContext context) {

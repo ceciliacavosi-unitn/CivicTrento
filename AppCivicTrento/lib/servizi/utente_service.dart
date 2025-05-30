@@ -17,20 +17,33 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/api_endpoints.dart';
 
 class UtenteService {
+  // Recupera il token JWT salvato localmente
+  static Future<String> _getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('jwt_token');
+    if (token == null) throw Exception('Token JWT non trovato. Effettua il login.');
+    return token;
+  }
+
+  // Header con Authorization
+  static Future<Map<String, String>> _authHeaders() async {
+    final token = await _getToken();
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+  }
 
   // ======================================================
   //  POST /utente/profilo - Recupera profilo utente
-  static Future<Map<String, String>> fetchProfile({
-    required String email,
-    required String password,
-  }) async {
+  static Future<Map<String, String>> fetchProfile() async {
     final resp = await http.post(
       Uri.parse(myAccountUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'email': email, 'password': password}),
+      headers: await _authHeaders(),
     );
     if (resp.statusCode == 200) {
       final data = json.decode(resp.body) as Map<String, dynamic>;
@@ -38,7 +51,7 @@ class UtenteService {
         'nome': data['nome'] as String? ?? '',
         'cognome': data['cognome'] as String? ?? '',
         'email': data['email'] as String? ?? '',
-        'password':data['password'] as String? ?? '',
+        'password': data['password'] as String? ?? '',
         'CF': data['CF'] as String? ?? '',
         'cartaID': data['cartaID'] as String? ?? '',
       };
@@ -50,17 +63,13 @@ class UtenteService {
   // ======================================================
   //  PUT /utente/modifica_profilo - Modifica profilo utente
   static Future<void> modifyProfile({
-    required String email,
-    required String password,
     required String field,
     required String newValue,
   }) async {
     final resp = await http.put(
       Uri.parse(modifyProfileUrl),
-      headers: {'Content-Type': 'application/json'},
+      headers: await _authHeaders(),
       body: json.encode({
-        'email': email,
-        'password': password,
         'field': field,
         'new_value': newValue.trim(),
       }),
@@ -72,7 +81,7 @@ class UtenteService {
   }
 
   // ======================================================
-  //  Funzione privata: parsing errori dal server
+  //  Parsing errori dal server
   static String _parseError(String body) {
     try {
       final jsonBody = json.decode(body) as Map<String, dynamic>;

@@ -70,10 +70,7 @@ class MainScreenState extends State<MainScreen> {
 
   Future<void> _fetchUserInitials() async {
     try {
-      final profile = await UtenteService.fetchProfile(
-        email: widget.email,
-        password: widget.password,
-      );
+      final profile = await UtenteService.fetchProfile();
       final nome = profile['nome'] ?? '';
       final cognome = profile['cognome'] ?? '';
       setState(() {

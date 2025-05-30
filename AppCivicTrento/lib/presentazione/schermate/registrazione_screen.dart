@@ -12,6 +12,8 @@
 import 'package:flutter/material.dart';
 import '../../presentazione/schermate/login_screen.dart';
 import '../../servizi/auth_service.dart';
+import 'package:flutter/gestures.dart';
+import 'informativa_privacy_screen.dart';
 
 /// Schermata di registrazione utente per CivicCoins.
 class RegistrazioneScreen extends StatefulWidget {
@@ -65,6 +67,7 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
         password: _passwordController.text.trim(),
         fiscalCode: _fiscalCodeController.text.trim(),
         idCardNumber: _idCardController.text.trim(),
+        gdprConsent: _consensoGDPR,
       );
 
       //  Mostra conferma e, dopo la chiusura dello SnackBar, naviga al Login
@@ -138,9 +141,27 @@ class _RegistrazioneScreenState extends State<RegistrazioneScreen> {
                       },
                     ),
                     Expanded(
-                      child: Text(
-                        "Acconsento al trattamento dei miei dati personali secondo l'informativa privacy.",
-                        style: TextStyle(fontSize: 14),
+                      child: RichText(
+                        text: TextSpan(
+                          style: const TextStyle(fontSize: 14, color: Colors.black),
+                          children: [
+                            const TextSpan(text: "Acconsento al trattamento dei miei dati personali secondo "),
+                            TextSpan(
+                              text: "l'informativa privacy",
+                              style: const TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => const InformativaPrivacyScreen(),
+                                    ),
+                                  );
+                                },
+                            ),
+                            const TextSpan(text: "."),
+                          ],
+                        ),
                       ),
                     ),
                   ],

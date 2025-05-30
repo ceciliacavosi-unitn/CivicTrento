@@ -31,47 +31,27 @@ const filePath = path.join(__dirname, 'data', 'utenti.json');
 // ================================================
 
 /**
- * Verifica credenziali
- */
-async function verificaUtente(email, password) {
-  try {
-    if (fs.existsSync(filePath)) {
-      const utenti = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-      const utente = utenti.find(u => u.email === email);
-      if (utente && await bcrypt.compare(password, utente.password)) {
-        return true;
-      }
-    }
-
-    // // 🔍 Verifica anche su MongoDB (disattivato)
-    // const utenteDB = await Utente.findOne({ email }).lean();
-    // if (utenteDB && await bcrypt.compare(password, utenteDB.password)) {
-    //   return true;
-    // }
-
-    return false;
-
-  } catch (err) {
-    console.error("Errore nella verifica utente:", err);
-    return false;
-  }
-}
-
-/**
  * Recupera i dati dell’utente da JSON
  */
-async function getProfiloUtente(email, password) {
+async function getProfiloUtente(email) {
+  if (!email) {
+    console.warn("[GET PROFILO] Email non specificata");
+    return null;
+  }
+
   if (fs.existsSync(filePath)) {
     const utenti = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-    const utente = utenti.find(u => u.email === email);
-    if (utente && await bcrypt.compare(password, utente.password)) {
+    const utente = utenti.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+    if (utente) {
       return {
-        nome: utente.nome,
-        cognome: utente.cognome,
+        nome: utente.nome || "",
+        cognome: utente.cognome || "",
         email: utente.email,
         password: utente.password,
         CF: utente.CF,
-        cartaID: utente.cartaID
+        cartaID: utente.cartaID,
+        ultimaAttivita: utente.ultimaAttivita || null
       };
     }
   }
@@ -170,6 +150,5 @@ async function modificaProfiloUtente(email, password, field, newValue) {
 // ================================================
 module.exports = {
   getProfiloUtente,
-  modificaProfiloUtente,
-  verificaUtente
+  modificaProfiloUtente
 };

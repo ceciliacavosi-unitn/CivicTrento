@@ -37,11 +37,7 @@ class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
 
   Future<void> caricaBolletta() async {
     try {
-      final response = await StoricoService.getStoricoBolletta(
-        email: widget.email,
-        password: widget.password,
-        tipo: 'elettrica', // per ora valore fisso per esempio
-      );
+      final response = await StoricoService.getStoricoBolletta('elettrica');
 
       setState(() {
         bolletta = response;

@@ -17,76 +17,29 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/api_endpoints.dart';
 
 class CittadinoService {
   // ======================================================
-  //  POST /register - Registra un nuovo cittadino
-  static Future<void> register({
-    required String name,
-    required String surname,
-    required String email,
-    required String password,
-    required String fiscalCode,
-    required String idCardNumber,
-  }) async {
-    final resp = await http.post(
-      Uri.parse(registerUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'nome': name.trim(),
-        'cognome': surname.trim(),
-        'email': email.trim(),
-        'password': password.trim(),
-        'CF': fiscalCode.trim(),
-        'cartaID': idCardNumber.trim(),
-      }),
-    );
-    if (resp.statusCode != 200) {
-      final detail = _parseError(resp.body);
-      throw Exception('Registrazione fallita: $detail');
-    }
-  }
+  // Recupera i dati civici dell'utente autenticato
+  static Future<Map<String, String>> fetchMyData() async {
+    final token = await _getToken();
 
-  // ======================================================
-  //  POST /login - Effettua login
-  static Future<void> login({
-    required String email,
-    required String password,
-  }) async {
-    final resp = await http.post(
-      Uri.parse(loginUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'email': email, 'password': password}),
-    );
-    if (resp.statusCode != 200) {
-      final detail = _parseError(resp.body);
-      throw Exception('Login fallito: $detail');
-    }
-  }
-
-  // ======================================================
-  //  POST /cittadino/dati - Recupera dati civici
-  static Future<Map<String, String>> fetchMyData({
-    required String email,
-    required String password,
-  }) async {
     final resp = await http.post(
       Uri.parse(myDataUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'email': email, 'password': password}),
+      headers: _authHeaders(token),
     );
 
     if (resp.statusCode == 200) {
       final data = json.decode(resp.body) as Map<String, dynamic>;
       return {
-        'subscription_code': data['subscription_code'] as String? ?? '',
-        'pod_code': data['pod_code'] as String? ?? '',
-        'driver_license': data['driver_license'] as String? ?? '',
+        'subscription_code': data['subscription_code'] ?? '',
+        'pod_code': data['pod_code'] ?? '',
+        'driver_license': data['driver_license'] ?? '',
       };
     }
 
-    // Caso speciale: dati non ancora presenti
     if (resp.statusCode == 404 || resp.body.contains('Dati utente non trovati')) {
       return {
         'subscription_code': '',
@@ -100,102 +53,100 @@ class CittadinoService {
   }
 
   // ======================================================
-  //  POST /cittadino/inserisci_dati - Inserisce dati civici
+  // Aggiunge un nuovo dato civico
   static Future<void> insertData({
-    required String email,
-    required String password,
     required String field,
     required String value,
   }) async {
+    final token = await _getToken();
+
     final resp = await http.post(
       Uri.parse(insertDataUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'email': email,
-        'password': password,
-        'field': field,
-        'value': value,
-      }),
+      headers: _authHeaders(token),
+      body: json.encode({'field': field, 'value': value}),
     );
+
     if (resp.statusCode != 200) {
       final detail = _parseError(resp.body);
       throw Exception('Inserimento dati fallito: $detail');
     }
   }
 
-
   // ======================================================
-  //  PUT /cittadino/modifica_dati - Modifica dati civici
+  // Modifica un dato civico esistente
   static Future<void> modifyData({
-    required String email,
-    required String password,
     required String field,
     required String value,
   }) async {
+    final token = await _getToken();
+
     final resp = await http.put(
       Uri.parse(modifyDataUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'email': email,
-        'password': password,
-        'field': field,
-        'value': value,
-      }),
+      headers: _authHeaders(token),
+      body: json.encode({'field': field, 'value': value}),
     );
+
     if (resp.statusCode != 200) {
       final detail = _parseError(resp.body);
       throw Exception('Modifica dati fallita: $detail');
     }
   }
 
-
   // ======================================================
-  //  DELETE /cittadino/rimuovi_dato - Elimina un dato civico
+  // Rimuove un singolo dato civico
   static Future<void> deleteData({
-    required String email,
-    required String password,
     required String field,
   }) async {
+    final token = await _getToken();
+
     final resp = await http.delete(
       Uri.parse(deleteDataUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        'email': email,
-        'password': password,
-        'field': field,
-        'value': '', 
-      }),
+      headers: _authHeaders(token),
+      body: json.encode({'field': field}),
     );
 
     if (resp.statusCode != 200) {
       final detail = _parseError(resp.body);
-      throw Exception('Eliminazione dati fallita: $detail');
-    }
-  }
-
-  //  DELETE /cittadino/rimuovi_tutti - Elimina tutti i dati civici
-  static Future<void> deleteAllData({
-    required String email,
-    required String password,
-  }) async {
-    final resp = await http.delete(
-      Uri.parse(deleteAllDataUrl),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'email': email, 'password': password}),
-    );
-
-    if (resp.statusCode != 200) {
-      final detail = _parseError(resp.body);
-      throw Exception('Eliminazione completa dei dati fallita: $detail');
+      throw Exception('Eliminazione dato fallita: $detail');
     }
   }
 
   // ======================================================
-  //  Funzione privata: parsing errori
+  // Rimuove tutti i dati civici
+  static Future<void> deleteAllData() async {
+    final token = await _getToken();
+
+    final resp = await http.delete(
+      Uri.parse(deleteAllDataUrl),
+      headers: _authHeaders(token),
+    );
+
+    if (resp.statusCode != 200) {
+      final detail = _parseError(resp.body);
+      throw Exception('Eliminazione completa fallita: $detail');
+    }
+  }
+
+  // ======================================================
+  // Funzioni di utilità privata
+  static Future<String> _getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('jwt_token');
+    if (token == null) throw Exception('Token non trovato, effettua il login');
+    return token;
+  }
+
+  static Map<String, String> _authHeaders(String token) {
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+  }
+
   static String _parseError(String body) {
     try {
       final jsonBody = json.decode(body) as Map<String, dynamic>;
-      return jsonBody['detail'] as String? ?? body;
+      return jsonBody['detail'] ?? body;
     } catch (_) {
       return body;
     }
