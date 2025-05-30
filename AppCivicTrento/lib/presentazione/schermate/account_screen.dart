@@ -56,10 +56,7 @@ class _AccountScreenState extends State<AccountScreen> {
     print("[_loadProfile] Email: ${widget.email}, Password: $_password");
 
     try {
-      final data = await UtenteService.fetchProfile(
-        email: widget.email,
-        password: _password,
-      );
+      final data = await UtenteService.fetchProfile();
 
       print("Profilo caricato (grezzo): $data");
 
@@ -104,8 +101,6 @@ class _AccountScreenState extends State<AccountScreen> {
         print("Modifica $fieldKey → $newValue (con password attuale: $_password)");
 
         await UtenteService.modifyProfile(
-          email: widget.email,
-          password: _password,
           field: fieldKey,
           newValue: newValue,
         );
@@ -118,7 +113,7 @@ class _AccountScreenState extends State<AccountScreen> {
             const SnackBar(content: Text('Password aggiornata con successo')),
           );
 
-          SistemaAutenticazione.login(widget.email, _password);
+          SistemaAutenticazione.login(widget.email, _password, SistemaAutenticazione.token);
           Navigator.pop(context, _password);
           return; // evita _loadProfile con password vecchia
         }

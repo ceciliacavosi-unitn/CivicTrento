@@ -37,10 +37,7 @@ class _StoricoMulteScreenState extends State<StoricoMulteScreen> {
 
   Future<void> caricaMulta() async {
     try {
-      final response = await StoricoService.getStoricoMulte(
-        email: widget.email,
-        password: widget.password,
-      );
+      final response = await StoricoService.getStoricoMulte('media');
 
       setState(() {
         multa = response;

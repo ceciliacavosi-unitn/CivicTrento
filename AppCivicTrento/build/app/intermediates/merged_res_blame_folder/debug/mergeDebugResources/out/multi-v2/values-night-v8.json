@@ -4,7 +4,7 @@
             "outputFile": "com.example.app-mergeDebugResources-4:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/root/.gradle/caches/8.10.2/transforms/845d779a6f9703b804f5e43452bcc2e5/transformed/appcompat-1.1.0/res/values-night-v8/values-night-v8.xml",
+                    "source": "/root/.gradle/caches/8.10.2/transforms/32b4b56d05ef6e8304a3f9e310780ae5/transformed/appcompat-1.1.0/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -25,10 +25,10 @@
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
-                        "startOffsets": "175,831",
+                        "startOffsets": "172,817",
                         "endLines": "7,16",
                         "endColumns": "12,12",
-                        "endOffsets": "482,997"
+                        "endOffsets": "475,981"
                     },
                     "to": {
                         "startLines": "2,6",

@@ -1,4 +1,4 @@
-/// ======================================================
+// ======================================================
 // impostazioni_screen.dart
 // Schermata delle Impostazioni dell'app CivicCoins.
 //
@@ -6,6 +6,7 @@
 // - Permette di:
 //     Cambiare tema
 //     Invitare utenti
+//     Leggere informativa privacy
 //     Effettuare logout
 //     Cancellare account e dati civici
 // ======================================================
@@ -17,6 +18,7 @@ import '../gestione/theme_provider.dart';
 import '../../servizi/auth_service.dart';
 import '../../servizi/cittadino_service.dart';
 import '../schermate/login_screen.dart';
+import '../schermate/informativa_privacy_screen.dart'; // ← Aggiunto
 import '../../dominio/gestione/sistema_autenticazione.dart';
 import '../../main.dart'; //  Import della navigatorKey globale
 
@@ -51,12 +53,10 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
   Future<void> _logout() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-
-      // Salva il tema scuro prima di cancellare le preferenze
       final isDark = prefs.getBool('darkMode') ?? false;
 
-      await prefs.clear(); // Pulisce tutte le preferenze
-      await prefs.setBool('darkMode', isDark); // Ripristina il tema
+      await prefs.clear();
+      await prefs.setBool('darkMode', isDark);
 
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -75,10 +75,9 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
     }
   }
 
-
   ///  Cancella definitivamente account e dati civici
   void _deleteAccount() {
-    final scaffoldMessenger = ScaffoldMessenger.of(context); //  salviamo il messenger PRIMA
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
 
     showDialog(
       context: context,
@@ -103,7 +102,7 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
                   final password = SistemaAutenticazione.password!;
                   print(" Email: $email");
 
-                  await CittadinoService.deleteAllData(email: email, password: password);
+                  await CittadinoService.deleteAllData();
                   print(" Dati civici eliminati");
 
                   await AuthService.deleteAccount(email: email, password: password);
@@ -121,8 +120,6 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
                     ),
                   );
 
-                  print(" Navigazione verso LoginScreen...");
-                  //  Navigazione sicura con navigatorKey
                   navigatorKey.currentState!.pushAndRemoveUntil(
                     MaterialPageRoute(builder: (_) => const LoginScreen()),
                     (route) => false,
@@ -164,6 +161,16 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
             title: const Text('Tema scuro'),
             value: isDarkMode,
             onChanged: _toggleTheme,
+          ),
+          ListTile(
+            leading: const Icon(Icons.privacy_tip),
+            title: const Text('Informativa Privacy'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const InformativaPrivacyScreen()),
+              );
+            },
           ),
           const Divider(),
           ListTile(

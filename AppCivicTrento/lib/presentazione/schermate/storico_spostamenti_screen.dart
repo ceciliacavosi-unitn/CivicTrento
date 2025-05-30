@@ -37,10 +37,7 @@ class _StoricoSpostamentiScreenState extends State<StoricoSpostamentiScreen> {
 
   Future<void> caricaSpostamento() async {
     try {
-      final response = await StoricoService.getStoricoMovimento(
-        email: widget.email,
-        password: widget.password,
-      );
+      final response = await StoricoService.getStoricoMovimento(25);
 
       setState(() {
         spostamento = response;

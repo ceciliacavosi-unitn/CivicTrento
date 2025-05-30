@@ -9,7 +9,7 @@
 // ======================================================
 
 import 'package:flutter/material.dart';
-import '../../config/costanti.dart';  //  Importa le costanti
+import '../../config/costanti.dart';
 import '../../servizi/cittadino_service.dart';
 import 'edit_field_screen.dart';
 
@@ -43,11 +43,10 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
 
   ///  Carica i dati del cittadino tramite UserService.
   Future<void> _loadData() async {
+    print('🔄 Caricamento dati utente in corso...');
     try {
-      final data = await CittadinoService.fetchMyData(
-        email: widget.email,
-        password: widget.password,
-      );
+      final data = await CittadinoService.fetchMyData();
+      print('✅ Dati ricevuti dal backend: $data');
 
       setState(() {
         _subscriptionCode = data['subscription_code'] ?? '';
@@ -57,8 +56,9 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
         _loading = false;
       });
     } catch (e) {
+      print('❌ Errore nel caricamento dati: $e');
       setState(() {
-        _error = 'Errore nel caricamento dati: \${e.toString()}';
+        _error = 'Errore nel caricamento dati: ${e.toString()}';
         _loading = false;
       });
     }
@@ -79,18 +79,17 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     if (newValue != null && newValue != currentValue) {
       setState(() => _loading = true);
       try {
+        final field = _fieldKeyFromLabel(label);
         if (currentValue.isEmpty) {
+          print('➕ Inserimento nuovo valore per $field: $newValue');
           await CittadinoService.insertData(
-            email: widget.email,
-            password: widget.password,
-            field: _fieldKeyFromLabel(label),
+            field: field,
             value: newValue,
           );
         } else {
+          print('✏️ Modifica valore esistente per $field: $newValue');
           await CittadinoService.modifyData(
-            email: widget.email,
-            password: widget.password,
-            field: _fieldKeyFromLabel(label),
+            field: field,
             value: newValue,
           );
         }
@@ -99,6 +98,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
           SnackBar(content: Text('$label aggiornato con successo')),
         );
       } catch (e) {
+        print('❌ Errore nella modifica del campo $label: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Errore: ${e.toString()}')),
         );
@@ -130,27 +130,24 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     if (confirm != true) return;
 
     final fieldKey = _fieldKeyFromLabel(label);
+    print('🗑️ Rimozione campo $fieldKey');
 
     setState(() => _loading = true);
 
     try {
-      await CittadinoService.deleteData(
-        email: widget.email,
-        password: widget.password,
-        field: fieldKey,
-      );
+      await CittadinoService.deleteData(field: fieldKey);
       await _loadData();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('$label rimosso con successo')),
       );
     } catch (e) {
+      print('❌ Errore nella rimozione del campo $label: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Errore: ${e.toString()}')),
       );
       setState(() => _loading = false);
     }
   }
-
 
   /// Converte un'etichetta visiva nel nome del campo API.
   String _fieldKeyFromLabel(String label) {
@@ -161,7 +158,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
     }[label]!;
   }
 
-  ///  Costruisce la riga con dati + bottoni Azione (Modifica/Rimuovi).
+  /// Costruisce la riga con dati + bottoni Azione (Modifica/Rimuovi).
   Widget _buildRow(String label, String value) {
     final isEmpty = value.trim().isEmpty;
     return Padding(

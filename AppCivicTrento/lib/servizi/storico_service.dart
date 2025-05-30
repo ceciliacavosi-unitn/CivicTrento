@@ -10,85 +10,70 @@
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 import '../config/api_endpoints.dart';
 
 class StoricoService {
-  /// Header comune per tutte le richieste
-  static Map<String, String> get _headers => {
-        'Content-Type': 'application/json',
-      };
+  /// Recupera il token JWT salvato localmente
+  static Future<String> _getToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('jwt_token');
+    if (token == null) throw Exception('Token JWT non trovato. Effettua il login.');
+    return token;
+  }
+
+  /// Header con Authorization
+  static Future<Map<String, String>> _authHeaders() async {
+    final token = await _getToken();
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+  }
 
   /// Voto elettorale
-  static Future<Map<String, dynamic>> getStoricoVoto({
-    required String email,
-    required String password,
-  }) async {
-    final response = await http.post(
-      Uri.parse(voto),
-      headers: _headers,
-      body: jsonEncode({'email': email, 'password': password}),
-    );
+  static Future<Map<String, dynamic>> getStoricoVoto() async {
+    final headers = await _authHeaders();
+    final response = await http.post(Uri.parse(voto), headers: headers);
     return _gestisciRispostaSingola(response, 'voti');
   }
 
   /// Bolletta (acqua, luce, gas)
-  static Future<Map<String, dynamic>> getStoricoBolletta({
-    required String email,
-    required String password,
-    String tipo = 'elettrica', //default per test
-  }) async {
+  static Future<Map<String, dynamic>> getStoricoBolletta(String tipo) async {
+    final headers = await _authHeaders();
     final response = await http.post(
       Uri.parse(bolletta),
-      headers: _headers,
-      body: jsonEncode({
-        'email': email,
-        'password': password,
-        'tipo': tipo, //essenziale!
-      }),
+      headers: headers,
+      body: jsonEncode({'tipo': tipo}),
     );
     return _gestisciRispostaSingola(response, 'bolletta');
   }
 
   /// Movimento monitorato (km a piedi/bici)
-  static Future<Map<String, dynamic>> getStoricoMovimento({
-    required String email,
-    required String password,
-  }) async {
+  static Future<Map<String, dynamic>> getStoricoMovimento(double distanzaKm) async {
+    final headers = await _authHeaders();
     final response = await http.post(
       Uri.parse(movimento),
-      headers: _headers,
-      body: jsonEncode({'email': email, 'password': password}),
+      headers: headers,
+      body: jsonEncode({'distanza_km': distanzaKm}),
     );
     return _gestisciRispostaSingola(response, 'movimento');
   }
 
   /// Abbonamento mezzi pubblici
-  static Future<Map<String, dynamic>> getStoricoTrasporti({
-    required String email,
-    required String password,
-  }) async {
-    final response = await http.post(
-      Uri.parse(trasporti),
-      headers: _headers,
-      body: jsonEncode({'email': email, 'password': password}),
-    );
+  static Future<Map<String, dynamic>> getStoricoTrasporti() async {
+    final headers = await _authHeaders();
+    final response = await http.post(Uri.parse(trasporti), headers: headers);
     return _gestisciRispostaSingola(response, 'trasporti');
   }
 
   /// Multa ricevuta
-  static Future<Map<String, dynamic>> getStoricoMulte({
-    required String email,
-    required String password,
-    String gravita = 'medie', // default per test
-  }) async {
+  static Future<Map<String, dynamic>> getStoricoMulte(String gravita) async {
+    final headers = await _authHeaders();
     final response = await http.post(
       Uri.parse(multa),
-      headers: _headers,
-      body: jsonEncode({
-        'email': email,
-        'password': password,
-        'gravita': gravita, // campo obbligatorio
-      }),
+      headers: headers,
+      body: jsonEncode({'gravita': gravita}),
     );
     return _gestisciRispostaSingola(response, 'multa');
   }

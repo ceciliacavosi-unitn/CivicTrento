@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
       final unificato = <Map<String, dynamic>>[];
 
       // Voto elettorale
-      final voto = await StoricoService.getStoricoVoto(email: email, password: password);
+      final voto = await StoricoService.getStoricoVoto();
       if (voto['punti'] != null) {
         unificato.add({
           'titolo': 'Voto elettorale',
@@ -62,11 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
       // Bolletta
-      final bolletta = await StoricoService.getStoricoBolletta(
-        email: email,
-        password: password,
-        tipo: 'elettrica',
-      );
+      final bolletta = await StoricoService.getStoricoBolletta('elettrica');
 
       if (bolletta['tipo'] != null) {
         final tipo = bolletta['tipo'];
@@ -84,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
       // Spostamento sostenibile
-      final movimento = await StoricoService.getStoricoMovimento(email: email, password: password);
+      final movimento = await StoricoService.getStoricoMovimento(25);
       if (movimento['distanza_km'] != null) {
         final distanza = double.tryParse(movimento['distanza_km'].toString()) ?? 0;
         final punti = distanza <= 5 ? 0.5 : 1.0;
@@ -97,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
       // Abbonamento mezzi pubblici
-      final trasporti = await StoricoService.getStoricoTrasporti(email: email, password: password);
+      final trasporti = await StoricoService.getStoricoTrasporti();
       if (trasporti['punti'] != null) {
         unificato.add({
           'titolo': 'Abbonamento mezzi pubblici',
@@ -107,14 +103,14 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
       // Multe
-      final multa = await StoricoService.getStoricoMulte(email: email, password: password);
+      final multa = await StoricoService.getStoricoMulte('media');
       if (multa['gravita'] != null) {
         final gravita = multa['gravita'];
         final dataMulta = multa['dataUltimaMulta'] ?? '2025-03-28T14:20:00';
         String punti;
-        if (gravita == 'gravi') {
+        if (gravita == 'grave') {
           punti = 'saldo azzerato';
-        } else if (gravita == 'medie') {
+        } else if (gravita == 'media') {
           punti = '-40';
         } else {
           punti = 'errore';
