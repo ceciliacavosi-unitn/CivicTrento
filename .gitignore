@@ -1,2 +1,4 @@
 .DS_Store
 AppCivicTrento/.DS_Store
+AppCivicTrento/ios/Runner.xcodeproj/project.pbxproj
+AppCivicTrento/ios/Podfile.lock
