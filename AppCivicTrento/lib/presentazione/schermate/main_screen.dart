@@ -68,7 +68,7 @@ void initState() {
     const ImpostazioniScreen(),
   ];
   _fetchUserInitials();
-  _controllaMovimentoGiornaliero(); 
+  _inviaDatiSeNecessario();
 }
 
 
@@ -89,19 +89,22 @@ void initState() {
     }
   }
 
-  void _controllaMovimentoGiornaliero() async {
-    try {
+
+  void _inviaDatiSeNecessario() async {
+    final prefs = await SharedPreferences.getInstance();
+    final oggi = DateTime.now().toIso8601String().split("T")[0];
+    final ultimaData = prefs.getString("ultima_data_movimento");
+
+    if (ultimaData != oggi) {
       final km = await ServizioMovimento.leggiKmPercorsiOggi();
-      if (km >= 1) {
-        await ServizioMovimento.inviaDatiMovimento(widget.email, km);
-        print("Movimento inviato: ${km.toStringAsFixed(2)} km");
-      } else {
-        print("Nessun movimento significativo oggi: ${km.toStringAsFixed(2)} km");
-      }
-    } catch (e) {
-      print("Errore nel monitoraggio del movimento: $e");
+      await ServizioMovimento.inviaDatiMovimento(widget.email, km);
+      await prefs.setString("ultima_data_movimento", oggi);
+      print("Movimento del giorno inviato: ${km.toStringAsFixed(2)} km");
+    } else {
+      print("Dati già inviati oggi (${ultimaData})");
     }
-  }
+}
+
 
   @override
   Widget build(BuildContext context) {

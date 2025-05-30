@@ -21,18 +21,33 @@ class ServizioMovimento {
   }
 
   static Future<void> inviaDatiMovimento(String email, double km) async {
-    final response = await http.post(
-      Uri.parse(APIEndpoint.movimento),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({
-        'email': email,
-        'kmPercorsi': km,
-        'data': DateTime.now().toIso8601String().split("T")[0]
-      }),
-    );
+  int punti;
 
-    if (response.statusCode != 200) {
-      throw Exception('Errore nell’invio dei dati di movimento');
-    }
+  if (km < 1) {
+    punti = 0;
+  } else if (km < 3) {
+    punti = 1;
+  } else if (km < 5) {
+    punti = 2;
+  } else if (km < 10) {
+    punti = 3;
+  } else {
+    punti = 5;
+  }
+
+  final response = await http.post(
+    Uri.parse(APIEndpoint.movimento),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode({
+      'email': email,
+      'kmPercorsi': km,
+      'punti': punti,
+      'data': DateTime.now().toIso8601String().split("T")[0]
+    }),
+  );
+
+  if (response.statusCode != 200) {
+    throw Exception('Errore nell’invio dei dati di movimento');
   }
 }
+
