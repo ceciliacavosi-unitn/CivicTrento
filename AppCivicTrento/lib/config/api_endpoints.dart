@@ -76,5 +76,5 @@ const String trasporti = "$baseUrl/monitoraggio/trasporti";
 const String multa = "$baseUrl/monitoraggio/multa";
 const String bonusAnnuale = "$baseUrl/monitoraggio/bonus-annuale";
 
-static const String movimento = "$baseUrl/cittadino/movimento";
+const String movimento = "$baseUrl/cittadino/movimento";
 
