@@ -45,5 +45,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+<key>NSHealthShareUsageDescription</key>
+<string>L’app CivicTrento legge i tuoi dati di movimento per assegnarti punti premianti.</string>
+<key>NSHealthUpdateUsageDescription</key>
+<string>L’app CivicTrento aggiorna i tuoi dati di movimento.</string>
 </dict>
 </plist>

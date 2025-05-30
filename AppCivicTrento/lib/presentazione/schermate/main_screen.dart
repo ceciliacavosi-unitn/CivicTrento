@@ -22,6 +22,8 @@ import 'storico_spostamenti_screen.dart';
 import '../../dominio/premi/premio.dart';
 import 'account_screen.dart';
 import '../../servizi/utente_service.dart';
+import '../../servizi/movimento_service.dart'; 
+
 
 class MainScreen extends StatefulWidget {
   final String email, password;
@@ -54,19 +56,23 @@ class MainScreenState extends State<MainScreen> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    _screens = [
-      HomeScreen(email: widget.email, password: widget.password),
-      const PremiScreen(),
-      DatiCittadinoScreen(email: widget.email, password: widget.password),
-      StoricoMulteScreen(email: widget.email, password: widget.password),
-      StoricoBolletteScreen(email: widget.email, password: widget.password),
-      StoricoSpostamentiScreen(email: widget.email, password: widget.password),
-      const ImpostazioniScreen(),
-    ];
-    _fetchUserInitials();
-  }
+void initState() {
+  super.initState();
+  _screens = [
+    HomeScreen(email: widget.email, password: widget.password),
+    const PremiScreen(),
+    DatiCittadinoScreen(email: widget.email, password: widget.password),
+    StoricoMulteScreen(email: widget.email, password: widget.password),
+    StoricoBolletteScreen(email: widget.email, password: widget.password),
+    StoricoSpostamentiScreen(email: widget.email, password: widget.password),
+    const ImpostazioniScreen(),
+  ];
+  _fetchUserInitials();
+  _controllaMovimentoGiornaliero(); 
+}
+
+
+  
 
   Future<void> _fetchUserInitials() async {
     try {
@@ -80,6 +86,20 @@ class MainScreenState extends State<MainScreen> {
       setState(() {
         _initials = null;
       });
+    }
+  }
+
+  void _controllaMovimentoGiornaliero() async {
+    try {
+      final km = await ServizioMovimento.leggiKmPercorsiOggi();
+      if (km >= 1) {
+        await ServizioMovimento.inviaDatiMovimento(widget.email, km);
+        print("Movimento inviato: ${km.toStringAsFixed(2)} km");
+      } else {
+        print("Nessun movimento significativo oggi: ${km.toStringAsFixed(2)} km");
+      }
+    } catch (e) {
+      print("Errore nel monitoraggio del movimento: $e");
     }
   }
 

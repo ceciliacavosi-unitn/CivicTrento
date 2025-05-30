@@ -72,7 +72,9 @@ const String riscattaPremioUrl = '$baseUrl/premi/riscatta';
 // Monitoraggio comportamenti
 const String voto = "$baseUrl/monitoraggio/voto";
 const String bolletta = "$baseUrl/monitoraggio/bolletta";
-const String movimento = "$baseUrl/monitoraggio/movimento";
 const String trasporti = "$baseUrl/monitoraggio/trasporti";
 const String multa = "$baseUrl/monitoraggio/multa";
 const String bonusAnnuale = "$baseUrl/monitoraggio/bonus-annuale";
+
+static const String movimento = "$baseUrl/cittadino/movimento";
+
