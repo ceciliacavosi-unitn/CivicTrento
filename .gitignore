@@ -7,16 +7,16 @@ AppCivicTrento/ios/Runner.xcodeproj/project.pbxproj
 AppCivicTrento/ios/Podfile.lock
 AppCivicTrento/.dart_tool/flutter_build/dart_plugin_registrant.dart
 AppCivicTrento/ios/Podfile.lock
-Pods/
+AppCivicTrento/ios/Pods/
 Flutter/
 
 # Flutter e Dart
-.dart_tool/
 .packages
 .pub-cache/
-build/
-.flutter-plugins
-.flutter-plugins-dependencies
+AppCivicTrento/build/
+AppCivicTrento/.dart_tool/
+AppCivicTrento/.flutter-plugins
+AppCivicTrento/.flutter-plugins-dependencies
 
 # Android 
 **/android/.gradle/
@@ -24,3 +24,11 @@ build/
 **/android/local.properties
 **/android/.DS_Store
 **/android/build/
+
+
+
+AppCivicTrento/.packages
+AppCivicTrento/.pub-cache/
+AppCivicTrento/ios/Flutter/Flutter.framework
+AppCivicTrento/ios/Flutter/Flutter.podspec
+AppCivicTrento/ios/Flutter/Generated.xcconfig
