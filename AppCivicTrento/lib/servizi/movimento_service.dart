@@ -52,7 +52,7 @@ class ServizioMovimento {
   }
 
   final response = await http.post(
-    Uri.parse(APIEndpoint.movimento),
+    Uri.parse(movimento),
     headers: {'Content-Type': 'application/json'},
     body: jsonEncode({
       'email': email,
