@@ -1,6 +1,33 @@
 .DS_Store
 AppCivicTrento/.DS_Store
-AppCivicTrento/.DS_Store
-.DS_Store
-.DS_Store
-AppCivicTrento/.DS_Store
+
+# IOS
+AppCivicTrento/ios/Runner.xcodeproj/project.pbxproj
+AppCivicTrento/ios/Podfile.lock
+AppCivicTrento/.dart_tool/flutter_build/dart_plugin_registrant.dart
+AppCivicTrento/ios/Podfile.lock
+AppCivicTrento/ios/Pods/
+Flutter/
+
+# Flutter e Dart
+.packages
+.pub-cache/
+AppCivicTrento/build/
+AppCivicTrento/.dart_tool/
+AppCivicTrento/.flutter-plugins
+AppCivicTrento/.flutter-plugins-dependencies
+
+# Android 
+**/android/.gradle/
+**/android/.idea/
+**/android/local.properties
+**/android/.DS_Store
+**/android/build/
+
+
+
+AppCivicTrento/.packages
+AppCivicTrento/.pub-cache/
+AppCivicTrento/ios/Flutter/Flutter.framework
+AppCivicTrento/ios/Flutter/Flutter.podspec
+AppCivicTrento/ios/Flutter/Generated.xcconfig

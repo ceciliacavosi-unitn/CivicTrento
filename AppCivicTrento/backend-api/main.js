@@ -405,6 +405,41 @@ app.delete("/cittadino/rimuovi_tutti", verificaToken, async (req, res) => {
 
   aggiornaUltimaAttivita(email.trim());
 });
+//monitoraggio camminate
+app.post("/cittadino/movimento", async (req, res) => {
+  const { email, kmPercorsi, data } = req.body;
+
+  const punti = Math.floor(kmPercorsi); // 1 punto per km intero
+
+  const pathStorico = path.join(__dirname, 'data', 'monitoraggio_movimento.json');
+  const pathUtenti = path.join(__dirname, 'data', 'utenti.json');
+
+  // 1. Aggiungi al file monitoraggio_movimento.json
+  const storico = fs.existsSync(pathStorico)
+    ? JSON.parse(fs.readFileSync(pathStorico))
+    : [];
+
+  storico.push({ utente: email, data, km: kmPercorsi, punti });
+  fs.writeFileSync(pathStorico, JSON.stringify(storico, null, 2));
+
+  //2. Aggiungi i punti all'utente in utenti.json
+  const utenti = fs.existsSync(pathUtenti)
+    ? JSON.parse(fs.readFileSync(pathUtenti))
+    : [];
+
+  const utente = utenti.find(u => u.email === email);
+  if (utente) {
+    utente.punti = (utente.punti || 0) + punti;
+    utente.saldo = (utente.saldo || 0) + punti;
+    fs.writeFileSync(pathUtenti, JSON.stringify(utenti, null, 2));
+    console.log(`[MOVIMENTO] ${punti} punti aggiunti a ${email}`);
+    res.status(200).json({ message: "Punti aggiornati", puntiAssegnati: punti });
+  } else {
+    console.warn(`[MOVIMENTO] Utente non trovato: ${email}`);
+    res.status(404).json({ message: "Utente non trovato" });
+  }
+});
+
 
 // === PREMI ===
 

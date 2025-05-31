@@ -22,6 +22,10 @@ import 'storico_spostamenti_screen.dart';
 import '../../dominio/premi/premio.dart';
 import 'account_screen.dart';
 import '../../servizi/utente_service.dart';
+import '../../servizi/movimento_service.dart'; 
+import 'package:shared_preferences/shared_preferences.dart';
+
+
 
 class MainScreen extends StatefulWidget {
   final String email, password;
@@ -54,19 +58,23 @@ class MainScreenState extends State<MainScreen> {
   ];
 
   @override
-  void initState() {
-    super.initState();
-    _screens = [
-      HomeScreen(email: widget.email, password: widget.password),
-      const PremiScreen(),
-      DatiCittadinoScreen(email: widget.email, password: widget.password),
-      StoricoMulteScreen(email: widget.email, password: widget.password),
-      StoricoBolletteScreen(email: widget.email, password: widget.password),
-      StoricoSpostamentiScreen(email: widget.email, password: widget.password),
-      const ImpostazioniScreen(),
-    ];
-    _fetchUserInitials();
-  }
+void initState() {
+  super.initState();
+  _screens = [
+    HomeScreen(email: widget.email, password: widget.password),
+    const PremiScreen(),
+    DatiCittadinoScreen(email: widget.email, password: widget.password),
+    StoricoMulteScreen(email: widget.email, password: widget.password),
+    StoricoBolletteScreen(email: widget.email, password: widget.password),
+    StoricoSpostamentiScreen(email: widget.email, password: widget.password),
+    const ImpostazioniScreen(),
+  ];
+  _fetchUserInitials();
+  _inviaDatiSeNecessario();
+}
+
+
+  
 
   Future<void> _fetchUserInitials() async {
     try {
@@ -82,6 +90,23 @@ class MainScreenState extends State<MainScreen> {
       });
     }
   }
+
+
+  void _inviaDatiSeNecessario() async {
+    final prefs = await SharedPreferences.getInstance();
+    final oggi = DateTime.now().toIso8601String().split("T")[0];
+    final ultimaData = prefs.getString("ultima_data_movimento");
+
+    if (ultimaData != oggi) {
+      final km = await ServizioMovimento.leggiKmPercorsiOggi();
+      await ServizioMovimento.inviaDatiMovimento(widget.email, km);
+      await prefs.setString("ultima_data_movimento", oggi);
+      print("Movimento del giorno inviato: ${km.toStringAsFixed(2)} km");
+    } else {
+      print("Dati già inviati oggi (${ultimaData})");
+    }
+}
+
 
   @override
   Widget build(BuildContext context) {
