@@ -25,7 +25,14 @@ class ServizioMovimento {
     final start = DateTime(now.year, now.month, now.day); // inizio giornata
 
     final data = await _health.getHealthDataFromTypes(start, now, types);
-    double metriTotali = data.fold(0.0, (sum, point) => sum + (point.value.toDouble()));
+    double metriTotali = data.fold(0.0, (sum, point) {
+  if (point.value is num) {
+    return sum + (point.value as num).toDouble();
+  } else {
+    return sum;
+  }
+});
+
     return metriTotali / 1000.0; // metri → km
   }
 
