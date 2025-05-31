@@ -2,6 +2,8 @@ import 'package:health/health.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config/api_endpoints.dart';  // <-- se usi gli endpoint centralizzati
+import 'package:permission_handler/permission_handler.dart';
+
 
 class ServizioMovimento {
   static final _health = HealthFactory();
