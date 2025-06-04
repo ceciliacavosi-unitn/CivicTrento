@@ -582,8 +582,8 @@ app.post('/cittadino/utenza', (req, res) => {
 
 //avvio server
 const PORT = process.env.PORT || 8000;
-console.log("🚀 Avvio server...");
+console.log("Avvio server...");
 app.listen(PORT, () => {
-  console.log(`✅ Server avviato su http://localhost:${PORT}`);
+  console.log(` Server avviato su http://localhost:${PORT}`);
 });
 
