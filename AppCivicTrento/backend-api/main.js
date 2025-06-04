@@ -566,6 +566,18 @@ app.post('/monitoraggio/multa', verificaToken, async (req, res) => {
   res.json(multa);
 });
 
+const { aggiungiOModificaUtenza } = require('./gestione_utenze');
+
+app.post('/cittadino/utenza', (req, res) => {
+  const { idUtente, utenza, codicePOD, fornitore, consenso } = req.body;
+  if (!idUtente || !utenza || !codicePOD || !fornitore || consenso === undefined) {
+    return res.status(400).json({ errore: "Campi mancanti" });
+  }
+  aggiungiOModificaUtenza({ idUtente, utenza, codicePOD, fornitore, consenso });
+  res.json({ messaggio: "Dati utenza salvati con successo." });
+});
+
+
 
 
 //avvio server

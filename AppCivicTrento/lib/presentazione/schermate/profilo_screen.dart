@@ -12,6 +12,10 @@ import 'package:flutter/material.dart';
 import '../../config/costanti.dart';
 import '../../servizi/cittadino_service.dart';
 import 'edit_field_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import '../../config/api_endpoints.dart'; 
+
 
 class DatiCittadinoScreen extends StatefulWidget {
   final String email;
@@ -21,6 +25,7 @@ class DatiCittadinoScreen extends StatefulWidget {
     super.key,
     required this.email,
     required this.password,
+
   });
 
   @override
@@ -34,6 +39,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
   String _subscriptionCode = '';
   String _podCode = '';
   String _licenseNumber = '';
+  bool _consensoUtenze = false;
 
   @override
   void initState() {
@@ -210,6 +216,48 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
                       _buildRow(labelCodiceAbbonamento, _subscriptionCode),
                       _buildRow(labelCodicePOD, _podCode),
                       _buildRow(labelNumeroPatente, _licenseNumber),
+                      CheckboxListTile(
+                        title: Text(
+                          "Autorizzo l’app CivicTrento ad accedere e trattare i miei dati relativi ai consumi energetici per finalità di monitoraggio e premialità, secondo quanto descritto nell’informativa sulla privacy.",
+                          style: TextStyle(fontSize: 13),
+                        ),
+                        value: _consensoUtenze,
+                        onChanged: (val) => setState(() => _consensoUtenze = val!),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: () async {
+                          if (_podCode.trim().isEmpty || !_consensoUtenze) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Inserisci il codice POD e dai il consenso")),
+                            );
+                            return;
+                          }
+
+                          final response = await http.post(
+                            Uri.parse('$baseUrl/cittadino/utenza'),
+                            headers: {'Content-Type': 'application/json'},
+                            body: jsonEncode({
+                              'idUtente': widget.email,
+                              'utenza': 'luce',
+                              'codicePOD': _podCode,
+                              'fornitore': _subscriptionCode,
+                              'consenso': _consensoUtenze
+                            }),
+                          );
+
+                          if (response.statusCode == 200) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Dati utenza salvati con successo")),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Errore: ${response.body}")),
+                            );
+                          }
+                        },
+                        child: const Text("Salva Dati Utenza"),
+                      ),
                     ],
                   ),
                 ),
