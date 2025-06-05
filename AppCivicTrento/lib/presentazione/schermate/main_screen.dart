@@ -22,7 +22,7 @@ import 'storico_spostamenti_screen.dart';
 import '../../dominio/premi/premio.dart';
 import 'account_screen.dart';
 import '../../servizi/utente_service.dart';
-import '../../servizi/movimento_service.dart'; 
+//import '../../servizi/movimento_service.dart'; 
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -70,7 +70,7 @@ void initState() {
     const ImpostazioniScreen(),
   ];
   _fetchUserInitials();
-  _inviaDatiSeNecessario();
+  //_inviaDatiSeNecessario();
 }
 
 
@@ -92,7 +92,7 @@ void initState() {
   }
 
 
-  void _inviaDatiSeNecessario() async {
+  /*void _inviaDatiSeNecessario() async {
     final prefs = await SharedPreferences.getInstance();
     final oggi = DateTime.now().toIso8601String().split("T")[0];
     final ultimaData = prefs.getString("ultima_data_movimento");
@@ -105,7 +105,7 @@ void initState() {
     } else {
       print("Dati già inviati oggi (${ultimaData})");
     }
-}
+  }*/
 
 
   @override

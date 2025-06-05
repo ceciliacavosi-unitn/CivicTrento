@@ -1,8 +1,7 @@
 [
-    
   {
     "idUtente": "matilde@email.com",
-    "utenze":{
+    "utenze": {
       "luce": {
         "codicePOD": "13456789",
         "fornitore": "Enel",
@@ -18,9 +17,6 @@
         "fornitore": "Italgas",
         "consenso": true
       }
-
     }
   }
-
-
 ]

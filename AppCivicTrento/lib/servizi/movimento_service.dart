@@ -1,4 +1,4 @@
-import 'package:health/health.dart';
+/*import 'package:health/health.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config/api_endpoints.dart';  // <-- se usi gli endpoint centralizzati
@@ -67,4 +67,4 @@ class ServizioMovimento {
   }
 }
 
-}
+}*/
