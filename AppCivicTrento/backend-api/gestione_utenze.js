@@ -1,8 +1,44 @@
 const fs = require("fs");
 const path = require("path");
+// const mongoose = require("mongoose"); // MongoDB disattivato
 
 const FILE_PATH = path.join(__dirname, "data", "utenze.json");
 const CATEGORIE_UTENZE = ["luce", "gas", "acqua"];
+
+// ===================================================
+// MongoDB disattivato (puoi riattivare se necessario)
+// ===================================================
+
+// mongoose.connect(process.env.DB_URL, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// }).then(() => console.log("Connesso a MongoDB"))
+//   .catch(err => console.error("Errore connessione MongoDB:", err));
+
+// const utenzaSchema = new mongoose.Schema({
+//   idUtente: String,
+//   utenze: {
+//     luce: {
+//       codicePOD: String,
+//       fornitore: String,
+//       consenso: Boolean
+//     },
+//     gas: {
+//       codicePOD: String,
+//       fornitore: String,
+//       consenso: Boolean
+//     },
+//     acqua: {
+//       codicePOD: String,
+//       fornitore: String,
+//       consenso: Boolean
+//     }
+//   }
+// }, {
+//   collection: 'utenze'
+// });
+
+// const Utenza = mongoose.model("Utenza", utenzaSchema);
 
 //Legge il file utenze.json e restituisce i dati come array 
 function leggiUtenze() {
@@ -54,13 +90,32 @@ function aggiungiOModificaUtenza({ idUtente, utenza, codicePOD, fornitore, conse
   };
 
   scriviUtenze(tutteLeUtenze);
+
+  // // Salva anche nel DB (disattivato)
+  // Utenza.findOneAndUpdate(
+  //   { idUtente },
+  //   recordUtente,
+  //   { upsert: true, new: true }
+  // ).exec();
+
   return true;
 }
 
 // Recupera tutte le utenze associate a un utente
 function getUtenze(idUtente) {
   const utenze = leggiUtenze();
-  return utenze.find(u => u.idUtente === idUtente)?.utenze || {};
+  const record = utenze.find(u => u.idUtente === idUtente);
+
+  // // Salva anche nel DB (disattivato)
+  // if (record) {
+  //   Utenza.findOneAndUpdate(
+  //     { idUtente },
+  //     record,
+  //     { upsert: true, new: true }
+  //   ).exec();
+  // }
+
+  return record?.utenze || {};
 }
 
 module.exports = {

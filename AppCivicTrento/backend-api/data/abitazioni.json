@@ -1,0 +1,353 @@
+[
+  {
+    "residenza": "residenza_1",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00001",
+    "classeEnergetica": "B",
+    "metratura": 82,
+    "residenti": [
+      "cartaID12",
+      "cartaID40",
+      "cartaID9",
+      "cartaID17"
+    ]
+  },
+  {
+    "residenza": "residenza_1",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00002",
+    "classeEnergetica": "A",
+    "metratura": 103,
+    "residenti": [
+      "cartaID27"
+    ]
+  },
+  {
+    "residenza": "residenza_1",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00003",
+    "classeEnergetica": "C",
+    "metratura": 78,
+    "residenti": [
+      "cartaID27",
+      "cartaID8",
+      "cartaID12",
+      "cartaID23"
+    ]
+  },
+  {
+    "residenza": "residenza_2",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00004",
+    "classeEnergetica": "D",
+    "metratura": 69,
+    "residenti": [
+      "cartaID13",
+      "cartaID5",
+      "cartaID28",
+      "cartaID43"
+    ]
+  },
+  {
+    "residenza": "residenza_2",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00005",
+    "classeEnergetica": "A",
+    "metratura": 64,
+    "residenti": [
+      "cartaID10",
+      "cartaID48",
+      "cartaID15"
+    ]
+  },
+  {
+    "residenza": "residenza_2",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00006",
+    "classeEnergetica": "D",
+    "metratura": 111,
+    "residenti": [
+      "cartaID27",
+      "cartaID44",
+      "cartaID21",
+      "cartaID26"
+    ]
+  },
+  {
+    "residenza": "residenza_3",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00007",
+    "classeEnergetica": "D",
+    "metratura": 149,
+    "residenti": [
+      "cartaID47"
+    ]
+  },
+  {
+    "residenza": "residenza_3",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00008",
+    "classeEnergetica": "B",
+    "metratura": 118,
+    "residenti": [
+      "cartaID18"
+    ]
+  },
+  {
+    "residenza": "residenza_3",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00009",
+    "classeEnergetica": "A",
+    "metratura": 147,
+    "residenti": [
+      "cartaID35",
+      "cartaID1",
+      "cartaID48",
+      "cartaID11"
+    ]
+  },
+  {
+    "residenza": "residenza_4",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00010",
+    "classeEnergetica": "A",
+    "metratura": 67,
+    "residenti": [
+      "cartaID30"
+    ]
+  },
+  {
+    "residenza": "residenza_4",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00011",
+    "classeEnergetica": "D",
+    "metratura": 131,
+    "residenti": [
+      "cartaID16",
+      "cartaID46"
+    ]
+  },
+  {
+    "residenza": "residenza_4",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00012",
+    "classeEnergetica": "B",
+    "metratura": 122,
+    "residenti": [
+      "cartaID47",
+      "cartaID1",
+      "cartaID2",
+      "cartaID17"
+    ]
+  },
+  {
+    "residenza": "residenza_5",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00013",
+    "classeEnergetica": "A",
+    "metratura": 150,
+    "residenti": [
+      "cartaID50",
+      "cartaID47",
+      "cartaID15",
+      "cartaID18"
+    ]
+  },
+  {
+    "residenza": "residenza_5",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00014",
+    "classeEnergetica": "D",
+    "metratura": 94,
+    "residenti": [
+      "cartaID3",
+      "cartaID45",
+      "cartaID29",
+      "cartaID43"
+    ]
+  },
+  {
+    "residenza": "residenza_5",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00015",
+    "classeEnergetica": "A",
+    "metratura": 96,
+    "residenti": [
+      "cartaID39",
+      "cartaID3",
+      "cartaID16",
+      "cartaID46"
+    ]
+  },
+  {
+    "residenza": "residenza_6",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00016",
+    "classeEnergetica": "C",
+    "metratura": 80,
+    "residenti": [
+      "cartaID22",
+      "cartaID27",
+      "cartaID35",
+      "cartaID9"
+    ]
+  },
+  {
+    "residenza": "residenza_6",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00017",
+    "classeEnergetica": "C",
+    "metratura": 136,
+    "residenti": [
+      "cartaID27",
+      "cartaID28"
+    ]
+  },
+  {
+    "residenza": "residenza_6",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00018",
+    "classeEnergetica": "A",
+    "metratura": 98,
+    "residenti": [
+      "cartaID35",
+      "cartaID8",
+      "cartaID31",
+      "cartaID12"
+    ]
+  },
+  {
+    "residenza": "residenza_7",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00019",
+    "classeEnergetica": "A",
+    "metratura": 115,
+    "residenti": [
+      "cartaID35",
+      "cartaID46",
+      "cartaID34"
+    ]
+  },
+  {
+    "residenza": "residenza_7",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00020",
+    "classeEnergetica": "C",
+    "metratura": 70,
+    "residenti": [
+      "cartaID38"
+    ]
+  },
+  {
+    "residenza": "residenza_7",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00021",
+    "classeEnergetica": "C",
+    "metratura": 149,
+    "residenti": [
+      "cartaID11",
+      "cartaID46"
+    ]
+  },
+  {
+    "residenza": "residenza_8",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00022",
+    "classeEnergetica": "D",
+    "metratura": 137,
+    "residenti": [
+      "cartaID1",
+      "cartaID29",
+      "cartaID11"
+    ]
+  },
+  {
+    "residenza": "residenza_8",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00023",
+    "classeEnergetica": "D",
+    "metratura": 128,
+    "residenti": [
+      "cartaID48",
+      "cartaID32",
+      "cartaID2",
+      "cartaID30"
+    ]
+  },
+  {
+    "residenza": "residenza_8",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00024",
+    "classeEnergetica": "D",
+    "metratura": 106,
+    "residenti": [
+      "cartaID26"
+    ]
+  },
+  {
+    "residenza": "residenza_9",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00025",
+    "classeEnergetica": "B",
+    "metratura": 145,
+    "residenti": [
+      "cartaID13"
+    ]
+  },
+  {
+    "residenza": "residenza_9",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00026",
+    "classeEnergetica": "B",
+    "metratura": 95,
+    "residenti": [
+      "cartaID33",
+      "cartaID50",
+      "cartaID19"
+    ]
+  },
+  {
+    "residenza": "residenza_9",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00027",
+    "classeEnergetica": "D",
+    "metratura": 118,
+    "residenti": [
+      "cartaID3",
+      "cartaID2"
+    ]
+  },
+  {
+    "residenza": "residenza_10",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E00028",
+    "classeEnergetica": "D",
+    "metratura": 58,
+    "residenti": [
+      "cartaID8",
+      "cartaID12"
+    ]
+  },
+  {
+    "residenza": "residenza_10",
+    "idAbitazione": "2",
+    "codicePOD": "IT001E00029",
+    "classeEnergetica": "B",
+    "metratura": 126,
+    "residenti": [
+      "cartaID42",
+      "cartaID38",
+      "cartaID37"
+    ]
+  },
+  {
+    "residenza": "residenza_10",
+    "idAbitazione": "3",
+    "codicePOD": "IT001E00030",
+    "classeEnergetica": "D",
+    "metratura": 139,
+    "residenti": [
+      "cartaID31"
+    ]
+  }
+]

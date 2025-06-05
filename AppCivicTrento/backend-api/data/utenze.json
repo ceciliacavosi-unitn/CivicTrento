@@ -3,18 +3,18 @@
     "idUtente": "matilde@email.com",
     "utenze": {
       "luce": {
-        "codicePOD": "13456789",
-        "fornitore": "Enel",
+        "codicePOD": "IT001E00001",
+        "fornitore": "Enel Energia",
         "consenso": true
       },
       "gas": {
-        "codicePOD": "13242134",
+        "codicePOD": "IT001E00001",
         "fornitore": "Italgas",
         "consenso": true
       },
       "acqua": {
-        "codicePOD": "23542387",
-        "fornitore": "Italgas",
+        "codicePOD": "IT001E00001",
+        "fornitore": "Dolomiti Acqua",
         "consenso": true
       }
     }

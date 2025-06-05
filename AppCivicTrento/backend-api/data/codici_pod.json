@@ -1,0 +1,752 @@
+[
+  {
+    "codicePOD": "IT001E00001",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 936,
+        "gas": 301,
+        "acqua": 229
+      },
+      "T2": {
+        "luce": 889,
+        "gas": 960,
+        "acqua": 641
+      },
+      "T3": {
+        "luce": 674,
+        "gas": 532,
+        "acqua": 346
+      },
+      "T4": {
+        "luce": 1193,
+        "gas": 432,
+        "acqua": 686
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00002",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 1057,
+        "gas": 304,
+        "acqua": 639
+      },
+      "T2": {
+        "luce": 918,
+        "gas": 595,
+        "acqua": 226
+      },
+      "T3": {
+        "luce": 616,
+        "gas": 426,
+        "acqua": 260
+      },
+      "T4": {
+        "luce": 1057,
+        "gas": 992,
+        "acqua": 500
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00003",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 487,
+        "gas": 319,
+        "acqua": 719
+      },
+      "T2": {
+        "luce": 1020,
+        "gas": 576,
+        "acqua": 771
+      },
+      "T3": {
+        "luce": 1076,
+        "gas": 813,
+        "acqua": 398
+      },
+      "T4": {
+        "luce": 576,
+        "gas": 477,
+        "acqua": 780
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00004",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 861,
+        "gas": 865,
+        "acqua": 729
+      },
+      "T2": {
+        "luce": 531,
+        "gas": 957,
+        "acqua": 694
+      },
+      "T3": {
+        "luce": 1089,
+        "gas": 635,
+        "acqua": 425
+      },
+      "T4": {
+        "luce": 576,
+        "gas": 911,
+        "acqua": 587
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00005",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 858,
+        "gas": 511,
+        "acqua": 644
+      },
+      "T2": {
+        "luce": 689,
+        "gas": 681,
+        "acqua": 355
+      },
+      "T3": {
+        "luce": 1026,
+        "gas": 342,
+        "acqua": 233
+      },
+      "T4": {
+        "luce": 713,
+        "gas": 663,
+        "acqua": 386
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00006",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 840,
+        "gas": 802,
+        "acqua": 603
+      },
+      "T2": {
+        "luce": 618,
+        "gas": 629,
+        "acqua": 634
+      },
+      "T3": {
+        "luce": 898,
+        "gas": 934,
+        "acqua": 452
+      },
+      "T4": {
+        "luce": 837,
+        "gas": 966,
+        "acqua": 271
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00007",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 489,
+        "gas": 423,
+        "acqua": 401
+      },
+      "T2": {
+        "luce": 745,
+        "gas": 663,
+        "acqua": 701
+      },
+      "T3": {
+        "luce": 1124,
+        "gas": 547,
+        "acqua": 224
+      },
+      "T4": {
+        "luce": 954,
+        "gas": 436,
+        "acqua": 492
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00008",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 662,
+        "gas": 667,
+        "acqua": 533
+      },
+      "T2": {
+        "luce": 824,
+        "gas": 880,
+        "acqua": 220
+      },
+      "T3": {
+        "luce": 465,
+        "gas": 566,
+        "acqua": 360
+      },
+      "T4": {
+        "luce": 852,
+        "gas": 691,
+        "acqua": 602
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00009",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 502,
+        "gas": 657,
+        "acqua": 675
+      },
+      "T2": {
+        "luce": 1064,
+        "gas": 581,
+        "acqua": 327
+      },
+      "T3": {
+        "luce": 1037,
+        "gas": 858,
+        "acqua": 261
+      },
+      "T4": {
+        "luce": 442,
+        "gas": 331,
+        "acqua": 740
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00010",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 519,
+        "gas": 559,
+        "acqua": 349
+      },
+      "T2": {
+        "luce": 688,
+        "gas": 343,
+        "acqua": 659
+      },
+      "T3": {
+        "luce": 480,
+        "gas": 652,
+        "acqua": 380
+      },
+      "T4": {
+        "luce": 925,
+        "gas": 569,
+        "acqua": 623
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00011",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 771,
+        "gas": 714,
+        "acqua": 465
+      },
+      "T2": {
+        "luce": 853,
+        "gas": 600,
+        "acqua": 402
+      },
+      "T3": {
+        "luce": 1004,
+        "gas": 680,
+        "acqua": 692
+      },
+      "T4": {
+        "luce": 816,
+        "gas": 977,
+        "acqua": 775
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00012",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 916,
+        "gas": 409,
+        "acqua": 571
+      },
+      "T2": {
+        "luce": 670,
+        "gas": 742,
+        "acqua": 774
+      },
+      "T3": {
+        "luce": 726,
+        "gas": 966,
+        "acqua": 738
+      },
+      "T4": {
+        "luce": 972,
+        "gas": 850,
+        "acqua": 589
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00013",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 1109,
+        "gas": 979,
+        "acqua": 369
+      },
+      "T2": {
+        "luce": 418,
+        "gas": 826,
+        "acqua": 408
+      },
+      "T3": {
+        "luce": 879,
+        "gas": 789,
+        "acqua": 589
+      },
+      "T4": {
+        "luce": 1074,
+        "gas": 434,
+        "acqua": 728
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00014",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 577,
+        "gas": 401,
+        "acqua": 371
+      },
+      "T2": {
+        "luce": 810,
+        "gas": 685,
+        "acqua": 790
+      },
+      "T3": {
+        "luce": 681,
+        "gas": 330,
+        "acqua": 493
+      },
+      "T4": {
+        "luce": 728,
+        "gas": 968,
+        "acqua": 499
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00015",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 548,
+        "gas": 756,
+        "acqua": 382
+      },
+      "T2": {
+        "luce": 656,
+        "gas": 466,
+        "acqua": 319
+      },
+      "T3": {
+        "luce": 902,
+        "gas": 617,
+        "acqua": 708
+      },
+      "T4": {
+        "luce": 1031,
+        "gas": 863,
+        "acqua": 767
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00016",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 981,
+        "gas": 507,
+        "acqua": 557
+      },
+      "T2": {
+        "luce": 761,
+        "gas": 613,
+        "acqua": 504
+      },
+      "T3": {
+        "luce": 1149,
+        "gas": 428,
+        "acqua": 325
+      },
+      "T4": {
+        "luce": 884,
+        "gas": 342,
+        "acqua": 387
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00017",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 960,
+        "gas": 822,
+        "acqua": 638
+      },
+      "T2": {
+        "luce": 881,
+        "gas": 986,
+        "acqua": 761
+      },
+      "T3": {
+        "luce": 522,
+        "gas": 960,
+        "acqua": 279
+      },
+      "T4": {
+        "luce": 982,
+        "gas": 407,
+        "acqua": 315
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00018",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 755,
+        "gas": 623,
+        "acqua": 462
+      },
+      "T2": {
+        "luce": 655,
+        "gas": 657,
+        "acqua": 348
+      },
+      "T3": {
+        "luce": 766,
+        "gas": 500,
+        "acqua": 230
+      },
+      "T4": {
+        "luce": 1149,
+        "gas": 602,
+        "acqua": 441
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00019",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 495,
+        "gas": 371,
+        "acqua": 778
+      },
+      "T2": {
+        "luce": 1153,
+        "gas": 935,
+        "acqua": 352
+      },
+      "T3": {
+        "luce": 653,
+        "gas": 364,
+        "acqua": 337
+      },
+      "T4": {
+        "luce": 989,
+        "gas": 944,
+        "acqua": 667
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00020",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 1182,
+        "gas": 454,
+        "acqua": 453
+      },
+      "T2": {
+        "luce": 1127,
+        "gas": 463,
+        "acqua": 270
+      },
+      "T3": {
+        "luce": 855,
+        "gas": 380,
+        "acqua": 644
+      },
+      "T4": {
+        "luce": 992,
+        "gas": 522,
+        "acqua": 232
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00021",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 1172,
+        "gas": 561,
+        "acqua": 279
+      },
+      "T2": {
+        "luce": 1181,
+        "gas": 916,
+        "acqua": 421
+      },
+      "T3": {
+        "luce": 886,
+        "gas": 767,
+        "acqua": 212
+      },
+      "T4": {
+        "luce": 476,
+        "gas": 383,
+        "acqua": 354
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00022",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 798,
+        "gas": 417,
+        "acqua": 524
+      },
+      "T2": {
+        "luce": 880,
+        "gas": 730,
+        "acqua": 448
+      },
+      "T3": {
+        "luce": 811,
+        "gas": 889,
+        "acqua": 387
+      },
+      "T4": {
+        "luce": 1065,
+        "gas": 737,
+        "acqua": 731
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00023",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 850,
+        "gas": 659,
+        "acqua": 530
+      },
+      "T2": {
+        "luce": 751,
+        "gas": 719,
+        "acqua": 658
+      },
+      "T3": {
+        "luce": 1118,
+        "gas": 469,
+        "acqua": 479
+      },
+      "T4": {
+        "luce": 971,
+        "gas": 898,
+        "acqua": 687
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00024",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 899,
+        "gas": 808,
+        "acqua": 426
+      },
+      "T2": {
+        "luce": 438,
+        "gas": 393,
+        "acqua": 558
+      },
+      "T3": {
+        "luce": 881,
+        "gas": 773,
+        "acqua": 585
+      },
+      "T4": {
+        "luce": 903,
+        "gas": 592,
+        "acqua": 433
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00025",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 732,
+        "gas": 345,
+        "acqua": 756
+      },
+      "T2": {
+        "luce": 698,
+        "gas": 783,
+        "acqua": 659
+      },
+      "T3": {
+        "luce": 529,
+        "gas": 428,
+        "acqua": 235
+      },
+      "T4": {
+        "luce": 1176,
+        "gas": 817,
+        "acqua": 649
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00026",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 799,
+        "gas": 843,
+        "acqua": 212
+      },
+      "T2": {
+        "luce": 808,
+        "gas": 632,
+        "acqua": 578
+      },
+      "T3": {
+        "luce": 426,
+        "gas": 747,
+        "acqua": 437
+      },
+      "T4": {
+        "luce": 503,
+        "gas": 448,
+        "acqua": 260
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00027",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 1119,
+        "gas": 334,
+        "acqua": 747
+      },
+      "T2": {
+        "luce": 1108,
+        "gas": 542,
+        "acqua": 325
+      },
+      "T3": {
+        "luce": 1056,
+        "gas": 733,
+        "acqua": 704
+      },
+      "T4": {
+        "luce": 1069,
+        "gas": 931,
+        "acqua": 345
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00028",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 866,
+        "gas": 866,
+        "acqua": 552
+      },
+      "T2": {
+        "luce": 982,
+        "gas": 899,
+        "acqua": 305
+      },
+      "T3": {
+        "luce": 456,
+        "gas": 409,
+        "acqua": 774
+      },
+      "T4": {
+        "luce": 999,
+        "gas": 363,
+        "acqua": 695
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00029",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 897,
+        "gas": 444,
+        "acqua": 452
+      },
+      "T2": {
+        "luce": 665,
+        "gas": 908,
+        "acqua": 657
+      },
+      "T3": {
+        "luce": 404,
+        "gas": 504,
+        "acqua": 227
+      },
+      "T4": {
+        "luce": 505,
+        "gas": 972,
+        "acqua": 400
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00030",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 962,
+        "gas": 536,
+        "acqua": 391
+      },
+      "T2": {
+        "luce": 880,
+        "gas": 860,
+        "acqua": 587
+      },
+      "T3": {
+        "luce": 872,
+        "gas": 893,
+        "acqua": 571
+      },
+      "T4": {
+        "luce": 979,
+        "gas": 740,
+        "acqua": 443
+      }
+    }
+  }
+]
