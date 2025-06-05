@@ -4,6 +4,8 @@ const path = require('path');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
+//per attivare MongoDB
+// const Utente = require('./mongodb').Utente;
 
 // Percorso del file utenti.json
 const filePath = path.join(__dirname, 'data', 'utenti.json');
@@ -26,7 +28,7 @@ const utentiPath = filePath; // alias per coerenza nei nomi
 //   email: String,
 //   password: String,
 //   CF: String,
-//   cartaID: String
+//   cartaID: String,
 // }, {
 //   collection: 'utenti'
 // });
@@ -65,7 +67,8 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
     CF,
     cartaID,
     gdprConsent: gdprConsent === true,
-    consentTimestamp: consentTimestamp || new Date().toISOString()
+    consentTimestamp: consentTimestamp || new Date().toISOString(),
+    sessionToken: null
   };
 
   // Salvataggio su file
@@ -89,6 +92,7 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
   //     cartaID,
   //     gdprConsent: gdprConsent === true,
   //     consentTimestamp: consentTimestamp || new Date().toISOString()
+  //     sessionToken: null
   //   });
   //   await mongoUtente.save();
   //   console.log("Utente salvato anche su MongoDB.");
@@ -127,6 +131,27 @@ async function trovaCredenziali(email, plainPassword) {
     }
   }
   return null;
+
+  // === VERSIONE MONGODB (commentata) ===
+  // const utente = await Utente.findOne({ email });
+  // if (!utente) return null;
+
+  // const match = await bcrypt.compare(plainPassword, utente.password);
+  // if (!match) return null;
+
+  // const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: "1h" });
+  // utente.sessionToken = token;
+  // utente.ultimaAttivita = new Date();
+  // await utente.save();
+
+  // return {
+  //   nome: utente.nome,
+  //   cognome: utente.cognome,
+  //   email: utente.email,
+  //   ruolo: utente.ruolo, // se lo usi
+  //   sessionToken: token
+  // };
+
 }
 
 
@@ -198,23 +223,31 @@ async function reimpostaPasswordConToken(token, nuovaPassword) {
  */
 function verificaToken(req, res, next) {
   const authHeader = req.headers.authorization;
-  console.log("🔐 Richiesta ricevuta con header:", authHeader);
+  console.log("Richiesta ricevuta con header:", authHeader);
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    console.warn("❌ Token assente o malformato.");
+    console.warn("Token assente o malformato.");
     return res.status(401).json({ detail: "Token mancante o malformato" });
   }
 
   const token = authHeader.split(" ")[1];
-  console.log("🔍 Token ricevuto:", token);
+  console.log("Token ricevuto:", token);
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
+    const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
+    const utente = utenti.find(u => u.email === decoded.email);
+
+    // Verifica che il token ricevuto sia uguale a quello salvato (sessione attiva)
+    if (!utente || utente.sessionToken !== token) {
+      console.warn("Token non valido o sessione non attiva");
+      return res.status(401).json({ detail: "Sessione non valida o già disconnessa" });
+    }
     req.utente = decoded;
-    console.log("✅ Token valido per:", decoded.email || decoded);
+    console.log("Token valido per:", decoded.email || decoded);
     next();
   } catch (err) {
-    console.error("❌ Errore nella verifica del token:", err.message);
+    console.error("Errore nella verifica del token:", err.message);
     return res.status(403).json({ detail: "Token non valido o scaduto" });
   }
 }
