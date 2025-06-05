@@ -180,6 +180,14 @@ app.post("/auth/login", async (req, res) => {
   const token = jwt.sign({ email: email.trim() }, JWT_SECRET, { expiresIn: "1h" });
 
   console.log(`[LOGIN] Login riuscito per ${email}`);
+
+  const utenti = JSON.parse(fs.readFileSync(utentiPath, 'utf8'));
+  const indice = utenti.findIndex(u => u.email === email);
+  if (indice !== -1) {
+    utenti[indice].sessionToken = token; //Salva token come sessione attiva
+    fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+  }
+
   res.json({ status: "success", token, message: "Login effettuato" });
 });
 
