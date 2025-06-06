@@ -49,10 +49,10 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
 
   ///  Carica i dati del cittadino tramite UserService.
   Future<void> _loadData() async {
-    print('🔄 Caricamento dati utente in corso...');
+    print('Caricamento dati utente in corso...');
     try {
       final data = await CittadinoService.fetchMyData();
-      print('✅ Dati ricevuti dal backend: $data');
+      print('Dati ricevuti dal backend: $data');
 
       setState(() {
         _subscriptionCode = data['subscription_code'] ?? '';
@@ -62,7 +62,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
         _loading = false;
       });
     } catch (e) {
-      print('❌ Errore nel caricamento dati: $e');
+      print('Errore nel caricamento dati: $e');
       setState(() {
         _error = 'Errore nel caricamento dati: ${e.toString()}';
         _loading = false;
@@ -93,7 +93,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
             value: newValue,
           );
         } else {
-          print('✏️ Modifica valore esistente per $field: $newValue');
+          print('Modifica valore esistente per $field: $newValue');
           await CittadinoService.modifyData(
             field: field,
             value: newValue,
@@ -104,7 +104,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
           SnackBar(content: Text('$label aggiornato con successo')),
         );
       } catch (e) {
-        print('❌ Errore nella modifica del campo $label: $e');
+        print('Errore nella modifica del campo $label: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Errore: ${e.toString()}')),
         );
@@ -147,7 +147,7 @@ class _DatiCittadinoScreenState extends State<DatiCittadinoScreen> {
         SnackBar(content: Text('$label rimosso con successo')),
       );
     } catch (e) {
-      print('❌ Errore nella rimozione del campo $label: $e');
+      print('Errore nella rimozione del campo $label: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Errore: ${e.toString()}')),
       );

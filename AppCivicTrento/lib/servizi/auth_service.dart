@@ -60,7 +60,7 @@ class AuthService {
     required String email,
     required String password,
   }) async {
-    print('📤 Login in corso con email: $email');
+    print('Login in corso con email: $email');
 
     final resp = await http.post(
       Uri.parse(loginUrl),
@@ -87,7 +87,7 @@ class AuthService {
     // Salva tutto il contesto di login (in memoria RAM)
     SistemaAutenticazione.login(email, password, token);
 
-    print('✅ Login riuscito. Token JWT salvato.');
+    print('Login riuscito. Token JWT salvato.');
   }
 
   // ======================================================

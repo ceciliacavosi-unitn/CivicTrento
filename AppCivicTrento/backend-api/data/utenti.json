@@ -3,11 +3,14 @@
     "nome": "Cecilia",
     "cognome": "Cavosi",
     "email": "cecilia.cavosi@gmail.com",
-    "password": "$2b$10$I46fZDaUm82JPtDDFdDQSOmHJa.4Qyd.VfYN9rCNz9Jn/qFLBbIaK",
-    "CF": "CVSCLM01H65C794B",
-    "cartaID": "CA65065PH",
+    "password": "$2b$10$U/41oec6aVmCPu1.QaFXM.gAdwE3uuSDe91lMXr/fQ.R1MIIu7pAy",
+    "CF": "580980cd098e3bbdcb01805921f9c936:5f79e764d993c48e14d1966af74ab758a1b914848c901ea20efa4fbc81842902",
+    "cartaID": "78adf3dca3a13b4ade7e20d521dc02ee:18331b8f55df9d83d6c1d26eeaf298ea",
     "gdprConsent": true,
-    "consentTimestamp": "2025-05-30T11:28:24.405Z",
-    "ultimaAttivita": "2025-06-05T15:07:26.047Z"
+    "consentTimestamp": "2025-06-06T09:39:45.121Z",
+    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNlY2lsaWEuY2F2b3NpQGdtYWlsLmNvbSIsImlhdCI6MTc0OTIwNzE1MywiZXhwIjoxNzQ5MjEwNzUzfQ.a8DjsUMkb7fF0GFd7rNn0vwo6VhaxvwtJ-k3kpOuM3Q",
+    "ultimaAttivita": "2025-06-06T10:52:36.211Z",
+    "punti": null,
+    "saldo": null
   }
 ]
