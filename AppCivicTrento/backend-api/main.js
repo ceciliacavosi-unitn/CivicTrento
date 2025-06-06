@@ -16,12 +16,15 @@ const {
   trovaCredenziali,
   cancellaUtente,
   reimpostaPasswordConToken,
-  verificaToken
+  verificaToken,
+  salvaSessioneUtente
 } = require("./gestione_autenticazione");
 
 const { 
   getProfiloUtente, 
-  modificaProfiloUtente
+  modificaProfiloUtente,
+  aggiornaUltimaAttivita,
+  aggiornaPuntiUtente
 } = require("./gestione_utenti");
 
 const {
@@ -29,7 +32,8 @@ const {
   aggiungiDato,
   modificaDato,
   rimuoviDato,
-  rimuoviTutti
+  rimuoviTutti,
+  registraMovimento
 } = require("./gestione_cittadino");
 
 const { inviaEmailRecuperoPassword } = require("./mailer");
@@ -47,43 +51,64 @@ const {
   riscattaPremio
 } = require("./gestione_premi");
 
-const utentiPath = path.join(__dirname, "data", "utenti.json");
-
-function aggiornaUltimaAttivita(email){
-  if (!fs.existsSync(utentiPath)) return;
-
-  const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
-  const indice = utenti.findIndex(u => u.email === email);
-  if (indice !== -1) {
-    utenti[indice].ultimaAttivita = new Date();
-    fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
-    console.log('Aggiornata ultimaAttivita per ${email}');
-  }
-}
-
 //pagina principale
 app.get("/", (req, res) => {
   res.send(`
     <h1>Benvenuto nell'API CivicTrento</h1>
     <p>Queste sono le principali rotte disponibili:</p>
+    
+    <h2>Autenticazione</h2>
     <ul>
       <li><strong>POST</strong> /auth/register</li>
       <li><strong>POST</strong> /auth/login</li>
       <li><strong>POST</strong> /auth/logout</li>
+      <li><strong>POST</strong> /auth/reset_password</li>
       <li><strong>DELETE</strong> /auth/delete_user</li>
+    </ul>
+
+    <h2>Profilo Utente</h2>
+    <ul>
       <li><strong>POST</strong> /utente/profilo</li>
       <li><strong>PUT</strong> /utente/modifica_profilo</li>
+    </ul>
+
+    <h2>Dati Civici</h2>
+    <ul>
       <li><strong>POST</strong> /cittadino/dati</li>
       <li><strong>POST</strong> /cittadino/aggiungi_dato</li>
       <li><strong>PUT</strong> /cittadino/modifica_dato</li>
       <li><strong>DELETE</strong> /cittadino/rimuovi_dato</li>
       <li><strong>DELETE</strong> /cittadino/rimuovi_tutti</li>
     </ul>
-    <p>Le rotte vanno testate con strumenti come Postman, curl o una frontend app, poiché la maggior parte richiede <code>POST</code> o <code>DELETE</code> con JSON nel body.</p>
+
+    <h2>Movimento</h2>
+    <ul>
+      <li><strong>POST</strong> /cittadino/movimento</li>
+    </ul>
+
+    <h2>Utenze</h2>
+    <ul>
+      <li><strong>POST</strong> /cittadino/utenza</li>
+    </ul>
+
+    <h2>Premi</h2>
+    <ul>
+      <li><strong>GET</strong> /premi</li>
+      <li><strong>POST</strong> /premi/riscatta/:id</li>
+    </ul>
+
+    <h2>Monitoraggio Comportamenti</h2>
+    <ul>
+      <li><strong>POST</strong> /monitoraggio/voto</li>
+      <li><strong>POST</strong> /monitoraggio/bolletta</li>
+      <li><strong>POST</strong> /monitoraggio/trasporti</li>
+      <li><strong>POST</strong> /monitoraggio/multa</li>
+      <!--<li><strong>POST</strong> /monitoraggio/movimento</li>--> <!-- Commentato nel codice -->
+    </ul>
+
+    <p>Le rotte vanno testate con strumenti come <strong>Postman</strong>, <strong>curl</strong> o una <em>frontend app</em>, poiché molte richiedono <code>POST</code>, <code>PUT</code> o <code>DELETE</code> con JSON nel body.</p>
   `);
 });
-
-
 
 //autenticazione
 app.post("/auth/register", async (req, res) => {
@@ -163,32 +188,35 @@ app.post("/auth/register", async (req, res) => {
 /**
  * LOGIN: verifica le credenziali nel DB
  */
+
 app.post("/auth/login", async (req, res) => {
-  console.log("[LOGIN] Body ricevuto:", req.body);
-
   const { email, password } = req.body;
-  console.log("Email:", email);
-  console.log("Password:", password);
 
-  const credenziali = await trovaCredenziali(email?.trim(), password?.trim());
-
-  if (!credenziali) {
-    console.warn("[LOGIN] Credenziali non valide");
-    return res.status(404).json({ detail: "Utente non trovato o credenziali non valide" });
+  if (!email || !password) {
+    return res.status(400).json({ detail: "Email e password sono obbligatorie" });
   }
 
-  const token = jwt.sign({ email: email.trim() }, JWT_SECRET, { expiresIn: "1h" });
+  try {
+    const utente = await trovaCredenziali(email.trim(), password.trim());
 
-  console.log(`[LOGIN] Login riuscito per ${email}`);
+    if (!utente) {
+      return res.status(404).json({ detail: "Utente non trovato o credenziali non valide" });
+    }
 
-  const utenti = JSON.parse(fs.readFileSync(utentiPath, 'utf8'));
-  const indice = utenti.findIndex(u => u.email === email);
-  if (indice !== -1) {
-    utenti[indice].sessionToken = token; //Salva token come sessione attiva
-    fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+    const token = jwt.sign({ email: email.trim() }, JWT_SECRET, { expiresIn: "1h" });
+
+    salvaSessioneUtente(email.trim(), token);
+
+    res.json({
+      status: "success",
+      token,
+      message: "Login effettuato"
+    });
+
+  } catch (error) {
+    console.error("[LOGIN] Errore interno:", error);
+    res.status(500).json({ detail: "Errore interno del server durante il login" });
   }
-
-  res.json({ status: "success", token, message: "Login effettuato" });
 });
 
   
@@ -413,33 +441,16 @@ app.delete("/cittadino/rimuovi_tutti", verificaToken, async (req, res) => {
 
   aggiornaUltimaAttivita(email.trim());
 });
+
 //monitoraggio camminate
-app.post("/cittadino/movimento", async (req, res) => {
-  const { email, kmPercorsi, data } = req.body;
+app.post("/cittadino/movimento", verificaToken, async (req, res) => {
+  const email = req.utente.email;
+  const { kmPercorsi, data } = req.body;
 
-  const punti = Math.floor(kmPercorsi); // 1 punto per km intero
+  const punti = registraMovimento(email, kmPercorsi, data);
+  const aggiornato = aggiornaPuntiUtente(email, punti);
 
-  const pathStorico = path.join(__dirname, 'data', 'monitoraggio_movimento.json');
-  const pathUtenti = path.join(__dirname, 'data', 'utenti.json');
-
-  // 1. Aggiungi al file monitoraggio_movimento.json
-  const storico = fs.existsSync(pathStorico)
-    ? JSON.parse(fs.readFileSync(pathStorico))
-    : [];
-
-  storico.push({ utente: email, data, km: kmPercorsi, punti });
-  fs.writeFileSync(pathStorico, JSON.stringify(storico, null, 2));
-
-  //2. Aggiungi i punti all'utente in utenti.json
-  const utenti = fs.existsSync(pathUtenti)
-    ? JSON.parse(fs.readFileSync(pathUtenti))
-    : [];
-
-  const utente = utenti.find(u => u.email === email);
-  if (utente) {
-    utente.punti = (utente.punti || 0) + punti;
-    utente.saldo = (utente.saldo || 0) + punti;
-    fs.writeFileSync(pathUtenti, JSON.stringify(utenti, null, 2));
+  if (aggiornato) {
     console.log(`[MOVIMENTO] ${punti} punti aggiunti a ${email}`);
     res.status(200).json({ message: "Punti aggiornati", puntiAssegnati: punti });
   } else {
@@ -447,7 +458,6 @@ app.post("/cittadino/movimento", async (req, res) => {
     res.status(404).json({ message: "Utente non trovato" });
   }
 });
-
 
 // === PREMI ===
 
@@ -520,9 +530,10 @@ app.post('/monitoraggio/bolletta', verificaToken, async (req, res) => {
   res.json(bolletta);
 });
 
-app.post('/monitoraggio/movimento', verificaToken, async (req, res) => {
+/*app.post('/monitoraggio/movimento', verificaToken, async (req, res) => {
   const email = req.utente.email;
   const { distanza_km } = req.body;
+  console.log("Email utente in movimento:", req.utente?.email); 
   console.log(`[MOVIMENTO] ${distanza_km} km da: ${email}`);
 
   const utente = await getProfiloUtente(email);
@@ -534,7 +545,7 @@ app.post('/monitoraggio/movimento', verificaToken, async (req, res) => {
   utente.saldo = (utente.saldo || 0) + movimento.punti;
   console.log(`[MOVIMENTO] ${movimento.punti} punti per ${email}`);
   res.json(movimento);
-});
+});*/
 
 app.post('/monitoraggio/trasporti', verificaToken, async (req, res) => {
   const email = req.utente.email;

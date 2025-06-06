@@ -3,7 +3,8 @@ const path = require("path");
 // const mongoose = require("mongoose"); // MongoDB disattivato
 
 // Percorso del file JSON
-const JSON_FILE = path.join(__dirname, 'data', "dati_cittadino.json");
+const pathDatiCittadino = path.join(__dirname, 'data', "dati_cittadino.json");
+const pathStoricoMovimento = path.join(__dirname, "data", "monitoraggio_movimento.json");
 
 // Campi previsti nei dati
 const header = ["email", "subscription_code", "pod_code", "driver_license"];
@@ -37,8 +38,8 @@ const header = ["email", "subscription_code", "pod_code", "driver_license"];
  * Recupera i dati da JSON
  */
 function getDatiCittadino(email) {
-  if (!fs.existsSync(JSON_FILE)) return null;
-  const contenuto = fs.readFileSync(JSON_FILE, "utf-8");
+  if (!fs.existsSync(pathDatiCittadino)) return null;
+  const contenuto = fs.readFileSync(pathDatiCittadino, "utf-8");
   const dati = contenuto ? JSON.parse(contenuto) : [];
   const utente = dati.find(d => d.email === email) || null;
 
@@ -66,9 +67,9 @@ function aggiungiDato(email, field, value) {
   }
 
   let dati = [];
-  if (fs.existsSync(JSON_FILE)) {
+  if (fs.existsSync(pathDatiCittadino)) {
     try {
-      dati = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
+      dati = JSON.parse(fs.readFileSync(pathDatiCittadino, "utf8"));
     } catch (err) {
       console.error("[aggiungiDato] Errore nella lettura del file JSON:", err);
       return false;
@@ -91,7 +92,7 @@ function aggiungiDato(email, field, value) {
   console.log(`[aggiungiDato] Aggiunto campo '${field}' con valore '${value.trim()}'`);
 
   try {
-    fs.writeFileSync(JSON_FILE, JSON.stringify(dati, null, 2));
+    fs.writeFileSync(pathDatiCittadino, JSON.stringify(dati, null, 2));
     console.log("[aggiungiDato] File aggiornato correttamente.");
   } catch (err) {
     console.error("[aggiungiDato] Errore nella scrittura del file JSON:", err);
@@ -120,14 +121,14 @@ function modificaDato(email, field, value) {
     return false;
   }
 
-  if (!fs.existsSync(JSON_FILE)) {
+  if (!fs.existsSync(pathDatiCittadino)) {
     console.error("[modificaDato] File JSON non trovato.");
     return false;
   }
 
   let dati;
   try {
-    dati = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
+    dati = JSON.parse(fs.readFileSync(pathDatiCittadino, "utf8"));
   } catch (err) {
     console.error("[modificaDato] Errore nella lettura del file JSON:", err);
     return false;
@@ -144,7 +145,7 @@ function modificaDato(email, field, value) {
   console.log(`[modificaDato] Campo '${field}' modificato da '${precedente}' a '${value.trim()}'`);
 
   try {
-    fs.writeFileSync(JSON_FILE, JSON.stringify(dati, null, 2));
+    fs.writeFileSync(pathDatiCittadino, JSON.stringify(dati, null, 2));
     console.log("[modificaDato] File aggiornato correttamente.");
   } catch (err) {
     console.error("[modificaDato] Errore nella scrittura del file JSON:", err);
@@ -168,14 +169,14 @@ function modificaDato(email, field, value) {
 function rimuoviDato(email, field) {
   if (!header.includes(field)) return false;
 
-  if (!fs.existsSync(JSON_FILE)) return false;
-  let dati = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
+  if (!fs.existsSync(pathDatiCittadino)) return false;
+  let dati = JSON.parse(fs.readFileSync(pathDatiCittadino, "utf8"));
 
   let utente = dati.find(u => u.email === email);
   if (!utente || !utente[field]) return false;
 
   delete utente[field];
-  fs.writeFileSync(JSON_FILE, JSON.stringify(dati, null, 2));
+  fs.writeFileSync(pathDatiCittadino, JSON.stringify(dati, null, 2));
 
   // // Aggiorna nel DB (disattivato)
   // DatiCittadino.findOneAndUpdate(
@@ -191,16 +192,45 @@ function rimuoviDato(email, field) {
  * Rimuove tutti i dati dell’utente
  */
 function rimuoviTutti(email) {
-  if (!fs.existsSync(JSON_FILE)) return false;
-  let dati = JSON.parse(fs.readFileSync(JSON_FILE, "utf8"));
+  if (!fs.existsSync(pathDatiCittadino)) return false;
+  let dati = JSON.parse(fs.readFileSync(pathDatiCittadino, "utf8"));
 
   const nuoviDati = dati.filter(u => u.email !== email);
-  fs.writeFileSync(JSON_FILE, JSON.stringify(nuoviDati, null, 2));
+  fs.writeFileSync(pathDatiCittadino, JSON.stringify(nuoviDati, null, 2));
 
   // // Elimina dal DB (disattivato)
   // DatiCittadino.deleteOne({ email }).exec();
 
   return true;
+}
+
+/**
+ * Salva un movimento (km percorsi) nello storico e restituisce i punti assegnati
+ */
+function registraMovimento(email, kmPercorsi, data) {
+  const punti = Math.floor(kmPercorsi); // 1 punto per km intero
+
+  const storico = fs.existsSync(pathStoricoMovimento)
+    ? JSON.parse(fs.readFileSync(pathStoricoMovimento, "utf-8"))
+    : [];
+
+  storico.push({ utente: email, data, km: kmPercorsi, punti });
+  fs.writeFileSync(pathStoricoMovimento, JSON.stringify(storico, null, 2));
+
+  // ================================================
+  // MongoDB (disattivato)
+  // ================================================
+  // const nuovoMovimento = new Movimento({
+  //   utente: email,
+  //   data: new Date(data),
+  //   km: kmPercorsi,
+  //   punti: punti
+  // });
+  // nuovoMovimento.save()
+  //   .then(() => console.log(`Movimento salvato per ${email} (MongoDB)`))
+  //   .catch(err => console.error("Errore salvataggio movimento MongoDB:", err));
+
+  return punti;
 }
 
 // ===================================================
@@ -211,5 +241,6 @@ module.exports = {
   aggiungiDato,
   modificaDato,
   rimuoviDato,
-  rimuoviTutti
+  rimuoviTutti,
+  registraMovimento
 };

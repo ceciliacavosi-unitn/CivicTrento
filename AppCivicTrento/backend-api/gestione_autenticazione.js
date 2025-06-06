@@ -3,7 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const JWT_SECRET = process.env.JWT_SECRET;
+const CRYPTO_SECRET = process.env.CRYPTO_SECRET;
+const ENCRYPTION_KEY = crypto.scryptSync(CRYPTO_SECRET, 'salt', 32);
+const ALGORITHM = 'aes-256-cbc';
+
 //per attivare MongoDB
 // const Utente = require('./mongodb').Utente;
 
@@ -33,6 +38,14 @@ const utentiPath = filePath; // alias per coerenza nei nomi
 //   collection: 'utenti'
 // });
 // const Utente = mongoose.model('Utente', utenteSchema);
+
+// Funzioni di crittografia AES
+function encrypt(text) {
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv(ALGORITHM, ENCRYPTION_KEY, iv);
+  const encrypted = Buffer.concat([cipher.update(text, 'utf8'), cipher.final()]);
+  return iv.toString('hex') + ':' + encrypted.toString('hex');
+}
 
 //
 // FUNZIONI DI AUTENTICAZIONE (solo con file JSON)
@@ -64,8 +77,8 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
     cognome,
     email,
     password: hashedPassword,
-    CF,
-    cartaID,
+    CF: encrypt(CF), // Criptato con AES
+    cartaID: encrypt(cartaID), // Criptato con AES
     gdprConsent: gdprConsent === true,
     consentTimestamp: consentTimestamp || new Date().toISOString(),
     sessionToken: null
@@ -76,7 +89,9 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
 
   console.log("Salvataggio utente nel file:", {
     ...nuovoUtente,
-    password: '[HASHED]'
+    password: '[HASHED]',
+    CF: '[ENCRYPTED]',
+    cartaID: '[ENCRYPTED]'
   });
 
   fs.writeFileSync(filePath, JSON.stringify(utenti, null, 2));
@@ -88,10 +103,10 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
   //     cognome,
   //     email,
   //     password: hashedPassword,
-  //     CF,
-  //     cartaID,
+  //     CF: encrypt(CF),
+  //     cartaID: encrypt(cartaID),
   //     gdprConsent: gdprConsent === true,
-  //     consentTimestamp: consentTimestamp || new Date().toISOString()
+  //     consentTimestamp: consentTimestamp || new Date().toISOString(),
   //     sessionToken: null
   //   });
   //   await mongoUtente.save();
@@ -151,9 +166,7 @@ async function trovaCredenziali(email, plainPassword) {
   //   ruolo: utente.ruolo, // se lo usi
   //   sessionToken: token
   // };
-
 }
-
 
 /**
  * CANCELLA UTENTE (solo nel file JSON)
@@ -173,7 +186,6 @@ async function cancellaUtente(email, password) {
 
   return eliminato;
 }
-
 
 /**
  * REIMPOSTA PASSWORD tramite token
@@ -217,40 +229,60 @@ async function reimpostaPasswordConToken(token, nuovaPassword) {
   return { success: true, email };
 }
 
-
 /**
  * MIDDLEWARE: Verifica Token JWT
  */
 function verificaToken(req, res, next) {
-  const authHeader = req.headers.authorization;
-  console.log("Richiesta ricevuta con header:", authHeader);
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    console.warn("Token assente o malformato.");
-    return res.status(401).json({ detail: "Token mancante o malformato" });
+  if (!token) {
+    return res.status(401).json({ detail: "Token mancante" });
   }
-
-  const token = authHeader.split(" ")[1];
-  console.log("Token ricevuto:", token);
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
+
+    const utenti = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "utenti.json"), "utf-8"));
     const utente = utenti.find(u => u.email === decoded.email);
 
-    // Verifica che il token ricevuto sia uguale a quello salvato (sessione attiva)
     if (!utente || utente.sessionToken !== token) {
-      console.warn("Token non valido o sessione non attiva");
       return res.status(401).json({ detail: "Sessione non valida o già disconnessa" });
     }
-    req.utente = decoded;
-    console.log("Token valido per:", decoded.email || decoded);
+
+    req.utente = utente; // <--- questa linea è fondamentale
     next();
   } catch (err) {
-    console.error("Errore nella verifica del token:", err.message);
-    return res.status(403).json({ detail: "Token non valido o scaduto" });
+    return res.status(403).json({ detail: "Token non valido" });
   }
 }
+
+function salvaSessioneUtente(email, token) {
+  if (!fs.existsSync(filePath)) return false;
+
+  const utenti = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  const indice = utenti.findIndex(u => u.email === email);
+  if (indice !== -1) {
+    utenti[indice].sessionToken = token;
+    fs.writeFileSync(filePath, JSON.stringify(utenti, null, 2));
+    console.log(`[LOGIN] Token JWT salvato per ${email}`);
+    return true;
+  }
+
+  console.warn(`[LOGIN] Utente ${email} non trovato nel file utenti.json`);
+  return false;
+
+  // // MongoDB (commentato)
+  // const utente = await Utente.findOne({ email });
+  // if (utente) {
+  //   utente.sessionToken = token;
+  //   await utente.save();
+  //   console.log(`[LOGIN] Token JWT salvato su MongoDB per ${email}`);
+  //   return true;
+  // }
+  // return false;
+}
+
 
 // Esportazione
 module.exports = {
@@ -258,5 +290,6 @@ module.exports = {
   trovaCredenziali,
   cancellaUtente,
   reimpostaPasswordConToken,
-  verificaToken
+  verificaToken,
+  salvaSessioneUtente
 };

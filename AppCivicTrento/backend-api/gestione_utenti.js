@@ -1,10 +1,14 @@
 require('dotenv').config();
-// const mongoose = require('mongoose'); // 🔧 disattivato
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require("bcrypt");
+const crypto = require("crypto");
 
-// Connessione a MongoDB disabilitata
+// ================================================
+// Configurazione MongoDB (disattivata)
+// ================================================
+
+// const mongoose = require('mongoose');
 // mongoose.connect(process.env.DB_URL, {
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true
@@ -12,10 +16,6 @@ const bcrypt = require("bcrypt");
 // .then(() => console.log('Connesso a MongoDB'))
 // .catch(err => console.error('Errore connessione MongoDB:', err));
 
-// Percorso del file JSON
-const filePath = path.join(__dirname, 'data', 'utenti.json');
-
-// Modello Mongoose disabilitato
 // const utenteSchema = new mongoose.Schema({
 //   nome: String,
 //   cognome: String,
@@ -27,11 +27,35 @@ const filePath = path.join(__dirname, 'data', 'utenti.json');
 // const Utente = mongoose.models.Utente || mongoose.model("Utente", utenteSchema);
 
 // ================================================
+// Percorso file JSON e cifratura AES (CF, cartaID)
+// ================================================
+
+const utentiPath = path.join(__dirname, 'data', 'utenti.json');
+
+const ALGORITHM = 'aes-256-cbc';
+const CRYPTO_SECRET = process.env.CRYPTO_SECRET;
+const DECRYPTION_KEY = crypto.scryptSync(CRYPTO_SECRET, 'salt', 32);
+
+function decrypt(text) {
+  try {
+    const [ivHex, encryptedHex] = text.split(':');
+    const iv = Buffer.from(ivHex, 'hex');
+    const encrypted = Buffer.from(encryptedHex, 'hex');
+    const decipher = crypto.createDecipheriv(ALGORITHM, DECRYPTION_KEY, iv);
+    const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]);
+    return decrypted.toString('utf8');
+  } catch (e) {
+    console.warn("Errore nella decifratura:", e.message);
+    return "";
+  }
+}
+
+// ================================================
 // FUNZIONI SOLO FILE JSON
 // ================================================
 
 /**
- * Recupera i dati dell’utente da JSON
+ * Recupera i dati dell’utente da JSON (decifra CF e cartaID)
  */
 async function getProfiloUtente(email) {
   if (!email) {
@@ -39,8 +63,8 @@ async function getProfiloUtente(email) {
     return null;
   }
 
-  if (fs.existsSync(filePath)) {
-    const utenti = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  if (fs.existsSync(utentiPath)) {
+    const utenti = JSON.parse(fs.readFileSync(utentiPath, 'utf8'));
     const utente = utenti.find(u => u.email.toLowerCase() === email.toLowerCase());
 
     if (utente) {
@@ -48,9 +72,9 @@ async function getProfiloUtente(email) {
         nome: utente.nome || "",
         cognome: utente.cognome || "",
         email: utente.email,
-        password: utente.password,
-        CF: utente.CF,
-        cartaID: utente.cartaID,
+        password: utente.password, // resta hashata con bcrypt
+        CF: decrypt(utente.CF),
+        cartaID: decrypt(utente.cartaID),
         ultimaAttivita: utente.ultimaAttivita || null
       };
     }
@@ -58,16 +82,22 @@ async function getProfiloUtente(email) {
 
   // // MongoDB disattivato (solo debug)
   // const utenteDB = await Utente.findOne({ email }).lean();
-  // if (utenteDB && await bcrypt.compare(password, utenteDB.password)) {
-  //   console.log("Utente trovato in MongoDB:", utenteDB);
-  //   // return utenteDB;
+  // if (utenteDB) {
+  //   return {
+  //     nome: utenteDB.nome,
+  //     cognome: utenteDB.cognome,
+  //     email: utenteDB.email,
+  //     password: utenteDB.password,
+  //     CF: utenteDB.CF,
+  //     cartaID: utenteDB.cartaID
+  //   };
   // }
 
   return null;
 }
 
 /**
- * Modifica un campo se la password è corretta
+ * Modifica un campo se la password è corretta (cripta CF/cartaID)
  */
 async function modificaProfiloUtente(email, password, field, newValue) {
   console.log("Richiesta modifica:", { email, field, newValue });
@@ -76,7 +106,7 @@ async function modificaProfiloUtente(email, password, field, newValue) {
     nome: 'nome',
     cognome: 'cognome',
     email: 'email',
-    password: 'password',       
+    password: 'password',
     CF: 'CF',
     cartaID: 'cartaID'
   };
@@ -90,31 +120,29 @@ async function modificaProfiloUtente(email, password, field, newValue) {
   let modificatoJSON = false;
 
   // Modifica nel file JSON
-  if (fs.existsSync(filePath)) {
-    console.log("File utenti trovato:", filePath);
-    const utenti = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  if (fs.existsSync(utentiPath)) {
+    const utenti = JSON.parse(fs.readFileSync(utentiPath, 'utf8'));
 
     const utentiAggiornati = await Promise.all(
       utenti.map(async (u) => {
         if (u.email === email) {
           const passwordCorretta = await bcrypt.compare(password, u.password);
-          console.log(`Verifica password per ${email}:`, passwordCorretta);
-
           if (passwordCorretta) {
-            console.log(`Modifica campo '${chiave}' per ${email}`);
             if (chiave === 'password') {
               u.password = await bcrypt.hash(newValue.trim(), 10);
-              console.log("Password aggiornata");
+              console.log("Password aggiornata (bcrypt)");
+            } else if (chiave === 'CF' || chiave === 'cartaID') {
+              u[chiave] = cifraTesto(newValue.trim());
+              console.log(`Campo '${chiave}' criptato`);
             } else {
               u[chiave] = newValue.trim();
-              console.log(`Campo '${chiave}' aggiornato a '${newValue.trim()}'`);
+              console.log(`Campo '${chiave}' aggiornato`);
             }
 
-            //Aggiorno ultimaAttivita
             u.ultimaAttivita = new Date();
-            console.log("ultimaAttivita aggiornata");
-            
             modificatoJSON = true;
+          } else {
+            console.log("Password errata. Nessuna modifica eseguita.");
           }
         }
         return u;
@@ -122,8 +150,8 @@ async function modificaProfiloUtente(email, password, field, newValue) {
     );
 
     if (modificatoJSON) {
-      fs.writeFileSync(filePath, JSON.stringify(utentiAggiornati, null, 2));
-      console.log("File utenti aggiornato con successo");
+      fs.writeFileSync(utentiPath, JSON.stringify(utentiAggiornati, null, 2));
+      console.log("File utenti aggiornato");
     } else {
       console.log("Nessuna modifica effettuata");
     }
@@ -131,24 +159,79 @@ async function modificaProfiloUtente(email, password, field, newValue) {
     console.log("File utenti non trovato");
   }
 
-  // Modifica su MongoDB (disattivata)
+  // // Modifica su MongoDB (disattivata)
   // const utenteDB = await Utente.findOne({ email });
-  // let modificatoMongo = false;
   // if (utenteDB && await bcrypt.compare(password, utenteDB.password)) {
   //   const updateData = {};
-  //   updateData[chiave] = chiave === 'password' ? await bcrypt.hash(newValue.trim(), 10) : newValue.trim();
-  //   const result = await Utente.updateOne({ email }, { $set: updateData });
-  //   modificatoMongo = result.modifiedCount > 0;
+  //   updateData[chiave] = chiave === 'password'
+  //     ? await bcrypt.hash(newValue.trim(), 10)
+  //     : (chiave === 'CF' || chiave === 'cartaID')
+  //         ? cifraTesto(newValue.trim())
+  //         : newValue.trim();
+  //   await Utente.updateOne({ email }, { $set: updateData });
   // }
 
   return modificatoJSON; // || modificatoMongo;
 }
 
+/**
+ * Aggiorna la data dell'ultima attività per un utente
+ */
+async function aggiornaUltimaAttivita(email) {
+  // File JSON
+  if (fs.existsSync(utentiPath)) {
+    const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
+    const indice = utenti.findIndex(u => u.email === email);
+
+    if (indice !== -1) {
+      utenti[indice].ultimaAttivita = new Date();
+      fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+      console.log(`Aggiornata ultimaAttivita per ${email}`);
+    }
+  }
+
+  // MongoDB (opzionale, disattivato)
+  // const utente = await Utente.findOne({ email });
+  // if (utente) {
+  //   utente.ultimaAttivita = new Date();
+  //   await utente.save();
+  //   console.log(`(MongoDB) ultimaAttivita aggiornata per ${email}`);
+  // }
+}
+
+/**
+ * Aggiunge punti all'utente specificato
+ */
+function aggiornaPuntiUtente(email, punti) {
+  if (!fs.existsSync(utentiPath)) return false;
+
+  const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
+  const utente = utenti.find(u => u.email === email);
+
+  if (!utente) return false;
+
+  utente.punti = (utente.punti || 0) + punti;
+  utente.saldo = (utente.saldo || 0) + punti;
+
+  fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+
+  // ================================================
+  // MongoDB (disattivato)
+  // ================================================
+  // Utente.updateOne({ email }, {
+  //   $inc: { punti: punti, saldo: punti }
+  // }).then(() => console.log(`Punti aggiornati per ${email} (MongoDB)`))
+  //   .catch(err => console.error("Errore aggiornamento MongoDB:", err));
+
+  return true;
+}
 
 // ================================================
 // Export
 // ================================================
 module.exports = {
   getProfiloUtente,
-  modificaProfiloUtente
+  modificaProfiloUtente,
+  aggiornaUltimaAttivita,
+  aggiornaPuntiUtente
 };
