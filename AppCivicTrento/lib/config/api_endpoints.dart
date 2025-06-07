@@ -13,7 +13,7 @@
 // ======================================================
 
 /// Indirizzo del server (host + porta)
-const String apiHost = '172.20.10.3:8000'; 
+const String apiHost = '192.168.1.66:8000'; 
 // ceci_casa: 192.168.0.108 
 //mati: 172.20.10.3 
 //ceci_casa_luca: 192.168.1.66 
@@ -65,6 +65,10 @@ const String deleteDataUrl = '$baseUrl/cittadino/rimuovi_dato';
 
 /// Elimina tutti i dati civici 
 const String deleteAllDataUrl = '$baseUrl/cittadino/rimuovi_tutti';
+
+/// Rimuove tutte le utenze (luce, gas, acqua) associate all’utente
+const String deleteUtenzeUrl = '$baseUrl/cittadino/rimuovi_utenze';
+
 
 /// ======================================================
 /// Premi (/premi/)

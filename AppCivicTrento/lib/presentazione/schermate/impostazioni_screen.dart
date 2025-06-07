@@ -102,12 +102,15 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
                   final password = SistemaAutenticazione.password!;
                   print(" Email: $email");
 
+                  await CittadinoService.deleteUtenze();
+                  print(" Utenze eliminate");
+
                   await CittadinoService.deleteAllData();
                   print(" Dati civici eliminati");
 
                   await AuthService.deleteAccount(email: email, password: password);
                   print(" Account eliminato");
-
+                  
                   _logout();
                   final prefs = await SharedPreferences.getInstance();
                   await prefs.clear();

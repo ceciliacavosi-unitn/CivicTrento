@@ -118,8 +118,27 @@ function getUtenze(idUtente) {
   return record?.utenze || {};
 }
 
+// Rimuove tutte le utenze associate a un utente dato il suo ID (email)
+function rimuoviUtenze(email) {
+  console.log(`[rimuoviUtenze] Eliminazione utenze per ${email}`);
+  
+  const utenze = leggiUtenze();
+  const nuoveUtenze = utenze.filter(u => u.idUtente !== email);
+
+  if (nuoveUtenze.length === utenze.length) {
+    console.warn(`[rimuoviUtenze] Nessuna utenza trovata per ${email}`);
+    return false;
+  }
+
+  scriviUtenze(nuoveUtenze);
+  console.log(`[rimuoviUtenze] Utenze rimosse per ${email}`);
+  return true;
+}
+
+
 module.exports = {
   aggiungiOModificaUtenza,
-  getUtenze
+  getUtenze,
+  rimuoviUtenze
 };
 

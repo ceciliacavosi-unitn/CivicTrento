@@ -3,7 +3,8 @@ const fs = require("fs");
 const path = require("path");
 
 // Percorso del file premi.json
-const PREMI_FILE = path.join(__dirname, "data", "premi.json");
+const premiPath = path.join(__dirname, "data", "premi.json");
+const utentiPath = path.join(__dirname, "data", "premi.json");
 
 // Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
@@ -32,13 +33,13 @@ const PREMI_FILE = path.join(__dirname, "data", "premi.json");
  * Restituisce l'elenco dei premi dal file JSON
  */
 function getPremi() {
-  if (!fs.existsSync(PREMI_FILE)) {
+  if (!fs.existsSync(premiPath)) {
     console.warn("[getPremi] File premi.json non trovato");
     return null;
   }
 
   try {
-    const fileContent = fs.readFileSync(PREMI_FILE, "utf-8");
+    const fileContent = fs.readFileSync(premiPath, "utf-8");
     const premi = JSON.parse(fileContent);
 
     console.log(`[getPremi] Premi caricati (${premi.length} elementi)`);
@@ -56,14 +57,14 @@ function getPremi() {
  * @param {string} premioId 
  * @returns {object|null} Oggetto premio se trovato, altrimenti null
  */
-function riscattaPremio(premioId) {
-  if (!fs.existsSync(PREMI_FILE)) {
+function riscattaPremio(premioId, emailUtente) {
+  if (!fs.existsSync(premiPath)) {
     console.warn("[riscattaPremio] File premi.json non trovato");
     return null;
   }
 
   try {
-    const premi = JSON.parse(fs.readFileSync(PREMI_FILE, "utf-8"));
+    const premi = JSON.parse(fs.readFileSync(premiPath, "utf-8"));
     const premio = premi.find(p => p.id === premioId);
 
     if (!premio) {
@@ -72,24 +73,26 @@ function riscattaPremio(premioId) {
     }
 
     console.log(`[riscattaPremio] Premio riscattato: ${premio.nome}`);
-    
-    //Aggiorna ultimaAttivita dell'utente
-    if (fs.existsSync(utentiPath)){
+
+    // Aggiorna ultimaAttivita dell'utente
+    const utentiPath = path.join(__dirname, "data", "utenti.json");
+    if (fs.existsSync(utentiPath)) {
       const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
-      const indice = utenti. findIndex(u => u.email === emailUtente);
+      const indice = utenti.findIndex(u => u.email === emailUtente);
       if (indice !== -1) {
         utenti[indice].ultimaAttivita = new Date();
-        fs.writeFileSync(utentiPath), JSON.stringify(utenti, null, 2);
-        console.log('[riscattaPremio] Aggiornata ultimaAttivita per ${emailUtente}');
+        fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+        console.log(`[riscattaPremio] Aggiornata ultimaAttivita per ${emailUtente}`);
       }
     }
-    
+
     return premio;
   } catch (err) {
     console.error("[riscattaPremio] Errore nella gestione del riscatto:", err);
     throw err;
   }
 }
+
 
 // Esportazione
 module.exports = {

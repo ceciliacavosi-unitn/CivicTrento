@@ -127,6 +127,22 @@ class CittadinoService {
     }
   }
 
+    // ======================================================
+  // Rimuove tutte le utenze associate all'utente
+  static Future<void> deleteUtenze() async {
+    final token = await _getToken();
+
+    final resp = await http.delete(
+      Uri.parse(deleteUtenzeUrl),
+      headers: _authHeaders(token),
+    );
+
+    if (resp.statusCode != 200) {
+      final detail = _parseError(resp.body);
+      throw Exception('Eliminazione utenze fallita: $detail');
+    }
+  }
+
   // ======================================================
   // Funzioni di utilità privata
   static Future<String> _getToken() async {

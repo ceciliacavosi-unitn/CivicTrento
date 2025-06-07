@@ -9,13 +9,14 @@ const CRYPTO_SECRET = process.env.CRYPTO_SECRET;
 const ENCRYPTION_KEY = crypto.scryptSync(CRYPTO_SECRET, 'salt', 32);
 const ALGORITHM = 'aes-256-cbc';
 
-//per attivare MongoDB
+// per attivare MongoDB
 // const Utente = require('./mongodb').Utente;
 
-// Percorso del file utenti.json
+// Percorso dei file
 const filePath = path.join(__dirname, 'data', 'utenti.json');
 const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
 const utentiPath = filePath; // alias per coerenza nei nomi
+const pathAbitanti = path.join(__dirname, "data", "dati_abitantiTn.json");
 
 // Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
@@ -47,6 +48,20 @@ function encrypt(text) {
   return iv.toString('hex') + ':' + encrypted.toString('hex');
 }
 
+function decrypt(encryptedText) {
+  if (!encryptedText || typeof encryptedText !== 'string' || !encryptedText.includes(':')) {
+    console.warn("[decrypt] Testo cifrato mancante o in formato errato:", encryptedText);
+    return "";
+  }
+  const [ivHex, encryptedHex] = encryptedText.split(":");
+  const iv = Buffer.from(ivHex, 'hex');
+  const encrypted = Buffer.from(encryptedHex, 'hex');
+  const decipher = crypto.createDecipheriv(ALGORITHM, ENCRYPTION_KEY, iv);
+  let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+  decrypted += decipher.final('utf8');
+  return decrypted;
+}
+
 //
 // FUNZIONI DI AUTENTICAZIONE (solo con file JSON)
 //
@@ -68,6 +83,25 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
     }
   }
 
+  // Verifica esistenza nel DB ufficiale con controllo completo su nome, cognome, CF e cartaID
+  if (!fs.existsSync(pathAbitanti)) {
+    console.warn("[registraUtente] File dati_abitantiTn.json mancante");
+    return false;
+  }
+
+  const abitanti = JSON.parse(fs.readFileSync(pathAbitanti, 'utf8'));
+  const trovato = abitanti.find(p =>
+    p.nome === nome &&
+    p.cognome === cognome &&
+    p.codiceFiscale === CF &&
+    p.cartaID === cartaID
+  );
+
+  if (!trovato) {
+    console.warn("[registraUtente] Dati anagrafici non corrispondenti al database ufficiale");
+    return false;
+  }
+
   // Criptazione password
   const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -77,8 +111,8 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
     cognome,
     email,
     password: hashedPassword,
-    CF: encrypt(CF), // Criptato con AES
-    cartaID: encrypt(cartaID), // Criptato con AES
+    CF: encrypt(CF),
+    cartaID: encrypt(cartaID),
     gdprConsent: gdprConsent === true,
     consentTimestamp: consentTimestamp || new Date().toISOString(),
     sessionToken: null
@@ -86,14 +120,12 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
 
   // Salvataggio su file
   utenti.push(nuovoUtente);
-
   console.log("Salvataggio utente nel file:", {
     ...nuovoUtente,
     password: '[HASHED]',
     CF: '[ENCRYPTED]',
     cartaID: '[ENCRYPTED]'
   });
-
   fs.writeFileSync(filePath, JSON.stringify(utenti, null, 2));
 
   // // Salvataggio opzionale su MongoDB (commentato)
@@ -291,5 +323,7 @@ module.exports = {
   cancellaUtente,
   reimpostaPasswordConToken,
   verificaToken,
-  salvaSessioneUtente
+  salvaSessioneUtente,
+  encrypt,
+  decrypt
 };

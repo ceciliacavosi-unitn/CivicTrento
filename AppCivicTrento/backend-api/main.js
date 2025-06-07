@@ -51,6 +51,12 @@ const {
   riscattaPremio
 } = require("./gestione_premi");
 
+const { rimuoviUtenze } = require("./gestione_utenze");
+
+const email = "cecilia.cavosi@gmail.com";
+rimuoviUtenze(email);
+
+
 //pagina principale
 app.get("/", (req, res) => {
   res.send(`
@@ -459,6 +465,19 @@ app.post("/cittadino/movimento", verificaToken, async (req, res) => {
   }
 });
 
+//rimozione utenze
+app.delete("/cittadino/rimuovi_utenze", verificaToken, (req, res) => {
+  const email = req.utente.email;
+  const successo = rimuoviUtenze(email);
+
+  if (!successo) {
+    return res.status(404).json({ detail: "Nessuna utenza trovata da eliminare" });
+  }
+
+  res.json({ status: "success", message: "Utenze rimosse correttamente" });
+});
+
+
 // === PREMI ===
 
 // GET /premi → restituisce l'elenco dei premi
@@ -483,7 +502,7 @@ app.post("/premi/riscatta/:id", verificaToken, (req, res) => {
   }
 
   try {
-    const risultato = riscattaPremio(premioId);
+    const risultato = riscattaPremio(premioId, req.utente.email);
     if (!risultato) {
       return res.status(404).json({ detail: "Premio non trovato" });
     }
