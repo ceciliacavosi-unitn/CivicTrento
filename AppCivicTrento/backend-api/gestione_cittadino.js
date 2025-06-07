@@ -2,9 +2,13 @@ const fs = require("fs");
 const path = require("path");
 // const mongoose = require("mongoose"); // MongoDB disattivato
 
+
 // Percorso del file JSON
 const pathDatiCittadino = path.join(__dirname, 'data', "dati_cittadino.json");
 const pathStoricoMovimento = path.join(__dirname, "data", "monitoraggio_movimento.json");
+const pathPatenti = path.join(__dirname, 'data', 'numeri_patenti.json');
+const pathAbbonamenti = path.join(__dirname, 'data', 'numeri_abbonamenti.json');
+const pathCodiciPod = path.join(__dirname, 'data', 'codici_pod.json');
 
 // Campi previsti nei dati
 const header = ["email", "subscription_code", "pod_code", "driver_license"];
@@ -66,6 +70,21 @@ function aggiungiDato(email, field, value) {
     return false;
   }
 
+  // Verifica validità del valore inserito
+  if (field === "driver_license" && !verificaPatente(value)) {
+    console.warn("[aggiungiDato] Numero patente non valido.");
+    return false;
+  }
+  if (field === "subscription_code" && !verificaAbbonamento(value)) {
+    console.warn("[aggiungiDato] Numero abbonamento non valido.");
+    return false;
+  }
+  if (field === "pod_code" && !verificaCodicePOD(value)) {
+    console.warn("[aggiungiDato] Codice POD non valido.");
+    return false;
+  }
+
+
   let dati = [];
   if (fs.existsSync(pathDatiCittadino)) {
     try {
@@ -120,6 +139,22 @@ function modificaDato(email, field, value) {
     console.warn(`[modificaDato] Campo '${field}' non ammesso.`);
     return false;
   }
+
+  // Verifica validità prima di modificare
+  if (field === "driver_license" && !verificaPatente(value)) {
+    console.warn("[modificaDato] Numero patente non valido.");
+    return false;
+  }
+  if (field === "subscription_code" && !verificaAbbonamento(value)) {
+    console.warn("[modificaDato] Numero abbonamento non valido.");
+    return false;
+  }
+  if (field === "pod_code" && !verificaCodicePOD(value)) {
+    console.warn("[modificaDato] Codice POD non valido.");
+    return false;
+  }
+
+
 
   if (!fs.existsSync(pathDatiCittadino)) {
     console.error("[modificaDato] File JSON non trovato.");
@@ -232,6 +267,25 @@ function registraMovimento(email, kmPercorsi, data) {
 
   return punti;
 }
+
+function verificaPatente(numeroPatente) {
+  if (!fs.existsSync(pathPatenti)) return false;
+  const patenti = JSON.parse(fs.readFileSync(pathPatenti, 'utf8'));
+  return patenti.some(p => p.numeroPatente === numeroPatente);
+}
+
+function verificaAbbonamento(numeroAbbonamento) {
+  if (!fs.existsSync(pathAbbonamenti)) return false;
+  const abbonamenti = JSON.parse(fs.readFileSync(pathAbbonamenti, 'utf8'));
+  return abbonamenti.some(a => a.numeroAbbonamento === numeroAbbonamento);
+}
+
+function verificaCodicePOD(codicePOD) {
+  if (!fs.existsSync(pathCodiciPod)) return false;
+  const pod = JSON.parse(fs.readFileSync(pathCodiciPod, 'utf8'));
+  return pod.some(p => p.codicePOD === codicePOD);
+}
+
 
 // ===================================================
 // Export delle funzioni

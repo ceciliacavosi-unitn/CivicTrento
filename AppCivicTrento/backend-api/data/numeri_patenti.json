@@ -1,0 +1,802 @@
+[
+  {
+    "numeroPatente": "NM0000001",
+    "scadenza": "2026-01-18"
+  },
+  {
+    "numeroPatente": "DR0000002",
+    "scadenza": "2025-08-22"
+  },
+  {
+    "numeroPatente": "WY0000003",
+    "scadenza": "2025-11-21"
+  },
+  {
+    "numeroPatente": "KG0000004",
+    "scadenza": "2025-08-19"
+  },
+  {
+    "numeroPatente": "QA0000005",
+    "scadenza": "2027-02-18"
+  },
+  {
+    "numeroPatente": "UB0000006",
+    "scadenza": "2027-04-30"
+  },
+  {
+    "numeroPatente": "AZ0000007",
+    "scadenza": "2026-04-18"
+  },
+  {
+    "numeroPatente": "PC0000008",
+    "scadenza": "2027-02-20"
+  },
+  {
+    "numeroPatente": "NE0000009",
+    "scadenza": "2025-07-26"
+  },
+  {
+    "numeroPatente": "TL0000010",
+    "scadenza": "2025-07-23"
+  },
+  {
+    "numeroPatente": "HH0000011",
+    "scadenza": "2026-04-29"
+  },
+  {
+    "numeroPatente": "XD0000012",
+    "scadenza": "2025-07-13"
+  },
+  {
+    "numeroPatente": "PO0000013",
+    "scadenza": "2025-08-18"
+  },
+  {
+    "numeroPatente": "BF0000014",
+    "scadenza": "2026-04-03"
+  },
+  {
+    "numeroPatente": "QV0000015",
+    "scadenza": "2026-11-21"
+  },
+  {
+    "numeroPatente": "BD0000016",
+    "scadenza": "2027-01-07"
+  },
+  {
+    "numeroPatente": "WF0000017",
+    "scadenza": "2027-05-15"
+  },
+  {
+    "numeroPatente": "TG0000018",
+    "scadenza": "2026-03-21"
+  },
+  {
+    "numeroPatente": "NV0000019",
+    "scadenza": "2026-03-16"
+  },
+  {
+    "numeroPatente": "XZ0000020",
+    "scadenza": "2027-01-09"
+  },
+  {
+    "numeroPatente": "MP0000021",
+    "scadenza": "2026-10-23"
+  },
+  {
+    "numeroPatente": "HM0000022",
+    "scadenza": "2027-04-23"
+  },
+  {
+    "numeroPatente": "QU0000023",
+    "scadenza": "2026-05-04"
+  },
+  {
+    "numeroPatente": "HF0000024",
+    "scadenza": "2026-05-19"
+  },
+  {
+    "numeroPatente": "AH0000025",
+    "scadenza": "2026-10-05"
+  },
+  {
+    "numeroPatente": "JI0000026",
+    "scadenza": "2026-01-13"
+  },
+  {
+    "numeroPatente": "HJ0000027",
+    "scadenza": "2025-11-12"
+  },
+  {
+    "numeroPatente": "KU0000028",
+    "scadenza": "2027-04-03"
+  },
+  {
+    "numeroPatente": "KP0000029",
+    "scadenza": "2026-09-18"
+  },
+  {
+    "numeroPatente": "WX0000030",
+    "scadenza": "2026-08-02"
+  },
+  {
+    "numeroPatente": "PP0000031",
+    "scadenza": "2027-02-11"
+  },
+  {
+    "numeroPatente": "EM0000032",
+    "scadenza": "2026-06-22"
+  },
+  {
+    "numeroPatente": "DV0000033",
+    "scadenza": "2027-05-26"
+  },
+  {
+    "numeroPatente": "UF0000034",
+    "scadenza": "2025-07-27"
+  },
+  {
+    "numeroPatente": "HE0000035",
+    "scadenza": "2025-10-15"
+  },
+  {
+    "numeroPatente": "NP0000036",
+    "scadenza": "2025-10-15"
+  },
+  {
+    "numeroPatente": "WL0000037",
+    "scadenza": "2026-05-24"
+  },
+  {
+    "numeroPatente": "WB0000038",
+    "scadenza": "2026-01-07"
+  },
+  {
+    "numeroPatente": "FK0000039",
+    "scadenza": "2027-05-17"
+  },
+  {
+    "numeroPatente": "GR0000040",
+    "scadenza": "2025-08-24"
+  },
+  {
+    "numeroPatente": "EB0000041",
+    "scadenza": "2027-04-11"
+  },
+  {
+    "numeroPatente": "NN0000042",
+    "scadenza": "2025-08-02"
+  },
+  {
+    "numeroPatente": "BW0000043",
+    "scadenza": "2027-04-21"
+  },
+  {
+    "numeroPatente": "TT0000044",
+    "scadenza": "2025-10-23"
+  },
+  {
+    "numeroPatente": "ZI0000045",
+    "scadenza": "2026-04-25"
+  },
+  {
+    "numeroPatente": "NG0000046",
+    "scadenza": "2026-04-13"
+  },
+  {
+    "numeroPatente": "UK0000047",
+    "scadenza": "2025-07-21"
+  },
+  {
+    "numeroPatente": "ZL0000048",
+    "scadenza": "2026-04-27"
+  },
+  {
+    "numeroPatente": "KG0000049",
+    "scadenza": "2027-06-06"
+  },
+  {
+    "numeroPatente": "FM0000050",
+    "scadenza": "2026-03-06"
+  },
+  {
+    "numeroPatente": "RG0000051",
+    "scadenza": "2026-11-30"
+  },
+  {
+    "numeroPatente": "ML0000052",
+    "scadenza": "2025-10-26"
+  },
+  {
+    "numeroPatente": "XX0000053",
+    "scadenza": "2026-07-07"
+  },
+  {
+    "numeroPatente": "TL0000054",
+    "scadenza": "2026-07-08"
+  },
+  {
+    "numeroPatente": "WL0000055",
+    "scadenza": "2026-03-19"
+  },
+  {
+    "numeroPatente": "TR0000056",
+    "scadenza": "2026-08-01"
+  },
+  {
+    "numeroPatente": "ER0000057",
+    "scadenza": "2027-03-02"
+  },
+  {
+    "numeroPatente": "UC0000058",
+    "scadenza": "2026-02-17"
+  },
+  {
+    "numeroPatente": "HW0000059",
+    "scadenza": "2026-02-05"
+  },
+  {
+    "numeroPatente": "FR0000060",
+    "scadenza": "2026-07-02"
+  },
+  {
+    "numeroPatente": "BS0000061",
+    "scadenza": "2026-12-06"
+  },
+  {
+    "numeroPatente": "TO0000062",
+    "scadenza": "2027-05-25"
+  },
+  {
+    "numeroPatente": "YD0000063",
+    "scadenza": "2025-08-04"
+  },
+  {
+    "numeroPatente": "PG0000064",
+    "scadenza": "2026-01-20"
+  },
+  {
+    "numeroPatente": "AZ0000065",
+    "scadenza": "2027-02-06"
+  },
+  {
+    "numeroPatente": "OM0000066",
+    "scadenza": "2026-05-22"
+  },
+  {
+    "numeroPatente": "EC0000067",
+    "scadenza": "2027-04-14"
+  },
+  {
+    "numeroPatente": "YS0000068",
+    "scadenza": "2027-05-29"
+  },
+  {
+    "numeroPatente": "KF0000069",
+    "scadenza": "2025-09-29"
+  },
+  {
+    "numeroPatente": "BR0000070",
+    "scadenza": "2026-02-25"
+  },
+  {
+    "numeroPatente": "PG0000071",
+    "scadenza": "2027-05-21"
+  },
+  {
+    "numeroPatente": "JL0000072",
+    "scadenza": "2025-12-12"
+  },
+  {
+    "numeroPatente": "DM0000073",
+    "scadenza": "2026-12-17"
+  },
+  {
+    "numeroPatente": "RN0000074",
+    "scadenza": "2027-01-15"
+  },
+  {
+    "numeroPatente": "UL0000075",
+    "scadenza": "2026-02-09"
+  },
+  {
+    "numeroPatente": "MK0000076",
+    "scadenza": "2026-07-08"
+  },
+  {
+    "numeroPatente": "SR0000077",
+    "scadenza": "2026-09-07"
+  },
+  {
+    "numeroPatente": "VW0000078",
+    "scadenza": "2025-10-02"
+  },
+  {
+    "numeroPatente": "MR0000079",
+    "scadenza": "2025-10-16"
+  },
+  {
+    "numeroPatente": "SE0000080",
+    "scadenza": "2026-08-22"
+  },
+  {
+    "numeroPatente": "SJ0000081",
+    "scadenza": "2026-02-06"
+  },
+  {
+    "numeroPatente": "MG0000082",
+    "scadenza": "2026-12-15"
+  },
+  {
+    "numeroPatente": "JD0000083",
+    "scadenza": "2026-02-06"
+  },
+  {
+    "numeroPatente": "JZ0000084",
+    "scadenza": "2025-11-27"
+  },
+  {
+    "numeroPatente": "WI0000085",
+    "scadenza": "2027-06-07"
+  },
+  {
+    "numeroPatente": "KQ0000086",
+    "scadenza": "2025-12-08"
+  },
+  {
+    "numeroPatente": "PM0000087",
+    "scadenza": "2025-12-20"
+  },
+  {
+    "numeroPatente": "EU0000088",
+    "scadenza": "2026-03-16"
+  },
+  {
+    "numeroPatente": "VE0000089",
+    "scadenza": "2026-02-05"
+  },
+  {
+    "numeroPatente": "EM0000090",
+    "scadenza": "2027-04-07"
+  },
+  {
+    "numeroPatente": "UU0000091",
+    "scadenza": "2026-08-25"
+  },
+  {
+    "numeroPatente": "BN0000092",
+    "scadenza": "2026-09-11"
+  },
+  {
+    "numeroPatente": "HN0000093",
+    "scadenza": "2027-03-16"
+  },
+  {
+    "numeroPatente": "UH0000094",
+    "scadenza": "2026-08-02"
+  },
+  {
+    "numeroPatente": "ZF0000095",
+    "scadenza": "2026-03-12"
+  },
+  {
+    "numeroPatente": "CF0000096",
+    "scadenza": "2026-09-18"
+  },
+  {
+    "numeroPatente": "LM0000097",
+    "scadenza": "2026-04-17"
+  },
+  {
+    "numeroPatente": "VS0000098",
+    "scadenza": "2027-05-07"
+  },
+  {
+    "numeroPatente": "AH0000099",
+    "scadenza": "2027-01-15"
+  },
+  {
+    "numeroPatente": "OJ0000100",
+    "scadenza": "2026-03-10"
+  },
+  {
+    "numeroPatente": "LK0000101",
+    "scadenza": "2026-06-12"
+  },
+  {
+    "numeroPatente": "LS0000102",
+    "scadenza": "2026-02-03"
+  },
+  {
+    "numeroPatente": "XX0000103",
+    "scadenza": "2025-08-15"
+  },
+  {
+    "numeroPatente": "EK0000104",
+    "scadenza": "2027-03-20"
+  },
+  {
+    "numeroPatente": "BH0000105",
+    "scadenza": "2027-04-25"
+  },
+  {
+    "numeroPatente": "ZQ0000106",
+    "scadenza": "2026-02-27"
+  },
+  {
+    "numeroPatente": "GM0000107",
+    "scadenza": "2027-04-28"
+  },
+  {
+    "numeroPatente": "EV0000108",
+    "scadenza": "2027-03-15"
+  },
+  {
+    "numeroPatente": "KV0000109",
+    "scadenza": "2026-07-19"
+  },
+  {
+    "numeroPatente": "GK0000110",
+    "scadenza": "2026-09-22"
+  },
+  {
+    "numeroPatente": "IC0000111",
+    "scadenza": "2026-09-10"
+  },
+  {
+    "numeroPatente": "AJ0000112",
+    "scadenza": "2026-05-27"
+  },
+  {
+    "numeroPatente": "KA0000113",
+    "scadenza": "2025-12-04"
+  },
+  {
+    "numeroPatente": "RF0000114",
+    "scadenza": "2026-01-02"
+  },
+  {
+    "numeroPatente": "TU0000115",
+    "scadenza": "2026-02-07"
+  },
+  {
+    "numeroPatente": "SR0000116",
+    "scadenza": "2026-12-28"
+  },
+  {
+    "numeroPatente": "BN0000117",
+    "scadenza": "2026-03-25"
+  },
+  {
+    "numeroPatente": "OJ0000118",
+    "scadenza": "2025-10-27"
+  },
+  {
+    "numeroPatente": "TQ0000119",
+    "scadenza": "2026-01-17"
+  },
+  {
+    "numeroPatente": "NS0000120",
+    "scadenza": "2025-12-24"
+  },
+  {
+    "numeroPatente": "ZI0000121",
+    "scadenza": "2026-12-10"
+  },
+  {
+    "numeroPatente": "NY0000122",
+    "scadenza": "2026-01-23"
+  },
+  {
+    "numeroPatente": "KS0000123",
+    "scadenza": "2026-03-09"
+  },
+  {
+    "numeroPatente": "VP0000124",
+    "scadenza": "2027-01-16"
+  },
+  {
+    "numeroPatente": "IJ0000125",
+    "scadenza": "2026-07-30"
+  },
+  {
+    "numeroPatente": "AI0000126",
+    "scadenza": "2026-11-08"
+  },
+  {
+    "numeroPatente": "YY0000127",
+    "scadenza": "2026-09-13"
+  },
+  {
+    "numeroPatente": "MW0000128",
+    "scadenza": "2025-12-05"
+  },
+  {
+    "numeroPatente": "JI0000129",
+    "scadenza": "2026-10-04"
+  },
+  {
+    "numeroPatente": "HQ0000130",
+    "scadenza": "2026-02-09"
+  },
+  {
+    "numeroPatente": "OJ0000131",
+    "scadenza": "2025-10-02"
+  },
+  {
+    "numeroPatente": "ZB0000132",
+    "scadenza": "2026-01-31"
+  },
+  {
+    "numeroPatente": "VV0000133",
+    "scadenza": "2027-02-17"
+  },
+  {
+    "numeroPatente": "SG0000134",
+    "scadenza": "2025-11-12"
+  },
+  {
+    "numeroPatente": "GK0000135",
+    "scadenza": "2026-03-06"
+  },
+  {
+    "numeroPatente": "BK0000136",
+    "scadenza": "2026-07-14"
+  },
+  {
+    "numeroPatente": "WR0000137",
+    "scadenza": "2026-11-04"
+  },
+  {
+    "numeroPatente": "OD0000138",
+    "scadenza": "2026-03-03"
+  },
+  {
+    "numeroPatente": "HA0000139",
+    "scadenza": "2026-04-10"
+  },
+  {
+    "numeroPatente": "DK0000140",
+    "scadenza": "2026-08-18"
+  },
+  {
+    "numeroPatente": "ZU0000141",
+    "scadenza": "2026-04-09"
+  },
+  {
+    "numeroPatente": "DK0000142",
+    "scadenza": "2026-07-02"
+  },
+  {
+    "numeroPatente": "NY0000143",
+    "scadenza": "2026-01-04"
+  },
+  {
+    "numeroPatente": "YL0000144",
+    "scadenza": "2025-11-17"
+  },
+  {
+    "numeroPatente": "HD0000145",
+    "scadenza": "2026-11-14"
+  },
+  {
+    "numeroPatente": "GE0000146",
+    "scadenza": "2026-05-08"
+  },
+  {
+    "numeroPatente": "HH0000147",
+    "scadenza": "2025-07-08"
+  },
+  {
+    "numeroPatente": "FC0000148",
+    "scadenza": "2026-11-29"
+  },
+  {
+    "numeroPatente": "MD0000149",
+    "scadenza": "2026-12-04"
+  },
+  {
+    "numeroPatente": "YO0000150",
+    "scadenza": "2026-11-03"
+  },
+  {
+    "numeroPatente": "LY0000151",
+    "scadenza": "2025-09-08"
+  },
+  {
+    "numeroPatente": "PT0000152",
+    "scadenza": "2025-12-10"
+  },
+  {
+    "numeroPatente": "YS0000153",
+    "scadenza": "2026-11-19"
+  },
+  {
+    "numeroPatente": "HI0000154",
+    "scadenza": "2026-03-28"
+  },
+  {
+    "numeroPatente": "QG0000155",
+    "scadenza": "2027-03-02"
+  },
+  {
+    "numeroPatente": "TI0000156",
+    "scadenza": "2027-05-17"
+  },
+  {
+    "numeroPatente": "GT0000157",
+    "scadenza": "2025-09-20"
+  },
+  {
+    "numeroPatente": "IG0000158",
+    "scadenza": "2026-07-14"
+  },
+  {
+    "numeroPatente": "FV0000159",
+    "scadenza": "2027-05-25"
+  },
+  {
+    "numeroPatente": "PV0000160",
+    "scadenza": "2026-11-20"
+  },
+  {
+    "numeroPatente": "GD0000161",
+    "scadenza": "2027-04-12"
+  },
+  {
+    "numeroPatente": "NJ0000162",
+    "scadenza": "2027-04-19"
+  },
+  {
+    "numeroPatente": "ZM0000163",
+    "scadenza": "2026-09-25"
+  },
+  {
+    "numeroPatente": "UC0000164",
+    "scadenza": "2027-02-02"
+  },
+  {
+    "numeroPatente": "KO0000165",
+    "scadenza": "2026-04-23"
+  },
+  {
+    "numeroPatente": "RN0000166",
+    "scadenza": "2027-05-07"
+  },
+  {
+    "numeroPatente": "ZF0000167",
+    "scadenza": "2027-04-30"
+  },
+  {
+    "numeroPatente": "QH0000168",
+    "scadenza": "2025-09-08"
+  },
+  {
+    "numeroPatente": "NF0000169",
+    "scadenza": "2025-08-21"
+  },
+  {
+    "numeroPatente": "FS0000170",
+    "scadenza": "2025-10-14"
+  },
+  {
+    "numeroPatente": "LW0000171",
+    "scadenza": "2026-07-03"
+  },
+  {
+    "numeroPatente": "FD0000172",
+    "scadenza": "2025-10-21"
+  },
+  {
+    "numeroPatente": "BW0000173",
+    "scadenza": "2027-02-22"
+  },
+  {
+    "numeroPatente": "VW0000174",
+    "scadenza": "2026-05-22"
+  },
+  {
+    "numeroPatente": "JJ0000175",
+    "scadenza": "2026-08-18"
+  },
+  {
+    "numeroPatente": "IH0000176",
+    "scadenza": "2025-09-24"
+  },
+  {
+    "numeroPatente": "NN0000177",
+    "scadenza": "2025-07-18"
+  },
+  {
+    "numeroPatente": "PS0000178",
+    "scadenza": "2026-03-30"
+  },
+  {
+    "numeroPatente": "RV0000179",
+    "scadenza": "2025-12-28"
+  },
+  {
+    "numeroPatente": "XR0000180",
+    "scadenza": "2027-01-08"
+  },
+  {
+    "numeroPatente": "CG0000181",
+    "scadenza": "2025-12-17"
+  },
+  {
+    "numeroPatente": "SF0000182",
+    "scadenza": "2026-09-26"
+  },
+  {
+    "numeroPatente": "TL0000183",
+    "scadenza": "2025-08-10"
+  },
+  {
+    "numeroPatente": "CU0000184",
+    "scadenza": "2027-01-25"
+  },
+  {
+    "numeroPatente": "IF0000185",
+    "scadenza": "2025-09-05"
+  },
+  {
+    "numeroPatente": "BJ0000186",
+    "scadenza": "2027-05-14"
+  },
+  {
+    "numeroPatente": "GS0000187",
+    "scadenza": "2025-12-08"
+  },
+  {
+    "numeroPatente": "RK0000188",
+    "scadenza": "2025-11-17"
+  },
+  {
+    "numeroPatente": "JX0000189",
+    "scadenza": "2027-05-01"
+  },
+  {
+    "numeroPatente": "WU0000190",
+    "scadenza": "2027-04-05"
+  },
+  {
+    "numeroPatente": "HC0000191",
+    "scadenza": "2026-03-21"
+  },
+  {
+    "numeroPatente": "PH0000192",
+    "scadenza": "2025-08-07"
+  },
+  {
+    "numeroPatente": "SH0000193",
+    "scadenza": "2026-12-17"
+  },
+  {
+    "numeroPatente": "FE0000194",
+    "scadenza": "2025-10-15"
+  },
+  {
+    "numeroPatente": "XS0000195",
+    "scadenza": "2025-08-11"
+  },
+  {
+    "numeroPatente": "YC0000196",
+    "scadenza": "2026-04-17"
+  },
+  {
+    "numeroPatente": "VQ0000197",
+    "scadenza": "2026-05-16"
+  },
+  {
+    "numeroPatente": "XA0000198",
+    "scadenza": "2025-12-11"
+  },
+  {
+    "numeroPatente": "IP0000199",
+    "scadenza": "2026-04-20"
+  },
+  {
+    "numeroPatente": "LU0000200",
+    "scadenza": "2026-02-18"
+  }
+]

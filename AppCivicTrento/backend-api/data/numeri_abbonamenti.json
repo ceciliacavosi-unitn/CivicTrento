@@ -1,0 +1,1002 @@
+[
+  {
+    "numeroAbbonamento": "BUS000001",
+    "tipo": "autobus",
+    "validoFino": "2027-05-28"
+  },
+  {
+    "numeroAbbonamento": "TRENO000002",
+    "tipo": "treno",
+    "validoFino": "2025-10-03"
+  },
+  {
+    "numeroAbbonamento": "TRENO000003",
+    "tipo": "treno",
+    "validoFino": "2026-05-18"
+  },
+  {
+    "numeroAbbonamento": "TRENO000004",
+    "tipo": "treno",
+    "validoFino": "2027-02-28"
+  },
+  {
+    "numeroAbbonamento": "TRENO000005",
+    "tipo": "treno",
+    "validoFino": "2027-05-07"
+  },
+  {
+    "numeroAbbonamento": "TRENO000006",
+    "tipo": "treno",
+    "validoFino": "2026-02-25"
+  },
+  {
+    "numeroAbbonamento": "TRENO000007",
+    "tipo": "treno",
+    "validoFino": "2025-10-30"
+  },
+  {
+    "numeroAbbonamento": "TRENO000008",
+    "tipo": "treno",
+    "validoFino": "2025-07-31"
+  },
+  {
+    "numeroAbbonamento": "TRENO000009",
+    "tipo": "treno",
+    "validoFino": "2026-01-07"
+  },
+  {
+    "numeroAbbonamento": "BUS000010",
+    "tipo": "autobus",
+    "validoFino": "2026-03-07"
+  },
+  {
+    "numeroAbbonamento": "BUS000011",
+    "tipo": "autobus",
+    "validoFino": "2026-06-27"
+  },
+  {
+    "numeroAbbonamento": "TRENO000012",
+    "tipo": "treno",
+    "validoFino": "2025-12-20"
+  },
+  {
+    "numeroAbbonamento": "BUS000013",
+    "tipo": "autobus",
+    "validoFino": "2026-03-13"
+  },
+  {
+    "numeroAbbonamento": "BUS000014",
+    "tipo": "autobus",
+    "validoFino": "2026-11-14"
+  },
+  {
+    "numeroAbbonamento": "BUS000015",
+    "tipo": "autobus",
+    "validoFino": "2025-07-29"
+  },
+  {
+    "numeroAbbonamento": "BUS000016",
+    "tipo": "autobus",
+    "validoFino": "2025-07-13"
+  },
+  {
+    "numeroAbbonamento": "BUS000017",
+    "tipo": "autobus",
+    "validoFino": "2026-07-29"
+  },
+  {
+    "numeroAbbonamento": "TRENO000018",
+    "tipo": "treno",
+    "validoFino": "2025-12-12"
+  },
+  {
+    "numeroAbbonamento": "TRENO000019",
+    "tipo": "treno",
+    "validoFino": "2026-03-22"
+  },
+  {
+    "numeroAbbonamento": "TRENO000020",
+    "tipo": "treno",
+    "validoFino": "2026-02-04"
+  },
+  {
+    "numeroAbbonamento": "TRENO000021",
+    "tipo": "treno",
+    "validoFino": "2027-03-31"
+  },
+  {
+    "numeroAbbonamento": "BUS000022",
+    "tipo": "autobus",
+    "validoFino": "2026-08-23"
+  },
+  {
+    "numeroAbbonamento": "BUS000023",
+    "tipo": "autobus",
+    "validoFino": "2026-01-02"
+  },
+  {
+    "numeroAbbonamento": "BUS000024",
+    "tipo": "autobus",
+    "validoFino": "2027-04-11"
+  },
+  {
+    "numeroAbbonamento": "TRENO000025",
+    "tipo": "treno",
+    "validoFino": "2025-10-11"
+  },
+  {
+    "numeroAbbonamento": "BUS000026",
+    "tipo": "autobus",
+    "validoFino": "2026-02-15"
+  },
+  {
+    "numeroAbbonamento": "BUS000027",
+    "tipo": "autobus",
+    "validoFino": "2026-10-10"
+  },
+  {
+    "numeroAbbonamento": "TRENO000028",
+    "tipo": "treno",
+    "validoFino": "2027-01-17"
+  },
+  {
+    "numeroAbbonamento": "BUS000029",
+    "tipo": "autobus",
+    "validoFino": "2025-09-10"
+  },
+  {
+    "numeroAbbonamento": "BUS000030",
+    "tipo": "autobus",
+    "validoFino": "2025-10-16"
+  },
+  {
+    "numeroAbbonamento": "BUS000031",
+    "tipo": "autobus",
+    "validoFino": "2026-12-26"
+  },
+  {
+    "numeroAbbonamento": "BUS000032",
+    "tipo": "autobus",
+    "validoFino": "2025-12-17"
+  },
+  {
+    "numeroAbbonamento": "BUS000033",
+    "tipo": "autobus",
+    "validoFino": "2025-09-12"
+  },
+  {
+    "numeroAbbonamento": "TRENO000034",
+    "tipo": "treno",
+    "validoFino": "2026-10-31"
+  },
+  {
+    "numeroAbbonamento": "BUS000035",
+    "tipo": "autobus",
+    "validoFino": "2026-11-02"
+  },
+  {
+    "numeroAbbonamento": "BUS000036",
+    "tipo": "autobus",
+    "validoFino": "2026-12-05"
+  },
+  {
+    "numeroAbbonamento": "TRENO000037",
+    "tipo": "treno",
+    "validoFino": "2025-09-15"
+  },
+  {
+    "numeroAbbonamento": "BUS000038",
+    "tipo": "autobus",
+    "validoFino": "2027-02-05"
+  },
+  {
+    "numeroAbbonamento": "BUS000039",
+    "tipo": "autobus",
+    "validoFino": "2025-12-07"
+  },
+  {
+    "numeroAbbonamento": "TRENO000040",
+    "tipo": "treno",
+    "validoFino": "2026-01-12"
+  },
+  {
+    "numeroAbbonamento": "BUS000041",
+    "tipo": "autobus",
+    "validoFino": "2025-10-12"
+  },
+  {
+    "numeroAbbonamento": "BUS000042",
+    "tipo": "autobus",
+    "validoFino": "2026-10-22"
+  },
+  {
+    "numeroAbbonamento": "TRENO000043",
+    "tipo": "treno",
+    "validoFino": "2026-08-14"
+  },
+  {
+    "numeroAbbonamento": "BUS000044",
+    "tipo": "autobus",
+    "validoFino": "2026-07-07"
+  },
+  {
+    "numeroAbbonamento": "TRENO000045",
+    "tipo": "treno",
+    "validoFino": "2026-11-15"
+  },
+  {
+    "numeroAbbonamento": "TRENO000046",
+    "tipo": "treno",
+    "validoFino": "2025-12-04"
+  },
+  {
+    "numeroAbbonamento": "TRENO000047",
+    "tipo": "treno",
+    "validoFino": "2025-12-30"
+  },
+  {
+    "numeroAbbonamento": "TRENO000048",
+    "tipo": "treno",
+    "validoFino": "2026-04-21"
+  },
+  {
+    "numeroAbbonamento": "TRENO000049",
+    "tipo": "treno",
+    "validoFino": "2026-09-12"
+  },
+  {
+    "numeroAbbonamento": "TRENO000050",
+    "tipo": "treno",
+    "validoFino": "2025-12-28"
+  },
+  {
+    "numeroAbbonamento": "BUS000051",
+    "tipo": "autobus",
+    "validoFino": "2026-05-03"
+  },
+  {
+    "numeroAbbonamento": "TRENO000052",
+    "tipo": "treno",
+    "validoFino": "2026-03-28"
+  },
+  {
+    "numeroAbbonamento": "TRENO000053",
+    "tipo": "treno",
+    "validoFino": "2026-05-31"
+  },
+  {
+    "numeroAbbonamento": "TRENO000054",
+    "tipo": "treno",
+    "validoFino": "2026-05-21"
+  },
+  {
+    "numeroAbbonamento": "TRENO000055",
+    "tipo": "treno",
+    "validoFino": "2027-04-04"
+  },
+  {
+    "numeroAbbonamento": "BUS000056",
+    "tipo": "autobus",
+    "validoFino": "2026-03-12"
+  },
+  {
+    "numeroAbbonamento": "BUS000057",
+    "tipo": "autobus",
+    "validoFino": "2027-02-13"
+  },
+  {
+    "numeroAbbonamento": "BUS000058",
+    "tipo": "autobus",
+    "validoFino": "2025-09-02"
+  },
+  {
+    "numeroAbbonamento": "TRENO000059",
+    "tipo": "treno",
+    "validoFino": "2027-02-26"
+  },
+  {
+    "numeroAbbonamento": "TRENO000060",
+    "tipo": "treno",
+    "validoFino": "2027-02-22"
+  },
+  {
+    "numeroAbbonamento": "TRENO000061",
+    "tipo": "treno",
+    "validoFino": "2025-12-04"
+  },
+  {
+    "numeroAbbonamento": "BUS000062",
+    "tipo": "autobus",
+    "validoFino": "2026-08-09"
+  },
+  {
+    "numeroAbbonamento": "BUS000063",
+    "tipo": "autobus",
+    "validoFino": "2025-10-11"
+  },
+  {
+    "numeroAbbonamento": "TRENO000064",
+    "tipo": "treno",
+    "validoFino": "2027-01-03"
+  },
+  {
+    "numeroAbbonamento": "BUS000065",
+    "tipo": "autobus",
+    "validoFino": "2025-11-14"
+  },
+  {
+    "numeroAbbonamento": "TRENO000066",
+    "tipo": "treno",
+    "validoFino": "2027-03-24"
+  },
+  {
+    "numeroAbbonamento": "BUS000067",
+    "tipo": "autobus",
+    "validoFino": "2025-12-18"
+  },
+  {
+    "numeroAbbonamento": "BUS000068",
+    "tipo": "autobus",
+    "validoFino": "2026-05-10"
+  },
+  {
+    "numeroAbbonamento": "TRENO000069",
+    "tipo": "treno",
+    "validoFino": "2025-09-27"
+  },
+  {
+    "numeroAbbonamento": "TRENO000070",
+    "tipo": "treno",
+    "validoFino": "2026-08-21"
+  },
+  {
+    "numeroAbbonamento": "TRENO000071",
+    "tipo": "treno",
+    "validoFino": "2026-12-27"
+  },
+  {
+    "numeroAbbonamento": "TRENO000072",
+    "tipo": "treno",
+    "validoFino": "2027-04-24"
+  },
+  {
+    "numeroAbbonamento": "BUS000073",
+    "tipo": "autobus",
+    "validoFino": "2025-12-16"
+  },
+  {
+    "numeroAbbonamento": "TRENO000074",
+    "tipo": "treno",
+    "validoFino": "2026-08-12"
+  },
+  {
+    "numeroAbbonamento": "BUS000075",
+    "tipo": "autobus",
+    "validoFino": "2026-10-04"
+  },
+  {
+    "numeroAbbonamento": "TRENO000076",
+    "tipo": "treno",
+    "validoFino": "2027-01-07"
+  },
+  {
+    "numeroAbbonamento": "BUS000077",
+    "tipo": "autobus",
+    "validoFino": "2026-11-12"
+  },
+  {
+    "numeroAbbonamento": "TRENO000078",
+    "tipo": "treno",
+    "validoFino": "2025-10-27"
+  },
+  {
+    "numeroAbbonamento": "TRENO000079",
+    "tipo": "treno",
+    "validoFino": "2026-03-17"
+  },
+  {
+    "numeroAbbonamento": "TRENO000080",
+    "tipo": "treno",
+    "validoFino": "2027-03-20"
+  },
+  {
+    "numeroAbbonamento": "BUS000081",
+    "tipo": "autobus",
+    "validoFino": "2025-07-26"
+  },
+  {
+    "numeroAbbonamento": "TRENO000082",
+    "tipo": "treno",
+    "validoFino": "2026-04-08"
+  },
+  {
+    "numeroAbbonamento": "BUS000083",
+    "tipo": "autobus",
+    "validoFino": "2025-10-20"
+  },
+  {
+    "numeroAbbonamento": "BUS000084",
+    "tipo": "autobus",
+    "validoFino": "2026-11-27"
+  },
+  {
+    "numeroAbbonamento": "TRENO000085",
+    "tipo": "treno",
+    "validoFino": "2026-11-05"
+  },
+  {
+    "numeroAbbonamento": "BUS000086",
+    "tipo": "autobus",
+    "validoFino": "2026-10-04"
+  },
+  {
+    "numeroAbbonamento": "TRENO000087",
+    "tipo": "treno",
+    "validoFino": "2026-09-23"
+  },
+  {
+    "numeroAbbonamento": "BUS000088",
+    "tipo": "autobus",
+    "validoFino": "2027-03-17"
+  },
+  {
+    "numeroAbbonamento": "BUS000089",
+    "tipo": "autobus",
+    "validoFino": "2026-08-03"
+  },
+  {
+    "numeroAbbonamento": "TRENO000090",
+    "tipo": "treno",
+    "validoFino": "2027-01-31"
+  },
+  {
+    "numeroAbbonamento": "BUS000091",
+    "tipo": "autobus",
+    "validoFino": "2025-12-17"
+  },
+  {
+    "numeroAbbonamento": "BUS000092",
+    "tipo": "autobus",
+    "validoFino": "2026-11-11"
+  },
+  {
+    "numeroAbbonamento": "TRENO000093",
+    "tipo": "treno",
+    "validoFino": "2027-05-03"
+  },
+  {
+    "numeroAbbonamento": "TRENO000094",
+    "tipo": "treno",
+    "validoFino": "2025-07-27"
+  },
+  {
+    "numeroAbbonamento": "TRENO000095",
+    "tipo": "treno",
+    "validoFino": "2026-08-17"
+  },
+  {
+    "numeroAbbonamento": "TRENO000096",
+    "tipo": "treno",
+    "validoFino": "2027-01-14"
+  },
+  {
+    "numeroAbbonamento": "TRENO000097",
+    "tipo": "treno",
+    "validoFino": "2027-05-24"
+  },
+  {
+    "numeroAbbonamento": "TRENO000098",
+    "tipo": "treno",
+    "validoFino": "2026-05-12"
+  },
+  {
+    "numeroAbbonamento": "BUS000099",
+    "tipo": "autobus",
+    "validoFino": "2025-07-16"
+  },
+  {
+    "numeroAbbonamento": "BUS000100",
+    "tipo": "autobus",
+    "validoFino": "2027-03-23"
+  },
+  {
+    "numeroAbbonamento": "TRENO000101",
+    "tipo": "treno",
+    "validoFino": "2027-05-02"
+  },
+  {
+    "numeroAbbonamento": "TRENO000102",
+    "tipo": "treno",
+    "validoFino": "2027-02-24"
+  },
+  {
+    "numeroAbbonamento": "BUS000103",
+    "tipo": "autobus",
+    "validoFino": "2026-03-14"
+  },
+  {
+    "numeroAbbonamento": "BUS000104",
+    "tipo": "autobus",
+    "validoFino": "2027-05-14"
+  },
+  {
+    "numeroAbbonamento": "TRENO000105",
+    "tipo": "treno",
+    "validoFino": "2026-04-16"
+  },
+  {
+    "numeroAbbonamento": "BUS000106",
+    "tipo": "autobus",
+    "validoFino": "2026-12-01"
+  },
+  {
+    "numeroAbbonamento": "BUS000107",
+    "tipo": "autobus",
+    "validoFino": "2026-12-14"
+  },
+  {
+    "numeroAbbonamento": "TRENO000108",
+    "tipo": "treno",
+    "validoFino": "2026-03-01"
+  },
+  {
+    "numeroAbbonamento": "TRENO000109",
+    "tipo": "treno",
+    "validoFino": "2026-10-16"
+  },
+  {
+    "numeroAbbonamento": "TRENO000110",
+    "tipo": "treno",
+    "validoFino": "2027-02-13"
+  },
+  {
+    "numeroAbbonamento": "BUS000111",
+    "tipo": "autobus",
+    "validoFino": "2027-03-07"
+  },
+  {
+    "numeroAbbonamento": "BUS000112",
+    "tipo": "autobus",
+    "validoFino": "2025-11-26"
+  },
+  {
+    "numeroAbbonamento": "BUS000113",
+    "tipo": "autobus",
+    "validoFino": "2027-01-20"
+  },
+  {
+    "numeroAbbonamento": "TRENO000114",
+    "tipo": "treno",
+    "validoFino": "2026-01-04"
+  },
+  {
+    "numeroAbbonamento": "BUS000115",
+    "tipo": "autobus",
+    "validoFino": "2027-05-24"
+  },
+  {
+    "numeroAbbonamento": "TRENO000116",
+    "tipo": "treno",
+    "validoFino": "2025-09-08"
+  },
+  {
+    "numeroAbbonamento": "BUS000117",
+    "tipo": "autobus",
+    "validoFino": "2025-11-03"
+  },
+  {
+    "numeroAbbonamento": "BUS000118",
+    "tipo": "autobus",
+    "validoFino": "2025-07-28"
+  },
+  {
+    "numeroAbbonamento": "BUS000119",
+    "tipo": "autobus",
+    "validoFino": "2025-09-19"
+  },
+  {
+    "numeroAbbonamento": "TRENO000120",
+    "tipo": "treno",
+    "validoFino": "2026-10-12"
+  },
+  {
+    "numeroAbbonamento": "TRENO000121",
+    "tipo": "treno",
+    "validoFino": "2026-10-05"
+  },
+  {
+    "numeroAbbonamento": "BUS000122",
+    "tipo": "autobus",
+    "validoFino": "2026-02-27"
+  },
+  {
+    "numeroAbbonamento": "TRENO000123",
+    "tipo": "treno",
+    "validoFino": "2025-08-23"
+  },
+  {
+    "numeroAbbonamento": "BUS000124",
+    "tipo": "autobus",
+    "validoFino": "2026-03-24"
+  },
+  {
+    "numeroAbbonamento": "TRENO000125",
+    "tipo": "treno",
+    "validoFino": "2025-08-22"
+  },
+  {
+    "numeroAbbonamento": "TRENO000126",
+    "tipo": "treno",
+    "validoFino": "2027-02-06"
+  },
+  {
+    "numeroAbbonamento": "TRENO000127",
+    "tipo": "treno",
+    "validoFino": "2026-08-14"
+  },
+  {
+    "numeroAbbonamento": "TRENO000128",
+    "tipo": "treno",
+    "validoFino": "2025-12-14"
+  },
+  {
+    "numeroAbbonamento": "BUS000129",
+    "tipo": "autobus",
+    "validoFino": "2026-12-02"
+  },
+  {
+    "numeroAbbonamento": "BUS000130",
+    "tipo": "autobus",
+    "validoFino": "2026-04-26"
+  },
+  {
+    "numeroAbbonamento": "BUS000131",
+    "tipo": "autobus",
+    "validoFino": "2027-01-31"
+  },
+  {
+    "numeroAbbonamento": "TRENO000132",
+    "tipo": "treno",
+    "validoFino": "2027-05-19"
+  },
+  {
+    "numeroAbbonamento": "BUS000133",
+    "tipo": "autobus",
+    "validoFino": "2026-05-23"
+  },
+  {
+    "numeroAbbonamento": "BUS000134",
+    "tipo": "autobus",
+    "validoFino": "2026-01-08"
+  },
+  {
+    "numeroAbbonamento": "TRENO000135",
+    "tipo": "treno",
+    "validoFino": "2026-06-07"
+  },
+  {
+    "numeroAbbonamento": "TRENO000136",
+    "tipo": "treno",
+    "validoFino": "2026-04-05"
+  },
+  {
+    "numeroAbbonamento": "BUS000137",
+    "tipo": "autobus",
+    "validoFino": "2027-02-16"
+  },
+  {
+    "numeroAbbonamento": "TRENO000138",
+    "tipo": "treno",
+    "validoFino": "2026-12-17"
+  },
+  {
+    "numeroAbbonamento": "TRENO000139",
+    "tipo": "treno",
+    "validoFino": "2026-10-02"
+  },
+  {
+    "numeroAbbonamento": "BUS000140",
+    "tipo": "autobus",
+    "validoFino": "2027-03-31"
+  },
+  {
+    "numeroAbbonamento": "TRENO000141",
+    "tipo": "treno",
+    "validoFino": "2027-03-04"
+  },
+  {
+    "numeroAbbonamento": "BUS000142",
+    "tipo": "autobus",
+    "validoFino": "2025-11-19"
+  },
+  {
+    "numeroAbbonamento": "BUS000143",
+    "tipo": "autobus",
+    "validoFino": "2026-08-11"
+  },
+  {
+    "numeroAbbonamento": "TRENO000144",
+    "tipo": "treno",
+    "validoFino": "2026-02-16"
+  },
+  {
+    "numeroAbbonamento": "BUS000145",
+    "tipo": "autobus",
+    "validoFino": "2025-09-06"
+  },
+  {
+    "numeroAbbonamento": "BUS000146",
+    "tipo": "autobus",
+    "validoFino": "2026-09-21"
+  },
+  {
+    "numeroAbbonamento": "TRENO000147",
+    "tipo": "treno",
+    "validoFino": "2025-09-09"
+  },
+  {
+    "numeroAbbonamento": "TRENO000148",
+    "tipo": "treno",
+    "validoFino": "2027-03-14"
+  },
+  {
+    "numeroAbbonamento": "TRENO000149",
+    "tipo": "treno",
+    "validoFino": "2026-09-10"
+  },
+  {
+    "numeroAbbonamento": "BUS000150",
+    "tipo": "autobus",
+    "validoFino": "2026-11-12"
+  },
+  {
+    "numeroAbbonamento": "BUS000151",
+    "tipo": "autobus",
+    "validoFino": "2027-05-02"
+  },
+  {
+    "numeroAbbonamento": "BUS000152",
+    "tipo": "autobus",
+    "validoFino": "2025-07-17"
+  },
+  {
+    "numeroAbbonamento": "TRENO000153",
+    "tipo": "treno",
+    "validoFino": "2026-05-31"
+  },
+  {
+    "numeroAbbonamento": "BUS000154",
+    "tipo": "autobus",
+    "validoFino": "2026-10-25"
+  },
+  {
+    "numeroAbbonamento": "TRENO000155",
+    "tipo": "treno",
+    "validoFino": "2026-07-22"
+  },
+  {
+    "numeroAbbonamento": "TRENO000156",
+    "tipo": "treno",
+    "validoFino": "2026-11-24"
+  },
+  {
+    "numeroAbbonamento": "TRENO000157",
+    "tipo": "treno",
+    "validoFino": "2025-08-26"
+  },
+  {
+    "numeroAbbonamento": "BUS000158",
+    "tipo": "autobus",
+    "validoFino": "2026-02-27"
+  },
+  {
+    "numeroAbbonamento": "BUS000159",
+    "tipo": "autobus",
+    "validoFino": "2026-09-27"
+  },
+  {
+    "numeroAbbonamento": "BUS000160",
+    "tipo": "autobus",
+    "validoFino": "2026-02-24"
+  },
+  {
+    "numeroAbbonamento": "TRENO000161",
+    "tipo": "treno",
+    "validoFino": "2025-09-04"
+  },
+  {
+    "numeroAbbonamento": "TRENO000162",
+    "tipo": "treno",
+    "validoFino": "2026-03-04"
+  },
+  {
+    "numeroAbbonamento": "BUS000163",
+    "tipo": "autobus",
+    "validoFino": "2025-11-28"
+  },
+  {
+    "numeroAbbonamento": "TRENO000164",
+    "tipo": "treno",
+    "validoFino": "2025-08-05"
+  },
+  {
+    "numeroAbbonamento": "BUS000165",
+    "tipo": "autobus",
+    "validoFino": "2026-08-19"
+  },
+  {
+    "numeroAbbonamento": "TRENO000166",
+    "tipo": "treno",
+    "validoFino": "2027-06-01"
+  },
+  {
+    "numeroAbbonamento": "BUS000167",
+    "tipo": "autobus",
+    "validoFino": "2026-11-28"
+  },
+  {
+    "numeroAbbonamento": "TRENO000168",
+    "tipo": "treno",
+    "validoFino": "2027-02-05"
+  },
+  {
+    "numeroAbbonamento": "TRENO000169",
+    "tipo": "treno",
+    "validoFino": "2027-02-28"
+  },
+  {
+    "numeroAbbonamento": "TRENO000170",
+    "tipo": "treno",
+    "validoFino": "2025-09-25"
+  },
+  {
+    "numeroAbbonamento": "TRENO000171",
+    "tipo": "treno",
+    "validoFino": "2027-03-29"
+  },
+  {
+    "numeroAbbonamento": "BUS000172",
+    "tipo": "autobus",
+    "validoFino": "2025-09-11"
+  },
+  {
+    "numeroAbbonamento": "TRENO000173",
+    "tipo": "treno",
+    "validoFino": "2026-06-05"
+  },
+  {
+    "numeroAbbonamento": "BUS000174",
+    "tipo": "autobus",
+    "validoFino": "2027-02-03"
+  },
+  {
+    "numeroAbbonamento": "TRENO000175",
+    "tipo": "treno",
+    "validoFino": "2027-04-04"
+  },
+  {
+    "numeroAbbonamento": "TRENO000176",
+    "tipo": "treno",
+    "validoFino": "2027-01-28"
+  },
+  {
+    "numeroAbbonamento": "TRENO000177",
+    "tipo": "treno",
+    "validoFino": "2027-06-02"
+  },
+  {
+    "numeroAbbonamento": "BUS000178",
+    "tipo": "autobus",
+    "validoFino": "2026-05-03"
+  },
+  {
+    "numeroAbbonamento": "TRENO000179",
+    "tipo": "treno",
+    "validoFino": "2026-05-22"
+  },
+  {
+    "numeroAbbonamento": "BUS000180",
+    "tipo": "autobus",
+    "validoFino": "2025-12-15"
+  },
+  {
+    "numeroAbbonamento": "BUS000181",
+    "tipo": "autobus",
+    "validoFino": "2027-05-23"
+  },
+  {
+    "numeroAbbonamento": "TRENO000182",
+    "tipo": "treno",
+    "validoFino": "2026-09-16"
+  },
+  {
+    "numeroAbbonamento": "BUS000183",
+    "tipo": "autobus",
+    "validoFino": "2026-03-25"
+  },
+  {
+    "numeroAbbonamento": "BUS000184",
+    "tipo": "autobus",
+    "validoFino": "2026-06-20"
+  },
+  {
+    "numeroAbbonamento": "BUS000185",
+    "tipo": "autobus",
+    "validoFino": "2026-12-31"
+  },
+  {
+    "numeroAbbonamento": "BUS000186",
+    "tipo": "autobus",
+    "validoFino": "2026-10-30"
+  },
+  {
+    "numeroAbbonamento": "BUS000187",
+    "tipo": "autobus",
+    "validoFino": "2026-07-26"
+  },
+  {
+    "numeroAbbonamento": "TRENO000188",
+    "tipo": "treno",
+    "validoFino": "2026-02-24"
+  },
+  {
+    "numeroAbbonamento": "BUS000189",
+    "tipo": "autobus",
+    "validoFino": "2026-11-02"
+  },
+  {
+    "numeroAbbonamento": "BUS000190",
+    "tipo": "autobus",
+    "validoFino": "2026-07-11"
+  },
+  {
+    "numeroAbbonamento": "BUS000191",
+    "tipo": "autobus",
+    "validoFino": "2026-04-20"
+  },
+  {
+    "numeroAbbonamento": "TRENO000192",
+    "tipo": "treno",
+    "validoFino": "2027-02-15"
+  },
+  {
+    "numeroAbbonamento": "TRENO000193",
+    "tipo": "treno",
+    "validoFino": "2026-01-21"
+  },
+  {
+    "numeroAbbonamento": "BUS000194",
+    "tipo": "autobus",
+    "validoFino": "2025-10-12"
+  },
+  {
+    "numeroAbbonamento": "TRENO000195",
+    "tipo": "treno",
+    "validoFino": "2027-01-30"
+  },
+  {
+    "numeroAbbonamento": "TRENO000196",
+    "tipo": "treno",
+    "validoFino": "2026-11-21"
+  },
+  {
+    "numeroAbbonamento": "TRENO000197",
+    "tipo": "treno",
+    "validoFino": "2026-06-28"
+  },
+  {
+    "numeroAbbonamento": "BUS000198",
+    "tipo": "autobus",
+    "validoFino": "2027-05-30"
+  },
+  {
+    "numeroAbbonamento": "TRENO000199",
+    "tipo": "treno",
+    "validoFino": "2025-12-15"
+  },
+  {
+    "numeroAbbonamento": "BUS000200",
+    "tipo": "autobus",
+    "validoFino": "2026-07-23"
+  }
+]
