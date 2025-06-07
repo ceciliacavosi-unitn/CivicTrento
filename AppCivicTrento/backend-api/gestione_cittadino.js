@@ -72,16 +72,71 @@ function aggiungiDato(email, field, value) {
 
   // Verifica validità del valore inserito
   if (field === "driver_license" && !verificaPatente(value)) {
-    console.warn("[aggiungiDato] Numero patente non valido.");
-    return false;
+    if (field === "driver_license") {
+      const patente = trovaPatente(value);
+      if (!patente) {
+        console.warn("[aggiungiDato] Numero patente non valido o non trovato.");
+        return false;
+      }
+      const utenteRegistrato = getDatiCittadino(email);
+      if (!utenteRegistrato || !utenteRegistrato.nome || !utenteRegistrato.cognome) {
+        console.warn("[aggiungiDato] Utente non trovato o nome/cognome mancanti.");
+        return false;
+      }
+      if (utenteRegistrato.nome !== patente.nome || utenteRegistrato.cognome !== patente.cognome) {
+        console.warn("[aggiungiDato] Il nome/cognome non corrispondono a quelli della patente.");
+        return false;
+      }
+      // Verifica che non sia già stato usato da un altro utente
+      const tuttiUtenti = fs.existsSync(pathDatiCittadino) ? JSON.parse(fs.readFileSync(pathDatiCittadino, "utf8")) : [];
+      
+    }
+
   }
   if (field === "subscription_code" && !verificaAbbonamento(value)) {
-    console.warn("[aggiungiDato] Numero abbonamento non valido.");
-    return false;
+    if (field === "subscription_code") {
+      const abbonamento = trovaAbbonamento(value);
+      if (!abbonamento) {
+        console.warn("[aggiungiDato] Numero abbonamento non valido o non trovato.");
+        return false;
+      }
+      const utenteRegistrato = getDatiCittadino(email);
+      if (!utenteRegistrato || !utenteRegistrato.nome || !utenteRegistrato.cognome) {
+        console.warn("[aggiungiDato] Utente non trovato o nome/cognome mancanti.");
+        return false;
+      }
+      if (utenteRegistrato.nome !== abbonamento.nome || utenteRegistrato.cognome !== abbonamento.cognome) {
+        console.warn("[aggiungiDato] Il nome/cognome non corrispondono a quelli della abbonamento.");
+        return false;
+        
+      }
+      // Verifica che non sia già stato usato da un altro utente
+      const tuttiUtenti = fs.existsSync(pathDatiCittadino) ? JSON.parse(fs.readFileSync(pathDatiCittadino, "utf8")) : [];
+      
+    }
+
   }
   if (field === "pod_code" && !verificaCodicePOD(value)) {
-    console.warn("[aggiungiDato] Codice POD non valido.");
-    return false;
+    if (field === "pod_code") {
+      const pod = trovaPod(value);
+      if (!pod) {
+        console.warn("[aggiungiDato] Numero pod non valido o non trovato.");
+        return false;
+      }
+      const utenteRegistrato = getDatiCittadino(email);
+      if (!utenteRegistrato || !utenteRegistrato.nome || !utenteRegistrato.cognome) {
+        console.warn("[aggiungiDato] Utente non trovato o nome/cognome mancanti.");
+        return false;
+      }
+      if (utenteRegistrato.nome !== pod.nome || utenteRegistrato.cognome !== pod.cognome) {
+        console.warn("[aggiungiDato] Il nome/cognome non corrispondono a quelli della pod.");
+        return false;
+        
+      }
+      // Verifica che non sia già stato usato da un altro utente
+      const tuttiUtenti = fs.existsSync(pathDatiCittadino) ? JSON.parse(fs.readFileSync(pathDatiCittadino, "utf8")) : [];
+      
+    }
   }
 
 
@@ -286,6 +341,23 @@ function verificaCodicePOD(codicePOD) {
   return pod.some(p => p.codicePOD === codicePOD);
 }
 
+function trovaPatente(numeroPatente) {
+  if (!fs.existsSync(pathPatenti)) return null;
+  const patenti = JSON.parse(fs.readFileSync(pathPatenti, 'utf8'));
+  return patenti.find(p => p.numeroPatente === numeroPatente) || null;
+}
+
+function trovaAbbonamento(numeroAbbonamento) {
+  if (!fs.existsSync(pathAbbonamenti)) return null;
+  const abbonamenti = JSON.parse(fs.readFileSync(pathAbbonamenti, 'utf8'));
+  return abbonamenti.find(a => a.numeroAbbonamento === numeroAbbonamento) || null;
+}
+
+function trovaPod(codicePOD) {
+  if (!fs.existsSync(pathCodiciPod)) return null;
+  const pods = JSON.parse(fs.readFileSync(pathCodiciPod, 'utf8'));
+  return pods.find(p => p.codicePOD === codicePOD) || null;
+}
 
 // ===================================================
 // Export delle funzioni
