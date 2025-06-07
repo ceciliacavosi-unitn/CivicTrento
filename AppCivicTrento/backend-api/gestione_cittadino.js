@@ -71,7 +71,7 @@ function aggiungiDato(email, field, value) {
   }
 
   // Verifica validità del valore inserito
-  if (field === "driver_license" && !verificaPatente(value)) {
+  if (field === "driver_license" && verificaPatente(value)) {
     if (field === "driver_license") {
       const patente = trovaPatente(value);
       if (!patente) {
@@ -93,7 +93,7 @@ function aggiungiDato(email, field, value) {
     }
 
   }
-  if (field === "subscription_code" && !verificaAbbonamento(value)) {
+  if (field === "subscription_code" && verificaAbbonamento(value)) {
     if (field === "subscription_code") {
       const abbonamento = trovaAbbonamento(value);
       if (!abbonamento) {
@@ -116,7 +116,7 @@ function aggiungiDato(email, field, value) {
     }
 
   }
-  if (field === "pod_code" && !verificaCodicePOD(value)) {
+  if (field === "pod_code" && verificaCodicePOD(value)) {
     if (field === "pod_code") {
       const pod = trovaPod(value);
       if (!pod) {
@@ -129,7 +129,7 @@ function aggiungiDato(email, field, value) {
         return false;
       }
       if (utenteRegistrato.nome !== pod.nome || utenteRegistrato.cognome !== pod.cognome) {
-        console.warn("[aggiungiDato] Il nome/cognome non corrispondono a quelli della pod.");
+        console.warn("[aggiungiDato] Il nome/cognome non corrispondono a quelli della abbonamento.");
         return false;
         
       }

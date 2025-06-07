@@ -750,7 +750,7 @@
     }
   },
   {
-    "codicePOD": "IT001E00040",
+    "codicePOD": "IT001E00040", 
     "consumiTrimestrali": {
       "T1": {
         "luce": 962,
