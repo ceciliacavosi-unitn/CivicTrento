@@ -13,7 +13,7 @@
 // ======================================================
 
 /// Indirizzo del server (host + porta)
-const String apiHost = '192.168.1.105:8000'; 
+const String apiHost = '172.20.10.3:8000'; 
 // ceci_casa: 192.168.0.108 
 //mati: 172.20.10.3 
 //ceci_casa_luca: 192.168.1.66 
