@@ -71,7 +71,7 @@ function aggiungiDato(email, field, value) {
   }
 
   // Verifica validità del valore inserito
-  if (field === "driver_license" && verificaPatente(value)) {
+  if (field === "driver_license" && !verificaPatente(value)) {
     if (field === "driver_license") {
       const patente = trovaPatente(value);
       if (!patente) {
