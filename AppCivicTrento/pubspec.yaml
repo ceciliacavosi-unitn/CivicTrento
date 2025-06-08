@@ -24,13 +24,13 @@ dev_dependencies:
   flutter_test:
       sdk: flutter
   flutter_lints: ^2.0.0
-flutter_launcher_icons: ^0.13.1 # o versione più recente
+  flutter_launcher_icons: ^0.13.1 
 
 
-flutter_icons:
+flutter_launcher_icons:
     android: true
     ios: true
-    image_path_ios: "assets/images/logo.png"
+    image_path: "assets/images/logo.png"
 
 
 
