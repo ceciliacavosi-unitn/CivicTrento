@@ -47,41 +47,48 @@ import 'storico_spostamenti_screen.dart';
 ///   recenti direttamente in questa schermata.
 ///
 class StoricoScreen extends StatelessWidget {
-  const StoricoScreen({super.key});
+  final String email;
+  final String password;
+
+  const StoricoScreen({
+    super.key,
+    required this.email,
+    required this.password,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Barra superiore con il titolo della pagina
-      appBar: AppBar(
-        title: const Text('Storico'),
-      ),
+      appBar: AppBar(title: const Text('Storico')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        // Colonna che contiene i pulsanti per ogni storico
         child: Column(
           children: [
-            // Pulsante: Storico Bollette
             _buildStoricoButton(
               context,
               label: 'Storico Bollette',
-              destinazione: const StoricoBolletteScreen(),
+              destinazione: StoricoBolletteScreen(
+                email: email,
+                password: password,
+              ),
             ),
-            const SizedBox(height: 16), // Spaziatura tra i pulsanti
-
-            // Pulsante: Storico Multe
+            const SizedBox(height: 16),
             _buildStoricoButton(
               context,
               label: 'Storico Multe',
-              destinazione: const StoricoMulteScreen(),
+              destinazione: StoricoMulteScreen(
+                email: email,
+                password: password,
+              ),
             ),
             const SizedBox(height: 16),
-
-            // Pulsante: Storico Spostamenti
             _buildStoricoButton(
               context,
               label: 'Storico Spostamenti',
-              destinazione: const StoricoSpostamentiScreen(),
+              destinazione: StoricoSpostamentiScreen(
+                email: email,
+                password: password,
+              ),
             ),
           ],
         ),
@@ -89,19 +96,10 @@ class StoricoScreen extends StatelessWidget {
     );
   }
 
-  /// Costruisce un pulsante per accedere a una schermata dello storico.
-  ///
-  /// Parametri:
-  /// - [context]: contesto di build.
-  /// - [label]: testo visualizzato sul pulsante.
-  /// - [destinazione]: widget di destinazione da aprire al click.
-  ///
-  /// Al click esegue un push sulla pila di Navigator,
-  ///    portando l'utente alla schermata desiderata.
   Widget _buildStoricoButton(BuildContext context,
       {required String label, required Widget destinazione}) {
     return SizedBox(
-      width: double.infinity, // Occupa tutta la larghezza disponibile
+      width: double.infinity,
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(

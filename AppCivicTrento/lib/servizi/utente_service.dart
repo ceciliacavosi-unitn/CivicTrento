@@ -40,25 +40,32 @@ class UtenteService {
 
   // ======================================================
   //  POST /utente/profilo - Recupera profilo utente
-  static Future<Map<String, String>> fetchProfile() async {
+  static Future<Map<String, dynamic>> fetchProfile() async {
     final resp = await http.post(
       Uri.parse(myAccountUrl),
       headers: await _authHeaders(),
     );
+
     if (resp.statusCode == 200) {
       final data = json.decode(resp.body) as Map<String, dynamic>;
+
       return {
-        'nome': data['nome'] as String? ?? '',
-        'cognome': data['cognome'] as String? ?? '',
-        'email': data['email'] as String? ?? '',
-        'password': data['password'] as String? ?? '',
-        'CF': data['CF'] as String? ?? '',
-        'cartaID': data['cartaID'] as String? ?? '',
+        'nome': data['nome'] ?? '',
+        'cognome': data['cognome'] ?? '',
+        'email': data['email'] ?? '',
+        'password': data['password'] ?? '',
+        'CF': data['CF'] ?? '',
+        'cartaID': data['cartaID'] ?? '',
+        'saldo': data['saldo'] ?? 0,
+        'punti': data['punti'] ?? 0,
       };
     }
+
     final detail = _parseError(resp.body);
     throw Exception('Errore nel recupero profilo: $detail');
   }
+
+  
 
   // ======================================================
   //  PUT /utente/modifica_profilo - Modifica profilo utente

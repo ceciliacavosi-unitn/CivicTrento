@@ -448,22 +448,7 @@ app.delete("/cittadino/rimuovi_tutti", verificaToken, async (req, res) => {
   aggiornaUltimaAttivita(email.trim());
 });
 
-//monitoraggio camminate
-app.post("/cittadino/movimento", verificaToken, async (req, res) => {
-  const email = req.utente.email;
-  const { kmPercorsi, data } = req.body;
 
-  const punti = registraMovimento(email, kmPercorsi, data);
-  const aggiornato = aggiornaPuntiUtente(email, punti);
-
-  if (aggiornato) {
-    console.log(`[MOVIMENTO] ${punti} punti aggiunti a ${email}`);
-    res.status(200).json({ message: "Punti aggiornati", puntiAssegnati: punti });
-  } else {
-    console.warn(`[MOVIMENTO] Utente non trovato: ${email}`);
-    res.status(404).json({ message: "Utente non trovato" });
-  }
-});
 
 //rimozione utenze
 app.delete("/cittadino/rimuovi_utenze", verificaToken, (req, res) => {
@@ -522,32 +507,41 @@ app.post('/monitoraggio/voto', verificaToken, async (req, res) => {
   const email = req.utente.email;
   console.log(`[VOTO] Richiesta da: ${email}`);
 
-  const utente = await getProfiloUtente(email);
-  if (!utente) return res.status(401).json({ error: 'Utente non trovato' });
-
   const voto = getStoricoVoto();
-  if (!voto || voto.punti == null) return res.status(400).json({ error: 'Configurazione voto mancante' });
+  if (!voto || voto.punti == null) {
+    return res.status(400).json({ error: 'Configurazione voto mancante' });
+  }
 
-  utente.saldo = (utente.saldo || 0) + voto.punti;
-  console.log(`[VOTO] ${voto.punti} punti assegnati a ${email}`);
-  res.json(voto);
+  const azione = { azione: "voto_elettorale" };
+  const ok = aggiornaPuntiUtente(email, voto.punti, azione);
+
+  if (!ok) return res.status(404).json({ error: "Utente non trovato" });
+
+  res.json({ message: "Punti assegnati", punti: voto.punti });
 });
+
 
 app.post('/monitoraggio/bolletta', verificaToken, async (req, res) => {
   const email = req.utente.email;
   const { tipo } = req.body;
   console.log(`[BOLLETTA] ${tipo} richiesta da: ${email}`);
 
-  const utente = await getProfiloUtente(email);
-  if (!utente) return res.status(401).json({ error: 'Utente non trovato' });
-
   const bolletta = getStoricoBolletta(tipo);
-  if (!bolletta || bolletta.punti == null) return res.status(400).json({ error: 'Tipo bolletta non valido' });
+  if (!bolletta || bolletta.punti == null) {
+    return res.status(400).json({ error: 'Tipo bolletta non valido' });
+  }
 
-  utente.saldo = (utente.saldo || 0) + bolletta.punti;
-  console.log(`[BOLLETTA] ${bolletta.punti} punti per ${tipo}`);
-  res.json(bolletta);
+  const azione = {
+    azione: "bolletta",
+    tipo: tipo
+  };
+
+  const ok = aggiornaPuntiUtente(email, bolletta.punti, azione);
+  if (!ok) return res.status(404).json({ error: "Utente non trovato" });
+
+  res.json({ message: "Punti assegnati", punti: bolletta.punti });
 });
+
 
 /*app.post('/monitoraggio/movimento', verificaToken, async (req, res) => {
   const email = req.utente.email;
@@ -570,39 +564,72 @@ app.post('/monitoraggio/trasporti', verificaToken, async (req, res) => {
   const email = req.utente.email;
   console.log(`[TRASPORTI] Rilevato abbonamento da: ${email}`);
 
-  const utente = await getProfiloUtente(email);
-  if (!utente) return res.status(401).json({ error: 'Utente non trovato' });
-
   const trasporti = getStoricoAbbonamentoMezziPubblici();
-  if (!trasporti || trasporti.punti == null) return res.status(400).json({ error: 'Configurazione trasporti mancante' });
+  if (!trasporti || trasporti.punti == null) {
+    return res.status(400).json({ error: 'Configurazione trasporti mancante' });
+  }
 
-  utente.saldo = (utente.saldo || 0) + trasporti.punti;
-  console.log(`[TRASPORTI] ${trasporti.punti} punti assegnati a ${email}`);
-  res.json(trasporti);
+  const azione = { azione: "abbonamento_mezzi_pubblici" };
+
+  const ok = aggiornaPuntiUtente(email, trasporti.punti, azione);
+  if (!ok) return res.status(404).json({ error: "Utente non trovato" });
+
+  res.json({ message: "Punti assegnati", punti: trasporti.punti });
 });
+
 
 app.post('/monitoraggio/multa', verificaToken, async (req, res) => {
   const email = req.utente.email;
   const { gravita } = req.body;
   console.log(`[MULTA] Gravità ${gravita} per: ${email}`);
 
-  const utente = await getProfiloUtente(email);
-  if (!utente) return res.status(401).json({ error: 'Utente non trovato' });
-
   const multa = getStoricoMulta(gravita, new Date().toISOString());
-  if (!multa || multa.punti == null) return res.status(400).json({ error: 'Gravità non valida' });
-
-  if (multa.punti === 'perdita_totale') {
-    utente.saldo = 0;
-    console.log(`[MULTA] Saldo azzerato per ${email}`);
-  } else {
-    utente.saldo = (utente.saldo || 0) + multa.punti;
-    console.log(`[MULTA] Penalità ${multa.punti} per ${email}`);
+  if (!multa || multa.punti == null) {
+    return res.status(400).json({ error: 'Gravità non valida' });
   }
 
-  utente.dataUltimaMulta = multa.dataUltimaMulta;
-  res.json(multa);
+  let puntiDaApplicare = 0;
+  if (multa.punti === "perdita_totale") {
+    puntiDaApplicare = -999999; // un numero enorme per forzare saldo a 0
+  } else {
+    puntiDaApplicare = multa.punti;
+  }
+
+  const azione = {
+    azione: "multa",
+    gravita: gravita
+  };
+
+  const ok = aggiornaPuntiUtente(email, puntiDaApplicare, azione);
+  if (!ok) return res.status(404).json({ error: "Utente non trovato" });
+
+  res.json({ message: "Multa applicata", punti: puntiDaApplicare });
 });
+
+//monitoraggio camminate
+app.post("/cittadino/movimento", verificaToken, async (req, res) => {
+  const email = req.utente.email;
+  const { kmPercorsi, data } = req.body;
+
+  const punti = registraMovimento(email, kmPercorsi, data);
+
+  const azione = {
+    azione: "spostamento",
+    distanza_km: kmPercorsi,
+    data: data
+  };
+
+  const aggiornato = aggiornaPuntiUtente(email, punti, azione);
+
+  if (aggiornato) {
+    console.log(`[MOVIMENTO] ${punti} punti aggiunti a ${email}`);
+    res.status(200).json({ message: "Punti aggiornati", puntiAssegnati: punti });
+  } else {
+    console.warn(`[MOVIMENTO] Utente non trovato: ${email}`);
+    res.status(404).json({ message: "Utente non trovato" });
+  }
+});
+
 
 const { aggiungiOModificaUtenza } = require('./gestione_utenze');
 

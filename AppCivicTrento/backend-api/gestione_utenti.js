@@ -31,6 +31,7 @@ const crypto = require("crypto");
 // ================================================
 
 const utentiPath = path.join(__dirname, 'data', 'utenti.json');
+const pathUtentiCompleto = path.join(__dirname, "data", "utenti_completo.json");
 
 const ALGORITHM = 'aes-256-cbc';
 const CRYPTO_SECRET = process.env.CRYPTO_SECRET;
@@ -159,6 +160,11 @@ async function modificaProfiloUtente(email, password, field, newValue) {
     console.log("File utenti non trovato");
   }
 
+  return modificatoJSON;
+  
+}
+
+
   // // Modifica su MongoDB (disattivata)
   // const utenteDB = await Utente.findOne({ email });
   // if (utenteDB && await bcrypt.compare(password, utenteDB.password)) {
@@ -171,8 +177,8 @@ async function modificaProfiloUtente(email, password, field, newValue) {
   //   await Utente.updateOne({ email }, { $set: updateData });
   // }
 
-  return modificatoJSON; // || modificatoMongo;
-}
+   // || modificatoMongo;
+
 
 /**
  * Aggiorna la data dell'ultima attività per un utente
@@ -200,20 +206,42 @@ async function aggiornaUltimaAttivita(email) {
 }
 
 /**
- * Aggiunge punti all'utente specificato
+ * Aggiunge punti all'utente specificato nel file utenti_completo.json
  */
-function aggiornaPuntiUtente(email, punti) {
-  if (!fs.existsSync(utentiPath)) return false;
+function aggiornaPuntiUtente(email, punti, nuovaAzione = null) {
+  if (!fs.existsSync(pathUtentiCompleto)) return false;
 
-  const utenti = JSON.parse(fs.readFileSync(utentiPath, "utf-8"));
-  const utente = utenti.find(u => u.email === email);
+  const utenti = JSON.parse(fs.readFileSync(pathUtentiCompleto, "utf-8"));
+  const indice = utenti.findIndex(u => u.email === email);
 
-  if (!utente) return false;
+  if (indice === -1) return false;
 
+  const utente = utenti[indice];
   utente.punti = (utente.punti || 0) + punti;
   utente.saldo = (utente.saldo || 0) + punti;
 
-  fs.writeFileSync(utentiPath, JSON.stringify(utenti, null, 2));
+  // Se c'è una nuova azione da tracciare nello storico
+  if (nuovaAzione) {
+    utente.storico = utente.storico || [];
+    utente.storico.push({
+      ...nuovaAzione,
+      data: new Date().toISOString(),
+      punti
+    });
+  }
+
+
+
+  fs.writeFileSync(pathUtentiCompleto, JSON.stringify(utenti, null, 2));
+  console.log(`[aggiornaPuntiUtente] ${punti} punti aggiornati per ${email}`);
+  return true;
+}
+function getDatiFunzionaliUtente(email) {
+  if (!fs.existsSync(pathUtentiCompleto)) return null;
+
+  const utenti = JSON.parse(fs.readFileSync(pathUtentiCompleto, "utf-8"));
+  return utenti.find(u => u.email === email) || null;
+}
 
   // ================================================
   // MongoDB (disattivato)
@@ -224,7 +252,7 @@ function aggiornaPuntiUtente(email, punti) {
   //   .catch(err => console.error("Errore aggiornamento MongoDB:", err));
 
   return true;
-}
+
 
 // ================================================
 // Export
@@ -233,5 +261,6 @@ module.exports = {
   getProfiloUtente,
   modificaProfiloUtente,
   aggiornaUltimaAttivita,
-  aggiornaPuntiUtente
+  aggiornaPuntiUtente,
+  getDatiFunzionaliUtente
 };

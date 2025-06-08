@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../config/costanti.dart';
 import '../../servizi/storico_service.dart';
+import '../../servizi/utente_service.dart';
 import '../widget/pulsante_home.dart';
 import '../widget/storico_elemento.dart';
 import 'main_screen.dart';
@@ -32,15 +33,28 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> storico = [];
   bool isLoading = true;
+  int saldo = 800;
 
   @override
   void initState() {
     super.initState();
     caricaStorico();
+    caricaSaldo();
   }
 
   String formattaData(String iso) {
     return DateFormat('dd/MM/yyyy HH:mm').format(DateTime.parse(iso));
+  }
+
+  Future<void> caricaSaldo() async {
+    try {
+      final profilo = await UtenteService.fetchProfile();
+      setState(() {
+        saldo = int.tryParse(profilo['saldo'].toString()) ?? 0;
+      });
+    } catch (e) {
+      debugPrint('Errore caricamento saldo: $e');
+    }
   }
 
   Future<void> caricaStorico() async {
@@ -50,36 +64,33 @@ class _HomeScreenState extends State<HomeScreen> {
 
       final unificato = <Map<String, dynamic>>[];
 
-      // Voto elettorale
       final voto = await StoricoService.getStoricoVoto();
       if (voto['punti'] != null) {
         unificato.add({
           'titolo': 'Voto elettorale',
-          'data': '2025-04-10T09:30:00', // ← data fissa da json
+          'data': voto['data'] ?? DateTime.now().toIso8601String(),
           'punti': '+100',
           'showDot': true,
         });
       }
 
-      // Bolletta
-      final bolletta = await StoricoService.getStoricoBolletta('elettrica');
-
-      if (bolletta['tipo'] != null) {
-        final tipo = bolletta['tipo'];
-        final punti = {
-          'acqua': 10,
-          'elettrica': 15,
-          'gas': 15,
-        }[tipo] ?? 0;
-
-        unificato.add({
-          'titolo': 'Pagamento bolletta $tipo',
-          'data': '2025-04-01T10:00:00',
-          'punti': '+$punti',
-        });
+      for (final tipo in ['acqua', 'gas', 'elettrica']) {
+        final bolletta = await StoricoService.getStoricoBolletta(tipo);
+        if (bolletta['tipo'] != null) {
+          final punti = {
+            'acqua': 10,
+            'elettrica': 15,
+            'gas': 15,
+          }[tipo] ?? 0;
+          unificato.add({
+            'titolo': 'Pagamento bolletta $tipo',
+            'data': bolletta['data'] ?? DateTime.now().toIso8601String(),
+            'punti': '+$punti',
+          });
+        }
       }
 
-      // Spostamento sostenibile
+
       final movimento = await StoricoService.getStoricoMovimento(25);
       if (movimento['distanza_km'] != null) {
         final distanza = double.tryParse(movimento['distanza_km'].toString()) ?? 0;
@@ -92,7 +103,6 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
 
-      // Abbonamento mezzi pubblici
       final trasporti = await StoricoService.getStoricoTrasporti();
       if (trasporti['punti'] != null) {
         unificato.add({
@@ -102,7 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       }
 
-      // Multe
       final multa = await StoricoService.getStoricoMulte('media');
       if (multa['gravita'] != null) {
         final gravita = multa['gravita'];
@@ -130,11 +139,10 @@ class _HomeScreenState extends State<HomeScreen> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('Errore caricamento storico: $e');
+      debugPrint('Errore caricamento storico: \$e');
       setState(() => isLoading = false);
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '800',
+                saldo.toString(),
                 style: theme.textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: accentColor,

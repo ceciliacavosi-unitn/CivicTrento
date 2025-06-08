@@ -12,5 +12,19 @@
     "ultimaAttivita": "2025-06-08T14:50:59.399Z",
     "punti": null,
     "saldo": null
+  },
+  {
+    "nome": "Matilde",
+    "cognome": "Prati",
+    "email": "ecmatii@gmail.com",
+    "password": "$2b$10$X.pKO5Vl9egNeuhroguoGOrOnT/zhGW.vjexFvutjp9ztwUqn5LPm",
+    "CF": "647364f0b0f3a11daa95b05858cedb81:345010584e435406d0a1706fa79e1a08ee6745d7df5baa562315bdee179f79af",
+    "cartaID": "07ad282ed265e3a01d695bbc8445dcc8:87828318de0228bf82b596b5d45a073d",
+    "gdprConsent": true,
+    "consentTimestamp": "2025-06-08T19:19:33.400Z",
+    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVjbWF0aWlAZ21haWwuY29tIiwiaWF0IjoxNzQ5NDEwNDI1LCJleHAiOjE3NDk0MTQwMjV9.BFuHu0hIV3s8O7m-yvnrSO_NYvXniWpx4_e374V2dIw",
+    "ultimaAttivita": "2025-06-08T19:20:35.468Z",
+    "punti": null,
+    "saldo": null
   }
 ]

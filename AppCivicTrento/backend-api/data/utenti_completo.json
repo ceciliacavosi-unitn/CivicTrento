@@ -1,0 +1,61 @@
+[
+  {
+    "nome": "Cecilia Maria Asia",
+    "cognome": "Cavosi",
+    "email": "cecilia.cavosi@gmail.com",
+    "punti": 800,
+    "saldo": 800,
+    "datiCivici": {
+      "pod_code": "IT001E00040",
+      "driver_license": "TN2323232C",
+      "subscription_code": "674635"
+    },
+    "utenze": {
+      "luce": {
+        "codicePOD": "IT001E00001",
+        "fornitore": "Enel Energia",
+        "consenso": true
+      },
+      "gas": {
+        "codicePOD": "IT001E00001",
+        "fornitore": "Italgas",
+        "consenso": true
+      },
+      "acqua": {
+        "codicePOD": "IT001E00001",
+        "fornitore": "Dolomiti Acqua",
+        "consenso": true
+      }
+    },
+    "storico": [
+      {
+        "azione": "voto_elettorale",
+        "data": "2025-04-10T09:30:00",
+        "punti": 100
+      },
+      {
+        "azione": "bolletta",
+        "tipo": "elettrica",
+        "data": "2025-04-01T10:00:00",
+        "punti": 15
+      },
+      {
+        "azione": "spostamento",
+        "distanza_km": 7.2,
+        "data": "2025-04-03T08:45:00",
+        "punti": 1.0
+      },
+      {
+        "azione": "abbonamento_mezzi_pubblici",
+        "data": "2025-03-15T12:00:00",
+        "punti": 50
+      },
+      {
+        "azione": "multa",
+        "gravita": "media",
+        "data": "2025-03-28T14:20:00",
+        "punti": -40
+      }
+    ]
+  }
+]

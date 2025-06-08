@@ -11,22 +11,9 @@ import 'package:intl/intl.dart';
 import '../../servizi/storico_service.dart';
 import '../widget/storico_elemento.dart';
 
-class StoricoBolletteScreen extends StatefulWidget {
-  final String email;
-  final String password;
-
-  const StoricoBolletteScreen({
-    super.key,
-    required this.email,
-    required this.password,
-  });
-
-  @override
-  State<StoricoBolletteScreen> createState() => _StoricoBolletteScreenState();
-}
 
 class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
-  Map<String, dynamic>? bolletta;
+  List<Map<String, dynamic>> bollette = [];
   bool isLoading = true;
 
   @override
@@ -36,17 +23,28 @@ class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
   }
 
   Future<void> caricaBolletta() async {
-    try {
-      final response = await StoricoService.getStoricoBolletta('elettrica');
+    final tipi = ['acqua', 'gas', 'elettrica'];
+    final results = <Map<String, dynamic>>[];
 
-      setState(() {
-        bolletta = response;
-        isLoading = false;
-      });
-    } catch (e) {
-      debugPrint('Errore caricamento bolletta: $e');
-      setState(() => isLoading = false);
+    for (final tipo in tipi) {
+      try {
+        final response = await StoricoService.getStoricoBolletta(tipo);
+        if (response['tipo'] != null) {
+          results.add({
+            'tipo': response['tipo'],
+            'punti': response['punti'] ?? 0,
+            'data': response['data'] ?? DateTime.now().toIso8601String(),
+          });
+        }
+      } catch (e) {
+        debugPrint('Errore bolletta $tipo: $e');
+      }
     }
+
+    setState(() {
+      bollette = results;
+      isLoading = false;
+    });
   }
 
   String formattaData(String iso) {
@@ -63,16 +61,18 @@ class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
       appBar: AppBar(title: const Text('Storico Bollette')),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : bolletta == null
+          : bollette.isEmpty
               ? const Center(child: Text('Nessuna bolletta trovata.'))
-              : ListView(
-                  children: [
-                    ElementoStorico(
-                      title: 'Pagamento bolletta ${bolletta!['tipo'] ?? 'sconosciuta'}',
-                      subtitle: formattaData(DateTime.now().toIso8601String()),
-                      points: '+${bolletta!['punti'].toString()}',
-                    )
-                  ],
+              : ListView.builder(
+                  itemCount: bollette.length,
+                  itemBuilder: (context, index) {
+                    final b = bollette[index];
+                    return ElementoStorico(
+                      title: 'Pagamento bolletta ${b['tipo']}',
+                      subtitle: formattaData(b['data']),
+                      points: '+${b['punti'].toString()}',
+                    );
+                  },
                 ),
     );
   }

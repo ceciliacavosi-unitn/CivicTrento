@@ -2,10 +2,8 @@
 // storico_service.dart
 //
 // Funzione:
-// - Recupera lo storico simulato inviando email e password nel body.
-// - Funziona solo in fase di test, finché JWT non è implementato.
-//
-// Restituisce Map<String, dynamic> con chiavi come "nuovoSaldo", ecc.
+// - Recupera lo storico da backend inviando l'email dell'utente.
+// - Usa il token JWT per autenticarsi.
 // ======================================================
 
 import 'dart:convert';
@@ -22,6 +20,14 @@ class StoricoService {
     return token;
   }
 
+  /// Recupera l'email salvata localmente
+  static Future<String> _getEmail() async {
+    final prefs = await SharedPreferences.getInstance();
+    final email = prefs.getString('email');
+    if (email == null) throw Exception('Email utente non trovata. Effettua il login.');
+    return email;
+  }
+
   /// Header con Authorization
   static Future<Map<String, String>> _authHeaders() async {
     final token = await _getToken();
@@ -34,17 +40,23 @@ class StoricoService {
   /// Voto elettorale
   static Future<Map<String, dynamic>> getStoricoVoto() async {
     final headers = await _authHeaders();
-    final response = await http.post(Uri.parse(voto), headers: headers);
+    final email = await _getEmail();
+    final response = await http.post(
+      Uri.parse(voto),
+      headers: headers,
+      body: jsonEncode({'email': email}),
+    );
     return _gestisciRispostaSingola(response, 'voti');
   }
 
   /// Bolletta (acqua, luce, gas)
   static Future<Map<String, dynamic>> getStoricoBolletta(String tipo) async {
     final headers = await _authHeaders();
+    final email = await _getEmail();
     final response = await http.post(
       Uri.parse(bolletta),
       headers: headers,
-      body: jsonEncode({'tipo': tipo}),
+      body: jsonEncode({'email': email, 'tipo': tipo}),
     );
     return _gestisciRispostaSingola(response, 'bolletta');
   }
@@ -52,28 +64,45 @@ class StoricoService {
   /// Movimento monitorato (km a piedi/bici)
   static Future<Map<String, dynamic>> getStoricoMovimento(double distanzaKm) async {
     final headers = await _authHeaders();
+    final email = await _getEmail();
     final response = await http.post(
       Uri.parse(movimento),
       headers: headers,
-      body: jsonEncode({'distanza_km': distanzaKm}),
+      body: jsonEncode({'email': email, 'distanza_km': distanzaKm}),
     );
     return _gestisciRispostaSingola(response, 'movimento');
   }
+  static Future<List<Map<String, dynamic>>> getTuttiSpostamenti() async {
+    final response = await http.get(Uri.parse('$baseUrl/cittadino/storico/movimento'));
+    if (response.statusCode == 200) {
+      final List data = jsonDecode(response.body);
+      return List<Map<String, dynamic>>.from(data);
+    } else {
+      throw Exception('Errore caricamento spostamenti');
+    }
+  }
+
 
   /// Abbonamento mezzi pubblici
   static Future<Map<String, dynamic>> getStoricoTrasporti() async {
     final headers = await _authHeaders();
-    final response = await http.post(Uri.parse(trasporti), headers: headers);
+    final email = await _getEmail();
+    final response = await http.post(
+      Uri.parse(trasporti),
+      headers: headers,
+      body: jsonEncode({'email': email}),
+    );
     return _gestisciRispostaSingola(response, 'trasporti');
   }
 
   /// Multa ricevuta
   static Future<Map<String, dynamic>> getStoricoMulte(String gravita) async {
     final headers = await _authHeaders();
+    final email = await _getEmail();
     final response = await http.post(
       Uri.parse(multa),
       headers: headers,
-      body: jsonEncode({'gravita': gravita}),
+      body: jsonEncode({'email': email, 'gravita': gravita}),
     );
     return _gestisciRispostaSingola(response, 'multa');
   }

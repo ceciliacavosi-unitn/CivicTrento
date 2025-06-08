@@ -17,10 +17,7 @@ import '../config/api_endpoints.dart';
 
 class PremioService {
   /// Carica i premi da backend (GET /premi)
-  ///
-  /// Ritorna una lista di mappe contenenti i dati dei premi.
-  /// Richiede JWT nel header Authorization.
-  Future<List<Map<String, dynamic>>> caricaPremi() async {
+  Future<List<Map<String, dynamic>>> fetchPremi() async {
     final token = await _getToken();
     final uri = Uri.parse(premiUrl);
 
@@ -33,14 +30,12 @@ class PremioService {
       final List premi = jsonDecode(response.body);
       return premi.cast<Map<String, dynamic>>();
     } else {
-      throw Exception('Errore nel caricamento premi: ${response.statusCode}');
+      final errorMsg = _parseError(response.body);
+      throw Exception('Errore nel caricamento premi: $errorMsg');
     }
   }
 
   /// Riscatta un premio (POST /premi/riscatta/:id)
-  ///
-  /// Invia una richiesta POST per riscattare il premio con l'ID specificato.
-  /// Richiede JWT nel header Authorization.
   Future<bool> riscattaPremio(String idPremio) async {
     final token = await _getToken();
     final uri = Uri.parse('$riscattaPremioUrl/$idPremio');
@@ -50,11 +45,15 @@ class PremioService {
       headers: _authHeaders(token),
     );
 
-    return response.statusCode == 200;
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      final errorMsg = _parseError(response.body);
+      throw Exception('Errore nel riscatto del premio: $errorMsg');
+    }
   }
 
-  // ======================================================
-  // Helpers privati per token
+  // Helpers
   static Future<String> _getToken() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('jwt_token');
@@ -67,5 +66,14 @@ class PremioService {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer $token',
     };
+  }
+
+  static String _parseError(String body) {
+    try {
+      final jsonBody = json.decode(body) as Map<String, dynamic>;
+      return jsonBody['detail'] as String? ?? body;
+    } catch (_) {
+      return body;
+    }
   }
 }

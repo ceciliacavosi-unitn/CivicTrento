@@ -26,27 +26,51 @@ class StoricoMulteScreen extends StatefulWidget {
 }
 
 class _StoricoMulteScreenState extends State<StoricoMulteScreen> {
-  Map<String, dynamic>? multa;
+  final List<Map<String, dynamic>> multe = [];
   bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    caricaMulta();
+    caricaMulte();
   }
 
-  Future<void> caricaMulta() async {
-    try {
-      final response = await StoricoService.getStoricoMulte('media');
+  Future<void> caricaMulte() async {
+    final gravitaLista = ['leggera', 'media', 'grave'];
 
-      setState(() {
-        multa = response;
-        isLoading = false;
-      });
-    } catch (e) {
-      debugPrint('Errore caricamento multa: $e');
-      setState(() => isLoading = false);
+    for (final gravita in gravitaLista) {
+      try {
+        final response = await StoricoService.getStoricoMulte(gravita);
+        if (response['gravita'] != null) {
+          String punti;
+          switch (response['gravita']) {
+            case 'grave':
+              punti = 'Saldo azzerato';
+              break;
+            case 'media':
+              punti = '-40';
+              break;
+            case 'leggera':
+              punti = '-10';
+              break;
+            default:
+              punti = '-?';
+          }
+
+          multe.add({
+            'gravita': response['gravita'],
+            'data': response['dataUltimaMulta'] ?? DateTime.now().toIso8601String(),
+            'punti': punti,
+          });
+        }
+      } catch (e) {
+        debugPrint('Errore multa $gravita: $e');
+      }
     }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   String formattaData(String iso) {
@@ -63,20 +87,18 @@ class _StoricoMulteScreenState extends State<StoricoMulteScreen> {
       appBar: AppBar(title: const Text('Storico Multe')),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : multa == null
+          : multe.isEmpty
               ? const Center(child: Text('Nessuna multa trovata.'))
-              : ListView(
-                  children: [
-                    ElementoStorico(
-                      title: 'Multa (${multa!['gravita'] ?? 'non specificata'})',
-                      subtitle: formattaData(multa!['dataUltimaMulta'] ?? DateTime.now().toIso8601String()),
-                      points: multa!['gravita'] == 'gravi'
-                          ? 'Saldo azzerato'
-                          : multa!['gravita'] == 'medie'
-                              ? '-40'
-                              : '-10',
-                    )
-                  ],
+              : ListView.builder(
+                  itemCount: multe.length,
+                  itemBuilder: (context, index) {
+                    final m = multe[index];
+                    return ElementoStorico(
+                      title: 'Multa (${m['gravita']})',
+                      subtitle: formattaData(m['data']),
+                      points: m['punti'],
+                    );
+                  },
                 ),
     );
   }

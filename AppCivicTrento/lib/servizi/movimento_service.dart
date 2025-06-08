@@ -1,4 +1,4 @@
-/*import 'package:health/health.dart';
+import 'package:health/health.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../config/api_endpoints.dart';  // <-- se usi gli endpoint centralizzati
@@ -26,19 +26,22 @@ class ServizioMovimento {
 
     final data = await _health.getHealthDataFromTypes(start, now, types);
     double metriTotali = data.fold(0.0, (sum, point) {
-  if (point.value is num) {
-    return sum + (point.value as num).toDouble();
-  } else {
-    return sum;
-  }
-});
+      if (point.value is num) {
+        return sum + (point.value as num).toDouble();
+      } else {
+        return sum;
+      }
+    });
 
     return metriTotali / 1000.0; // metri → km
   }
 
-  static Future<void> inviaDatiMovimento(String email, double km) async {
-  int punti;
+static Future<void> inviaDatiMovimento(double km) async {
+  final prefs = await SharedPreferences.getInstance();
+  final token = prefs.getString('jwt_token');
+  if (token == null) throw Exception('Token mancante, effettua login');
 
+  int punti;
   if (km < 1) {
     punti = 0;
   } else if (km < 3) {
@@ -53,12 +56,13 @@ class ServizioMovimento {
 
   final response = await http.post(
     Uri.parse(movimento),
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer $token'
+    },
     body: jsonEncode({
-      'email': email,
       'kmPercorsi': km,
-      'punti': punti,
-      'data': DateTime.now().toIso8601String().split("T")[0]
+      'data': DateTime.now().toIso8601String()
     }),
   );
 
@@ -67,4 +71,5 @@ class ServizioMovimento {
   }
 }
 
-}*/
+
+}

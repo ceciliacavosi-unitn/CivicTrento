@@ -26,25 +26,24 @@ class StoricoSpostamentiScreen extends StatefulWidget {
 }
 
 class _StoricoSpostamentiScreenState extends State<StoricoSpostamentiScreen> {
-  Map<String, dynamic>? spostamento;
+  List<Map<String, dynamic>> spostamenti = [];
   bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    caricaSpostamento();
+    caricaSpostamenti();
   }
 
-  Future<void> caricaSpostamento() async {
+  Future<void> caricaSpostamenti() async {
     try {
-      final response = await StoricoService.getStoricoMovimento(25);
-
+      final response = await StoricoService.getTuttiSpostamenti(); // nuova funzione che restituisce una lista
       setState(() {
-        spostamento = response;
+        spostamenti = response;
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('Errore caricamento spostamento: $e');
+      debugPrint('Errore caricamento spostamenti: $e');
       setState(() => isLoading = false);
     }
   }
@@ -63,19 +62,20 @@ class _StoricoSpostamentiScreenState extends State<StoricoSpostamentiScreen> {
       appBar: AppBar(title: const Text('Storico Spostamenti')),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : spostamento == null
+          : spostamenti.isEmpty
               ? const Center(child: Text('Nessuno spostamento trovato.'))
-              : ListView(
-                  children: [
-                    ElementoStorico(
-                      title:
-                          'Spostamento (${spostamento!['distanza_km']} km)',
-                      subtitle: formattaData(DateTime.now().toIso8601String()),
-                      points: double.tryParse(spostamento!['distanza_km'].toString()) != null
-                          ? '+${(double.parse(spostamento!['distanza_km'].toString()) > 5 ? 1.0 : 0.5)}'
-                          : '+0',
-                    )
-                  ],
+              : ListView.builder(
+                  itemCount: spostamenti.length,
+                  itemBuilder: (context, index) {
+                    final s = spostamenti[index];
+                    final distanza = double.tryParse(s['distanza_km'].toString()) ?? 0;
+                    final punti = distanza > 5 ? 1.0 : 0.5;
+                    return ElementoStorico(
+                      title: 'Spostamento (${distanza.toStringAsFixed(1)} km)',
+                      subtitle: formattaData(s['data']),
+                      points: '+${punti.toString()}',
+                    );
+                  },
                 ),
     );
   }
