@@ -1,0 +1,86 @@
+[
+  {
+    "title": "US0 - Login con credenziali corrette",
+    "statusCode": 200
+  },
+  {
+    "title": "US1 - Login con password errata",
+    "statusCode": 404
+  },
+  {
+    "title": "US2 - Login con email non valida",
+    "statusCode": 400
+  },
+  {
+    "title": "US3 - Login con credenziali non registrate",
+    "statusCode": 404
+  },
+  {
+    "title": "US4 - Registrazione fallita con password semplice",
+    "statusCode": 400
+  },
+  {
+    "title": "US5 - Registrazione accettata con password complessa",
+    "statusCode": 200
+  },
+  {
+    "title": "US6 - Recupero password con token valido simulato",
+    "statusCode": 400
+  },
+  {
+    "title": "US7 - Recupero password con token non valido",
+    "statusCode": 400
+  },
+  {
+    "title": "US8 - Registrazione con valori validi",
+    "statusCode": 200
+  },
+  {
+    "title": "US9 - Nome vuoto",
+    "statusCode": 400
+  },
+  {
+    "title": "US10 - Cognome vuoto",
+    "statusCode": 400
+  },
+  {
+    "title": "US11 - Email vuota",
+    "statusCode": 400
+  },
+  {
+    "title": "US12 - Password vuota",
+    "statusCode": 400
+  },
+  {
+    "title": "US13 - Codice fiscale vuoto",
+    "statusCode": 400
+  },
+  {
+    "title": "US14 - Carta d'identità vuota",
+    "statusCode": 400
+  },
+  {
+    "title": "US15 - Email non valida",
+    "statusCode": 400
+  },
+  {
+    "title": "US16 - Email già esistente",
+    "statusCode": 409
+  },
+  {
+    "title": "US17 - Codice fiscale non valido",
+    "statusCode": 400
+  },
+  {
+    "title": "US18 - Carta d'identità non valida",
+    "statusCode": 400
+  },
+  {
+    "title": "US20 - Registrazione fallita senza consenso GDPR",
+    "statusCode": 400
+  },
+  {
+    "title": "US29 - Cancellazione account riuscita",
+    "statusCode": 200
+  }
+]
