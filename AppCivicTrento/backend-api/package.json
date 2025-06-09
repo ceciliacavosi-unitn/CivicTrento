@@ -7,15 +7,12 @@
     "start": "node server.js",
     "testdb": "node -r dotenv/config mongodb.js",
     "test": "jest",
-
     "test_auth:json": "jest auth.test.js --json --outputFile=report/test-report_auth.json",
     "report_auth": "node report/formattaReportAuth.js",
     "report_auth:full": "npm run test_auth:json && npm run report_auth > report/report_auth.txt",
-
     "test_utente:json": "jest utente.test.js --json --outputFile=report/test-report_utente.json",
     "report_utente": "node report/formattaReportUtente.js",
     "report_utente:full": "npm run test_utente:json && npm run report_utente > report/report_utente.txt",
-
     "test:json": "npm run test_auth:json && npm run test_utente:json",
     "report": "npm run report_auth && npm run report_utente",
     "report:full": "npm run report_auth:full && npm run report_utente:full"

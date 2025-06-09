@@ -3,8 +3,8 @@
     "nome": "Cecilia Maria Asia",
     "cognome": "Cavosi",
     "email": "cecilia.cavosi@gmail.com",
-    "punti": 800,
-    "saldo": 800,
+    "punti": 10,
+    "saldo": 10,
     "datiCivici": {
       "pod_code": "IT001E00040",
       "driver_license": "TN2323232C",
@@ -43,7 +43,7 @@
         "azione": "spostamento",
         "distanza_km": 7.2,
         "data": "2025-04-03T08:45:00",
-        "punti": 1.0
+        "punti": 1
       },
       {
         "azione": "abbonamento_mezzi_pubblici",
@@ -54,6 +54,33 @@
         "azione": "multa",
         "gravita": "media",
         "data": "2025-03-28T14:20:00",
+        "punti": -40
+      },
+      {
+        "azione": "voto_elettorale",
+        "data": "2025-06-09T09:46:33.206Z",
+        "punti": 100
+      },
+      {
+        "azione": "bolletta",
+        "tipo": "elettrica",
+        "data": "2025-06-09T09:46:33.513Z",
+        "punti": 15
+      },
+      {
+        "azione": "spostamento",
+        "data": "2025-06-09T09:46:33.712Z",
+        "punti": null
+      },
+      {
+        "azione": "abbonamento_mezzi_pubblici",
+        "data": "2025-06-09T09:46:33.926Z",
+        "punti": 50
+      },
+      {
+        "azione": "multa",
+        "gravita": "media",
+        "data": "2025-06-09T09:46:34.144Z",
         "punti": -40
       }
     ]

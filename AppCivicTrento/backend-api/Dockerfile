@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY package*.json ./
 RUN npm install
+RUN npm install ecdsa-sig-formatter
 RUN npm install --save-dev jest-html-reporter
 RUN npm install --save-dev jest-json-reporter
 
