@@ -8,9 +8,23 @@
     "cartaID": "07ad282ed265e3a01d695bbc8445dcc8:87828318de0228bf82b596b5d45a073d",
     "gdprConsent": true,
     "consentTimestamp": "2025-06-08T19:19:33.400Z",
-    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVjbWF0aWlAZ21haWwuY29tIiwiaWF0IjoxNzQ5NDY0MzE1LCJleHAiOjE3NDk0Njc5MTV9.4wVmf0OrX6JaOKTFMuy-2r8vM9KmK4w7BmJmo8vohIM",
-    "ultimaAttivita": "2025-06-09T10:18:36.010Z",
+    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVjbWF0aWlAZ21haWwuY29tIiwiaWF0IjoxNzQ5NDc0NzQzLCJleHAiOjE3NDk0NzgzNDN9.hYCGnwyS3BqlNMveYq893QXop5_74litRarFTTbY1OM",
+    "ultimaAttivita": "2025-06-09T13:12:23.368Z",
     "punti": 800,
     "saldo": 800
+  },
+  {
+    "nome": "Cecilia Maria Asia",
+    "cognome": "Cavosi",
+    "email": "cecilia.cavosi@gmail.com",
+    "password": "$2b$10$/qwuY4UgGnk4Y/UHC8qGxeeenRwcoqPgP11FmTLWuJAq.uthPt1um",
+    "CF": "ed5ad69c70b68b9300d20eecbba0d277:9566c62f4326bd98e1b7eb49eab8ecc5ce431c16b902bd00378def12237264b9",
+    "cartaID": "c3915882dc83b392355e9413a37ecc33:242cfb6288e96e7571da669747f35c4e",
+    "gdprConsent": true,
+    "consentTimestamp": "2025-06-09T13:13:57.691Z",
+    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNlY2lsaWEuY2F2b3NpQGdtYWlsLmNvbSIsImlhdCI6MTc0OTQ3NDg3MiwiZXhwIjoxNzQ5NDc4NDcyfQ.-fOOYPs_RalBSsOELhur3t3TQFucDiHiIOGTath8bJg",
+    "saldo": 800,
+    "punti": 800,
+    "ultimaAttivita": "2025-06-09T13:14:58.519Z"
   }
 ]

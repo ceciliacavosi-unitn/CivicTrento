@@ -115,5 +115,19 @@
         "punti": -40
       }
     ]
+  },
+  {
+    "nome": "Cecilia Maria Asia",
+    "cognome": "Cavosi",
+    "email": "cecilia.cavosi@gmail.com",
+    "punti": 800,
+    "saldo": 800,
+    "storico": [
+      {
+        "azione": "saldo iniziale",
+        "data": "2025-06-09T13:13:57.790Z",
+        "saldo": 800
+      }
+    ]
   }
 ]
