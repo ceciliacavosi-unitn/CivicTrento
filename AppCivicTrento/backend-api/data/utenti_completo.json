@@ -1,77 +1,5 @@
 [
   {
-    "nome": "Matilde",
-    "cognome": "Prati",
-    "email": "ecmatii@gmail.com",
-    "punti": 800,
-    "saldo": 800,
-    "datiCivici": {
-      "pod_code": "IT001E00040",
-      "driver_license": "TN2323232C",
-      "subscription_code": "674635"
-    },
-    "utenze": {
-      "luce": {
-        "codicePOD": "IT001E00001",
-        "fornitore": "Enel Energia",
-        "consenso": true
-      },
-      "gas": {
-        "codicePOD": "IT001E00001",
-        "fornitore": "Italgas",
-        "consenso": true
-      },
-      "acqua": {
-        "codicePOD": "IT001E00001",
-        "fornitore": "Dolomiti Acqua",
-        "consenso": true
-      }
-    },
-    "storico": [
-      {
-        "azione": "saldo iniziale",
-        "punti": 800,
-        "data": "2025-01-01T00:00:00Z"
-      },
-      {
-        "azione": "voto elettorale",
-        "punti": 100,
-        "data": "2025-04-10T09:30:00Z"
-      },
-      {
-        "azione": "bolletta elettrica",
-        "punti": 15,
-        "data": "2025-04-01T10:00:00Z"
-      },
-      {
-        "azione": "bolletta elettrica",
-        "punti": 15,
-        "data": "2025-06-01T10:00:00Z"
-      },
-      {
-        "azione": "bolletta gas",
-        "punti": 10,
-        "data": "2025-06-01T11:00:00Z"
-      },
-      {
-        "azione": "spostamento 6.3 km",
-        "punti": 1,
-        "data": "2025-06-09T23:59:00Z"
-      },
-      {
-        "azione": "abbonamento mezzi pubblici",
-        "punti": 50,
-        "data": "2025-03-15T12:00:00Z"
-      },
-      {
-        "azione": "multa media",
-        "punti": -40,
-        "data": "2025-03-28T14:20:00Z"
-      }
-    ]
-    
-  },
-  {
     "nome": "Cecilia Maria Asia",
     "cognome": "Cavosi",
     "email": "cecilia.cavosi@gmail.com",
@@ -81,12 +9,22 @@
       {
         "azione": "saldo iniziale",
         "data": "2025-06-09T13:13:57.790Z",
-        "punti": 800
+        "saldo": 800
+      }
+    ]
+  },
+  {
+    "nome": "Matilde",
+    "cognome": "Prati",
+    "email": "ecmatii@gmail.com",
+    "punti": 800,
+    "saldo": 800,
+    "storico": [
+      {
+        "azione": "saldo iniziale",
+        "data": "2025-06-09T15:20:59.602Z",
+        "saldo": 800
       }
     ]
   }
 ]
-
-
-
-  

@@ -344,5 +344,15 @@
     "residenti": [
       "CA65065PH"
     ]
+  },
+  {
+    "residenza": "residenza_12",
+    "idAbitazione": "1",
+    "codicePOD": "IT001E01001",
+    "classeEnergetica": "A",
+    "metratura": 100,
+    "residenti": [
+      "CA00499KT"
+    ]
   }
 ]

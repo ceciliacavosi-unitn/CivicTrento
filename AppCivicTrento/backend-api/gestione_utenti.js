@@ -33,6 +33,8 @@ const crypto = require("crypto");
 const utentiPath = path.join(__dirname, 'data', 'utenti.json');
 const pathUtentiCompleto = path.join(__dirname, "data", "utenti_completo.json");
 
+const { decrypt } = require("./gestione_autenticazione");
+
 const ALGORITHM = 'aes-256-cbc';
 const CRYPTO_SECRET = process.env.CRYPTO_SECRET;
 const DECRYPTION_KEY = crypto.scryptSync(CRYPTO_SECRET, 'salt', 32);
@@ -42,20 +44,6 @@ function cifraTesto(text) {
   const cipher = crypto.createCipheriv(ALGORITHM, DECRYPTION_KEY, iv);
   const encrypted = Buffer.concat([cipher.update(text, 'utf8'), cipher.final()]);
   return iv.toString('hex') + ':' + encrypted.toString('hex');
-}
-
-function decrypt(text) {
-  try {
-    const [ivHex, encryptedHex] = text.split(':');
-    const iv = Buffer.from(ivHex, 'hex');
-    const encrypted = Buffer.from(encryptedHex, 'hex');
-    const decipher = crypto.createDecipheriv(ALGORITHM, DECRYPTION_KEY, iv);
-    const decrypted = Buffer.concat([decipher.update(encrypted), decipher.final()]);
-    return decrypted.toString('utf8');
-  } catch (e) {
-    console.warn("Errore nella decifratura:", e.message);
-    return "";
-  }
 }
 
 // ================================================

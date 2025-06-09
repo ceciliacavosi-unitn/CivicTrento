@@ -1,19 +1,5 @@
 [
   {
-    "nome": "Matilde",
-    "cognome": "Prati",
-    "email": "ecmatii@gmail.com",
-    "password": "$2b$10$X.pKO5Vl9egNeuhroguoGOrOnT/zhGW.vjexFvutjp9ztwUqn5LPm",
-    "CF": "647364f0b0f3a11daa95b05858cedb81:345010584e435406d0a1706fa79e1a08ee6745d7df5baa562315bdee179f79af",
-    "cartaID": "07ad282ed265e3a01d695bbc8445dcc8:87828318de0228bf82b596b5d45a073d",
-    "gdprConsent": true,
-    "consentTimestamp": "2025-06-08T19:19:33.400Z",
-    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVjbWF0aWlAZ21haWwuY29tIiwiaWF0IjoxNzQ5NDc0NzQzLCJleHAiOjE3NDk0NzgzNDN9.hYCGnwyS3BqlNMveYq893QXop5_74litRarFTTbY1OM",
-    "ultimaAttivita": "2025-06-09T13:12:23.368Z",
-    "punti": 800,
-    "saldo": 800
-  },
-  {
     "nome": "Cecilia Maria Asia",
     "cognome": "Cavosi",
     "email": "cecilia.cavosi@gmail.com",
@@ -26,5 +12,19 @@
     "saldo": 800,
     "punti": 800,
     "ultimaAttivita": "2025-06-09T13:14:58.519Z"
+  },
+  {
+    "nome": "Matilde",
+    "cognome": "Prati",
+    "email": "ecmatii@gmail.com",
+    "password": "$2b$10$VjhoIXoDc7V2GSa5dEpXY.uhOquU/l9BpcZeb/ja18o9TbuCSm4UW",
+    "CF": "15f26df267539cfbf91d1d7ff740e333:950234129a74848d7a9ca46547202d3dc7743b6e8b7ccf3b8d43d6f495b26688",
+    "cartaID": "528455e402128f27f0efe390df25d36b:4d11b3f965c2a2e01ce0453fd44dab27",
+    "gdprConsent": true,
+    "consentTimestamp": "2025-06-09T15:20:59.496Z",
+    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVjbWF0aWlAZ21haWwuY29tIiwiaWF0IjoxNzQ5NDgyNDkzLCJleHAiOjE3NDk0ODYwOTN9.sFRoheUeoElcRw-tpiiw0_k6EHyMv_4JeaSH3qrdpZ0",
+    "saldo": 800,
+    "punti": 800,
+    "ultimaAttivita": "2025-06-09T15:36:05.532Z"
   }
 ]

@@ -302,7 +302,6 @@ function visualizzaStorico(email) {
     storico: storicoOrdinato,
   };
 }
-
 function aggiornaSaldoUtente(email, deltaPunti) {
   if (!fs.existsSync(pathUtentiCompleto)) {
     console.warn("[aggiornaSaldoUtente] File utenti_completo.json mancante.");
