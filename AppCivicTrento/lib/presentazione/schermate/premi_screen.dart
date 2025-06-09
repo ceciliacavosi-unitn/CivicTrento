@@ -26,7 +26,7 @@ class _PremiScreenState extends State<PremiScreen> {
   void initState() {
     super.initState();
     print("🔄 [initState] Avvio caricamento premi...");
-    _premi = PremioService().caricaPremi();
+    _premi = PremioService().fetchPremi();
   }
 
   @override

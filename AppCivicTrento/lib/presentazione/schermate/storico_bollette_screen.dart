@@ -11,7 +11,19 @@ import 'package:intl/intl.dart';
 import '../../servizi/storico_service.dart';
 import '../widget/storico_elemento.dart';
 
+class StoricoBolletteScreen extends StatefulWidget{
+  final String email;
+  final String password;
 
+  const StoricoBolletteScreen({
+    super.key,
+    required this.email,
+    required this.password,
+  });
+
+@override
+State<StoricoBolletteScreen> createState() => _StoricoBolletteScreenState();
+}
 class _StoricoBolletteScreenState extends State<StoricoBolletteScreen> {
   List<Map<String, dynamic>> bollette = [];
   bool isLoading = true;

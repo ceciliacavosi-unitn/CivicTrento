@@ -750,7 +750,32 @@
     }
   },
   {
-    "codicePOD": "IT001E00040", 
+    "codicePOD": "IT001E00040",
+    "consumiTrimestrali": {
+      "T1": {
+        "luce": 962,
+        "gas": 536,
+        "acqua": 391
+      },
+      "T2": {
+        "luce": 880,
+        "gas": 860,
+        "acqua": 587
+      },
+      "T3": {
+        "luce": 872,
+        "gas": 893,
+        "acqua": 571
+      },
+      "T4": {
+        "luce": 979,
+        "gas": 740,
+        "acqua": 443
+      }
+    }
+  },
+  {
+    "codicePOD": "IT001E00001",
     "consumiTrimestrali": {
       "T1": {
         "luce": 962,

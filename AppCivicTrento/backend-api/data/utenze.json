@@ -1,6 +1,26 @@
 [
   {
-    "idUtente": "ecmatii@email.com",
+    "idUtente": "cecilia.cavosi@gmail.com",
+    "utenze": {
+      "luce": {
+        "codicePOD": "IT001E00040",
+        "fornitore": "Enel Energia",
+        "consenso": true
+      },
+      "gas": {
+        "codicePOD": "IT001E00040",
+        "fornitore": "Italgas",
+        "consenso": true
+      },
+      "acqua": {
+        "codicePOD": "IT001E00040",
+        "fornitore": "Dolomiti Acqua",
+        "consenso": true
+      }
+    }
+  },
+  {
+    "idUtente": "ecmatii@gmail.com",
     "utenze": {
       "luce": {
         "codicePOD": "IT001E00001",

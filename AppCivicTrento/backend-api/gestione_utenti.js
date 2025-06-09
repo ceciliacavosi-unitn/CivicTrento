@@ -251,7 +251,7 @@ function getDatiFunzionaliUtente(email) {
   // }).then(() => console.log(`Punti aggiornati per ${email} (MongoDB)`))
   //   .catch(err => console.error("Errore aggiornamento MongoDB:", err));
 
-  return true;
+  //return true;
 
 
 // ================================================
