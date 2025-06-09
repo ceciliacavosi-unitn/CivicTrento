@@ -115,21 +115,30 @@ app.get("/", (req, res) => {
     <p>Le rotte vanno testate con strumenti come <strong>Postman</strong>, <strong>curl</strong> o una <em>frontend app</em>, poiché molte richiedono <code>POST</code>, <code>PUT</code> o <code>DELETE</code> con JSON nel body.</p>
   `);
 });
+// Regex di validazione
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
+  const idCardRegex = /^(?:[A-Z]{2}\d{5}[A-Z]{1,2}|\d{7,9})$/;
 
 //autenticazione
 app.post("/auth/register", async (req, res) => {
   console.log("[REGISTER] Richiesta ricevuta");
   console.log("Dati ricevuti:", req.body);
 
+  
   const { nome, cognome, email, password, CF, cartaID, gdprConsent } = req.body;
 
+  // Verifica presenza campi obbligatori
+  if (!nome || !cognome || !email || !password || !CF || !cartaID) {
+    console.warn("[VALIDAZIONE] Campi obbligatori mancanti");
+    return res.status(400).json({
+      detail: "Tutti i campi (nome, cognome, email, password, codice fiscale, carta d'identità) sono obbligatori"
+    });
+  }
   const errori = [];
 
-  // Regex di validazione
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-  const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
-  const idCardRegex = /^(?:[A-Z]{2}\d{5}[A-Z]{1,2}|\d{7,9})$/;
+  
 
   // Validazioni
   if (!passwordRegex.test(password)) {
@@ -201,7 +210,10 @@ app.post("/auth/login", async (req, res) => {
   if (!email || !password) {
     return res.status(400).json({ detail: "Email e password sono obbligatorie" });
   }
-
+  // Controllo formato email PRIMA del login
+  if (!emailRegex.test(email.trim())) {
+    return res.status(400).json({ detail: "Formato email non valido" });
+  }
   try {
     const utente = await trovaCredenziali(email.trim(), password.trim());
 
@@ -296,9 +308,6 @@ app.post("/utente/profilo", verificaToken, async (req, res) => {
 });
 
 
-const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,}$/;
-
 app.put("/utente/modifica_profilo", verificaToken, async (req, res) => {
   console.log("[MODIFICA PROFILO] Richiesta autenticata ricevuta");
   console.log("Body ricevuto:", req.body);
@@ -306,19 +315,24 @@ app.put("/utente/modifica_profilo", verificaToken, async (req, res) => {
   const email = req.utente.email; // Ricavato dal token decodificato
   const { field, new_value } = req.body;
 
+  //Controllo campo vuoto
+  if (!field || typeof new_value !== "string" || new_value.trim() === "") {
+    return res.status(400).json({ detail: "Il campo da modificare non può essere vuoto." });
+  }
   // Validazione solo se si modifica email o password
   if (field === "email" && !emailRegex.test(new_value)) {
     return res.status(400).json({ detail: "Formato email non valido" });
   }
-
+  
   if (field === "password" && !passwordRegex.test(new_value)) {
     return res.status(400).json({ detail: "La password non rispetta i criteri di sicurezza:\n\
-- lunghezza minima di 8 caratteri\n\
-- almeno una lettera maiuscola\n\
-- almeno una lettera minuscola\n\
-- almeno un numero\n\
-- almeno un carattere speciale\n\
-- nessuno spazio vuoto" });
+      - lunghezza minima di 8 caratteri\n\
+      - almeno una lettera maiuscola\n\
+      - almeno una lettera minuscola\n\
+      - almeno un numero\n\
+      - almeno un carattere speciale\n\
+      - nessuno spazio vuoto" 
+    });
   }
 
   try {
@@ -331,7 +345,21 @@ app.put("/utente/modifica_profilo", verificaToken, async (req, res) => {
 
     console.log(`[MODIFICA PROFILO] ${field} modificato per ${email}`);
     res.json({ status: "success", field, new_value });
-
+    // Invia il profilo aggiornato al client
+    res.json({
+      status: "success",
+      field,
+      new_value,
+      profiloAggiornato: {
+        nome: profiloAggiornato.nome,
+        cognome: profiloAggiornato.cognome,
+        email: profiloAggiornato.email,
+        password: profiloAggiornato.password,
+        CF: profiloAggiornato.CF,
+        cartaID: profiloAggiornato.cartaID,
+        ultimaAttivita: profiloAggiornato.ultimaAttivita
+      }
+    });
     aggiornaUltimaAttivita(email);
   } catch (error) {
     console.error("[MODIFICA PROFILO] Errore interno:", error);
@@ -645,10 +673,13 @@ app.post('/cittadino/utenza', (req, res) => {
 
 
 
+/*
 //avvio server
 const PORT = process.env.PORT || 8000;
 console.log("Avvio server...");
 app.listen(PORT, () => {
   console.log(` Server avviato su http://localhost:${PORT}`);
 });
+*/
 
+module.exports = app;

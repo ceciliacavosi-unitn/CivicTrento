@@ -37,6 +37,13 @@ const ALGORITHM = 'aes-256-cbc';
 const CRYPTO_SECRET = process.env.CRYPTO_SECRET;
 const DECRYPTION_KEY = crypto.scryptSync(CRYPTO_SECRET, 'salt', 32);
 
+function cifraTesto(text) {
+  const iv = crypto.randomBytes(16);
+  const cipher = crypto.createCipheriv(ALGORITHM, DECRYPTION_KEY, iv);
+  const encrypted = Buffer.concat([cipher.update(text, 'utf8'), cipher.final()]);
+  return iv.toString('hex') + ':' + encrypted.toString('hex');
+}
+
 function decrypt(text) {
   try {
     const [ivHex, encryptedHex] = text.split(':');
@@ -55,9 +62,7 @@ function decrypt(text) {
 // FUNZIONI SOLO FILE JSON
 // ================================================
 
-/**
- * Recupera i dati dell’utente da JSON (decifra CF e cartaID)
- */
+/*Recupera i dati dell’utente da JSON (decifra CF e cartaID)*/
 async function getProfiloUtente(email) {
   if (!email) {
     console.warn("[GET PROFILO] Email non specificata");
@@ -123,12 +128,9 @@ async function modificaProfiloUtente(email, password, field, newValue) {
   // Modifica nel file JSON
   if (fs.existsSync(utentiPath)) {
     const utenti = JSON.parse(fs.readFileSync(utentiPath, 'utf8'));
-
     const utentiAggiornati = await Promise.all(
       utenti.map(async (u) => {
-        if (u.email === email) {
-          const passwordCorretta = await bcrypt.compare(password, u.password);
-          if (passwordCorretta) {
+          if (u.email === email) {
             if (chiave === 'password') {
               u.password = await bcrypt.hash(newValue.trim(), 10);
               console.log("Password aggiornata (bcrypt)");
@@ -139,16 +141,15 @@ async function modificaProfiloUtente(email, password, field, newValue) {
               u[chiave] = newValue.trim();
               console.log(`Campo '${chiave}' aggiornato`);
             }
-
+  
             u.ultimaAttivita = new Date();
             modificatoJSON = true;
-          } else {
-            console.log("Password errata. Nessuna modifica eseguita.");
           }
-        }
-        return u;
-      })
+  
+          return u;
+         })
     );
+
 
     if (modificatoJSON) {
       fs.writeFileSync(utentiPath, JSON.stringify(utentiAggiornati, null, 2));
@@ -159,13 +160,7 @@ async function modificaProfiloUtente(email, password, field, newValue) {
   } else {
     console.log("File utenti non trovato");
   }
-
-  return modificatoJSON;
-  
-}
-
-
-  // // Modifica su MongoDB (disattivata)
+    // // Modifica su MongoDB (disattivata)
   // const utenteDB = await Utente.findOne({ email });
   // if (utenteDB && await bcrypt.compare(password, utenteDB.password)) {
   //   const updateData = {};
@@ -178,6 +173,12 @@ async function modificaProfiloUtente(email, password, field, newValue) {
   // }
 
    // || modificatoMongo;
+  return modificatoJSON;
+  
+}
+
+
+
 
 
 /**

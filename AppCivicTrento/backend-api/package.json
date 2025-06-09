@@ -4,8 +4,21 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js",
-    "testdb": "node -r dotenv/config mongodb.js"
+    "start": "node server.js",
+    "testdb": "node -r dotenv/config mongodb.js",
+    "test": "jest",
+
+    "test_auth:json": "jest auth.test.js --json --outputFile=report/test-report_auth.json",
+    "report_auth": "node report/formattaReportAuth.js",
+    "report_auth:full": "npm run test_auth:json && npm run report_auth > report/report_auth.txt",
+
+    "test_utente:json": "jest utente.test.js --json --outputFile=report/test-report_utente.json",
+    "report_utente": "node report/formattaReportUtente.js",
+    "report_utente:full": "npm run test_utente:json && npm run report_utente > report/report_utente.txt",
+
+    "test:json": "npm run test_auth:json && npm run test_utente:json",
+    "report": "npm run report_auth && npm run report_utente",
+    "report:full": "npm run report_auth:full && npm run report_utente:full"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +34,9 @@
     "mongodb": "^6.16.0",
     "mongoose": "^8.14.2",
     "nodemailer": "^7.0.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.1.1"
   }
 }
