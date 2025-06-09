@@ -669,29 +669,32 @@ app.post('/monitoraggio/multa', verificaToken, async (req, res) => {
   res.json({ message: "Multa applicata", punti: puntiDaApplicare });
 });
 
-//monitoraggio camminate
+// monitoraggio camminate
 app.post("/cittadino/movimento", verificaToken, async (req, res) => {
   const email = req.utente.email;
   const { kmPercorsi, data } = req.body;
 
-  const punti = registraMovimento(email, kmPercorsi, data);
+  // Validazione dei parametri ricevuti
+  if (typeof kmPercorsi !== 'number' || !email) {
+    return res.status(400).json({ error: "Distanza o email non validi" });
+  }
 
-  const azione = {
-    azione: "spostamento",
-    distanza_km: kmPercorsi,
-    data: data
-  };
+  try {
+    const successo = registraMovimento(email, kmPercorsi);
 
-  const aggiornato = aggiornaPuntiUtente(email, punti, azione);
+    if (!successo) {
+      console.warn(`[MOVIMENTO] Fallimento registrazione per ${email}`);
+      return res.status(500).json({ message: "Errore durante la registrazione dello spostamento" });
+    }
 
-  if (aggiornato) {
-    console.log(`[MOVIMENTO] ${punti} punti aggiunti a ${email}`);
-    res.status(200).json({ message: "Punti aggiornati", puntiAssegnati: punti });
-  } else {
-    console.warn(`[MOVIMENTO] Utente non trovato: ${email}`);
-    res.status(404).json({ message: "Utente non trovato" });
+    console.log(`[MOVIMENTO] Spostamento di ${kmPercorsi} km registrato per ${email}`);
+    res.status(200).json({ message: "Spostamento registrato correttamente", km: kmPercorsi });
+  } catch (error) {
+    console.error(`[MOVIMENTO] Errore interno per ${email}:`, error);
+    res.status(500).json({ error: "Errore interno del server" });
   }
 });
+
 
 
 const { aggiungiOModificaUtenza } = require('./gestione_utenze');

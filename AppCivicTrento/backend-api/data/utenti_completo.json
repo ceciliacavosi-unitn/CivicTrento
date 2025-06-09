@@ -30,91 +30,46 @@
     "storico": [
       {
         "azione": "saldo iniziale",
-        "saldo": 800
+        "punti": 800,
+        "data": "2025-01-01T00:00:00Z"
       },
       {
-        "azione": "voto_elettorale",
-        "data": "2025-04-10T09:30:00",
-        "punti": 100
+        "azione": "voto elettorale",
+        "punti": 100,
+        "data": "2025-04-10T09:30:00Z"
       },
       {
-        "azione": "bolletta",
-        "tipo": "elettrica",
-        "data": "2025-04-01T10:00:00",
-        "punti": 15
+        "azione": "bolletta elettrica",
+        "punti": 15,
+        "data": "2025-04-01T10:00:00Z"
       },
       {
-        "azione": "spostamento",
-        "distanza_km": 7.2,
-        "data": "2025-04-03T08:45:00",
-        "punti": 1
+        "azione": "bolletta elettrica",
+        "punti": 15,
+        "data": "2025-06-01T10:00:00Z"
       },
       {
-        "azione": "abbonamento_mezzi_pubblici",
-        "data": "2025-03-15T12:00:00",
-        "punti": 50
+        "azione": "bolletta gas",
+        "punti": 10,
+        "data": "2025-06-01T11:00:00Z"
       },
       {
-        "azione": "multa",
-        "gravita": "media",
-        "data": "2025-03-28T14:20:00",
-        "punti": -40
+        "azione": "spostamento 6.3 km",
+        "punti": 1,
+        "data": "2025-06-09T23:59:00Z"
       },
       {
-        "azione": "voto_elettorale",
-        "data": "2025-06-09T09:46:33.206Z",
-        "punti": 100
+        "azione": "abbonamento mezzi pubblici",
+        "punti": 50,
+        "data": "2025-03-15T12:00:00Z"
       },
       {
-        "azione": "bolletta",
-        "tipo": "elettrica",
-        "data": "2025-06-09T09:46:33.513Z",
-        "punti": 15
-      },
-      {
-        "azione": "spostamento",
-        "data": "2025-06-09T09:46:33.712Z",
-        "punti": null
-      },
-      {
-        "azione": "abbonamento_mezzi_pubblici",
-        "data": "2025-06-09T09:46:33.926Z",
-        "punti": 50
-      },
-      {
-        "azione": "multa",
-        "gravita": "media",
-        "data": "2025-06-09T09:46:34.144Z",
-        "punti": -40
-      },
-      {
-        "azione": "voto_elettorale",
-        "data": "2025-06-09T09:54:41.421Z",
-        "punti": 100
-      },
-      {
-        "azione": "bolletta",
-        "tipo": "elettrica",
-        "data": "2025-06-09T09:54:41.527Z",
-        "punti": 15
-      },
-      {
-        "azione": "spostamento",
-        "data": "2025-06-09T09:54:41.550Z",
-        "punti": null
-      },
-      {
-        "azione": "abbonamento_mezzi_pubblici",
-        "data": "2025-06-09T09:54:41.663Z",
-        "punti": 50
-      },
-      {
-        "azione": "multa",
-        "gravita": "media",
-        "data": "2025-06-09T09:54:41.704Z",
-        "punti": -40
+        "azione": "multa media",
+        "punti": -40,
+        "data": "2025-03-28T14:20:00Z"
       }
     ]
+    
   },
   {
     "nome": "Cecilia Maria Asia",
@@ -126,8 +81,12 @@
       {
         "azione": "saldo iniziale",
         "data": "2025-06-09T13:13:57.790Z",
-        "saldo": 800
+        "punti": 800
       }
     ]
   }
 ]
+
+
+
+  

@@ -303,6 +303,29 @@ function visualizzaStorico(email) {
   };
 }
 
+function aggiornaSaldoUtente(email, deltaPunti) {
+  if (!fs.existsSync(pathUtentiCompleto)) {
+    console.warn("[aggiornaSaldoUtente] File utenti_completo.json mancante.");
+    return false;
+  }
+
+  const utenti = JSON.parse(fs.readFileSync(pathUtentiCompleto, "utf8"));
+  const utente = utenti.find(u => u.email === email);
+
+  if (!utente) {
+    console.warn(`[aggiornaSaldoUtente] Utente non trovato: ${email}`);
+    return false;
+  }
+
+  utente.saldo = (utente.saldo || 0) + deltaPunti;
+
+  fs.writeFileSync(pathUtentiCompleto, JSON.stringify(utenti, null, 2));
+  console.log(`[aggiornaSaldoUtente] Saldo aggiornato per ${email}: +${deltaPunti} punti`);
+
+  return true;
+}
+
+
 function eliminaUtenteCompleto(email) {
   if (!fs.existsSync(pathUtentiCompleto)) {
     console.warn("[eliminaUtenteCompleto] File utenti_completo.json mancante.");

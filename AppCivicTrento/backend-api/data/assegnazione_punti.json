@@ -10,7 +10,7 @@
     "medie": -40,
     "gravi": "perdita_totale"
   },
-  "spostamenti_bici_piedi": {
+  "spostamenti_piedi": {
     "0_5_km": 0.5,
     "oltre_5_km": 1.0
   },
