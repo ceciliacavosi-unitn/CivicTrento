@@ -1,0 +1,14 @@
+[
+  {
+    "title": "US19 - Modifica password con valore valido",
+    "statusCode": 200
+  },
+  {
+    "title": "US32 - Modifica riuscita del nome",
+    "statusCode": 200
+  },
+  {
+    "title": "US33 - Tentativo di modifica con campo obbligatorio vuoto",
+    "statusCode": 400
+  }
+]
