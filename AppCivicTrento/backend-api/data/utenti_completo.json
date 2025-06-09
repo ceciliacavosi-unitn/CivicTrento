@@ -1,10 +1,10 @@
 [
   {
-    "nome": "Cecilia Maria Asia",
-    "cognome": "Cavosi",
-    "email": "cecilia.cavosi@gmail.com",
-    "punti": 10,
-    "saldo": 10,
+    "nome": "Matilde",
+    "cognome": "Prati",
+    "email": "ecmatii@gmail.com",
+    "punti": 800,
+    "saldo": 800,
     "datiCivici": {
       "pod_code": "IT001E00040",
       "driver_license": "TN2323232C",
@@ -28,6 +28,10 @@
       }
     },
     "storico": [
+      {
+        "azione": "saldo iniziale",
+        "saldo": 800
+      },
       {
         "azione": "voto_elettorale",
         "data": "2025-04-10T09:30:00",
@@ -81,6 +85,33 @@
         "azione": "multa",
         "gravita": "media",
         "data": "2025-06-09T09:46:34.144Z",
+        "punti": -40
+      },
+      {
+        "azione": "voto_elettorale",
+        "data": "2025-06-09T09:54:41.421Z",
+        "punti": 100
+      },
+      {
+        "azione": "bolletta",
+        "tipo": "elettrica",
+        "data": "2025-06-09T09:54:41.527Z",
+        "punti": 15
+      },
+      {
+        "azione": "spostamento",
+        "data": "2025-06-09T09:54:41.550Z",
+        "punti": null
+      },
+      {
+        "azione": "abbonamento_mezzi_pubblici",
+        "data": "2025-06-09T09:54:41.663Z",
+        "punti": 50
+      },
+      {
+        "azione": "multa",
+        "gravita": "media",
+        "data": "2025-06-09T09:54:41.704Z",
         "punti": -40
       }
     ]

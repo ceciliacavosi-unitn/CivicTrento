@@ -33,7 +33,9 @@ const {
   modificaDato,
   rimuoviDato,
   rimuoviTutti,
-  registraMovimento
+  registraMovimento,
+  visualizzaStorico,
+  eliminaUtenteCompleto
 } = require("./gestione_cittadino");
 
 const { inviaEmailRecuperoPassword } = require("./mailer");
@@ -181,7 +183,9 @@ app.post("/auth/register", async (req, res) => {
       CF,
       cartaID,
       gdprConsent: true,
-      consentTimestamp: new Date().toISOString() 
+      consentTimestamp: new Date().toISOString(),
+      saldo: 800,
+      punti: 800
     });
 
     if (!successo) {
@@ -300,7 +304,8 @@ app.post("/utente/profilo", verificaToken, async (req, res) => {
     email: profilo.email,
     password: profilo.password,
     CF: profilo.CF,
-    cartaID: profilo.cartaID
+    cartaID: profilo.cartaID,
+    saldo: profilo.saldo
   });
 
   aggiornaUltimaAttivita(email);
@@ -487,6 +492,37 @@ app.delete("/cittadino/rimuovi_utenze", verificaToken, (req, res) => {
   }
 
   res.json({ status: "success", message: "Utenze rimosse correttamente" });
+});
+
+//mostra storico cittadino
+app.get('/cittadino/storico', verificaToken, (req, res) => {
+  const email = req.utente.email;
+
+  try {
+    const storico = visualizzaStorico(email);
+    return res.status(200).json(storico);
+  } catch (err) {
+    console.error(`[GET /cittadino/storico] Errore:`, err);
+    return res.status(500).json({ error: 'Errore durante la lettura dello storico' });
+  }
+});
+
+//rimozione storico cittadino
+app.delete('/cittadino/eliminaUtenteCompleto', verificaToken, (req, res) => {
+  const email = req.utente.email;
+
+  try {
+    const successo = eliminaUtenteCompleto(email);
+    if (!successo) {
+      return res.status(404).json({ detail: "Storico non trovato o già vuoto" });
+    }
+
+    console.log(`[DELETE /cittadino/storico] Storico eliminato per ${email}`);
+    return res.status(200).json({ status: "success", message: "Storico eliminato con successo" });
+  } catch (err) {
+    console.error(`[DELETE /cittadino/storico] Errore interno:`, err);
+    return res.status(500).json({ error: "Errore interno durante l'eliminazione dello storico" });
+  }
 });
 
 

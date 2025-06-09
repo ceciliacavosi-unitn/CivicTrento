@@ -13,7 +13,7 @@
 // ======================================================
 
 /// Indirizzo del server (host + porta)
-const String apiHost = '172.20.10.3:8000'; 
+const String apiHost = '192.168.27.24:8000'; 
 // ceci_casa: 192.168.0.108 
 //mati: 172.20.10.3 
 //ceci_casa_luca: 192.168.1.66 
@@ -69,6 +69,15 @@ const String deleteAllDataUrl = '$baseUrl/cittadino/rimuovi_tutti';
 /// Rimuove tutte le utenze (luce, gas, acqua) associate all’utente
 const String deleteUtenzeUrl = '$baseUrl/cittadino/rimuovi_utenze';
 
+/// Storico comportamenti del cittadino
+const String storicoCittadinoUrl = "$baseUrl/cittadino/storico";
+
+///Eliminazione storico cittadino
+const String eliminaUtenteCompletoUrl = "$baseUrl/cittadino/eliminaUtenteCompleto";
+
+/// Movimenti cittadino
+const String movimento = "$baseUrl/cittadino/movimento";
+
 
 /// ======================================================
 /// Premi (/premi/)
@@ -85,6 +94,4 @@ const String bolletta = "$baseUrl/monitoraggio/bolletta";
 const String trasporti = "$baseUrl/monitoraggio/trasporti";
 const String multa = "$baseUrl/monitoraggio/multa";
 const String bonusAnnuale = "$baseUrl/monitoraggio/bonus-annuale";
-
-const String movimento = "$baseUrl/cittadino/movimento";
 

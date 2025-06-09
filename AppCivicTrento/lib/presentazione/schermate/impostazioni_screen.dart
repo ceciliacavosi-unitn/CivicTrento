@@ -108,6 +108,9 @@ class _ImpostazioniScreenState extends State<ImpostazioniScreen> {
                   await CittadinoService.deleteAllData();
                   print(" Dati civici eliminati");
 
+                  await CittadinoService.deleteUtenteCompleto();
+                  print(" Utente completo eliminato");
+
                   await AuthService.deleteAccount(email: email, password: password);
                   print(" Account eliminato");
                   

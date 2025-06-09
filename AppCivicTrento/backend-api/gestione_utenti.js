@@ -81,7 +81,8 @@ async function getProfiloUtente(email) {
         password: utente.password, // resta hashata con bcrypt
         CF: decrypt(utente.CF),
         cartaID: decrypt(utente.cartaID),
-        ultimaAttivita: utente.ultimaAttivita || null
+        ultimaAttivita: utente.ultimaAttivita || null,
+        saldo: utente.saldo || 800
       };
     }
   }

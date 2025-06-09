@@ -10,6 +10,7 @@ const pathAbbonamenti = path.join(__dirname, 'data', 'numeri_abbonamenti.json');
 const pathCodiciPod = path.join(__dirname, 'data', 'codici_pod.json');
 const pathUtenti = path.join(__dirname, 'data', 'utenti.json');
 const pathAbitazioni = path.join(__dirname, 'data', 'abitazioni.json');
+const pathUtentiCompleto = path.join(__dirname, 'data', 'utenti_completo.json');
 
 const header = ["email", "subscription_code", "pod_code", "driver_license"];
 
@@ -248,11 +249,89 @@ function registraMovimento(email, kmPercorsi, data) {
   return punti;
 }
 
+function aggiungiStorico(email, azione, datiExtra = {}) {
+  if (!fs.existsSync(pathUtentiCompleto)) {
+    fs.writeFileSync(pathUtentiCompleto, JSON.stringify([], null, 2));
+  }
+
+  const utenti = JSON.parse(fs.readFileSync(pathUtentiCompleto, 'utf8'));
+  const utente = utenti.find(u => u.email === email);
+
+  if (!utente) {
+    console.warn(`[aggiungiStorico] Utente non trovato: ${email}`);
+    return false;
+  }
+
+  if (!Array.isArray(utente.storico)) {
+    utente.storico = [];
+  }
+
+  const voce = { azione, data: new Date().toISOString(), ...datiExtra };
+  utente.storico.push(voce);
+
+  fs.writeFileSync(pathUtentiCompleto, JSON.stringify(utenti, null, 2));
+  console.log(`[aggiungiStorico] Aggiunta voce storico per ${email}:`, voce);
+
+  return true;
+}
+
+function visualizzaStorico(email) {
+  if (!fs.existsSync(pathUtentiCompleto)) {
+    console.warn("[visualizzaStorico] File utenti_completo.json mancante.");
+    return { saldo: 0, storico: [] };
+  }
+
+  const utenti = JSON.parse(fs.readFileSync(pathUtentiCompleto, "utf8"));
+  const utente = utenti.find(u => u.email === email);
+
+  if (!utente) {
+    console.warn(`[visualizzaStorico] Utente non trovato: ${email}`);
+    return { saldo: 0, storico: [] };
+  }
+
+  const saldo = typeof utente.saldo === 'number' ? utente.saldo : 0;
+
+  const storicoOrdinato = Array.isArray(utente.storico)
+    ? utente.storico.sort((a, b) => new Date(b.data) - new Date(a.data))
+    : [];
+
+  console.log(`[visualizzaStorico] Storico per ${email} (saldo: ${saldo}):`, storicoOrdinato);
+
+  return {
+    saldo,
+    storico: storicoOrdinato,
+  };
+}
+
+function eliminaUtenteCompleto(email) {
+  if (!fs.existsSync(pathUtentiCompleto)) {
+    console.warn("[eliminaUtenteCompleto] File utenti_completo.json mancante.");
+    return false;
+  }
+
+  const utenti = JSON.parse(fs.readFileSync(pathUtentiCompleto, "utf8"));
+  const nuoviUtenti = utenti.filter(u => u.email !== email);
+
+  if (nuoviUtenti.length === utenti.length) {
+    console.warn(`[eliminaUtenteCompleto] Nessun utente trovato con email: ${email}`);
+    return false;
+  }
+
+  fs.writeFileSync(pathUtentiCompleto, JSON.stringify(nuoviUtenti, null, 2));
+  console.log(`[eliminaUtenteCompleto] Utente con email '${email}' rimosso dal file.`);
+
+  return true;
+}
+
+
 module.exports = {
   getDatiCittadino,
   aggiungiDato,
   modificaDato,
   rimuoviDato,
   rimuoviTutti,
-  registraMovimento
+  registraMovimento,
+  aggiungiStorico,
+  visualizzaStorico,
+  eliminaUtenteCompleto
 };

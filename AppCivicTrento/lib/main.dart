@@ -65,7 +65,7 @@ class CivicCoinsApp extends StatelessWidget {
 
     return MaterialApp(
       // Nome dell'app visualizzato in contesti di sistema e multitasking
-      title: 'CivicCoins App',
+      title: 'CivicTrento App',
 
       // Nasconde il banner di debug visibile in alto a destra in modalità sviluppo
       debugShowCheckedModeBanner: false,

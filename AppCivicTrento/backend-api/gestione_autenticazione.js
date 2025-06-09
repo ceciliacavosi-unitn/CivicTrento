@@ -11,12 +11,14 @@ const ALGORITHM = 'aes-256-cbc';
 
 // per attivare MongoDB
 // const Utente = require('./mongodb').Utente;
+const { aggiungiStorico } = require("./gestione_cittadino");
 
 // Percorso dei file
 const filePath = path.join(__dirname, 'data', 'utenti.json');
 const tokenPath = path.join(__dirname, "password_reset_tokens.txt");
 const utentiPath = filePath; // alias per coerenza nei nomi
 const pathAbitanti = path.join(__dirname, "data", "dati_abitantiTn.json");
+const pathUtentiCompleto = path.join(__dirname, 'data', 'utenti_completo.json');
 
 // Connessione MongoDB disabilitata (commentata)
 // const mongoose = require('mongoose');
@@ -69,7 +71,7 @@ function decrypt(encryptedText) {
 /**
  * REGISTRA UTENTE
  */
-async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdprConsent, consentTimestamp }) {
+async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdprConsent, consentTimestamp, saldo, punti }) {
   let utenti = [];
 
   // Caricamento utenti da file, se esiste
@@ -115,7 +117,9 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
     cartaID: encrypt(cartaID),
     gdprConsent: gdprConsent === true,
     consentTimestamp: consentTimestamp || new Date().toISOString(),
-    sessionToken: null
+    sessionToken: null,
+    saldo,
+    punti
   };
 
   // Salvataggio su file
@@ -127,6 +131,25 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
     cartaID: '[ENCRYPTED]'
   });
   fs.writeFileSync(filePath, JSON.stringify(utenti, null, 2));
+
+   const utentiCompleto = fs.existsSync(pathUtentiCompleto)
+    ? JSON.parse(fs.readFileSync(pathUtentiCompleto, 'utf8'))
+    : [];
+
+    utentiCompleto.push({
+      nome,
+      cognome,
+      email,
+      punti,
+      saldo,
+      storico: []
+    });
+
+  fs.writeFileSync(pathUtentiCompleto, JSON.stringify(utentiCompleto, null, 2));
+  aggiungiStorico(email, 'saldo iniziale', { saldo: saldo || 800 });
+
+
+  return true;
 
   // // Salvataggio opzionale su MongoDB (commentato)
   // try {

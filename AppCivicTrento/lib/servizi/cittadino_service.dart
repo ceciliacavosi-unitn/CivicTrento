@@ -127,7 +127,7 @@ class CittadinoService {
     }
   }
 
-    // ======================================================
+  // ======================================================
   // Rimuove tutte le utenze associate all'utente
   static Future<void> deleteUtenze() async {
     final token = await _getToken();
@@ -136,10 +136,45 @@ class CittadinoService {
       Uri.parse(deleteUtenzeUrl),
       headers: _authHeaders(token),
     );
+  }
+
+  // ======================================================
+  // Recupera lo storico delle azioni dell'utente loggato
+  static Future<Map<String, dynamic>> fetchStorico() async {
+    final token = await _getToken();
+
+    final resp = await http.get(
+      Uri.parse(storicoCittadinoUrl),
+      headers: _authHeaders(token),
+    );
+
+    if (resp.statusCode == 200) {
+      final decoded = json.decode(resp.body);
+
+      if (decoded is Map<String, dynamic>) {
+        return decoded;
+      } else {
+        throw Exception('Risposta non valida: attesa un oggetto');
+      }
+    } else {
+      final detail = _parseError(resp.body);
+      throw Exception('Errore nel recupero dello storico: $detail');
+    }
+  }
+
+  // ======================================================
+  // Elimina lo storico delle azioni del cittadino
+  static Future<void> deleteUtenteCompleto() async {
+    final token = await _getToken();
+
+    final resp = await http.delete(
+      Uri.parse(eliminaUtenteCompletoUrl),
+      headers: _authHeaders(token),
+    );
 
     if (resp.statusCode != 200) {
       final detail = _parseError(resp.body);
-      throw Exception('Eliminazione utenze fallita: $detail');
+      throw Exception('Eliminazione storico fallita: $detail');
     }
   }
 

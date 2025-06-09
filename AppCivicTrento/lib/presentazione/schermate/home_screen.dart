@@ -10,6 +10,7 @@ import 'package:intl/intl.dart';
 import '../../config/costanti.dart';
 import '../../servizi/storico_service.dart';
 import '../../servizi/utente_service.dart';
+import '../../servizi/cittadino_service.dart';
 import '../widget/pulsante_home.dart';
 import '../widget/storico_elemento.dart';
 import 'main_screen.dart';
@@ -49,88 +50,67 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> caricaSaldo() async {
     try {
       final profilo = await UtenteService.fetchProfile();
+      debugPrint('PROFILO: $profilo');
+      final valore = int.tryParse(profilo['saldo'].toString()) ?? 0;
+      debugPrint('SALDO PARSATO: $valore');
       setState(() {
-        saldo = int.tryParse(profilo['saldo'].toString()) ?? 0;
+        saldo = valore;
       });
     } catch (e) {
       debugPrint('Errore caricamento saldo: $e');
     }
   }
 
+
   Future<void> caricaStorico() async {
     try {
-      final email = widget.email;
-      final password = widget.password;
-
-      final unificato = <Map<String, dynamic>>[];
-
-      final voto = await StoricoService.getStoricoVoto();
-      if (voto['punti'] != null) {
-        unificato.add({
-          'titolo': 'Voto elettorale',
-          'data': voto['data'] ?? DateTime.now().toIso8601String(),
-          'punti': '+100',
-          'showDot': true,
-        });
-      }
-
-      for (final tipo in ['acqua', 'gas', 'elettrica']) {
-        final bolletta = await StoricoService.getStoricoBolletta(tipo);
-        if (bolletta['tipo'] != null) {
-          final punti = {
-            'acqua': 10,
-            'elettrica': 15,
-            'gas': 15,
-          }[tipo] ?? 0;
-          unificato.add({
-            'titolo': 'Pagamento bolletta $tipo',
-            'data': bolletta['data'] ?? DateTime.now().toIso8601String(),
-            'punti': '+$punti',
-          });
-        }
-      }
+      final risultato = await CittadinoService.fetchStorico();
+      final List<dynamic> storicoApi = risultato['storico'] ?? [];
 
 
-      final movimento = await StoricoService.getStoricoMovimento(25);
-      if (movimento['distanza_km'] != null) {
-        final distanza = double.tryParse(movimento['distanza_km'].toString()) ?? 0;
-        final punti = distanza <= 5 ? 0.5 : 1.0;
+      final unificato = storicoApi.map<Map<String, dynamic>>((voce) {
+        final azione = voce['azione'] ?? 'Azione sconosciuta';
+        final data = voce['data'] ?? DateTime.now().toIso8601String();
+        final punti = voce['saldo']?.toString() ?? '';
+        String dettagliTesto = '';
 
-        unificato.add({
-          'titolo': 'Percorso sostenibile (${distanza.toStringAsFixed(1)} km)',
-          'data': '2025-04-03T08:45:00',
-          'punti': '+${punti.toString()}',
-        });
-      }
-
-      final trasporti = await StoricoService.getStoricoTrasporti();
-      if (trasporti['punti'] != null) {
-        unificato.add({
-          'titolo': 'Abbonamento mezzi pubblici',
-          'data': '2025-03-15T12:00:00',
-          'punti': '+50',
-        });
-      }
-
-      final multa = await StoricoService.getStoricoMulte('media');
-      if (multa['gravita'] != null) {
-        final gravita = multa['gravita'];
-        final dataMulta = multa['dataUltimaMulta'] ?? '2025-03-28T14:20:00';
-        String punti;
-        if (gravita == 'grave') {
-          punti = 'saldo azzerato';
-        } else if (gravita == 'media') {
-          punti = '-40';
-        } else {
-          punti = 'errore';
+        switch (azione) {
+          case 'Pagamento bolletta':
+            dettagliTesto = 'Tipo: ${voce['tipo']}\nImporto: ${voce['importo']}\nPunti: $punti';
+            break;
+          case 'Percorso sostenibile':
+            dettagliTesto = 'Distanza: ${voce['distanza_km']} km\nPunti: $punti';
+            break;
+          case 'Multa':
+            dettagliTesto = 'Gravità: ${voce['gravita']}\nMotivo: ${voce['motivo'] ?? 'non specificato'}\nPunti: $punti';
+            break;
+          case 'Voto elettorale':
+            dettagliTesto = 'Elezione: ${voce['tipo'] ?? 'non specificato'}\nPunti: $punti';
+            break;
+          case 'Abbonamento mezzi pubblici':
+            dettagliTesto = 'Codice: ${voce['codice'] ?? 'N/A'}\nPunti: $punti';
+            break;
+          case 'Saldo Iniziale':
+            dettagliTesto = 'Assegnazione automatica saldo iniziale.\nPunti: $punti';
+            break;
+          case 'Bonus annuale':
+            dettagliTesto = 'Anno: ${voce['anno'] ?? 'corrente'}\nPunti: $punti';
+            break;
+          default:
+            final dettagli = Map<String, dynamic>.from(voce)
+              ..remove('azione')
+              ..remove('data');
+            dettagliTesto = dettagli.entries.map((e) => '${e.key}: ${e.value}').join('\n');
         }
 
-        unificato.add({
-          'titolo': 'Multa ($gravita)',
-          'data': dataMulta,
+        return {
+          'titolo': azione,
+          'data': data,
           'punti': punti,
-        });
-      }
+          'sottotitolo': dettagliTesto,
+          'showDot': false,
+        };
+      }).toList();
 
       unificato.sort((a, b) => DateTime.parse(b['data']).compareTo(DateTime.parse(a['data'])));
 
@@ -139,10 +119,12 @@ class _HomeScreenState extends State<HomeScreen> {
         isLoading = false;
       });
     } catch (e) {
-      debugPrint('Errore caricamento storico: \$e');
+      debugPrint('Errore caricamento storico: $e');
       setState(() => isLoading = false);
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {

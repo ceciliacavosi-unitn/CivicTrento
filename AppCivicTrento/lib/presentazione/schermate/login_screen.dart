@@ -45,13 +45,13 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> _login() async {
     setState(() => _isLoading = true);
     try {
-      // ✅ Solo chiamata al servizio: il token viene gestito internamente
+      //Solo chiamata al servizio: il token viene gestito internamente
       await AuthService.login(
         email: _emailController.text,
         password: _passwordController.text,
       );
 
-      // ✅ Nessuna chiamata a SistemaAutenticazione.login qui: già fatto in AuthService
+      //Nessuna chiamata a SistemaAutenticazione.login qui: già fatto in AuthService
 
       // Reindirizza alla schermata Home
       Navigator.of(context).pushReplacement(
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Login")),
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(32),
           child: Column(

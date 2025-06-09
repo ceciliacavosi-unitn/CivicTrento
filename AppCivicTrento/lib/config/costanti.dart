@@ -22,7 +22,7 @@ const String assetIconLight = 'assets/images/light.png';
 const String assetIconBike = 'assets/images/bike.png';
 
 /// Testi statici (titoli)
-const String testoTitoloCoins = 'Civic Coins guadagnati';
+const String testoTitoloCoins = 'Civic Coins attuali';
 const String testoStoricoGenerico = 'Storico Generico';
 const String testoAppName = 'CivicTrento';
 
