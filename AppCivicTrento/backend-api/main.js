@@ -53,8 +53,7 @@ const {
 
 const { rimuoviUtenze } = require("./gestione_utenze");
 
-const email = "cecilia.cavosi@gmail.com";
-rimuoviUtenze(email);
+
 
 
 //pagina principale
