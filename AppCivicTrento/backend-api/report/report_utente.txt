@@ -1,0 +1,15 @@
+
+> backend-api@1.0.0 report_utente
+> node report/formattaReportUtente.js
+
+
+📋 Risultati dei Test:
+======================
+✅ PASSATO → Modifica password > US19 - Modifica password con valore valido (Status: 200)
+✅ PASSATO → Modifica dati personali > US32 - Modifica riuscita del nome (Status: 200)
+✅ PASSATO → Modifica dati personali > US33 - Tentativo di modifica con campo obbligatorio vuoto (Status: 400)
+
+Totali:
+✔️  Passati: 3
+❌ Falliti: 0
+📂 Suite totali: 1
