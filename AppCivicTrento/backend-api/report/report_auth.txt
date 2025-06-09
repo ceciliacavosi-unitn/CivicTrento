@@ -1,0 +1,33 @@
+
+> backend-api@1.0.0 report_auth
+> node report/formattaReportAuth.js
+
+
+📋 Risultati dei Test:
+======================
+✅ PASSATO → Login utente > US0 - Login con credenziali corrette (Status: 200)
+✅ PASSATO → Login utente > US1 - Login con password errata (Status: 404)
+✅ PASSATO → Login utente > US2 - Login con email non valida (Status: 400)
+✅ PASSATO → Login utente > US3 - Login con credenziali non registrate (Status: 404)
+✅ PASSATO → Password sicura > US4 - Registrazione fallita con password semplice (Status: 400)
+✅ PASSATO → Password sicura > US5 - Registrazione accettata con password complessa (Status: 200)
+✅ PASSATO → Recupero password > US6 - Recupero password con token valido simulato (Status: 400)
+✅ PASSATO → Recupero password > US7 - Recupero password con token non valido (Status: 400)
+✅ PASSATO → Registrazione utente > US8 - Registrazione con valori validi (Status: 200)
+✅ PASSATO → Registrazione utente > US9 - Nome vuoto (Status: 400)
+✅ PASSATO → Registrazione utente > US10 - Cognome vuoto (Status: 400)
+✅ PASSATO → Registrazione utente > US11 - Email vuota (Status: 400)
+✅ PASSATO → Registrazione utente > US12 - Password vuota (Status: 400)
+✅ PASSATO → Registrazione utente > US13 - Codice fiscale vuoto (Status: 400)
+✅ PASSATO → Registrazione utente > US14 - Carta d'identità vuota (Status: 400)
+✅ PASSATO → Registrazione utente > US15 - Email non valida (Status: 400)
+✅ PASSATO → Registrazione utente > US16 - Email già esistente (Status: 409)
+✅ PASSATO → Registrazione utente > US17 - Codice fiscale non valido (Status: 400)
+✅ PASSATO → Registrazione utente > US18 - Carta d'identità non valida (Status: 400)
+✅ PASSATO → Consenso GDPR > US20 - Registrazione fallita senza consenso GDPR (Status: 400)
+✅ PASSATO → Cancellazione account > US29 - Cancellazione account riuscita (Status: 200)
+
+Totali:
+✔️  Passati: 21
+❌ Falliti: 0
+📂 Suite totali: 1
