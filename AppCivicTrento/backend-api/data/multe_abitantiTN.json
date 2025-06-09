@@ -1,0 +1,2241 @@
+[
+  {
+    "nome": "Priscilla",
+    "cognome": "Tolentino",
+    "numeroPatente": "NM0000001",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-11-26"
+      }
+    ]
+  },
+  {
+    "nome": "Rodolfo",
+    "cognome": "Piacentini",
+    "numeroPatente": "DR0000002",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-07"
+      }
+    ]
+  },
+  {
+    "nome": "Nino",
+    "cognome": "Tozzi",
+    "numeroPatente": "WY0000003",
+    "multe": []
+  },
+  {
+    "nome": "Roberta",
+    "cognome": "Manolesso",
+    "numeroPatente": "KG0000004",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-07-15"
+      }
+    ]
+  },
+  {
+    "nome": "Anita",
+    "cognome": "Filogamo-Vigliotti",
+    "numeroPatente": "QA0000005",
+    "multe": []
+  },
+  {
+    "nome": "Sandra",
+    "cognome": "Tencalla",
+    "numeroPatente": "UB0000006",
+    "multe": []
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Grossi",
+    "numeroPatente": "AZ0000007",
+    "multe": []
+  },
+  {
+    "nome": "Rossana",
+    "cognome": "Benigni",
+    "numeroPatente": "PC0000008",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-01"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-04-07"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-10-10"
+      }
+    ]
+  },
+  {
+    "nome": "Livio",
+    "cognome": "Gemito",
+    "numeroPatente": "NE0000009",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-09-16"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-11-03"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Zoppetto",
+    "numeroPatente": "TL0000010",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-31"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Finotto",
+    "numeroPatente": "HH0000011",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-24"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-05-02"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-01-06"
+      }
+    ]
+  },
+  {
+    "nome": "Federica",
+    "cognome": "Ruffini",
+    "numeroPatente": "XD0000012",
+    "multe": []
+  },
+  {
+    "nome": "Piergiuseppe",
+    "cognome": "Tarantini-Oscuro",
+    "numeroPatente": "PO0000013",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-03-23"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Zabarella",
+    "numeroPatente": "BF0000014",
+    "multe": []
+  },
+  {
+    "nome": "Lucio",
+    "cognome": "Almagià",
+    "numeroPatente": "QV0000015",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-12"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-12-25"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-21"
+      }
+    ]
+  },
+  {
+    "nome": "Berenice",
+    "cognome": "Zecchini",
+    "numeroPatente": "BD0000016",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-01-17"
+      }
+    ]
+  },
+  {
+    "nome": "Achille",
+    "cognome": "Peranda-Stefanelli",
+    "numeroPatente": "WF0000017",
+    "multe": []
+  },
+  {
+    "nome": "Isa",
+    "cognome": "Sollima",
+    "numeroPatente": "TG0000018",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-03-08"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Ajello",
+    "numeroPatente": "NV0000019",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-07-08"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-08-24"
+      }
+    ]
+  },
+  {
+    "nome": "Massimiliano",
+    "cognome": "Pizzetti",
+    "numeroPatente": "XZ0000020",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-03-18"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-12-04"
+      }
+    ]
+  },
+  {
+    "nome": "Cecilia",
+    "cognome": "Fibonacci",
+    "numeroPatente": "MP0000021",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-03-01"
+      }
+    ]
+  },
+  {
+    "nome": "Mario",
+    "cognome": "Passalacqua-Juvara",
+    "numeroPatente": "HM0000022",
+    "multe": []
+  },
+  {
+    "nome": "Torquato",
+    "cognome": "Bajardi",
+    "numeroPatente": "QU0000023",
+    "multe": []
+  },
+  {
+    "nome": "Isa",
+    "cognome": "Carullo",
+    "numeroPatente": "HF0000024",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-02"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-10-16"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Bramante",
+    "numeroPatente": "AH0000025",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-09-13"
+      }
+    ]
+  },
+  {
+    "nome": "Imelda",
+    "cognome": "Trezzini",
+    "numeroPatente": "JI0000026",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-26"
+      }
+    ]
+  },
+  {
+    "nome": "Elvira",
+    "cognome": "Ruberto",
+    "numeroPatente": "HJ0000027",
+    "multe": []
+  },
+  {
+    "nome": "Raffaello",
+    "cognome": "Casale",
+    "numeroPatente": "KU0000028",
+    "multe": []
+  },
+  {
+    "nome": "Donatella",
+    "cognome": "Stefanelli-Ossola",
+    "numeroPatente": "KP0000029",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-08-22"
+      }
+    ]
+  },
+  {
+    "nome": "Adamo",
+    "cognome": "Bacosi",
+    "numeroPatente": "WX0000030",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-04-25"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-02-20"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-10-12"
+      }
+    ]
+  },
+  {
+    "nome": "Ninetta",
+    "cognome": "Spadafora",
+    "numeroPatente": "PP0000031",
+    "multe": []
+  },
+  {
+    "nome": "Pina",
+    "cognome": "Lanfranchi-Cicala",
+    "numeroPatente": "EM0000032",
+    "multe": []
+  },
+  {
+    "nome": "Adele",
+    "cognome": "Martinelli",
+    "numeroPatente": "DV0000033",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-06-01"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Gabrieli",
+    "numeroPatente": "UF0000034",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-16"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-12-09"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-04-22"
+      }
+    ]
+  },
+  {
+    "nome": "Elladio",
+    "cognome": "Depero-Finotto",
+    "numeroPatente": "HE0000035",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-12-31"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-24"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-01-24"
+      }
+    ]
+  },
+  {
+    "nome": "Lidia",
+    "cognome": "Coppola",
+    "numeroPatente": "NP0000036",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-16"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-11-21"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-10-11"
+      }
+    ]
+  },
+  {
+    "nome": "Orlando",
+    "cognome": "Tremonti",
+    "numeroPatente": "WL0000037",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-09-30"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Poerio",
+    "numeroPatente": "WB0000038",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-01-30"
+      }
+    ]
+  },
+  {
+    "nome": "Ricciotti",
+    "cognome": "Parpinel",
+    "numeroPatente": "FK0000039",
+    "multe": []
+  },
+  {
+    "nome": "Gustavo",
+    "cognome": "Pasolini",
+    "numeroPatente": "GR0000040",
+    "multe": []
+  },
+  {
+    "nome": "Milena",
+    "cognome": "Passalacqua",
+    "numeroPatente": "EB0000041",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-08-19"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-01-20"
+      }
+    ]
+  },
+  {
+    "nome": "Claudio",
+    "cognome": "Casalodi",
+    "numeroPatente": "NN0000042",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-27"
+      }
+    ]
+  },
+  {
+    "nome": "Adele",
+    "cognome": "Agostini",
+    "numeroPatente": "BW0000043",
+    "multe": []
+  },
+  {
+    "nome": "Marta",
+    "cognome": "Porzio",
+    "numeroPatente": "TT0000044",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-05-12"
+      }
+    ]
+  },
+  {
+    "nome": "Daria",
+    "cognome": "Cammarata",
+    "numeroPatente": "ZI0000045",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-01"
+      }
+    ]
+  },
+  {
+    "nome": "Rosina",
+    "cognome": "Traversa",
+    "numeroPatente": "NG0000046",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-03-11"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-04-17"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-03-14"
+      }
+    ]
+  },
+  {
+    "nome": "Ottavio",
+    "cognome": "Manolesso",
+    "numeroPatente": "UK0000047",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-29"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-07-31"
+      }
+    ]
+  },
+  {
+    "nome": "Berenice",
+    "cognome": "Varano",
+    "numeroPatente": "ZL0000048",
+    "multe": []
+  },
+  {
+    "nome": "Aria",
+    "cognome": "Renier",
+    "numeroPatente": "KG0000049",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-28"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-06-23"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-05-27"
+      }
+    ]
+  },
+  {
+    "nome": "Erika",
+    "cognome": "Fischetti",
+    "numeroPatente": "FM0000050",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-15"
+      }
+    ]
+  },
+  {
+    "nome": "Costanzo",
+    "cognome": "Leopardi",
+    "numeroPatente": "RG0000051",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-02-01"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-04-21"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-10-10"
+      }
+    ]
+  },
+  {
+    "nome": "Gabriella",
+    "cognome": "Gabbana-Endrizzi",
+    "numeroPatente": "ML0000052",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-06-20"
+      }
+    ]
+  },
+  {
+    "nome": "Zaira",
+    "cognome": "Zaccardo",
+    "numeroPatente": "XX0000053",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-27"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-05-18"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-05-13"
+      }
+    ]
+  },
+  {
+    "nome": "Sole",
+    "cognome": "Lollobrigida-Ferragamo",
+    "numeroPatente": "TL0000054",
+    "multe": []
+  },
+  {
+    "nome": "Geronimo",
+    "cognome": "Parmitano-Barozzi",
+    "numeroPatente": "WL0000055",
+    "multe": []
+  },
+  {
+    "nome": "Luchino",
+    "cognome": "Marazzi",
+    "numeroPatente": "TR0000056",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-04-22"
+      }
+    ]
+  },
+  {
+    "nome": "Carmelo",
+    "cognome": "Babbo",
+    "numeroPatente": "ER0000057",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-01-14"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-03-26"
+      }
+    ]
+  },
+  {
+    "nome": "Fernanda",
+    "cognome": "Borgia",
+    "numeroPatente": "UC0000058",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-07-26"
+      }
+    ]
+  },
+  {
+    "nome": "Simone",
+    "cognome": "Bignardi",
+    "numeroPatente": "HW0000059",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-08-30"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-10-16"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-04-11"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Scarfoglio",
+    "numeroPatente": "FR0000060",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-11-23"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-10-20"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-04-27"
+      }
+    ]
+  },
+  {
+    "nome": "Cassandra",
+    "cognome": "Pertile-Borromeo",
+    "numeroPatente": "BS0000061",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-06"
+      }
+    ]
+  },
+  {
+    "nome": "Cipriano",
+    "cognome": "Pietrangeli",
+    "numeroPatente": "TO0000062",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-03-10"
+      }
+    ]
+  },
+  {
+    "nome": "Annalisa",
+    "cognome": "Nonis",
+    "numeroPatente": "YD0000063",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-05-19"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-01-08"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-20"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Treves",
+    "numeroPatente": "PG0000064",
+    "multe": []
+  },
+  {
+    "nome": "Aurora",
+    "cognome": "Ciani",
+    "numeroPatente": "AZ0000065",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-08-29"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-03-20"
+      }
+    ]
+  },
+  {
+    "nome": "Fulvio",
+    "cognome": "Liverotti-Rensi",
+    "numeroPatente": "OM0000066",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-16"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Chindamo",
+    "numeroPatente": "EC0000067",
+    "multe": []
+  },
+  {
+    "nome": "Rosaria",
+    "cognome": "Celentano",
+    "numeroPatente": "YS0000068",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-01"
+      }
+    ]
+  },
+  {
+    "nome": "Antonietta",
+    "cognome": "Baggio",
+    "numeroPatente": "KF0000069",
+    "multe": []
+  },
+  {
+    "nome": "Agostino",
+    "cognome": "Vespucci",
+    "numeroPatente": "BR0000070",
+    "multe": []
+  },
+  {
+    "nome": "Osvaldo",
+    "cognome": "Canevascini",
+    "numeroPatente": "PG0000071",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-02-29"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-03-30"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Chiappetta",
+    "numeroPatente": "JL0000072",
+    "multe": []
+  },
+  {
+    "nome": "Dino",
+    "cognome": "Broggini",
+    "numeroPatente": "DM0000073",
+    "multe": []
+  },
+  {
+    "nome": "Evangelista",
+    "cognome": "Randazzo",
+    "numeroPatente": "RN0000074",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-08-29"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-22"
+      }
+    ]
+  },
+  {
+    "nome": "Fiorenzo",
+    "cognome": "Frescobaldi",
+    "numeroPatente": "UL0000075",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-06-11"
+      }
+    ]
+  },
+  {
+    "nome": "Maria",
+    "cognome": "Micheletti",
+    "numeroPatente": "MK0000076",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-03-24"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Manzoni",
+    "numeroPatente": "SR0000077",
+    "multe": []
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Merisi",
+    "numeroPatente": "VW0000078",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-03-10"
+      }
+    ]
+  },
+  {
+    "nome": "Morena",
+    "cognome": "Giannetti",
+    "numeroPatente": "MR0000079",
+    "multe": []
+  },
+  {
+    "nome": "Gemma",
+    "cognome": "Bodoni",
+    "numeroPatente": "SE0000080",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-17"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Gonzaga",
+    "numeroPatente": "SJ0000081",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-20"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-04-13"
+      }
+    ]
+  },
+  {
+    "nome": "Fabio",
+    "cognome": "Lombroso-Mazzocchi",
+    "numeroPatente": "MG0000082",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-24"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-12-15"
+      }
+    ]
+  },
+  {
+    "nome": "Arnulfo",
+    "cognome": "Travaglio",
+    "numeroPatente": "JD0000083",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-10"
+      }
+    ]
+  },
+  {
+    "nome": "Ippazio",
+    "cognome": "Chiappetta",
+    "numeroPatente": "JZ0000084",
+    "multe": []
+  },
+  {
+    "nome": "Ornella",
+    "cognome": "Murialdo",
+    "numeroPatente": "WI0000085",
+    "multe": []
+  },
+  {
+    "nome": "Gemma",
+    "cognome": "Rusticucci",
+    "numeroPatente": "KQ0000086",
+    "multe": []
+  },
+  {
+    "nome": "Hugo",
+    "cognome": "Sagese",
+    "numeroPatente": "PM0000087",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-09-04"
+      }
+    ]
+  },
+  {
+    "nome": "Teresa",
+    "cognome": "Borgia",
+    "numeroPatente": "EU0000088",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-04-19"
+      }
+    ]
+  },
+  {
+    "nome": "Jolanda",
+    "cognome": "Pininfarina",
+    "numeroPatente": "VE0000089",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-01-30"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-02-23"
+      }
+    ]
+  },
+  {
+    "nome": "Ramona",
+    "cognome": "Ceravolo",
+    "numeroPatente": "EM0000090",
+    "multe": []
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Ortolani",
+    "numeroPatente": "UU0000091",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-06-19"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-11-20"
+      }
+    ]
+  },
+  {
+    "nome": "Hugo",
+    "cognome": "Benedetti",
+    "numeroPatente": "BN0000092",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-03"
+      }
+    ]
+  },
+  {
+    "nome": "Maurizio",
+    "cognome": "Farnese",
+    "numeroPatente": "HN0000093",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-07-14"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Majewski",
+    "numeroPatente": "UH0000094",
+    "multe": []
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Combi",
+    "numeroPatente": "ZF0000095",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-06-07"
+      }
+    ]
+  },
+  {
+    "nome": "Fedele",
+    "cognome": "Piazzi",
+    "numeroPatente": "CF0000096",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-04-18"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-07-16"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-12-30"
+      }
+    ]
+  },
+  {
+    "nome": "Romeo",
+    "cognome": "Oscuro-Saragat",
+    "numeroPatente": "LM0000097",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-10"
+      }
+    ]
+  },
+  {
+    "nome": "Calogero",
+    "cognome": "Amaldi",
+    "numeroPatente": "VS0000098",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-05-11"
+      }
+    ]
+  },
+  {
+    "nome": "Gianna",
+    "cognome": "Grassi",
+    "numeroPatente": "AH0000099",
+    "multe": []
+  },
+  {
+    "nome": "Melania",
+    "cognome": "Jovinelli",
+    "numeroPatente": "OJ0000100",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-09-07"
+      }
+    ]
+  },
+  {
+    "nome": "Claudio",
+    "cognome": "Aloisio",
+    "numeroPatente": "LK0000101",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-09-08"
+      }
+    ]
+  },
+  {
+    "nome": "Federico",
+    "cognome": "Giannelli",
+    "numeroPatente": "LS0000102",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-22"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-09-23"
+      }
+    ]
+  },
+  {
+    "nome": "Graziella",
+    "cognome": "Armani",
+    "numeroPatente": "XX0000103",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-06-26"
+      }
+    ]
+  },
+  {
+    "nome": "Adriana",
+    "cognome": "Alighieri",
+    "numeroPatente": "EK0000104",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-06-04"
+      }
+    ]
+  },
+  {
+    "nome": "Guarino",
+    "cognome": "Russo",
+    "numeroPatente": "BH0000105",
+    "multe": []
+  },
+  {
+    "nome": "Ninetta",
+    "cognome": "Toscanini",
+    "numeroPatente": "ZQ0000106",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-03"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Fittipaldi",
+    "numeroPatente": "GM0000107",
+    "multe": []
+  },
+  {
+    "nome": "Vincenzo",
+    "cognome": "Dovara",
+    "numeroPatente": "EV0000108",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-04-23"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-04-26"
+      }
+    ]
+  },
+  {
+    "nome": "Donatella",
+    "cognome": "Nosiglia",
+    "numeroPatente": "KV0000109",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-01-17"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-10-19"
+      }
+    ]
+  },
+  {
+    "nome": "Carolina",
+    "cognome": "Bernardi-Cattaneo",
+    "numeroPatente": "GK0000110",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-22"
+      }
+    ]
+  },
+  {
+    "nome": "Ferdinando",
+    "cognome": "Togliatti",
+    "numeroPatente": "IC0000111",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-26"
+      }
+    ]
+  },
+  {
+    "nome": "Gioele",
+    "cognome": "Stefanelli",
+    "numeroPatente": "AJ0000112",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-24"
+      }
+    ]
+  },
+  {
+    "nome": "Melissa",
+    "cognome": "Monteverdi",
+    "numeroPatente": "KA0000113",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-05-30"
+      }
+    ]
+  },
+  {
+    "nome": "Liberto",
+    "cognome": "Interminelli-Pisaroni",
+    "numeroPatente": "RF0000114",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-26"
+      }
+    ]
+  },
+  {
+    "nome": "Agnolo",
+    "cognome": "Nordio",
+    "numeroPatente": "TU0000115",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-11-06"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-06-07"
+      }
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "cognome": "Canil",
+    "numeroPatente": "SR0000116",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-07"
+      }
+    ]
+  },
+  {
+    "nome": "Antonina",
+    "cognome": "Inzaghi",
+    "numeroPatente": "BN0000117",
+    "multe": []
+  },
+  {
+    "nome": "Milo",
+    "cognome": "Gualtieri",
+    "numeroPatente": "OJ0000118",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Travia",
+    "numeroPatente": "TQ0000119",
+    "multe": []
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Villadicani",
+    "numeroPatente": "NS0000120",
+    "multe": []
+  },
+  {
+    "nome": "Greca",
+    "cognome": "Bernetti",
+    "numeroPatente": "ZI0000121",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-01-13"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-06-21"
+      }
+    ]
+  },
+  {
+    "nome": "Aurora",
+    "cognome": "Trebbi",
+    "numeroPatente": "NY0000122",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-07"
+      }
+    ]
+  },
+  {
+    "nome": "Mirco",
+    "cognome": "Gozzano",
+    "numeroPatente": "KS0000123",
+    "multe": []
+  },
+  {
+    "nome": "Manuel",
+    "cognome": "Baggio",
+    "numeroPatente": "VP0000124",
+    "multe": []
+  },
+  {
+    "nome": "Piermaria",
+    "cognome": "Torricelli",
+    "numeroPatente": "IJ0000125",
+    "multe": []
+  },
+  {
+    "nome": "Marcello",
+    "cognome": "Romiti",
+    "numeroPatente": "AI0000126",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-11-03"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-04-30"
+      }
+    ]
+  },
+  {
+    "nome": "Orlando",
+    "cognome": "Costanzi",
+    "numeroPatente": "YY0000127",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-14"
+      }
+    ]
+  },
+  {
+    "nome": "Carla",
+    "cognome": "Pace",
+    "numeroPatente": "MW0000128",
+    "multe": []
+  },
+  {
+    "nome": "Sandra",
+    "cognome": "Argurio",
+    "numeroPatente": "JI0000129",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-29"
+      }
+    ]
+  },
+  {
+    "nome": "Delfino",
+    "cognome": "Storladi",
+    "numeroPatente": "HQ0000130",
+    "multe": []
+  },
+  {
+    "nome": "Eleanora",
+    "cognome": "Bersani-Bompiani",
+    "numeroPatente": "OJ0000131",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-27"
+      }
+    ]
+  },
+  {
+    "nome": "Silvia",
+    "cognome": "Abate",
+    "numeroPatente": "ZB0000132",
+    "multe": []
+  },
+  {
+    "nome": "Valeria",
+    "cognome": "Bottigliero",
+    "numeroPatente": "VV0000133",
+    "multe": []
+  },
+  {
+    "nome": "Emma",
+    "cognome": "Mogherini-Brugnaro",
+    "numeroPatente": "SG0000134",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-06-27"
+      }
+    ]
+  },
+  {
+    "nome": "Silvio",
+    "cognome": "Vendetti",
+    "numeroPatente": "GK0000135",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-08-05"
+      }
+    ]
+  },
+  {
+    "nome": "Piermaria",
+    "cognome": "Juvara",
+    "numeroPatente": "BK0000136",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-04"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-10-09"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-05-30"
+      }
+    ]
+  },
+  {
+    "nome": "Maurilio",
+    "cognome": "Magnani",
+    "numeroPatente": "WR0000137",
+    "multe": []
+  },
+  {
+    "nome": "Paola",
+    "cognome": "Scotti",
+    "numeroPatente": "OD0000138",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-22"
+      }
+    ]
+  },
+  {
+    "nome": "Eugenia",
+    "cognome": "Napolitano-Missoni",
+    "numeroPatente": "HA0000139",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-04-01"
+      }
+    ]
+  },
+  {
+    "nome": "Donna",
+    "cognome": "Pedrazzini",
+    "numeroPatente": "DK0000140",
+    "multe": []
+  },
+  {
+    "nome": "Chiara",
+    "cognome": "Scaramucci",
+    "numeroPatente": "ZU0000141",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-01-09"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-03-12"
+      }
+    ]
+  },
+  {
+    "nome": "Valeria",
+    "cognome": "Ricci-Borsellino",
+    "numeroPatente": "DK0000142",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-04-30"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-01-09"
+      }
+    ]
+  },
+  {
+    "nome": "Mattia",
+    "cognome": "Carducci",
+    "numeroPatente": "NY0000143",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-11-13"
+      }
+    ]
+  },
+  {
+    "nome": "Paulina",
+    "cognome": "Gaggini",
+    "numeroPatente": "YL0000144",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-09-22"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Gagliano",
+    "numeroPatente": "HD0000145",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-22"
+      }
+    ]
+  },
+  {
+    "nome": "Alessandro",
+    "cognome": "Procacci-Odescalchi",
+    "numeroPatente": "GE0000146",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-07-26"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-08"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-03-31"
+      }
+    ]
+  },
+  {
+    "nome": "Lina",
+    "cognome": "Montanelli",
+    "numeroPatente": "HH0000147",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-02"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Morrocco",
+    "numeroPatente": "FC0000148",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-23"
+      }
+    ]
+  },
+  {
+    "nome": "Dante",
+    "cognome": "Roero",
+    "numeroPatente": "MD0000149",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-11-12"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-01-02"
+      }
+    ]
+  },
+  {
+    "nome": "Natalia",
+    "cognome": "Travia",
+    "numeroPatente": "YO0000150",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-22"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-01-18"
+      }
+    ]
+  },
+  {
+    "nome": "Lina",
+    "cognome": "Lombardo",
+    "numeroPatente": "LY0000151",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-01-17"
+      }
+    ]
+  },
+  {
+    "nome": "Lolita",
+    "cognome": "Marsili-Capecchi",
+    "numeroPatente": "PT0000152",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-09-23"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-05-30"
+      }
+    ]
+  },
+  {
+    "nome": "Dina",
+    "cognome": "Petrocelli",
+    "numeroPatente": "YS0000153",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-10-03"
+      }
+    ]
+  },
+  {
+    "nome": "Enrico",
+    "cognome": "Alighieri-Stoppani",
+    "numeroPatente": "HI0000154",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-02-17"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-20"
+      }
+    ]
+  },
+  {
+    "nome": "Agostino",
+    "cognome": "Pisaroni",
+    "numeroPatente": "QG0000155",
+    "multe": []
+  },
+  {
+    "nome": "Carlo",
+    "cognome": "Caffarelli",
+    "numeroPatente": "TI0000156",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-12"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-07-04"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "nome": "Marina",
+    "cognome": "Govoni",
+    "numeroPatente": "GT0000157",
+    "multe": []
+  },
+  {
+    "nome": "Matilda",
+    "cognome": "Gucci-Lombardo",
+    "numeroPatente": "IG0000158",
+    "multe": []
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Sommaruga",
+    "numeroPatente": "FV0000159",
+    "multe": []
+  },
+  {
+    "nome": "Roberto",
+    "cognome": "Montalcini",
+    "numeroPatente": "PV0000160",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-16"
+      }
+    ]
+  },
+  {
+    "nome": "Graziella",
+    "cognome": "Zoppetto",
+    "numeroPatente": "GD0000161",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-01-25"
+      }
+    ]
+  },
+  {
+    "nome": "Danilo",
+    "cognome": "Angiolello-Leblanc",
+    "numeroPatente": "NJ0000162",
+    "multe": []
+  },
+  {
+    "nome": "Stefania",
+    "cognome": "Vecoli",
+    "numeroPatente": "ZM0000163",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-04"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-04-07"
+      }
+    ]
+  },
+  {
+    "nome": "Lucia",
+    "cognome": "Pizziol-Buscetta",
+    "numeroPatente": "UC0000164",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-08-10"
+      }
+    ]
+  },
+  {
+    "nome": "Achille",
+    "cognome": "Nievo",
+    "numeroPatente": "KO0000165",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-03-19"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-18"
+      }
+    ]
+  },
+  {
+    "nome": "Livio",
+    "cognome": "Sauli",
+    "numeroPatente": "RN0000166",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-04-16"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-02-27"
+      }
+    ]
+  },
+  {
+    "nome": "Augusto",
+    "cognome": "Ruberto",
+    "numeroPatente": "ZF0000167",
+    "multe": []
+  },
+  {
+    "nome": "Veronica",
+    "cognome": "Sagnelli",
+    "numeroPatente": "QH0000168",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-01-05"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-02-06"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Bragadin",
+    "numeroPatente": "NF0000169",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-05"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-10-03"
+      }
+    ]
+  },
+  {
+    "nome": "Bianca",
+    "cognome": "Luna",
+    "numeroPatente": "FS0000170",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-11-06"
+      }
+    ]
+  },
+  {
+    "nome": "Imelda",
+    "cognome": "Trentini",
+    "numeroPatente": "LW0000171",
+    "multe": []
+  },
+  {
+    "nome": "Evangelista",
+    "cognome": "Staglieno",
+    "numeroPatente": "FD0000172",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-09"
+      }
+    ]
+  },
+  {
+    "nome": "Fortunata",
+    "cognome": "Tamburi-Santorio",
+    "numeroPatente": "BW0000173",
+    "multe": []
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Torlonia",
+    "numeroPatente": "VW0000174",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-05-01"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-04-29"
+      }
+    ]
+  },
+  {
+    "nome": "Aria",
+    "cognome": "Ramazzotti",
+    "numeroPatente": "JJ0000175",
+    "multe": []
+  },
+  {
+    "nome": "Milena",
+    "cognome": "Scotti-Bova",
+    "numeroPatente": "IH0000176",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-04-16"
+      }
+    ]
+  },
+  {
+    "nome": "Marta",
+    "cognome": "Gianetti",
+    "numeroPatente": "NN0000177",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-05-23"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-01-06"
+      }
+    ]
+  },
+  {
+    "nome": "Piero",
+    "cognome": "Rienzo-Broggini",
+    "numeroPatente": "PS0000178",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-03"
+      }
+    ]
+  },
+  {
+    "nome": "Francesca",
+    "cognome": "Telesio",
+    "numeroPatente": "RV0000179",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-07"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Luciani",
+    "numeroPatente": "XR0000180",
+    "multe": []
+  },
+  {
+    "nome": "Puccio",
+    "cognome": "Murialdo",
+    "numeroPatente": "CG0000181",
+    "multe": []
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Castelli",
+    "numeroPatente": "SF0000182",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-12-13"
+      }
+    ]
+  },
+  {
+    "nome": "Monica",
+    "cognome": "Tornatore",
+    "numeroPatente": "TL0000183",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-12"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Finotto",
+    "numeroPatente": "CU0000184",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-05-31"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-06-22"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-10-13"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Einaudi",
+    "numeroPatente": "IF0000185",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-03-20"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-05-18"
+      }
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Leonardi",
+    "numeroPatente": "BJ0000186",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-02-23"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-03-28"
+      }
+    ]
+  },
+  {
+    "nome": "Ivan",
+    "cognome": "Inzaghi",
+    "numeroPatente": "GS0000187",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-06-16"
+      }
+    ]
+  },
+  {
+    "nome": "Gabriella",
+    "cognome": "Venier",
+    "numeroPatente": "RK0000188",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-02-08"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-09-08"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-06-15"
+      }
+    ]
+  },
+  {
+    "nome": "Renzo",
+    "cognome": "Scalera",
+    "numeroPatente": "JX0000189",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2023-07-10"
+      }
+    ]
+  },
+  {
+    "nome": "Giada",
+    "cognome": "Ariosto",
+    "numeroPatente": "WU0000190",
+    "multe": []
+  },
+  {
+    "nome": "Vittoria",
+    "cognome": "Bellini-Raimondi",
+    "numeroPatente": "HC0000191",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-05-30"
+      },
+      {
+        "tipo": "media",
+        "data": "2023-09-10"
+      }
+    ]
+  },
+  {
+    "nome": "Adriana",
+    "cognome": "Maglio",
+    "numeroPatente": "PH0000192",
+    "multe": []
+  },
+  {
+    "nome": "Sonia",
+    "cognome": "Morandi",
+    "numeroPatente": "SH0000193",
+    "multe": []
+  },
+  {
+    "nome": "Matilda",
+    "cognome": "Ferragamo",
+    "numeroPatente": "FE0000194",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-04-06"
+      }
+    ]
+  },
+  {
+    "nome": "Olga",
+    "cognome": "Crespi-Berengario",
+    "numeroPatente": "XS0000195",
+    "multe": []
+  },
+  {
+    "nome": "Ermes",
+    "cognome": "Luzi",
+    "numeroPatente": "YC0000196",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-01-22"
+      }
+    ]
+  },
+  {
+    "nome": "Francesca",
+    "cognome": "Papetti",
+    "numeroPatente": "VQ0000197",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-03-07"
+      },
+      {
+        "tipo": "grave",
+        "data": "2023-11-12"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-06-04"
+      }
+    ]
+  },
+  {
+    "nome": "Marco",
+    "cognome": "Littizzetto-Bruscantini",
+    "numeroPatente": "XA0000198",
+    "multe": [
+      {
+        "tipo": "grave",
+        "data": "2024-01-02"
+      },
+      {
+        "tipo": "grave",
+        "data": "2024-03-11"
+      }
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Maccanelli",
+    "numeroPatente": "IP0000199",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-10-07"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-01-15"
+      }
+    ]
+  },
+  {
+    "nome": "Sylvia",
+    "cognome": "Gradenigo",
+    "numeroPatente": "LU0000200",
+    "multe": []
+  },
+  {
+    "nome": "Cecilia Maria Asia",
+    "cognome": "Cavosi",
+    "numeroPatente": "TN2323232C",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2023-09-13"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-02-23"
+      }
+    ]
+  },
+  {
+    "nome": "Matilde",
+    "cognome": "Prati",
+    "numeroPatente": "BO5771737J",
+    "multe": [
+      {
+        "tipo": "media",
+        "data": "2024-03-29"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-02-23"
+      },
+      {
+        "tipo": "media",
+        "data": "2024-05-25"
+      }
+    ]
+  }
+]

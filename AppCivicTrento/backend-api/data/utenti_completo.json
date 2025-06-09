@@ -17,13 +17,18 @@
     "nome": "Matilde",
     "cognome": "Prati",
     "email": "ecmatii@gmail.com",
-    "punti": 800,
-    "saldo": 800,
+    "punti": 680,
+    "saldo": 680,
     "storico": [
       {
         "azione": "saldo iniziale",
-        "data": "2025-06-09T15:20:59.602Z",
+        "data": "2025-06-09T17:37:21.050Z",
         "saldo": 800
+      },
+      {
+        "azione": "penalità per multe",
+        "data": "2025-06-09T18:32:54.686Z",
+        "saldo": -120
       }
     ]
   }

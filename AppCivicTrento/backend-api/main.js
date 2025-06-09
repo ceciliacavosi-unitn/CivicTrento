@@ -56,7 +56,7 @@ const {
 const { rimuoviUtenze } = require("./gestione_utenze");
 
 
-
+const { applicaPenalitaMulteDaNominativo } = require("./gestione_multe");
 
 //pagina principale
 app.get("/", (req, res) => {
@@ -233,6 +233,14 @@ app.post("/auth/login", async (req, res) => {
       token,
       message: "Login effettuato"
     });
+
+    // Dopo autenticazione valida
+    const nome = utente.nome;
+    const cognome = utente.cognome;
+
+    // Applica penalità per eventuali multe
+    applicaPenalitaMulteDaNominativo(nome, cognome);
+
 
   } catch (error) {
     console.error("[LOGIN] Errore interno:", error);

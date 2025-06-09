@@ -1,0 +1,4496 @@
+[
+  {
+    "nome": "Priscilla",
+    "cognome": "Tolentino",
+    "cartaID": "RG56839SM",
+    "votazioni": [
+      "2022-02-15",
+      "2024-11-25"
+    ]
+  },
+  {
+    "nome": "Rodolfo",
+    "cognome": "Piacentini",
+    "cartaID": "OM12044EZ",
+    "votazioni": [
+      "2022-03-03",
+      "2021-06-23"
+    ]
+  },
+  {
+    "nome": "Nino",
+    "cognome": "Tozzi",
+    "cartaID": "JI43286XR",
+    "votazioni": [
+      "2020-10-20",
+      "2022-03-29",
+      "2020-06-25"
+    ]
+  },
+  {
+    "nome": "Roberta",
+    "cognome": "Manolesso",
+    "cartaID": "XK87787BA",
+    "votazioni": [
+      "2023-09-16"
+    ]
+  },
+  {
+    "nome": "Anita",
+    "cognome": "Filogamo-Vigliotti",
+    "cartaID": "XH48980BQ",
+    "votazioni": [
+      "2023-02-25",
+      "2020-06-18"
+    ]
+  },
+  {
+    "nome": "Sandra",
+    "cognome": "Tencalla",
+    "cartaID": "VT80597EO",
+    "votazioni": [
+      "2022-05-13",
+      "2020-06-26"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Grossi",
+    "cartaID": "EG87191WE",
+    "votazioni": [
+      "2021-05-11",
+      "2024-06-08",
+      "2020-11-12"
+    ]
+  },
+  {
+    "nome": "Rossana",
+    "cognome": "Benigni",
+    "cartaID": "MD25973GU",
+    "votazioni": [
+      "2021-03-04"
+    ]
+  },
+  {
+    "nome": "Livio",
+    "cognome": "Gemito",
+    "cartaID": "FL19811LI",
+    "votazioni": [
+      "2020-09-18",
+      "2021-01-29"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Zoppetto",
+    "cartaID": "GM55304EU",
+    "votazioni": [
+      "2023-08-26",
+      "2021-01-21",
+      "2020-11-08"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Finotto",
+    "cartaID": "FK63469LJ",
+    "votazioni": [
+      "2020-10-21"
+    ]
+  },
+  {
+    "nome": "Federica",
+    "cognome": "Ruffini",
+    "cartaID": "DG78714JG",
+    "votazioni": [
+      "2025-05-07",
+      "2020-12-06",
+      "2023-01-18"
+    ]
+  },
+  {
+    "nome": "Piergiuseppe",
+    "cognome": "Tarantini-Oscuro",
+    "cartaID": "CK92700XX",
+    "votazioni": [
+      "2021-06-04",
+      "2021-03-02",
+      "2021-12-26"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Zabarella",
+    "cartaID": "XW92133HZ",
+    "votazioni": [
+      "2022-01-01"
+    ]
+  },
+  {
+    "nome": "Lucio",
+    "cognome": "Almagi\u00e0",
+    "cartaID": "MQ76318QL",
+    "votazioni": [
+      "2024-04-26"
+    ]
+  },
+  {
+    "nome": "Berenice",
+    "cognome": "Zecchini",
+    "cartaID": "PD66099PV",
+    "votazioni": [
+      "2022-08-12",
+      "2020-11-22"
+    ]
+  },
+  {
+    "nome": "Achille",
+    "cognome": "Peranda-Stefanelli",
+    "cartaID": "GJ01684DS",
+    "votazioni": [
+      "2025-01-16",
+      "2023-01-29",
+      "2022-03-12"
+    ]
+  },
+  {
+    "nome": "Isa",
+    "cognome": "Sollima",
+    "cartaID": "EP47527XB",
+    "votazioni": [
+      "2024-06-06"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Ajello",
+    "cartaID": "XZ06319PN",
+    "votazioni": [
+      "2023-02-24",
+      "2021-05-22"
+    ]
+  },
+  {
+    "nome": "Massimiliano",
+    "cognome": "Pizzetti",
+    "cartaID": "KF14441WY",
+    "votazioni": [
+      "2022-04-30"
+    ]
+  },
+  {
+    "nome": "Cecilia",
+    "cognome": "Fibonacci",
+    "cartaID": "YD76585DL",
+    "votazioni": [
+      "2021-08-28",
+      "2020-06-13"
+    ]
+  },
+  {
+    "nome": "Mario",
+    "cognome": "Passalacqua-Juvara",
+    "cartaID": "IX02588YT",
+    "votazioni": [
+      "2021-07-24",
+      "2022-07-11"
+    ]
+  },
+  {
+    "nome": "Torquato",
+    "cognome": "Bajardi",
+    "cartaID": "KH41659VT",
+    "votazioni": [
+      "2022-06-02",
+      "2021-04-21"
+    ]
+  },
+  {
+    "nome": "Isa",
+    "cognome": "Carullo",
+    "cartaID": "EO86249QJ",
+    "votazioni": [
+      "2022-09-26",
+      "2024-06-11",
+      "2024-02-02"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Bramante",
+    "cartaID": "RX26125CZ",
+    "votazioni": [
+      "2024-04-11",
+      "2023-05-25",
+      "2025-03-25"
+    ]
+  },
+  {
+    "nome": "Imelda",
+    "cognome": "Trezzini",
+    "cartaID": "RB16046QM",
+    "votazioni": [
+      "2023-12-27"
+    ]
+  },
+  {
+    "nome": "Elvira",
+    "cognome": "Ruberto",
+    "cartaID": "IK95267KH",
+    "votazioni": [
+      "2024-09-14"
+    ]
+  },
+  {
+    "nome": "Raffaello",
+    "cognome": "Casale",
+    "cartaID": "GX04975KE",
+    "votazioni": [
+      "2021-04-29"
+    ]
+  },
+  {
+    "nome": "Donatella",
+    "cognome": "Stefanelli-Ossola",
+    "cartaID": "XN62224NW",
+    "votazioni": [
+      "2020-08-02",
+      "2024-08-11"
+    ]
+  },
+  {
+    "nome": "Adamo",
+    "cognome": "Bacosi",
+    "cartaID": "NI43667XG",
+    "votazioni": [
+      "2021-12-27",
+      "2023-06-03",
+      "2021-09-03"
+    ]
+  },
+  {
+    "nome": "Ninetta",
+    "cognome": "Spadafora",
+    "cartaID": "JL73448YU",
+    "votazioni": [
+      "2024-10-11"
+    ]
+  },
+  {
+    "nome": "Pina",
+    "cognome": "Lanfranchi-Cicala",
+    "cartaID": "DM48549KX",
+    "votazioni": [
+      "2024-05-18",
+      "2023-12-31",
+      "2022-03-25"
+    ]
+  },
+  {
+    "nome": "Adele",
+    "cognome": "Martinelli",
+    "cartaID": "KP27873GS",
+    "votazioni": [
+      "2023-09-24",
+      "2021-10-08"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Gabrieli",
+    "cartaID": "ON74954FA",
+    "votazioni": [
+      "2023-02-02"
+    ]
+  },
+  {
+    "nome": "Elladio",
+    "cognome": "Depero-Finotto",
+    "cartaID": "TV15671RG",
+    "votazioni": [
+      "2023-03-08",
+      "2022-12-09"
+    ]
+  },
+  {
+    "nome": "Lidia",
+    "cognome": "Coppola",
+    "cartaID": "BO03641OW",
+    "votazioni": [
+      "2023-02-02",
+      "2023-09-27"
+    ]
+  },
+  {
+    "nome": "Orlando",
+    "cognome": "Tremonti",
+    "cartaID": "AT97500SO",
+    "votazioni": [
+      "2020-11-17"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Poerio",
+    "cartaID": "LM46284IU",
+    "votazioni": [
+      "2021-09-25",
+      "2022-05-07"
+    ]
+  },
+  {
+    "nome": "Ricciotti",
+    "cognome": "Parpinel",
+    "cartaID": "JX27327NJ",
+    "votazioni": [
+      "2021-05-17"
+    ]
+  },
+  {
+    "nome": "Gustavo",
+    "cognome": "Pasolini",
+    "cartaID": "VR62040SS",
+    "votazioni": [
+      "2025-01-23",
+      "2022-12-10",
+      "2022-07-02"
+    ]
+  },
+  {
+    "nome": "Milena",
+    "cognome": "Passalacqua",
+    "cartaID": "CP32559EK",
+    "votazioni": [
+      "2023-03-31",
+      "2024-12-19"
+    ]
+  },
+  {
+    "nome": "Claudio",
+    "cognome": "Casalodi",
+    "cartaID": "ZC86666KA",
+    "votazioni": [
+      "2025-01-27",
+      "2024-11-10"
+    ]
+  },
+  {
+    "nome": "Adele",
+    "cognome": "Agostini",
+    "cartaID": "MM55281FA",
+    "votazioni": [
+      "2023-10-24"
+    ]
+  },
+  {
+    "nome": "Marta",
+    "cognome": "Porzio",
+    "cartaID": "XW41605UL",
+    "votazioni": [
+      "2023-01-13",
+      "2022-07-30"
+    ]
+  },
+  {
+    "nome": "Daria",
+    "cognome": "Cammarata",
+    "cartaID": "KW32711IP",
+    "votazioni": [
+      "2023-01-02",
+      "2024-11-07"
+    ]
+  },
+  {
+    "nome": "Rosina",
+    "cognome": "Traversa",
+    "cartaID": "RU92034TL",
+    "votazioni": [
+      "2023-06-02",
+      "2021-05-31"
+    ]
+  },
+  {
+    "nome": "Ottavio",
+    "cognome": "Manolesso",
+    "cartaID": "YX69530MW",
+    "votazioni": [
+      "2022-05-24"
+    ]
+  },
+  {
+    "nome": "Berenice",
+    "cognome": "Varano",
+    "cartaID": "JL36082YJ",
+    "votazioni": [
+      "2024-06-25",
+      "2021-05-30",
+      "2021-05-25"
+    ]
+  },
+  {
+    "nome": "Aria",
+    "cognome": "Renier",
+    "cartaID": "IS96147FF",
+    "votazioni": [
+      "2023-01-27",
+      "2024-12-23",
+      "2021-04-15"
+    ]
+  },
+  {
+    "nome": "Erika",
+    "cognome": "Fischetti",
+    "cartaID": "DR44702SS",
+    "votazioni": [
+      "2024-08-31"
+    ]
+  },
+  {
+    "nome": "Costanzo",
+    "cognome": "Leopardi",
+    "cartaID": "XA32902BQ",
+    "votazioni": [
+      "2024-04-02"
+    ]
+  },
+  {
+    "nome": "Gabriella",
+    "cognome": "Gabbana-Endrizzi",
+    "cartaID": "MT88532ED",
+    "votazioni": [
+      "2024-11-26",
+      "2020-07-11",
+      "2021-11-22"
+    ]
+  },
+  {
+    "nome": "Zaira",
+    "cognome": "Zaccardo",
+    "cartaID": "LA71428YN",
+    "votazioni": [
+      "2024-06-04"
+    ]
+  },
+  {
+    "nome": "Sole",
+    "cognome": "Lollobrigida-Ferragamo",
+    "cartaID": "NC35162DC",
+    "votazioni": [
+      "2020-08-17",
+      "2021-09-06",
+      "2022-03-26"
+    ]
+  },
+  {
+    "nome": "Geronimo",
+    "cognome": "Parmitano-Barozzi",
+    "cartaID": "LE33827GK",
+    "votazioni": [
+      "2022-03-08",
+      "2021-06-19",
+      "2023-04-03"
+    ]
+  },
+  {
+    "nome": "Luchino",
+    "cognome": "Marazzi",
+    "cartaID": "FP83371XI",
+    "votazioni": [
+      "2024-11-02"
+    ]
+  },
+  {
+    "nome": "Carmelo",
+    "cognome": "Babbo",
+    "cartaID": "KR68620VD",
+    "votazioni": [
+      "2023-03-27",
+      "2024-05-29",
+      "2022-03-19"
+    ]
+  },
+  {
+    "nome": "Fernanda",
+    "cognome": "Borgia",
+    "cartaID": "FK24482CW",
+    "votazioni": [
+      "2021-04-30",
+      "2025-03-17"
+    ]
+  },
+  {
+    "nome": "Simone",
+    "cognome": "Bignardi",
+    "cartaID": "OV70905RZ",
+    "votazioni": [
+      "2024-05-18",
+      "2020-08-18"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Scarfoglio",
+    "cartaID": "ZI37916ZG",
+    "votazioni": [
+      "2022-07-07",
+      "2025-05-06",
+      "2021-01-10"
+    ]
+  },
+  {
+    "nome": "Cassandra",
+    "cognome": "Pertile-Borromeo",
+    "cartaID": "TE57402SP",
+    "votazioni": [
+      "2021-06-16"
+    ]
+  },
+  {
+    "nome": "Cipriano",
+    "cognome": "Pietrangeli",
+    "cartaID": "WQ49383TB",
+    "votazioni": [
+      "2023-11-27"
+    ]
+  },
+  {
+    "nome": "Annalisa",
+    "cognome": "Nonis",
+    "cartaID": "JS59641QC",
+    "votazioni": [
+      "2022-11-08",
+      "2023-04-26"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Treves",
+    "cartaID": "YI59853NF",
+    "votazioni": [
+      "2023-03-21"
+    ]
+  },
+  {
+    "nome": "Aurora",
+    "cognome": "Ciani",
+    "cartaID": "UR18417FJ",
+    "votazioni": [
+      "2024-07-09",
+      "2024-09-05",
+      "2022-09-21"
+    ]
+  },
+  {
+    "nome": "Fulvio",
+    "cognome": "Liverotti-Rensi",
+    "cartaID": "IS58408SP",
+    "votazioni": [
+      "2022-02-07"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Chindamo",
+    "cartaID": "CE73165SW",
+    "votazioni": [
+      "2024-07-23",
+      "2022-03-17"
+    ]
+  },
+  {
+    "nome": "Rosaria",
+    "cognome": "Celentano",
+    "cartaID": "UA74015LC",
+    "votazioni": [
+      "2025-04-22"
+    ]
+  },
+  {
+    "nome": "Antonietta",
+    "cognome": "Baggio",
+    "cartaID": "OU30378ZS",
+    "votazioni": [
+      "2024-07-04",
+      "2024-07-28"
+    ]
+  },
+  {
+    "nome": "Agostino",
+    "cognome": "Vespucci",
+    "cartaID": "HA68406IN",
+    "votazioni": [
+      "2021-11-26"
+    ]
+  },
+  {
+    "nome": "Osvaldo",
+    "cognome": "Canevascini",
+    "cartaID": "HD79655WJ",
+    "votazioni": [
+      "2021-10-20"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Chiappetta",
+    "cartaID": "KF45226CB",
+    "votazioni": [
+      "2021-10-05",
+      "2024-07-29",
+      "2023-03-19"
+    ]
+  },
+  {
+    "nome": "Dino",
+    "cognome": "Broggini",
+    "cartaID": "HO55838TS",
+    "votazioni": [
+      "2024-10-08"
+    ]
+  },
+  {
+    "nome": "Evangelista",
+    "cognome": "Randazzo",
+    "cartaID": "KM37649KX",
+    "votazioni": [
+      "2020-09-19",
+      "2024-04-19"
+    ]
+  },
+  {
+    "nome": "Fiorenzo",
+    "cognome": "Frescobaldi",
+    "cartaID": "PU37207ZV",
+    "votazioni": [
+      "2021-02-13"
+    ]
+  },
+  {
+    "nome": "Maria",
+    "cognome": "Micheletti",
+    "cartaID": "IR02434HZ",
+    "votazioni": [
+      "2020-08-06",
+      "2022-06-13"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Manzoni",
+    "cartaID": "FF56570XF",
+    "votazioni": [
+      "2021-03-29",
+      "2023-06-26",
+      "2022-02-20"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Merisi",
+    "cartaID": "TP73018PQ",
+    "votazioni": [
+      "2022-01-17",
+      "2021-09-11",
+      "2022-02-17"
+    ]
+  },
+  {
+    "nome": "Morena",
+    "cognome": "Giannetti",
+    "cartaID": "NM05434ZS",
+    "votazioni": [
+      "2024-05-03"
+    ]
+  },
+  {
+    "nome": "Gemma",
+    "cognome": "Bodoni",
+    "cartaID": "SC28377SX",
+    "votazioni": [
+      "2023-07-31",
+      "2023-01-13",
+      "2023-07-09"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Gonzaga",
+    "cartaID": "RU39184VT",
+    "votazioni": [
+      "2021-03-18",
+      "2024-07-16"
+    ]
+  },
+  {
+    "nome": "Fabio",
+    "cognome": "Lombroso-Mazzocchi",
+    "cartaID": "JN90096FD",
+    "votazioni": [
+      "2021-09-22",
+      "2022-10-12",
+      "2025-03-16"
+    ]
+  },
+  {
+    "nome": "Arnulfo",
+    "cognome": "Travaglio",
+    "cartaID": "JP47339XP",
+    "votazioni": [
+      "2022-08-19",
+      "2024-03-14",
+      "2023-11-20"
+    ]
+  },
+  {
+    "nome": "Ippazio",
+    "cognome": "Chiappetta",
+    "cartaID": "QB14291EN",
+    "votazioni": [
+      "2022-08-24"
+    ]
+  },
+  {
+    "nome": "Ornella",
+    "cognome": "Murialdo",
+    "cartaID": "QP85487NB",
+    "votazioni": [
+      "2023-12-31"
+    ]
+  },
+  {
+    "nome": "Gemma",
+    "cognome": "Rusticucci",
+    "cartaID": "VX58426AL",
+    "votazioni": [
+      "2023-08-19",
+      "2022-08-20",
+      "2023-08-18"
+    ]
+  },
+  {
+    "nome": "Hugo",
+    "cognome": "Sagese",
+    "cartaID": "QE59961HC",
+    "votazioni": [
+      "2021-04-13",
+      "2023-01-19"
+    ]
+  },
+  {
+    "nome": "Teresa",
+    "cognome": "Borgia",
+    "cartaID": "GJ15173TW",
+    "votazioni": [
+      "2021-04-16",
+      "2023-11-29"
+    ]
+  },
+  {
+    "nome": "Jolanda",
+    "cognome": "Pininfarina",
+    "cartaID": "VD39488HK",
+    "votazioni": [
+      "2022-12-31"
+    ]
+  },
+  {
+    "nome": "Ramona",
+    "cognome": "Ceravolo",
+    "cartaID": "AH51944TA",
+    "votazioni": [
+      "2022-09-02",
+      "2023-03-10",
+      "2024-04-12"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Ortolani",
+    "cartaID": "CZ38116NS",
+    "votazioni": [
+      "2022-11-15",
+      "2020-09-24"
+    ]
+  },
+  {
+    "nome": "Hugo",
+    "cognome": "Benedetti",
+    "cartaID": "XC50692ND",
+    "votazioni": [
+      "2024-01-25",
+      "2022-09-07"
+    ]
+  },
+  {
+    "nome": "Maurizio",
+    "cognome": "Farnese",
+    "cartaID": "MD38954SD",
+    "votazioni": [
+      "2023-06-30"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Majewski",
+    "cartaID": "SK52403FM",
+    "votazioni": [
+      "2024-06-18"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Combi",
+    "cartaID": "LE80301VY",
+    "votazioni": [
+      "2025-01-23",
+      "2024-08-23"
+    ]
+  },
+  {
+    "nome": "Fedele",
+    "cognome": "Piazzi",
+    "cartaID": "EZ92082BA",
+    "votazioni": [
+      "2022-10-04",
+      "2022-08-16"
+    ]
+  },
+  {
+    "nome": "Romeo",
+    "cognome": "Oscuro-Saragat",
+    "cartaID": "XZ17093VT",
+    "votazioni": [
+      "2024-06-13"
+    ]
+  },
+  {
+    "nome": "Calogero",
+    "cognome": "Amaldi",
+    "cartaID": "MJ98208QP",
+    "votazioni": [
+      "2024-11-18"
+    ]
+  },
+  {
+    "nome": "Gianna",
+    "cognome": "Grassi",
+    "cartaID": "EG95749RV",
+    "votazioni": [
+      "2023-04-11"
+    ]
+  },
+  {
+    "nome": "Melania",
+    "cognome": "Jovinelli",
+    "cartaID": "AP59840TI",
+    "votazioni": [
+      "2024-03-15",
+      "2020-08-18"
+    ]
+  },
+  {
+    "nome": "Claudio",
+    "cognome": "Aloisio",
+    "cartaID": "SN02982TR",
+    "votazioni": [
+      "2023-03-14"
+    ]
+  },
+  {
+    "nome": "Federico",
+    "cognome": "Giannelli",
+    "cartaID": "FQ70654UR",
+    "votazioni": [
+      "2025-01-15",
+      "2020-12-08",
+      "2020-09-17"
+    ]
+  },
+  {
+    "nome": "Graziella",
+    "cognome": "Armani",
+    "cartaID": "YM77104IX",
+    "votazioni": [
+      "2022-11-30",
+      "2023-05-21",
+      "2021-12-25"
+    ]
+  },
+  {
+    "nome": "Adriana",
+    "cognome": "Alighieri",
+    "cartaID": "JK96340QG",
+    "votazioni": [
+      "2022-10-30"
+    ]
+  },
+  {
+    "nome": "Guarino",
+    "cognome": "Russo",
+    "cartaID": "ZM59017SK",
+    "votazioni": [
+      "2022-01-10",
+      "2023-08-11",
+      "2022-10-20"
+    ]
+  },
+  {
+    "nome": "Ninetta",
+    "cognome": "Toscanini",
+    "cartaID": "YF85223ZJ",
+    "votazioni": [
+      "2023-02-06",
+      "2024-05-29"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Fittipaldi",
+    "cartaID": "UH65423HR",
+    "votazioni": [
+      "2023-09-18"
+    ]
+  },
+  {
+    "nome": "Vincenzo",
+    "cognome": "Dovara",
+    "cartaID": "SS09832XD",
+    "votazioni": [
+      "2022-05-24"
+    ]
+  },
+  {
+    "nome": "Donatella",
+    "cognome": "Nosiglia",
+    "cartaID": "BS61399VV",
+    "votazioni": [
+      "2021-02-11"
+    ]
+  },
+  {
+    "nome": "Carolina",
+    "cognome": "Bernardi-Cattaneo",
+    "cartaID": "RU44031AR",
+    "votazioni": [
+      "2023-09-01",
+      "2021-11-07",
+      "2025-03-27"
+    ]
+  },
+  {
+    "nome": "Ferdinando",
+    "cognome": "Togliatti",
+    "cartaID": "ML06722RY",
+    "votazioni": [
+      "2021-01-28"
+    ]
+  },
+  {
+    "nome": "Gioele",
+    "cognome": "Stefanelli",
+    "cartaID": "ML94172RA",
+    "votazioni": [
+      "2024-04-03"
+    ]
+  },
+  {
+    "nome": "Melissa",
+    "cognome": "Monteverdi",
+    "cartaID": "BO20456HO",
+    "votazioni": [
+      "2023-04-03",
+      "2024-12-02",
+      "2022-06-01"
+    ]
+  },
+  {
+    "nome": "Liberto",
+    "cognome": "Interminelli-Pisaroni",
+    "cartaID": "DF99106YX",
+    "votazioni": [
+      "2020-11-28"
+    ]
+  },
+  {
+    "nome": "Agnolo",
+    "cognome": "Nordio",
+    "cartaID": "XX16654TU",
+    "votazioni": [
+      "2025-02-17",
+      "2024-06-20"
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "cognome": "Canil",
+    "cartaID": "EJ45631JI",
+    "votazioni": [
+      "2021-05-12",
+      "2023-12-19",
+      "2025-04-27"
+    ]
+  },
+  {
+    "nome": "Antonina",
+    "cognome": "Inzaghi",
+    "cartaID": "ZT06669DV",
+    "votazioni": [
+      "2025-04-14"
+    ]
+  },
+  {
+    "nome": "Milo",
+    "cognome": "Gualtieri",
+    "cartaID": "BU22994CE",
+    "votazioni": [
+      "2024-07-09",
+      "2023-07-18",
+      "2025-02-09"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Travia",
+    "cartaID": "WY56249DK",
+    "votazioni": [
+      "2023-05-28",
+      "2021-07-07",
+      "2023-12-15"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Villadicani",
+    "cartaID": "PI69921ON",
+    "votazioni": [
+      "2023-07-21"
+    ]
+  },
+  {
+    "nome": "Greca",
+    "cognome": "Bernetti",
+    "cartaID": "YE97079SK",
+    "votazioni": [
+      "2021-06-06",
+      "2022-05-01",
+      "2020-10-19"
+    ]
+  },
+  {
+    "nome": "Aurora",
+    "cognome": "Trebbi",
+    "cartaID": "KJ10194IR",
+    "votazioni": [
+      "2021-02-20",
+      "2022-07-13",
+      "2024-07-13"
+    ]
+  },
+  {
+    "nome": "Mirco",
+    "cognome": "Gozzano",
+    "cartaID": "QM97515NJ",
+    "votazioni": [
+      "2023-03-28",
+      "2022-04-01"
+    ]
+  },
+  {
+    "nome": "Manuel",
+    "cognome": "Baggio",
+    "cartaID": "DH66700WS",
+    "votazioni": [
+      "2023-07-06",
+      "2022-07-29"
+    ]
+  },
+  {
+    "nome": "Piermaria",
+    "cognome": "Torricelli",
+    "cartaID": "BG07758SE",
+    "votazioni": [
+      "2021-01-27",
+      "2022-01-04"
+    ]
+  },
+  {
+    "nome": "Marcello",
+    "cognome": "Romiti",
+    "cartaID": "GO20163JA",
+    "votazioni": [
+      "2023-09-16",
+      "2023-05-14"
+    ]
+  },
+  {
+    "nome": "Orlando",
+    "cognome": "Costanzi",
+    "cartaID": "RZ17003FO",
+    "votazioni": [
+      "2022-03-09",
+      "2022-09-08"
+    ]
+  },
+  {
+    "nome": "Carla",
+    "cognome": "Pace",
+    "cartaID": "TQ36225ZP",
+    "votazioni": [
+      "2022-02-04",
+      "2020-11-21",
+      "2022-02-08"
+    ]
+  },
+  {
+    "nome": "Sandra",
+    "cognome": "Argurio",
+    "cartaID": "YY56863TC",
+    "votazioni": [
+      "2024-04-13",
+      "2024-03-03",
+      "2022-08-20"
+    ]
+  },
+  {
+    "nome": "Delfino",
+    "cognome": "Storladi",
+    "cartaID": "OI01174MM",
+    "votazioni": [
+      "2024-05-06",
+      "2022-12-11",
+      "2023-06-11"
+    ]
+  },
+  {
+    "nome": "Eleanora",
+    "cognome": "Bersani-Bompiani",
+    "cartaID": "RY31151BY",
+    "votazioni": [
+      "2023-05-13",
+      "2024-12-10",
+      "2024-03-25"
+    ]
+  },
+  {
+    "nome": "Silvia",
+    "cognome": "Abate",
+    "cartaID": "GJ07055XZ",
+    "votazioni": [
+      "2023-06-11"
+    ]
+  },
+  {
+    "nome": "Valeria",
+    "cognome": "Bottigliero",
+    "cartaID": "OH28043UL",
+    "votazioni": [
+      "2023-10-10",
+      "2021-02-19"
+    ]
+  },
+  {
+    "nome": "Emma",
+    "cognome": "Mogherini-Brugnaro",
+    "cartaID": "GK53945RO",
+    "votazioni": [
+      "2023-01-29",
+      "2024-06-26",
+      "2021-03-01"
+    ]
+  },
+  {
+    "nome": "Silvio",
+    "cognome": "Vendetti",
+    "cartaID": "YK59874NV",
+    "votazioni": [
+      "2022-02-09",
+      "2020-08-13"
+    ]
+  },
+  {
+    "nome": "Piermaria",
+    "cognome": "Juvara",
+    "cartaID": "QZ94250XR",
+    "votazioni": [
+      "2025-03-16"
+    ]
+  },
+  {
+    "nome": "Maurilio",
+    "cognome": "Magnani",
+    "cartaID": "BE16483BR",
+    "votazioni": [
+      "2022-11-17",
+      "2022-05-26"
+    ]
+  },
+  {
+    "nome": "Paola",
+    "cognome": "Scotti",
+    "cartaID": "ZI86670RW",
+    "votazioni": [
+      "2022-12-27",
+      "2022-05-01"
+    ]
+  },
+  {
+    "nome": "Eugenia",
+    "cognome": "Napolitano-Missoni",
+    "cartaID": "BH84762IJ",
+    "votazioni": [
+      "2023-11-24",
+      "2021-03-25"
+    ]
+  },
+  {
+    "nome": "Donna",
+    "cognome": "Pedrazzini",
+    "cartaID": "TY32445GQ",
+    "votazioni": [
+      "2022-09-12"
+    ]
+  },
+  {
+    "nome": "Chiara",
+    "cognome": "Scaramucci",
+    "cartaID": "AL09944ON",
+    "votazioni": [
+      "2021-03-30"
+    ]
+  },
+  {
+    "nome": "Valeria",
+    "cognome": "Ricci-Borsellino",
+    "cartaID": "UQ37816LY",
+    "votazioni": [
+      "2021-02-24",
+      "2021-07-02"
+    ]
+  },
+  {
+    "nome": "Mattia",
+    "cognome": "Carducci",
+    "cartaID": "PO34154WQ",
+    "votazioni": [
+      "2023-01-18",
+      "2022-09-12",
+      "2024-02-01"
+    ]
+  },
+  {
+    "nome": "Paulina",
+    "cognome": "Gaggini",
+    "cartaID": "VU59354XF",
+    "votazioni": [
+      "2025-04-13"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Gagliano",
+    "cartaID": "BM85087LQ",
+    "votazioni": [
+      "2021-05-20",
+      "2022-11-08",
+      "2023-12-19"
+    ]
+  },
+  {
+    "nome": "Alessandro",
+    "cognome": "Procacci-Odescalchi",
+    "cartaID": "OX71816XV",
+    "votazioni": [
+      "2024-06-01",
+      "2023-08-29",
+      "2021-10-25"
+    ]
+  },
+  {
+    "nome": "Lina",
+    "cognome": "Montanelli",
+    "cartaID": "UW44689IN",
+    "votazioni": [
+      "2020-10-24"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Morrocco",
+    "cartaID": "XQ39027ED",
+    "votazioni": [
+      "2022-01-13",
+      "2022-03-11",
+      "2020-10-01"
+    ]
+  },
+  {
+    "nome": "Dante",
+    "cognome": "Roero",
+    "cartaID": "TT62813CC",
+    "votazioni": [
+      "2023-11-06",
+      "2021-07-07",
+      "2023-03-26"
+    ]
+  },
+  {
+    "nome": "Natalia",
+    "cognome": "Travia",
+    "cartaID": "EG54116VA",
+    "votazioni": [
+      "2020-09-19",
+      "2023-08-11",
+      "2024-12-07"
+    ]
+  },
+  {
+    "nome": "Lina",
+    "cognome": "Lombardo",
+    "cartaID": "HD29371DX",
+    "votazioni": [
+      "2021-11-13"
+    ]
+  },
+  {
+    "nome": "Lolita",
+    "cognome": "Marsili-Capecchi",
+    "cartaID": "BT20447KX",
+    "votazioni": [
+      "2020-06-16",
+      "2021-06-27",
+      "2021-01-04"
+    ]
+  },
+  {
+    "nome": "Dina",
+    "cognome": "Petrocelli",
+    "cartaID": "WQ53371BX",
+    "votazioni": [
+      "2021-03-04",
+      "2024-04-23"
+    ]
+  },
+  {
+    "nome": "Enrico",
+    "cognome": "Alighieri-Stoppani",
+    "cartaID": "MZ87296JF",
+    "votazioni": [
+      "2024-05-16"
+    ]
+  },
+  {
+    "nome": "Agostino",
+    "cognome": "Pisaroni",
+    "cartaID": "SX74090MU",
+    "votazioni": [
+      "2024-11-25",
+      "2023-01-07"
+    ]
+  },
+  {
+    "nome": "Carlo",
+    "cognome": "Caffarelli",
+    "cartaID": "PV69646MQ",
+    "votazioni": [
+      "2021-06-06"
+    ]
+  },
+  {
+    "nome": "Marina",
+    "cognome": "Govoni",
+    "cartaID": "UT72291LB",
+    "votazioni": [
+      "2022-05-09",
+      "2024-11-24",
+      "2021-08-16"
+    ]
+  },
+  {
+    "nome": "Matilda",
+    "cognome": "Gucci-Lombardo",
+    "cartaID": "UU49071MP",
+    "votazioni": [
+      "2024-06-10",
+      "2023-12-06",
+      "2021-09-28"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Sommaruga",
+    "cartaID": "BS90585FB",
+    "votazioni": [
+      "2021-08-19"
+    ]
+  },
+  {
+    "nome": "Roberto",
+    "cognome": "Montalcini",
+    "cartaID": "HM56441ID",
+    "votazioni": [
+      "2023-10-16",
+      "2023-02-23"
+    ]
+  },
+  {
+    "nome": "Graziella",
+    "cognome": "Zoppetto",
+    "cartaID": "TG51928NP",
+    "votazioni": [
+      "2021-06-23",
+      "2021-03-30",
+      "2022-10-09"
+    ]
+  },
+  {
+    "nome": "Danilo",
+    "cognome": "Angiolello-Leblanc",
+    "cartaID": "XW91465FP",
+    "votazioni": [
+      "2022-06-15",
+      "2024-09-04",
+      "2023-05-27"
+    ]
+  },
+  {
+    "nome": "Stefania",
+    "cognome": "Vecoli",
+    "cartaID": "LU95193ZB",
+    "votazioni": [
+      "2020-08-26"
+    ]
+  },
+  {
+    "nome": "Lucia",
+    "cognome": "Pizziol-Buscetta",
+    "cartaID": "PO06366IS",
+    "votazioni": [
+      "2021-11-04",
+      "2024-09-13"
+    ]
+  },
+  {
+    "nome": "Achille",
+    "cognome": "Nievo",
+    "cartaID": "LF56008RE",
+    "votazioni": [
+      "2021-06-11"
+    ]
+  },
+  {
+    "nome": "Livio",
+    "cognome": "Sauli",
+    "cartaID": "WF92838LY",
+    "votazioni": [
+      "2020-08-22",
+      "2020-07-03"
+    ]
+  },
+  {
+    "nome": "Augusto",
+    "cognome": "Ruberto",
+    "cartaID": "KO98096LN",
+    "votazioni": [
+      "2021-07-15"
+    ]
+  },
+  {
+    "nome": "Veronica",
+    "cognome": "Sagnelli",
+    "cartaID": "VY28868IR",
+    "votazioni": [
+      "2024-04-15",
+      "2023-05-25"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Bragadin",
+    "cartaID": "HJ36228HI",
+    "votazioni": [
+      "2022-03-11"
+    ]
+  },
+  {
+    "nome": "Bianca",
+    "cognome": "Luna",
+    "cartaID": "KF12379WM",
+    "votazioni": [
+      "2024-06-03"
+    ]
+  },
+  {
+    "nome": "Imelda",
+    "cognome": "Trentini",
+    "cartaID": "QK30756XO",
+    "votazioni": [
+      "2024-03-07",
+      "2025-04-20",
+      "2022-11-08"
+    ]
+  },
+  {
+    "nome": "Evangelista",
+    "cognome": "Staglieno",
+    "cartaID": "XH91525UF",
+    "votazioni": [
+      "2022-04-20"
+    ]
+  },
+  {
+    "nome": "Fortunata",
+    "cognome": "Tamburi-Santorio",
+    "cartaID": "SK25750OC",
+    "votazioni": [
+      "2020-10-22"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Torlonia",
+    "cartaID": "QH04732UM",
+    "votazioni": [
+      "2020-12-19",
+      "2023-07-12",
+      "2023-06-08"
+    ]
+  },
+  {
+    "nome": "Aria",
+    "cognome": "Ramazzotti",
+    "cartaID": "WO26405MG",
+    "votazioni": [
+      "2024-05-06",
+      "2022-02-15",
+      "2022-11-05"
+    ]
+  },
+  {
+    "nome": "Milena",
+    "cognome": "Scotti-Bova",
+    "cartaID": "LX33436YA",
+    "votazioni": [
+      "2024-03-31",
+      "2020-07-26"
+    ]
+  },
+  {
+    "nome": "Marta",
+    "cognome": "Gianetti",
+    "cartaID": "JY66581WP",
+    "votazioni": [
+      "2023-11-09",
+      "2024-04-17"
+    ]
+  },
+  {
+    "nome": "Piero",
+    "cognome": "Rienzo-Broggini",
+    "cartaID": "GQ78538KA",
+    "votazioni": [
+      "2022-01-04"
+    ]
+  },
+  {
+    "nome": "Francesca",
+    "cognome": "Telesio",
+    "cartaID": "JP84417AL",
+    "votazioni": [
+      "2022-06-05"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Luciani",
+    "cartaID": "OD34876DK",
+    "votazioni": [
+      "2020-12-20"
+    ]
+  },
+  {
+    "nome": "Puccio",
+    "cognome": "Murialdo",
+    "cartaID": "MM73800ZJ",
+    "votazioni": [
+      "2021-01-18"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Castelli",
+    "cartaID": "CG61845JD",
+    "votazioni": [
+      "2024-01-20",
+      "2023-01-22",
+      "2025-04-19"
+    ]
+  },
+  {
+    "nome": "Monica",
+    "cognome": "Tornatore",
+    "cartaID": "IU28567AY",
+    "votazioni": [
+      "2025-02-01",
+      "2022-03-19",
+      "2021-05-19"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Finotto",
+    "cartaID": "FZ94661ZD",
+    "votazioni": [
+      "2021-10-06",
+      "2021-06-23",
+      "2023-05-14"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Einaudi",
+    "cartaID": "PK12233EI",
+    "votazioni": [
+      "2024-07-01",
+      "2021-05-28"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Leonardi",
+    "cartaID": "ES38994UF",
+    "votazioni": [
+      "2023-12-29",
+      "2024-09-17"
+    ]
+  },
+  {
+    "nome": "Ivan",
+    "cognome": "Inzaghi",
+    "cartaID": "FW32039YX",
+    "votazioni": [
+      "2020-07-19",
+      "2022-12-11",
+      "2021-02-09"
+    ]
+  },
+  {
+    "nome": "Gabriella",
+    "cognome": "Venier",
+    "cartaID": "RA98198AN",
+    "votazioni": [
+      "2024-07-26"
+    ]
+  },
+  {
+    "nome": "Renzo",
+    "cognome": "Scalera",
+    "cartaID": "QS17247AQ",
+    "votazioni": [
+      "2023-03-24",
+      "2022-11-22"
+    ]
+  },
+  {
+    "nome": "Giada",
+    "cognome": "Ariosto",
+    "cartaID": "XZ60344RT",
+    "votazioni": [
+      "2024-10-10",
+      "2023-03-06"
+    ]
+  },
+  {
+    "nome": "Vittoria",
+    "cognome": "Bellini-Raimondi",
+    "cartaID": "IH67948JR",
+    "votazioni": [
+      "2025-04-30"
+    ]
+  },
+  {
+    "nome": "Adriana",
+    "cognome": "Maglio",
+    "cartaID": "AK88346WD",
+    "votazioni": [
+      "2021-04-16",
+      "2023-04-02",
+      "2022-11-06"
+    ]
+  },
+  {
+    "nome": "Sonia",
+    "cognome": "Morandi",
+    "cartaID": "JO90760AZ",
+    "votazioni": [
+      "2023-07-14"
+    ]
+  },
+  {
+    "nome": "Matilda",
+    "cognome": "Ferragamo",
+    "cartaID": "WN27727RK",
+    "votazioni": [
+      "2023-07-16"
+    ]
+  },
+  {
+    "nome": "Olga",
+    "cognome": "Crespi-Berengario",
+    "cartaID": "PV31983GO",
+    "votazioni": [
+      "2022-10-13",
+      "2025-02-19",
+      "2021-01-31"
+    ]
+  },
+  {
+    "nome": "Ermes",
+    "cognome": "Luzi",
+    "cartaID": "QZ41933DD",
+    "votazioni": [
+      "2021-06-26"
+    ]
+  },
+  {
+    "nome": "Francesca",
+    "cognome": "Papetti",
+    "cartaID": "ZN36475YI",
+    "votazioni": [
+      "2023-06-02",
+      "2021-02-18"
+    ]
+  },
+  {
+    "nome": "Marco",
+    "cognome": "Littizzetto-Bruscantini",
+    "cartaID": "JP76876AK",
+    "votazioni": [
+      "2021-03-16",
+      "2025-04-04"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Maccanelli",
+    "cartaID": "XK43531VT",
+    "votazioni": [
+      "2023-01-31"
+    ]
+  },
+  {
+    "nome": "Sylvia",
+    "cognome": "Gradenigo",
+    "cartaID": "GQ45501HQ",
+    "votazioni": [
+      "2023-09-09",
+      "2022-11-11"
+    ]
+  },
+  {
+    "nome": "Lilla",
+    "cognome": "Vezzali-Brugnaro",
+    "cartaID": "KV81332AZ",
+    "votazioni": [
+      "2020-06-29",
+      "2020-12-02",
+      "2023-11-03"
+    ]
+  },
+  {
+    "nome": "Marcella",
+    "cognome": "Cappelli",
+    "cartaID": "SE95272BL",
+    "votazioni": [
+      "2023-02-16"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Mascagni",
+    "cartaID": "XI47956OW",
+    "votazioni": [
+      "2022-04-01"
+    ]
+  },
+  {
+    "nome": "Melania",
+    "cognome": "Falloppio-Buscetta",
+    "cartaID": "SS55014ZV",
+    "votazioni": [
+      "2022-07-10",
+      "2022-07-18"
+    ]
+  },
+  {
+    "nome": "Valentina",
+    "cognome": "Michelangeli-Zacchia",
+    "cartaID": "XL22617ZX",
+    "votazioni": [
+      "2022-09-28",
+      "2022-02-12",
+      "2021-01-19"
+    ]
+  },
+  {
+    "nome": "Gianluca",
+    "cognome": "Sismondi",
+    "cartaID": "PM05817XY",
+    "votazioni": [
+      "2025-05-07"
+    ]
+  },
+  {
+    "nome": "Mariana",
+    "cognome": "Ricolfi",
+    "cartaID": "ZY65721GI",
+    "votazioni": [
+      "2020-08-25"
+    ]
+  },
+  {
+    "nome": "Lucrezia",
+    "cognome": "Dalla",
+    "cartaID": "NY65274WS",
+    "votazioni": [
+      "2025-03-20",
+      "2025-02-04"
+    ]
+  },
+  {
+    "nome": "Ivan",
+    "cognome": "Folliero",
+    "cartaID": "JF89378NN",
+    "votazioni": [
+      "2021-04-30"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Procacci",
+    "cartaID": "XI75171NX",
+    "votazioni": [
+      "2020-09-30"
+    ]
+  },
+  {
+    "nome": "Fiamma",
+    "cognome": "Interminelli",
+    "cartaID": "YH20989PV",
+    "votazioni": [
+      "2022-12-16"
+    ]
+  },
+  {
+    "nome": "Napoleone",
+    "cognome": "Argento-Prada",
+    "cartaID": "QO94914YK",
+    "votazioni": [
+      "2020-11-16",
+      "2021-08-28"
+    ]
+  },
+  {
+    "nome": "Concetta",
+    "cognome": "Monicelli",
+    "cartaID": "VV86447UL",
+    "votazioni": [
+      "2022-08-04",
+      "2025-02-06"
+    ]
+  },
+  {
+    "nome": "Luigi",
+    "cognome": "Ottino",
+    "cartaID": "II57832OU",
+    "votazioni": [
+      "2024-08-07"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Pinamonte",
+    "cartaID": "CF33632AQ",
+    "votazioni": [
+      "2022-04-05"
+    ]
+  },
+  {
+    "nome": "Isabella",
+    "cognome": "Bettin",
+    "cartaID": "ZR96129KG",
+    "votazioni": [
+      "2023-01-03",
+      "2023-09-12",
+      "2025-04-20"
+    ]
+  },
+  {
+    "nome": "Fredo",
+    "cognome": "Cicala",
+    "cartaID": "RU30889QM",
+    "votazioni": [
+      "2024-07-09",
+      "2020-07-20"
+    ]
+  },
+  {
+    "nome": "Serafina",
+    "cognome": "Bernardini",
+    "cartaID": "UH63311RV",
+    "votazioni": [
+      "2023-12-04"
+    ]
+  },
+  {
+    "nome": "Erika",
+    "cognome": "Giorgetti",
+    "cartaID": "AD12672SL",
+    "votazioni": [
+      "2022-09-15",
+      "2022-04-14"
+    ]
+  },
+  {
+    "nome": "Camilla",
+    "cognome": "Peano",
+    "cartaID": "LU64671YF",
+    "votazioni": [
+      "2021-08-04",
+      "2024-07-20"
+    ]
+  },
+  {
+    "nome": "Salvatore",
+    "cognome": "Cagnin",
+    "cartaID": "JQ47993NX",
+    "votazioni": [
+      "2021-04-10",
+      "2021-08-01",
+      "2023-01-27"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Missoni",
+    "cartaID": "BP15709AA",
+    "votazioni": [
+      "2022-05-25",
+      "2020-07-04"
+    ]
+  },
+  {
+    "nome": "Rolando",
+    "cognome": "Mazzini-Scamarcio",
+    "cartaID": "IE32828DW",
+    "votazioni": [
+      "2021-01-25",
+      "2024-06-30"
+    ]
+  },
+  {
+    "nome": "Liliana",
+    "cognome": "Pepe",
+    "cartaID": "VA49863ZV",
+    "votazioni": [
+      "2024-03-20"
+    ]
+  },
+  {
+    "nome": "Lodovico",
+    "cognome": "Pietrangeli-Sgarbi",
+    "cartaID": "VC07814KZ",
+    "votazioni": [
+      "2022-10-18"
+    ]
+  },
+  {
+    "nome": "Etta",
+    "cognome": "Parisi",
+    "cartaID": "IK48605QI",
+    "votazioni": [
+      "2021-04-13"
+    ]
+  },
+  {
+    "nome": "Pier",
+    "cognome": "Lucarelli-Torricelli",
+    "cartaID": "CA35580YQ",
+    "votazioni": [
+      "2022-07-04",
+      "2021-12-01",
+      "2022-05-11"
+    ]
+  },
+  {
+    "nome": "Rolando",
+    "cognome": "Grimani",
+    "cartaID": "NG07311LW",
+    "votazioni": [
+      "2020-06-18",
+      "2022-11-27"
+    ]
+  },
+  {
+    "nome": "Pompeo",
+    "cognome": "Catalano",
+    "cartaID": "MW79275QZ",
+    "votazioni": [
+      "2022-02-26",
+      "2025-01-20",
+      "2023-01-19"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Vergerio",
+    "cartaID": "FC07201AZ",
+    "votazioni": [
+      "2023-12-03",
+      "2020-11-09"
+    ]
+  },
+  {
+    "nome": "Piermaria",
+    "cognome": "Rizzo",
+    "cartaID": "GA88832CD",
+    "votazioni": [
+      "2022-02-24",
+      "2024-08-07"
+    ]
+  },
+  {
+    "nome": "Lucrezia",
+    "cognome": "Odescalchi",
+    "cartaID": "QA72354NK",
+    "votazioni": [
+      "2023-05-18"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Sagredo",
+    "cartaID": "KN20239GW",
+    "votazioni": [
+      "2022-04-04",
+      "2021-01-21",
+      "2021-10-11"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Malpighi",
+    "cartaID": "QF19601BQ",
+    "votazioni": [
+      "2021-10-10"
+    ]
+  },
+  {
+    "nome": "Biagio",
+    "cognome": "Squarcione-Cesarotti",
+    "cartaID": "KR31307YH",
+    "votazioni": [
+      "2024-08-02",
+      "2021-03-20",
+      "2024-04-22"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Ginese",
+    "cartaID": "IY34060OJ",
+    "votazioni": [
+      "2021-06-24"
+    ]
+  },
+  {
+    "nome": "Jacopo",
+    "cognome": "Rossetti",
+    "cartaID": "KS07456TP",
+    "votazioni": [
+      "2021-09-03",
+      "2023-11-01",
+      "2022-03-03"
+    ]
+  },
+  {
+    "nome": "Piersanti",
+    "cognome": "Ricolfi",
+    "cartaID": "XM94700MM",
+    "votazioni": [
+      "2024-07-15",
+      "2023-10-22"
+    ]
+  },
+  {
+    "nome": "Pomponio",
+    "cognome": "Trapani-Necci",
+    "cartaID": "FE89191MD",
+    "votazioni": [
+      "2021-04-08"
+    ]
+  },
+  {
+    "nome": "Cecilia",
+    "cognome": "Tebaldi",
+    "cartaID": "WQ77344RQ",
+    "votazioni": [
+      "2021-01-23"
+    ]
+  },
+  {
+    "nome": "Vincenza",
+    "cognome": "Torricelli-Mancini",
+    "cartaID": "NE55999OU",
+    "votazioni": [
+      "2020-06-23",
+      "2020-12-08",
+      "2025-01-20"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Vecoli",
+    "cartaID": "LX82003XM",
+    "votazioni": [
+      "2020-06-29",
+      "2024-07-10"
+    ]
+  },
+  {
+    "nome": "Graziano",
+    "cognome": "Pietrangeli",
+    "cartaID": "KI59376PI",
+    "votazioni": [
+      "2023-10-17",
+      "2023-11-08"
+    ]
+  },
+  {
+    "nome": "Carolina",
+    "cognome": "Gonzaga",
+    "cartaID": "OC49822OG",
+    "votazioni": [
+      "2020-09-24",
+      "2021-06-17"
+    ]
+  },
+  {
+    "nome": "Micheletto",
+    "cognome": "Andreozzi",
+    "cartaID": "WH34320XT",
+    "votazioni": [
+      "2023-07-31",
+      "2024-06-02",
+      "2023-01-25"
+    ]
+  },
+  {
+    "nome": "Lucrezia",
+    "cognome": "Cilibrasi-Rastelli",
+    "cartaID": "ZM66624BU",
+    "votazioni": [
+      "2022-04-20"
+    ]
+  },
+  {
+    "nome": "Tonino",
+    "cognome": "Farnese",
+    "cartaID": "WV42529FO",
+    "votazioni": [
+      "2023-10-01",
+      "2021-01-14",
+      "2024-08-07"
+    ]
+  },
+  {
+    "nome": "Sole",
+    "cognome": "Schiavo",
+    "cartaID": "WU87356OP",
+    "votazioni": [
+      "2022-05-22",
+      "2022-02-04"
+    ]
+  },
+  {
+    "nome": "Etta",
+    "cognome": "Lippomano",
+    "cartaID": "EE65302DY",
+    "votazioni": [
+      "2024-03-23",
+      "2023-10-01"
+    ]
+  },
+  {
+    "nome": "Maria",
+    "cognome": "Orlando",
+    "cartaID": "OX56406SS",
+    "votazioni": [
+      "2023-11-09"
+    ]
+  },
+  {
+    "nome": "Gianpietro",
+    "cognome": "Toldo",
+    "cartaID": "YO97964IF",
+    "votazioni": [
+      "2024-04-04"
+    ]
+  },
+  {
+    "nome": "Sophia",
+    "cognome": "Taliani",
+    "cartaID": "JZ26763JU",
+    "votazioni": [
+      "2023-07-18"
+    ]
+  },
+  {
+    "nome": "Ippazio",
+    "cognome": "Ferragni",
+    "cartaID": "QX50967JC",
+    "votazioni": [
+      "2024-12-02"
+    ]
+  },
+  {
+    "nome": "Gemma",
+    "cognome": "Pasolini",
+    "cartaID": "NQ63290MD",
+    "votazioni": [
+      "2024-02-18"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Moccia",
+    "cartaID": "LO99759VL",
+    "votazioni": [
+      "2023-06-01",
+      "2025-02-13",
+      "2021-09-01"
+    ]
+  },
+  {
+    "nome": "Fulvio",
+    "cognome": "Forza",
+    "cartaID": "QQ44553XE",
+    "votazioni": [
+      "2021-08-22",
+      "2024-11-20",
+      "2022-02-24"
+    ]
+  },
+  {
+    "nome": "Enzio",
+    "cognome": "Orsini",
+    "cartaID": "SX59015FS",
+    "votazioni": [
+      "2023-03-05",
+      "2023-02-11",
+      "2022-03-24"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Vattimo",
+    "cartaID": "VU34962GJ",
+    "votazioni": [
+      "2021-02-28",
+      "2021-03-06",
+      "2020-06-25"
+    ]
+  },
+  {
+    "nome": "Paride",
+    "cognome": "Galuppi",
+    "cartaID": "AZ24674CS",
+    "votazioni": [
+      "2024-09-27",
+      "2021-04-23",
+      "2023-02-04"
+    ]
+  },
+  {
+    "nome": "Micheletto",
+    "cognome": "Bragadin",
+    "cartaID": "ZV12326VA",
+    "votazioni": [
+      "2025-02-04",
+      "2022-08-21",
+      "2023-06-19"
+    ]
+  },
+  {
+    "nome": "Ciro",
+    "cognome": "Gigli",
+    "cartaID": "UI59854SY",
+    "votazioni": [
+      "2021-06-15",
+      "2023-09-19",
+      "2021-09-21"
+    ]
+  },
+  {
+    "nome": "Maria",
+    "cognome": "Milanesi",
+    "cartaID": "DX72515PR",
+    "votazioni": [
+      "2022-05-04"
+    ]
+  },
+  {
+    "nome": "Paloma",
+    "cognome": "Biagiotti",
+    "cartaID": "LR25783JE",
+    "votazioni": [
+      "2022-01-02",
+      "2021-06-26",
+      "2023-07-11"
+    ]
+  },
+  {
+    "nome": "Alina",
+    "cognome": "Zola-Bocelli",
+    "cartaID": "WT24401KD",
+    "votazioni": [
+      "2024-10-17",
+      "2025-02-28"
+    ]
+  },
+  {
+    "nome": "Livio",
+    "cognome": "Argurio-Caboto",
+    "cartaID": "SL89753RA",
+    "votazioni": [
+      "2025-02-17"
+    ]
+  },
+  {
+    "nome": "Beppe",
+    "cognome": "Guinizzelli",
+    "cartaID": "RT39789WM",
+    "votazioni": [
+      "2024-08-14",
+      "2024-03-28"
+    ]
+  },
+  {
+    "nome": "Leonardo",
+    "cognome": "Lombroso",
+    "cartaID": "NK62980LD",
+    "votazioni": [
+      "2022-02-26",
+      "2021-03-21",
+      "2021-05-14"
+    ]
+  },
+  {
+    "nome": "Martina",
+    "cognome": "Pisacane",
+    "cartaID": "SN10333ID",
+    "votazioni": [
+      "2021-05-17",
+      "2023-08-26"
+    ]
+  },
+  {
+    "nome": "Melissa",
+    "cognome": "Gonzaga",
+    "cartaID": "VK81040HB",
+    "votazioni": [
+      "2024-06-01"
+    ]
+  },
+  {
+    "nome": "Marta",
+    "cognome": "Luzi",
+    "cartaID": "CZ83542HY",
+    "votazioni": [
+      "2023-11-09",
+      "2021-01-25"
+    ]
+  },
+  {
+    "nome": "Nanni",
+    "cognome": "Rizzo",
+    "cartaID": "BP44708UQ",
+    "votazioni": [
+      "2022-05-03"
+    ]
+  },
+  {
+    "nome": "Ronaldo",
+    "cognome": "Cutrufo-Alighieri",
+    "cartaID": "UU25721DF",
+    "votazioni": [
+      "2024-09-26",
+      "2024-11-02",
+      "2020-07-07"
+    ]
+  },
+  {
+    "nome": "Damiano",
+    "cognome": "Fittipaldi",
+    "cartaID": "SN20300KR",
+    "votazioni": [
+      "2024-01-14"
+    ]
+  },
+  {
+    "nome": "Barbara",
+    "cognome": "Panicucci-Cipolla",
+    "cartaID": "OQ58889OW",
+    "votazioni": [
+      "2023-10-26",
+      "2024-05-29",
+      "2024-08-02"
+    ]
+  },
+  {
+    "nome": "Gianna",
+    "cognome": "Barzini",
+    "cartaID": "VT38366YQ",
+    "votazioni": [
+      "2025-02-22"
+    ]
+  },
+  {
+    "nome": "Mauro",
+    "cognome": "Cesarotti",
+    "cartaID": "DQ93135RZ",
+    "votazioni": [
+      "2024-01-07",
+      "2023-10-28"
+    ]
+  },
+  {
+    "nome": "Eugenia",
+    "cognome": "Pelli",
+    "cartaID": "KO23379XS",
+    "votazioni": [
+      "2021-02-10",
+      "2024-11-04",
+      "2022-08-30"
+    ]
+  },
+  {
+    "nome": "Simonetta",
+    "cognome": "Borromini-Cusano",
+    "cartaID": "ND79452FI",
+    "votazioni": [
+      "2024-11-29",
+      "2025-01-05"
+    ]
+  },
+  {
+    "nome": "Guido",
+    "cognome": "Bartoli",
+    "cartaID": "DA73295CW",
+    "votazioni": [
+      "2024-09-28"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Benigni",
+    "cartaID": "EC66088IT",
+    "votazioni": [
+      "2021-08-10",
+      "2025-02-17",
+      "2023-03-30"
+    ]
+  },
+  {
+    "nome": "Federico",
+    "cognome": "Lattuada-Trezzini",
+    "cartaID": "YR94325OS",
+    "votazioni": [
+      "2020-06-25"
+    ]
+  },
+  {
+    "nome": "Martina",
+    "cognome": "Modigliani",
+    "cartaID": "OY63764VS",
+    "votazioni": [
+      "2021-05-30",
+      "2020-07-27",
+      "2023-01-22"
+    ]
+  },
+  {
+    "nome": "Viridiana",
+    "cognome": "Bondumier",
+    "cartaID": "GY50505GT",
+    "votazioni": [
+      "2024-10-26",
+      "2020-11-03"
+    ]
+  },
+  {
+    "nome": "Niccol\u00f2",
+    "cognome": "Abba",
+    "cartaID": "II85679AI",
+    "votazioni": [
+      "2024-06-22"
+    ]
+  },
+  {
+    "nome": "Renzo",
+    "cognome": "Caccioppoli",
+    "cartaID": "XO69558RK",
+    "votazioni": [
+      "2023-04-28"
+    ]
+  },
+  {
+    "nome": "Adele",
+    "cognome": "Sordi",
+    "cartaID": "IZ69975ZJ",
+    "votazioni": [
+      "2023-03-25"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Palumbo",
+    "cartaID": "FJ21478YR",
+    "votazioni": [
+      "2022-08-14"
+    ]
+  },
+  {
+    "nome": "Bruno",
+    "cognome": "Corbo",
+    "cartaID": "IL41810LX",
+    "votazioni": [
+      "2022-12-07",
+      "2023-04-15"
+    ]
+  },
+  {
+    "nome": "Cesare",
+    "cognome": "Guariento-Bresciani",
+    "cartaID": "MI75111AG",
+    "votazioni": [
+      "2023-12-25"
+    ]
+  },
+  {
+    "nome": "Nicol\u00f2",
+    "cognome": "Mastandrea-Falier",
+    "cartaID": "YY47353DM",
+    "votazioni": [
+      "2021-09-30"
+    ]
+  },
+  {
+    "nome": "Teresa",
+    "cognome": "Brambilla",
+    "cartaID": "DY22420YQ",
+    "votazioni": [
+      "2021-03-12"
+    ]
+  },
+  {
+    "nome": "Veronica",
+    "cognome": "Giacconi",
+    "cartaID": "BA63868JU",
+    "votazioni": [
+      "2022-02-05",
+      "2024-08-24",
+      "2023-01-09"
+    ]
+  },
+  {
+    "nome": "Puccio",
+    "cognome": "Lopresti",
+    "cartaID": "XR36549CY",
+    "votazioni": [
+      "2022-06-09"
+    ]
+  },
+  {
+    "nome": "Mercedes",
+    "cognome": "Briccialdi",
+    "cartaID": "GZ64905KO",
+    "votazioni": [
+      "2023-02-20",
+      "2022-03-14",
+      "2022-11-12"
+    ]
+  },
+  {
+    "nome": "Federigo",
+    "cognome": "Montanelli",
+    "cartaID": "WK18970CS",
+    "votazioni": [
+      "2021-07-16",
+      "2024-02-11",
+      "2022-01-28"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Campise",
+    "cartaID": "SN71368DL",
+    "votazioni": [
+      "2022-12-13"
+    ]
+  },
+  {
+    "nome": "Gianni",
+    "cognome": "Castelli",
+    "cartaID": "AH67498ZV",
+    "votazioni": [
+      "2025-04-24",
+      "2021-07-31"
+    ]
+  },
+  {
+    "nome": "Rolando",
+    "cognome": "Manzoni-Manolesso",
+    "cartaID": "DL27475DM",
+    "votazioni": [
+      "2023-11-04",
+      "2024-11-20"
+    ]
+  },
+  {
+    "nome": "Cassandra",
+    "cognome": "Parisi",
+    "cartaID": "EM91856PI",
+    "votazioni": [
+      "2023-01-10",
+      "2023-04-19"
+    ]
+  },
+  {
+    "nome": "Massimo",
+    "cognome": "Sabbatini-Toninelli",
+    "cartaID": "MV37716UJ",
+    "votazioni": [
+      "2024-06-21"
+    ]
+  },
+  {
+    "nome": "Fedele",
+    "cognome": "Paoletti",
+    "cartaID": "YW00946AL",
+    "votazioni": [
+      "2022-02-15"
+    ]
+  },
+  {
+    "nome": "Silvia",
+    "cognome": "Accardo",
+    "cartaID": "BK52983LU",
+    "votazioni": [
+      "2023-04-17",
+      "2021-01-11",
+      "2023-06-08"
+    ]
+  },
+  {
+    "nome": "Maurilio",
+    "cognome": "Rizzoli",
+    "cartaID": "ED62530WD",
+    "votazioni": [
+      "2024-03-04",
+      "2023-09-01"
+    ]
+  },
+  {
+    "nome": "Margherita",
+    "cognome": "Udinesi",
+    "cartaID": "BZ68339XQ",
+    "votazioni": [
+      "2022-07-04"
+    ]
+  },
+  {
+    "nome": "Vittorio",
+    "cognome": "Ginesio",
+    "cartaID": "VH54232TI",
+    "votazioni": [
+      "2025-05-06"
+    ]
+  },
+  {
+    "nome": "Maurizio",
+    "cognome": "Gatto-Toscani",
+    "cartaID": "NR65024XJ",
+    "votazioni": [
+      "2024-05-30"
+    ]
+  },
+  {
+    "nome": "Antonella",
+    "cognome": "Anastasi",
+    "cartaID": "MC05540PL",
+    "votazioni": [
+      "2020-07-23"
+    ]
+  },
+  {
+    "nome": "Virgilio",
+    "cognome": "Molesini",
+    "cartaID": "AS91196AR",
+    "votazioni": [
+      "2021-12-13"
+    ]
+  },
+  {
+    "nome": "Melania",
+    "cognome": "Cossiga",
+    "cartaID": "OD18222XU",
+    "votazioni": [
+      "2022-04-11",
+      "2024-03-01",
+      "2024-03-02"
+    ]
+  },
+  {
+    "nome": "Amadeo",
+    "cognome": "Errani",
+    "cartaID": "GU91396VB",
+    "votazioni": [
+      "2020-08-19",
+      "2023-04-17"
+    ]
+  },
+  {
+    "nome": "Serafina",
+    "cognome": "Leblanc",
+    "cartaID": "CU58171GO",
+    "votazioni": [
+      "2021-01-31",
+      "2023-04-06"
+    ]
+  },
+  {
+    "nome": "Pierluigi",
+    "cognome": "Marenzio",
+    "cartaID": "GD70222OM",
+    "votazioni": [
+      "2022-07-29",
+      "2020-10-04"
+    ]
+  },
+  {
+    "nome": "Virginia",
+    "cognome": "Maderno",
+    "cartaID": "SJ55336QF",
+    "votazioni": [
+      "2025-01-02"
+    ]
+  },
+  {
+    "nome": "Pompeo",
+    "cognome": "Bembo",
+    "cartaID": "WK32145OM",
+    "votazioni": [
+      "2024-06-29"
+    ]
+  },
+  {
+    "nome": "Pomponio",
+    "cognome": "Benussi",
+    "cartaID": "KO85747JI",
+    "votazioni": [
+      "2023-05-09"
+    ]
+  },
+  {
+    "nome": "Alessia",
+    "cognome": "Gottardi",
+    "cartaID": "UB47947BG",
+    "votazioni": [
+      "2024-04-27"
+    ]
+  },
+  {
+    "nome": "Virgilio",
+    "cognome": "Gori",
+    "cartaID": "YW48615XT",
+    "votazioni": [
+      "2024-02-03"
+    ]
+  },
+  {
+    "nome": "Guglielmo",
+    "cognome": "Aldobrandi",
+    "cartaID": "KW15541WX",
+    "votazioni": [
+      "2024-04-23",
+      "2022-12-24"
+    ]
+  },
+  {
+    "nome": "Guarino",
+    "cognome": "Pellico",
+    "cartaID": "BB40047NF",
+    "votazioni": [
+      "2023-05-15",
+      "2020-07-29",
+      "2020-08-03"
+    ]
+  },
+  {
+    "nome": "Nedda",
+    "cognome": "Tanzini",
+    "cartaID": "VB32680UQ",
+    "votazioni": [
+      "2022-09-13"
+    ]
+  },
+  {
+    "nome": "Stefano",
+    "cognome": "Maspero",
+    "cartaID": "PX03997DT",
+    "votazioni": [
+      "2023-10-15"
+    ]
+  },
+  {
+    "nome": "Valerio",
+    "cognome": "Luxardo",
+    "cartaID": "ET97465UR",
+    "votazioni": [
+      "2024-11-03",
+      "2022-10-06",
+      "2023-09-23"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Sansoni",
+    "cartaID": "AF90097EX",
+    "votazioni": [
+      "2023-10-20",
+      "2020-07-04",
+      "2024-10-06"
+    ]
+  },
+  {
+    "nome": "Vincenzo",
+    "cognome": "Casellati",
+    "cartaID": "LV81488SR",
+    "votazioni": [
+      "2024-10-08",
+      "2021-01-20"
+    ]
+  },
+  {
+    "nome": "Maura",
+    "cognome": "Fallaci",
+    "cartaID": "AJ27037BO",
+    "votazioni": [
+      "2021-09-21",
+      "2022-09-03",
+      "2025-02-03"
+    ]
+  },
+  {
+    "nome": "Loretta",
+    "cognome": "Travaglia",
+    "cartaID": "CI30735AV",
+    "votazioni": [
+      "2020-07-03",
+      "2021-08-27"
+    ]
+  },
+  {
+    "nome": "Donna",
+    "cognome": "Strangio",
+    "cartaID": "LS53271PB",
+    "votazioni": [
+      "2020-12-28"
+    ]
+  },
+  {
+    "nome": "Veronica",
+    "cognome": "Polani-Bassi",
+    "cartaID": "YO56888DB",
+    "votazioni": [
+      "2021-12-12",
+      "2020-07-10",
+      "2023-06-28"
+    ]
+  },
+  {
+    "nome": "Stefania",
+    "cognome": "Asmundo",
+    "cartaID": "WA83082QR",
+    "votazioni": [
+      "2020-11-19",
+      "2022-06-27"
+    ]
+  },
+  {
+    "nome": "Gelsomina",
+    "cognome": "Totino-Proietti",
+    "cartaID": "EV77514XL",
+    "votazioni": [
+      "2021-04-28",
+      "2025-02-20"
+    ]
+  },
+  {
+    "nome": "Stella",
+    "cognome": "Pignatti",
+    "cartaID": "YM80086TG",
+    "votazioni": [
+      "2022-08-06",
+      "2022-12-26",
+      "2024-04-26"
+    ]
+  },
+  {
+    "nome": "Aurora",
+    "cognome": "Chindamo",
+    "cartaID": "TX89960YQ",
+    "votazioni": [
+      "2024-11-08",
+      "2024-01-25"
+    ]
+  },
+  {
+    "nome": "Manuel",
+    "cognome": "Lucchesi-Catenazzi",
+    "cartaID": "HJ53315FU",
+    "votazioni": [
+      "2025-04-06"
+    ]
+  },
+  {
+    "nome": "Alfredo",
+    "cognome": "Letta",
+    "cartaID": "LC36116UL",
+    "votazioni": [
+      "2021-07-20",
+      "2023-02-22"
+    ]
+  },
+  {
+    "nome": "Ippazio",
+    "cognome": "Papafava-Govoni",
+    "cartaID": "PU89469DK",
+    "votazioni": [
+      "2024-01-27",
+      "2023-06-09",
+      "2023-10-11"
+    ]
+  },
+  {
+    "nome": "Gianfrancesco",
+    "cognome": "Parri",
+    "cartaID": "WG13094CL",
+    "votazioni": [
+      "2021-10-23"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Comeriato",
+    "cartaID": "SQ18113AY",
+    "votazioni": [
+      "2021-10-30",
+      "2024-07-04",
+      "2024-04-19"
+    ]
+  },
+  {
+    "nome": "Lazzaro",
+    "cognome": "Nolcini-Renzi",
+    "cartaID": "HH98099VC",
+    "votazioni": [
+      "2021-05-09"
+    ]
+  },
+  {
+    "nome": "Niccol\u00f2",
+    "cognome": "Aloisio",
+    "cartaID": "UL75144TU",
+    "votazioni": [
+      "2023-07-05",
+      "2024-02-28",
+      "2021-02-19"
+    ]
+  },
+  {
+    "nome": "Geronimo",
+    "cognome": "Campanella-Luzi",
+    "cartaID": "GG82100UR",
+    "votazioni": [
+      "2021-03-17"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Geraci",
+    "cartaID": "BN81042JN",
+    "votazioni": [
+      "2021-03-25",
+      "2023-07-29"
+    ]
+  },
+  {
+    "nome": "Antonietta",
+    "cognome": "Comboni",
+    "cartaID": "LZ31174WY",
+    "votazioni": [
+      "2023-10-07",
+      "2022-04-06"
+    ]
+  },
+  {
+    "nome": "Nino",
+    "cognome": "Zampa-Scaramucci",
+    "cartaID": "TS38318GT",
+    "votazioni": [
+      "2024-01-05",
+      "2021-10-16",
+      "2024-07-02"
+    ]
+  },
+  {
+    "nome": "Donatella",
+    "cognome": "Pedrazzini-Palombi",
+    "cartaID": "TE57906EX",
+    "votazioni": [
+      "2020-08-27",
+      "2023-04-12"
+    ]
+  },
+  {
+    "nome": "Annetta",
+    "cognome": "Bocelli",
+    "cartaID": "CF56320SE",
+    "votazioni": [
+      "2020-11-18",
+      "2021-05-29",
+      "2025-04-08"
+    ]
+  },
+  {
+    "nome": "Eliana",
+    "cognome": "Lollobrigida",
+    "cartaID": "FY82654NY",
+    "votazioni": [
+      "2023-08-24"
+    ]
+  },
+  {
+    "nome": "Graziella",
+    "cognome": "Tarantino",
+    "cartaID": "KH95785UN",
+    "votazioni": [
+      "2021-08-23",
+      "2021-07-05"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Lerner",
+    "cartaID": "NS24921UX",
+    "votazioni": [
+      "2021-04-20",
+      "2025-03-11",
+      "2023-08-10"
+    ]
+  },
+  {
+    "nome": "Gianpietro",
+    "cognome": "Ortese-Trevisan",
+    "cartaID": "SK14594DG",
+    "votazioni": [
+      "2021-09-26",
+      "2023-04-27"
+    ]
+  },
+  {
+    "nome": "Lidia",
+    "cognome": "Porzio",
+    "cartaID": "DS37839OB",
+    "votazioni": [
+      "2022-08-25",
+      "2024-07-29",
+      "2022-01-26"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Trentini",
+    "cartaID": "MB06881RI",
+    "votazioni": [
+      "2022-06-29",
+      "2024-09-26"
+    ]
+  },
+  {
+    "nome": "Marisa",
+    "cognome": "Pavone",
+    "cartaID": "XG44988BU",
+    "votazioni": [
+      "2023-09-26",
+      "2020-07-31",
+      "2020-10-04"
+    ]
+  },
+  {
+    "nome": "Simone",
+    "cognome": "Argentero-Schicchi",
+    "cartaID": "ND91554PK",
+    "votazioni": [
+      "2021-09-02",
+      "2024-08-15"
+    ]
+  },
+  {
+    "nome": "Etta",
+    "cognome": "Mazzeo",
+    "cartaID": "HQ02542TS",
+    "votazioni": [
+      "2024-02-24",
+      "2021-03-03"
+    ]
+  },
+  {
+    "nome": "Evangelista",
+    "cognome": "Valier",
+    "cartaID": "EG05539GN",
+    "votazioni": [
+      "2022-02-08",
+      "2024-03-20"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Telesio",
+    "cartaID": "KO48829HW",
+    "votazioni": [
+      "2022-04-30"
+    ]
+  },
+  {
+    "nome": "Costantino",
+    "cognome": "Nicoletti",
+    "cartaID": "PD01959OA",
+    "votazioni": [
+      "2021-10-28"
+    ]
+  },
+  {
+    "nome": "Mario",
+    "cognome": "Bossi",
+    "cartaID": "VA30164XK",
+    "votazioni": [
+      "2023-05-03",
+      "2022-07-27"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Malaparte",
+    "cartaID": "JR45473EJ",
+    "votazioni": [
+      "2022-05-30"
+    ]
+  },
+  {
+    "nome": "Virginia",
+    "cognome": "Brichese-Molesini",
+    "cartaID": "PK61629KI",
+    "votazioni": [
+      "2024-07-19",
+      "2022-09-06",
+      "2021-07-08"
+    ]
+  },
+  {
+    "nome": "Fiorenzo",
+    "cognome": "Salvini",
+    "cartaID": "WI17309KL",
+    "votazioni": [
+      "2021-02-12",
+      "2021-04-11",
+      "2022-10-25"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Scaduto",
+    "cartaID": "UZ07602LC",
+    "votazioni": [
+      "2021-07-24"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Emanuelli",
+    "cartaID": "ZZ45400FB",
+    "votazioni": [
+      "2024-12-29",
+      "2020-11-05",
+      "2022-12-27"
+    ]
+  },
+  {
+    "nome": "Gelsomina",
+    "cognome": "Malaparte-Agazzi",
+    "cartaID": "WH18771FW",
+    "votazioni": [
+      "2023-07-30"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Ricciardi",
+    "cartaID": "JJ00774EE",
+    "votazioni": [
+      "2024-10-08",
+      "2021-04-14"
+    ]
+  },
+  {
+    "nome": "Elvira",
+    "cognome": "Malipiero",
+    "cartaID": "WY44098GS",
+    "votazioni": [
+      "2025-01-20",
+      "2024-07-26",
+      "2021-03-12"
+    ]
+  },
+  {
+    "nome": "Ornella",
+    "cognome": "Badoglio",
+    "cartaID": "GE73594UW",
+    "votazioni": [
+      "2024-06-12"
+    ]
+  },
+  {
+    "nome": "Ruggero",
+    "cognome": "Riccati-Bonomo",
+    "cartaID": "CA64295AD",
+    "votazioni": [
+      "2021-08-31",
+      "2021-02-10"
+    ]
+  },
+  {
+    "nome": "Eliana",
+    "cognome": "Dossetti-Caironi",
+    "cartaID": "RI18914DN",
+    "votazioni": [
+      "2021-06-09"
+    ]
+  },
+  {
+    "nome": "Eraldo",
+    "cognome": "Saffi",
+    "cartaID": "VO61334WZ",
+    "votazioni": [
+      "2022-02-07",
+      "2022-07-24"
+    ]
+  },
+  {
+    "nome": "Adelasia",
+    "cognome": "Bernini-Viola",
+    "cartaID": "WP74412TB",
+    "votazioni": [
+      "2024-04-11"
+    ]
+  },
+  {
+    "nome": "Mariano",
+    "cognome": "Battelli",
+    "cartaID": "HV42635VW",
+    "votazioni": [
+      "2023-06-30"
+    ]
+  },
+  {
+    "nome": "Agostino",
+    "cognome": "Carli-Ferrazzi",
+    "cartaID": "DJ03759SF",
+    "votazioni": [
+      "2022-01-24"
+    ]
+  },
+  {
+    "nome": "Ornella",
+    "cognome": "Chigi",
+    "cartaID": "LB58868NT",
+    "votazioni": [
+      "2022-08-24"
+    ]
+  },
+  {
+    "nome": "Adele",
+    "cognome": "Valier-Frescobaldi",
+    "cartaID": "AY08687FP",
+    "votazioni": [
+      "2020-10-10",
+      "2023-09-22"
+    ]
+  },
+  {
+    "nome": "Mariana",
+    "cognome": "Grifeo",
+    "cartaID": "EU65567YO",
+    "votazioni": [
+      "2022-02-01",
+      "2024-09-05"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Bianchini",
+    "cartaID": "OZ40087AN",
+    "votazioni": [
+      "2023-02-11",
+      "2024-02-06",
+      "2024-06-26"
+    ]
+  },
+  {
+    "nome": "Arnaldo",
+    "cognome": "Cocci",
+    "cartaID": "JH36628OS",
+    "votazioni": [
+      "2023-06-23"
+    ]
+  },
+  {
+    "nome": "Nanni",
+    "cognome": "Giusti",
+    "cartaID": "TP52471QJ",
+    "votazioni": [
+      "2021-09-22"
+    ]
+  },
+  {
+    "nome": "Eva",
+    "cognome": "Castioni",
+    "cartaID": "XS77333BH",
+    "votazioni": [
+      "2023-06-18",
+      "2021-06-17",
+      "2022-05-01"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Zito",
+    "cartaID": "VJ27128UA",
+    "votazioni": [
+      "2021-11-04",
+      "2021-01-01",
+      "2023-07-11"
+    ]
+  },
+  {
+    "nome": "Ida",
+    "cognome": "Sabatini-Cavanna",
+    "cartaID": "XW50681BW",
+    "votazioni": [
+      "2021-01-28",
+      "2022-03-15",
+      "2021-09-25"
+    ]
+  },
+  {
+    "nome": "Telemaco",
+    "cognome": "Paltrinieri",
+    "cartaID": "KQ34297MR",
+    "votazioni": [
+      "2020-06-20",
+      "2024-04-13",
+      "2024-04-19"
+    ]
+  },
+  {
+    "nome": "Antonella",
+    "cognome": "Endrizzi",
+    "cartaID": "XE51998FW",
+    "votazioni": [
+      "2020-09-27",
+      "2023-05-12"
+    ]
+  },
+  {
+    "nome": "Cecilia",
+    "cognome": "Giannelli",
+    "cartaID": "ZY09739YP",
+    "votazioni": [
+      "2023-04-22"
+    ]
+  },
+  {
+    "nome": "Fabrizia",
+    "cognome": "Tedesco",
+    "cartaID": "GV88814VT",
+    "votazioni": [
+      "2023-03-22"
+    ]
+  },
+  {
+    "nome": "Fernanda",
+    "cognome": "Capuana-Casadei",
+    "cartaID": "IP07921LU",
+    "votazioni": [
+      "2024-06-28",
+      "2020-08-28"
+    ]
+  },
+  {
+    "nome": "Etta",
+    "cognome": "Endrizzi",
+    "cartaID": "FJ85688ZH",
+    "votazioni": [
+      "2021-01-22",
+      "2022-03-02"
+    ]
+  },
+  {
+    "nome": "Daria",
+    "cognome": "Argentero-Vecoli",
+    "cartaID": "ZO45049MN",
+    "votazioni": [
+      "2024-12-13",
+      "2021-10-11",
+      "2020-11-21"
+    ]
+  },
+  {
+    "nome": "Claudia",
+    "cognome": "Gritti",
+    "cartaID": "EB67441AV",
+    "votazioni": [
+      "2020-08-20",
+      "2023-05-27",
+      "2020-07-04"
+    ]
+  },
+  {
+    "nome": "Amanda",
+    "cognome": "Majorana",
+    "cartaID": "MZ40708TN",
+    "votazioni": [
+      "2023-04-21"
+    ]
+  },
+  {
+    "nome": "Giacobbe",
+    "cognome": "Pelli",
+    "cartaID": "BP19351FY",
+    "votazioni": [
+      "2021-05-11",
+      "2022-01-26",
+      "2025-02-04"
+    ]
+  },
+  {
+    "nome": "Adele",
+    "cognome": "Torlonia",
+    "cartaID": "IZ59062ZB",
+    "votazioni": [
+      "2020-08-16"
+    ]
+  },
+  {
+    "nome": "Martina",
+    "cognome": "Ceri",
+    "cartaID": "PD34457GA",
+    "votazioni": [
+      "2020-12-20",
+      "2023-05-21"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Cremonesi",
+    "cartaID": "GL14272CZ",
+    "votazioni": [
+      "2022-08-30",
+      "2020-10-04"
+    ]
+  },
+  {
+    "nome": "Greca",
+    "cognome": "Disdero-Bazzi",
+    "cartaID": "IG86908AO",
+    "votazioni": [
+      "2024-07-24",
+      "2022-04-30",
+      "2024-08-19"
+    ]
+  },
+  {
+    "nome": "Michelangelo",
+    "cognome": "Errani-Ginesio",
+    "cartaID": "RL12979YM",
+    "votazioni": [
+      "2022-12-20"
+    ]
+  },
+  {
+    "nome": "Federica",
+    "cognome": "Scialpi",
+    "cartaID": "WB00689KO",
+    "votazioni": [
+      "2023-09-22",
+      "2025-04-22"
+    ]
+  },
+  {
+    "nome": "Alessia",
+    "cognome": "Marsili",
+    "cartaID": "TU01835EC",
+    "votazioni": [
+      "2025-03-18"
+    ]
+  },
+  {
+    "nome": "Fortunata",
+    "cognome": "Nitti",
+    "cartaID": "ZV95075LL",
+    "votazioni": [
+      "2022-09-22",
+      "2022-07-14",
+      "2023-01-25"
+    ]
+  },
+  {
+    "nome": "Pierluigi",
+    "cognome": "Piazzi",
+    "cartaID": "GO19565TV",
+    "votazioni": [
+      "2023-12-23"
+    ]
+  },
+  {
+    "nome": "Elvira",
+    "cognome": "Verdone",
+    "cartaID": "WX34297EM",
+    "votazioni": [
+      "2020-06-14"
+    ]
+  },
+  {
+    "nome": "Nadia",
+    "cognome": "Morgagni",
+    "cartaID": "ZU65232VL",
+    "votazioni": [
+      "2023-02-14",
+      "2022-07-15"
+    ]
+  },
+  {
+    "nome": "Elmo",
+    "cognome": "Castellitto",
+    "cartaID": "ZS22825VZ",
+    "votazioni": [
+      "2022-06-08",
+      "2021-02-20",
+      "2020-06-21"
+    ]
+  },
+  {
+    "nome": "Nicoletta",
+    "cognome": "Cassar\u00e0",
+    "cartaID": "FR45583PV",
+    "votazioni": [
+      "2024-10-29",
+      "2025-02-02"
+    ]
+  },
+  {
+    "nome": "Virginia",
+    "cognome": "Basadonna-Pavarotti",
+    "cartaID": "TM45571SV",
+    "votazioni": [
+      "2021-12-24",
+      "2025-03-09",
+      "2023-04-24"
+    ]
+  },
+  {
+    "nome": "Romeo",
+    "cognome": "Marini",
+    "cartaID": "LF16303OQ",
+    "votazioni": [
+      "2023-07-11",
+      "2020-10-27",
+      "2022-03-14"
+    ]
+  },
+  {
+    "nome": "Giulio",
+    "cognome": "Bonino-Chindamo",
+    "cartaID": "CD86670WM",
+    "votazioni": [
+      "2024-11-10",
+      "2022-07-11",
+      "2023-07-23"
+    ]
+  },
+  {
+    "nome": "Nadia",
+    "cognome": "Giacometti",
+    "cartaID": "DE28904RS",
+    "votazioni": [
+      "2022-12-11",
+      "2023-07-01",
+      "2021-07-20"
+    ]
+  },
+  {
+    "nome": "Damiano",
+    "cognome": "Morricone-Querini",
+    "cartaID": "YR93437EI",
+    "votazioni": [
+      "2022-03-08",
+      "2022-01-29",
+      "2021-11-26"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Curiel",
+    "cartaID": "DR25606IU",
+    "votazioni": [
+      "2020-09-25",
+      "2021-03-23",
+      "2022-02-18"
+    ]
+  },
+  {
+    "nome": "Gionata",
+    "cognome": "Babati",
+    "cartaID": "PO44663DW",
+    "votazioni": [
+      "2023-09-29"
+    ]
+  },
+  {
+    "nome": "Federigo",
+    "cognome": "Sinisi",
+    "cartaID": "ES74620FJ",
+    "votazioni": [
+      "2024-10-22",
+      "2022-08-31"
+    ]
+  },
+  {
+    "nome": "Valentina",
+    "cognome": "Borsiere",
+    "cartaID": "UG91503DU",
+    "votazioni": [
+      "2025-01-30"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Varano",
+    "cartaID": "XW96111AP",
+    "votazioni": [
+      "2023-06-05",
+      "2021-05-12",
+      "2022-12-07"
+    ]
+  },
+  {
+    "nome": "Ida",
+    "cognome": "Basadonna",
+    "cartaID": "GE84276IF",
+    "votazioni": [
+      "2024-10-08",
+      "2020-09-16"
+    ]
+  },
+  {
+    "nome": "Temistocle",
+    "cognome": "Pincherle",
+    "cartaID": "LX12827XD",
+    "votazioni": [
+      "2023-05-19"
+    ]
+  },
+  {
+    "nome": "Giada",
+    "cognome": "Serraglio",
+    "cartaID": "KW17550HS",
+    "votazioni": [
+      "2021-08-24",
+      "2021-10-08",
+      "2021-10-15"
+    ]
+  },
+  {
+    "nome": "Corrado",
+    "cognome": "Vattimo",
+    "cartaID": "DO56881CV",
+    "votazioni": [
+      "2021-12-27",
+      "2024-05-22",
+      "2025-01-09"
+    ]
+  },
+  {
+    "nome": "Germana",
+    "cognome": "Bragaglia",
+    "cartaID": "AH43009KO",
+    "votazioni": [
+      "2023-03-26",
+      "2024-08-22",
+      "2021-11-12"
+    ]
+  },
+  {
+    "nome": "Evangelista",
+    "cognome": "Beccheria-Mascagni",
+    "cartaID": "EW15728JZ",
+    "votazioni": [
+      "2022-11-16",
+      "2021-09-16"
+    ]
+  },
+  {
+    "nome": "Ida",
+    "cognome": "Ferrara",
+    "cartaID": "UQ47583ZR",
+    "votazioni": [
+      "2022-05-06"
+    ]
+  },
+  {
+    "nome": "Antonia",
+    "cognome": "Raimondi",
+    "cartaID": "WM96892CJ",
+    "votazioni": [
+      "2024-08-20",
+      "2023-09-17"
+    ]
+  },
+  {
+    "nome": "Marco",
+    "cognome": "Guarana-Pietrangeli",
+    "cartaID": "LW54503WY",
+    "votazioni": [
+      "2021-07-02",
+      "2023-02-02",
+      "2023-02-07"
+    ]
+  },
+  {
+    "nome": "Martino",
+    "cognome": "Spinola",
+    "cartaID": "IY46617HA",
+    "votazioni": [
+      "2023-09-20",
+      "2021-02-01"
+    ]
+  },
+  {
+    "nome": "Paulina",
+    "cognome": "Bompiani",
+    "cartaID": "VW59627YH",
+    "votazioni": [
+      "2023-02-12",
+      "2024-07-19"
+    ]
+  },
+  {
+    "nome": "Romina",
+    "cognome": "Abatantuono",
+    "cartaID": "VC77572YP",
+    "votazioni": [
+      "2020-10-11",
+      "2023-04-01"
+    ]
+  },
+  {
+    "nome": "Alderano",
+    "cognome": "Vergassola-Filzi",
+    "cartaID": "UC89593KR",
+    "votazioni": [
+      "2020-08-01",
+      "2023-01-26",
+      "2025-01-30"
+    ]
+  },
+  {
+    "nome": "Antonietta",
+    "cognome": "Gioberti",
+    "cartaID": "CA54789QJ",
+    "votazioni": [
+      "2023-12-21",
+      "2021-07-08",
+      "2022-12-03"
+    ]
+  },
+  {
+    "nome": "Priscilla",
+    "cognome": "Palombi",
+    "cartaID": "ZH84523ZA",
+    "votazioni": [
+      "2021-03-19"
+    ]
+  },
+  {
+    "nome": "Piergiorgio",
+    "cognome": "Crespi",
+    "cartaID": "MO77634SF",
+    "votazioni": [
+      "2020-07-30"
+    ]
+  },
+  {
+    "nome": "Rita",
+    "cognome": "Alfieri",
+    "cartaID": "XK85338NB",
+    "votazioni": [
+      "2021-10-30",
+      "2023-11-21"
+    ]
+  },
+  {
+    "nome": "Lauretta",
+    "cognome": "Farnese",
+    "cartaID": "IW51319CW",
+    "votazioni": [
+      "2022-09-29"
+    ]
+  },
+  {
+    "nome": "Gino",
+    "cognome": "Peruzzi-Grisoni",
+    "cartaID": "GO20975BI",
+    "votazioni": [
+      "2020-07-28",
+      "2021-02-11"
+    ]
+  },
+  {
+    "nome": "Lisa",
+    "cognome": "Marazzi",
+    "cartaID": "UO83727OU",
+    "votazioni": [
+      "2022-09-20"
+    ]
+  },
+  {
+    "nome": "Mariana",
+    "cognome": "Caetani-Stoppani",
+    "cartaID": "WR94377GF",
+    "votazioni": [
+      "2022-11-10",
+      "2022-03-10"
+    ]
+  },
+  {
+    "nome": "Guido",
+    "cognome": "Dallara",
+    "cartaID": "LW03514ZN",
+    "votazioni": [
+      "2024-12-06",
+      "2023-05-24",
+      "2020-10-04"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Parri",
+    "cartaID": "JW52274JS",
+    "votazioni": [
+      "2020-07-31"
+    ]
+  },
+  {
+    "nome": "Ruggero",
+    "cognome": "Rapisardi",
+    "cartaID": "GQ78778CI",
+    "votazioni": [
+      "2021-12-12",
+      "2021-02-04",
+      "2021-05-07"
+    ]
+  },
+  {
+    "nome": "Ansaldo",
+    "cognome": "Bacosi",
+    "cartaID": "ER72242BG",
+    "votazioni": [
+      "2020-10-13",
+      "2024-09-02",
+      "2020-10-26"
+    ]
+  },
+  {
+    "nome": "Bettina",
+    "cognome": "Foa",
+    "cartaID": "MU31050BK",
+    "votazioni": [
+      "2023-08-20",
+      "2024-04-23",
+      "2020-11-13"
+    ]
+  },
+  {
+    "nome": "Ninetta",
+    "cognome": "Guariento-Gualandi",
+    "cartaID": "UD43036XR",
+    "votazioni": [
+      "2022-12-10",
+      "2020-06-26"
+    ]
+  },
+  {
+    "nome": "Gianpietro",
+    "cognome": "Tolentino",
+    "cartaID": "IC09932MQ",
+    "votazioni": [
+      "2024-08-09",
+      "2021-09-09"
+    ]
+  },
+  {
+    "nome": "Mario",
+    "cognome": "Varano",
+    "cartaID": "JJ82698KY",
+    "votazioni": [
+      "2021-02-13"
+    ]
+  },
+  {
+    "nome": "Pietro",
+    "cognome": "Angiolello",
+    "cartaID": "IA50359TI",
+    "votazioni": [
+      "2021-09-30"
+    ]
+  },
+  {
+    "nome": "Danilo",
+    "cognome": "Dallap\u00e9-Travaglio",
+    "cartaID": "ZW54209LX",
+    "votazioni": [
+      "2021-10-26",
+      "2022-12-16",
+      "2023-01-07"
+    ]
+  },
+  {
+    "nome": "Alina",
+    "cognome": "Tomasini",
+    "cartaID": "HX73593NR",
+    "votazioni": [
+      "2023-06-17",
+      "2020-10-23",
+      "2022-11-06"
+    ]
+  },
+  {
+    "nome": "Ottone",
+    "cognome": "Muti",
+    "cartaID": "CC60585QM",
+    "votazioni": [
+      "2022-09-12",
+      "2024-07-30"
+    ]
+  },
+  {
+    "nome": "Gianna",
+    "cognome": "Manzoni",
+    "cartaID": "KX66866KJ",
+    "votazioni": [
+      "2020-11-28",
+      "2025-05-03"
+    ]
+  },
+  {
+    "nome": "Ronaldo",
+    "cognome": "Pedersoli",
+    "cartaID": "RO04074DL",
+    "votazioni": [
+      "2024-07-05",
+      "2023-02-13",
+      "2020-09-03"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Camanni",
+    "cartaID": "DH90120HC",
+    "votazioni": [
+      "2022-03-20",
+      "2024-07-07",
+      "2024-10-31"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Filippini",
+    "cartaID": "HV06222UV",
+    "votazioni": [
+      "2020-07-14",
+      "2020-11-16",
+      "2023-06-05"
+    ]
+  },
+  {
+    "nome": "Alessandra",
+    "cognome": "Praga",
+    "cartaID": "YV38571EN",
+    "votazioni": [
+      "2024-05-09",
+      "2024-06-01",
+      "2022-07-14"
+    ]
+  },
+  {
+    "nome": "Susanna",
+    "cognome": "Mastandrea-Canali",
+    "cartaID": "KK92563OO",
+    "votazioni": [
+      "2024-04-21",
+      "2024-08-02",
+      "2022-03-17"
+    ]
+  },
+  {
+    "nome": "Sig.",
+    "cognome": "Panzera",
+    "cartaID": "WI90967ZB",
+    "votazioni": [
+      "2023-06-06"
+    ]
+  },
+  {
+    "nome": "Milo",
+    "cognome": "Ciani-Falier",
+    "cartaID": "XT19040HW",
+    "votazioni": [
+      "2020-12-16",
+      "2024-03-14"
+    ]
+  },
+  {
+    "nome": "Dionigi",
+    "cognome": "Modigliani",
+    "cartaID": "OO29198GO",
+    "votazioni": [
+      "2020-10-12"
+    ]
+  },
+  {
+    "nome": "Gabriele",
+    "cognome": "Grifeo",
+    "cartaID": "IB63198PF",
+    "votazioni": [
+      "2022-04-25"
+    ]
+  },
+  {
+    "nome": "Gianna",
+    "cognome": "Fusani-Rubbia",
+    "cartaID": "CL51291FG",
+    "votazioni": [
+      "2021-11-05",
+      "2021-06-18",
+      "2021-09-04"
+    ]
+  },
+  {
+    "nome": "Ugo",
+    "cognome": "Gilardoni",
+    "cartaID": "QX00699OK",
+    "votazioni": [
+      "2024-06-27",
+      "2023-01-29",
+      "2022-11-07"
+    ]
+  },
+  {
+    "nome": "Cristina",
+    "cognome": "Guinizzelli",
+    "cartaID": "OC16550SS",
+    "votazioni": [
+      "2022-07-03"
+    ]
+  },
+  {
+    "nome": "Piergiuseppe",
+    "cognome": "Udinesi",
+    "cartaID": "PD06584OX",
+    "votazioni": [
+      "2022-02-10"
+    ]
+  },
+  {
+    "nome": "Puccio",
+    "cognome": "Segni",
+    "cartaID": "NN81370GA",
+    "votazioni": [
+      "2021-12-17"
+    ]
+  },
+  {
+    "nome": "Marcella",
+    "cognome": "Lollobrigida",
+    "cartaID": "TZ59719JY",
+    "votazioni": [
+      "2022-09-17"
+    ]
+  },
+  {
+    "nome": "Luciano",
+    "cognome": "Boccioni",
+    "cartaID": "EZ69802NN",
+    "votazioni": [
+      "2024-12-16",
+      "2020-09-05",
+      "2023-05-24"
+    ]
+  },
+  {
+    "nome": "Alphons",
+    "cognome": "Guarato",
+    "cartaID": "CW57616UX",
+    "votazioni": [
+      "2024-08-19",
+      "2023-10-09",
+      "2023-09-03"
+    ]
+  },
+  {
+    "nome": "Federico",
+    "cognome": "Ughi",
+    "cartaID": "WD54600NC",
+    "votazioni": [
+      "2020-07-11",
+      "2023-07-17",
+      "2022-11-21"
+    ]
+  },
+  {
+    "nome": "Daniele",
+    "cognome": "Contrafatto",
+    "cartaID": "VS99786HZ",
+    "votazioni": [
+      "2021-04-05"
+    ]
+  },
+  {
+    "nome": "Nadia",
+    "cognome": "Sismondi",
+    "cartaID": "RY83795ET",
+    "votazioni": [
+      "2020-07-27",
+      "2022-02-11"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Salata",
+    "cartaID": "JY40514SF",
+    "votazioni": [
+      "2022-06-09",
+      "2021-01-08",
+      "2024-06-03"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Metella",
+    "cartaID": "YN17129GB",
+    "votazioni": [
+      "2024-03-18",
+      "2020-09-09",
+      "2021-07-28"
+    ]
+  },
+  {
+    "nome": "Serena",
+    "cognome": "Chigi",
+    "cartaID": "OP47813WQ",
+    "votazioni": [
+      "2024-06-23"
+    ]
+  },
+  {
+    "nome": "Giada",
+    "cognome": "Ligorio",
+    "cartaID": "DH72257CN",
+    "votazioni": [
+      "2023-11-19",
+      "2021-06-24"
+    ]
+  },
+  {
+    "nome": "Letizia",
+    "cognome": "Baroffio",
+    "cartaID": "CE75046QB",
+    "votazioni": [
+      "2020-12-09"
+    ]
+  },
+  {
+    "nome": "Pier",
+    "cognome": "Ossola-Agnesi",
+    "cartaID": "FB60003EK",
+    "votazioni": [
+      "2022-03-29",
+      "2022-06-30"
+    ]
+  },
+  {
+    "nome": "Caterina",
+    "cognome": "Alfieri",
+    "cartaID": "QI98217ZU",
+    "votazioni": [
+      "2020-10-20"
+    ]
+  },
+  {
+    "nome": "Carlo",
+    "cognome": "Taccola",
+    "cartaID": "UQ57272TJ",
+    "votazioni": [
+      "2022-08-30"
+    ]
+  },
+  {
+    "nome": "Dina",
+    "cognome": "Dovara",
+    "cartaID": "HD07082WY",
+    "votazioni": [
+      "2021-11-23"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Petrocelli",
+    "cartaID": "OT88786UM",
+    "votazioni": [
+      "2022-05-01",
+      "2021-08-25",
+      "2024-10-11"
+    ]
+  },
+  {
+    "nome": "Chiara",
+    "cognome": "Venturi",
+    "cartaID": "CO79223SS",
+    "votazioni": [
+      "2024-05-12"
+    ]
+  },
+  {
+    "nome": "Gian",
+    "cognome": "Florio",
+    "cartaID": "SC51334DU",
+    "votazioni": [
+      "2022-03-18",
+      "2023-08-15"
+    ]
+  },
+  {
+    "nome": "Antonino",
+    "cognome": "Zaccardo",
+    "cartaID": "IQ83995JP",
+    "votazioni": [
+      "2021-04-07",
+      "2020-12-25"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Zeffirelli",
+    "cartaID": "TW32559US",
+    "votazioni": [
+      "2024-09-08"
+    ]
+  },
+  {
+    "nome": "Cristina",
+    "cognome": "Corcos",
+    "cartaID": "YJ03618VZ",
+    "votazioni": [
+      "2022-08-16",
+      "2021-06-20"
+    ]
+  },
+  {
+    "nome": "Matilda",
+    "cognome": "Albertini",
+    "cartaID": "VU81202UZ",
+    "votazioni": [
+      "2021-04-08"
+    ]
+  },
+  {
+    "nome": "Gemma",
+    "cognome": "Tozzi",
+    "cartaID": "ZR24920FK",
+    "votazioni": [
+      "2022-02-26",
+      "2024-10-23",
+      "2022-05-29"
+    ]
+  },
+  {
+    "nome": "Claudia",
+    "cognome": "Vigliotti-Marangoni",
+    "cartaID": "XH75078AI",
+    "votazioni": [
+      "2022-08-08"
+    ]
+  },
+  {
+    "nome": "Natalia",
+    "cognome": "Callegari",
+    "cartaID": "UF13206SP",
+    "votazioni": [
+      "2024-02-29",
+      "2022-02-08"
+    ]
+  },
+  {
+    "nome": "Fedele",
+    "cognome": "Guarato",
+    "cartaID": "HX31377OQ",
+    "votazioni": [
+      "2025-01-31"
+    ]
+  },
+  {
+    "nome": "Sig.ra",
+    "cognome": "Ughi",
+    "cartaID": "TE45624XG",
+    "votazioni": [
+      "2024-08-14"
+    ]
+  },
+  {
+    "nome": "Vittoria",
+    "cognome": "Majorana",
+    "cartaID": "AW27361XZ",
+    "votazioni": [
+      "2021-07-13"
+    ]
+  },
+  {
+    "nome": "Ottone",
+    "cognome": "Segr\u00e8",
+    "cartaID": "ID79338LR",
+    "votazioni": [
+      "2024-01-21",
+      "2021-03-29"
+    ]
+  },
+  {
+    "nome": "Nadia",
+    "cognome": "Antonello-Gagliano",
+    "cartaID": "EK55439YI",
+    "votazioni": [
+      "2021-10-28",
+      "2024-11-29"
+    ]
+  },
+  {
+    "nome": "Alessandro",
+    "cognome": "Sinisi",
+    "cartaID": "QV02580PM",
+    "votazioni": [
+      "2021-08-10",
+      "2023-05-07"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Parpinel",
+    "cartaID": "PF14574MP",
+    "votazioni": [
+      "2023-08-03",
+      "2023-03-13",
+      "2023-04-03"
+    ]
+  },
+  {
+    "nome": "Sylvia",
+    "cognome": "Valguarnera",
+    "cartaID": "ND82477TW",
+    "votazioni": [
+      "2025-05-02"
+    ]
+  },
+  {
+    "nome": "Piermaria",
+    "cognome": "Giannuzzi",
+    "cartaID": "CL73544PR",
+    "votazioni": [
+      "2021-12-30"
+    ]
+  },
+  {
+    "nome": "Dott.",
+    "cognome": "Cuda",
+    "cartaID": "TS35317KQ",
+    "votazioni": [
+      "2023-05-17",
+      "2020-09-17"
+    ]
+  },
+  {
+    "nome": "Romeo",
+    "cognome": "Scarpa",
+    "cartaID": "IB21175KY",
+    "votazioni": [
+      "2024-11-28",
+      "2020-09-17"
+    ]
+  },
+  {
+    "nome": "Fulvio",
+    "cognome": "Bruno",
+    "cartaID": "QC80833FU",
+    "votazioni": [
+      "2023-08-27",
+      "2022-10-05"
+    ]
+  },
+  {
+    "nome": "Cecilia Maria Asia",
+    "cognome": "Cavosi",
+    "cartaID": "CA65065PH",
+    "votazioni": [
+      "2024-03-27",
+      "2022-11-10",
+      "2020-07-19"
+    ]
+  },
+  {
+    "nome": "Matilde",
+    "cognome": "Prati",
+    "cartaID": "CA00499KT",
+    "votazioni": [
+      "2024-07-16"
+    ]
+  },
+  {
+    "nome": "Elena",
+    "cognome": "Rubbo",
+    "cartaID": "CA00000AA",
+    "votazioni": [
+      "2022-10-10",
+      "2021-01-09",
+      "2020-09-09"
+    ]
+  }
+]
