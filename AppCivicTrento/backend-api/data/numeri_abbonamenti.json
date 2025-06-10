@@ -4,1407 +4,1607 @@
     "cognome": "Tolentino",
     "tipo": "autobus",
     "validoFino": "2027-05-28",
-    "codiceAbbonamento": "059295"
+    "codiceAbbonamento": "059295",
+    "dataAbb": "2023-01-03"
   },
   {
     "nome": "Rodolfo",
     "cognome": "Piacentini",
     "tipo": "treno",
     "validoFino": "2025-10-03",
-    "codiceAbbonamento": "499262"
+    "codiceAbbonamento": "499262",
+    "dataAbb": "2023-03-21"
   },
   {
     "nome": "Nino",
     "cognome": "Tozzi",
     "tipo": "treno",
     "validoFino": "2026-05-18",
-    "codiceAbbonamento": "513274"
+    "codiceAbbonamento": "513274",
+    "dataAbb": "2022-08-21"
   },
   {
     "nome": "Roberta",
     "cognome": "Manolesso",
     "tipo": "treno",
     "validoFino": "2027-02-28",
-    "codiceAbbonamento": "449348"
+    "codiceAbbonamento": "449348",
+    "dataAbb": "2022-06-23"
   },
   {
     "nome": "Anita",
     "cognome": "Filogamo-Vigliotti",
     "tipo": "treno",
     "validoFino": "2027-05-07",
-    "codiceAbbonamento": "876426"
+    "codiceAbbonamento": "876426",
+    "dataAbb": "2022-03-27"
   },
   {
     "nome": "Sandra",
     "cognome": "Tencalla",
     "tipo": "treno",
     "validoFino": "2026-02-25",
-    "codiceAbbonamento": "020888"
+    "codiceAbbonamento": "020888",
+    "dataAbb": "2022-09-21"
   },
   {
     "nome": "Dott.",
     "cognome": "Grossi",
     "tipo": "treno",
     "validoFino": "2025-10-30",
-    "codiceAbbonamento": "609234"
+    "codiceAbbonamento": "609234",
+    "dataAbb": "2022-05-09"
   },
   {
     "nome": "Rossana",
     "cognome": "Benigni",
     "tipo": "treno",
     "validoFino": "2025-07-31",
-    "codiceAbbonamento": "876657"
+    "codiceAbbonamento": "876657",
+    "dataAbb": "2022-05-10"
   },
   {
     "nome": "Livio",
     "cognome": "Gemito",
     "tipo": "treno",
     "validoFino": "2026-01-07",
-    "codiceAbbonamento": "790453"
+    "codiceAbbonamento": "790453",
+    "dataAbb": "2022-08-05"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Zoppetto",
     "tipo": "autobus",
     "validoFino": "2026-03-07",
-    "codiceAbbonamento": "182391"
+    "codiceAbbonamento": "182391",
+    "dataAbb": "2022-03-15"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Finotto",
     "tipo": "autobus",
     "validoFino": "2026-06-27",
-    "codiceAbbonamento": "103490"
+    "codiceAbbonamento": "103490",
+    "dataAbb": "2022-01-25"
   },
   {
     "nome": "Federica",
     "cognome": "Ruffini",
     "tipo": "treno",
     "validoFino": "2025-12-20",
-    "codiceAbbonamento": "124517"
+    "codiceAbbonamento": "124517",
+    "dataAbb": "2022-04-17"
   },
   {
     "nome": "Piergiuseppe",
     "cognome": "Tarantini-Oscuro",
     "tipo": "autobus",
     "validoFino": "2026-03-13",
-    "codiceAbbonamento": "592441"
+    "codiceAbbonamento": "592441",
+    "dataAbb": "2023-09-19"
   },
   {
     "nome": "Sig.",
     "cognome": "Zabarella",
     "tipo": "autobus",
     "validoFino": "2026-11-14",
-    "codiceAbbonamento": "982516"
+    "codiceAbbonamento": "982516",
+    "dataAbb": "2022-10-28"
   },
   {
     "nome": "Lucio",
     "cognome": "Almagià",
     "tipo": "autobus",
     "validoFino": "2025-07-29",
-    "codiceAbbonamento": "814599"
+    "codiceAbbonamento": "814599",
+    "dataAbb": "2022-07-08"
   },
   {
     "nome": "Berenice",
     "cognome": "Zecchini",
     "tipo": "autobus",
     "validoFino": "2025-07-13",
-    "codiceAbbonamento": "644158"
+    "codiceAbbonamento": "644158",
+    "dataAbb": "2022-06-11"
   },
   {
     "nome": "Achille",
     "cognome": "Peranda-Stefanelli",
     "tipo": "autobus",
     "validoFino": "2026-07-29",
-    "codiceAbbonamento": "875986"
+    "codiceAbbonamento": "875986",
+    "dataAbb": "2022-02-23"
   },
   {
     "nome": "Isa",
     "cognome": "Sollima",
     "tipo": "treno",
     "validoFino": "2025-12-12",
-    "codiceAbbonamento": "118585"
+    "codiceAbbonamento": "118585",
+    "dataAbb": "2022-11-10"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Ajello",
     "tipo": "treno",
     "validoFino": "2026-03-22",
-    "codiceAbbonamento": "380725"
+    "codiceAbbonamento": "380725",
+    "dataAbb": "2022-02-14"
   },
   {
     "nome": "Massimiliano",
     "cognome": "Pizzetti",
     "tipo": "treno",
     "validoFino": "2026-02-04",
-    "codiceAbbonamento": "799675"
+    "codiceAbbonamento": "799675",
+    "dataAbb": "2023-08-12"
   },
   {
     "nome": "Cecilia",
     "cognome": "Fibonacci",
     "tipo": "treno",
     "validoFino": "2027-03-31",
-    "codiceAbbonamento": "634890"
+    "codiceAbbonamento": "634890",
+    "dataAbb": "2023-08-05"
   },
   {
     "nome": "Mario",
     "cognome": "Passalacqua-Juvara",
     "tipo": "autobus",
     "validoFino": "2026-08-23",
-    "codiceAbbonamento": "408070"
+    "codiceAbbonamento": "408070",
+    "dataAbb": "2023-12-17"
   },
   {
     "nome": "Torquato",
     "cognome": "Bajardi",
     "tipo": "autobus",
     "validoFino": "2026-01-02",
-    "codiceAbbonamento": "241643"
+    "codiceAbbonamento": "241643",
+    "dataAbb": "2023-12-18"
   },
   {
     "nome": "Isa",
     "cognome": "Carullo",
     "tipo": "autobus",
     "validoFino": "2027-04-11",
-    "codiceAbbonamento": "849974"
+    "codiceAbbonamento": "849974",
+    "dataAbb": "2022-10-07"
   },
   {
     "nome": "Dott.",
     "cognome": "Bramante",
     "tipo": "treno",
     "validoFino": "2025-10-11",
-    "codiceAbbonamento": "148934"
+    "codiceAbbonamento": "148934",
+    "dataAbb": "2022-01-14"
   },
   {
     "nome": "Imelda",
     "cognome": "Trezzini",
     "tipo": "autobus",
     "validoFino": "2026-02-15",
-    "codiceAbbonamento": "248310"
+    "codiceAbbonamento": "248310",
+    "dataAbb": "2023-05-15"
   },
   {
     "nome": "Elvira",
     "cognome": "Ruberto",
     "tipo": "autobus",
     "validoFino": "2026-10-10",
-    "codiceAbbonamento": "588457"
+    "codiceAbbonamento": "588457",
+    "dataAbb": "2022-11-21"
   },
   {
     "nome": "Raffaello",
     "cognome": "Casale",
     "tipo": "treno",
     "validoFino": "2027-01-17",
-    "codiceAbbonamento": "426704"
+    "codiceAbbonamento": "426704",
+    "dataAbb": "2022-05-03"
   },
   {
     "nome": "Donatella",
     "cognome": "Stefanelli-Ossola",
     "tipo": "autobus",
     "validoFino": "2025-09-10",
-    "codiceAbbonamento": "856765"
+    "codiceAbbonamento": "856765",
+    "dataAbb": "2022-09-22"
   },
   {
     "nome": "Adamo",
     "cognome": "Bacosi",
     "tipo": "autobus",
     "validoFino": "2025-10-16",
-    "codiceAbbonamento": "780114"
+    "codiceAbbonamento": "780114",
+    "dataAbb": "2023-07-30"
   },
   {
     "nome": "Ninetta",
     "cognome": "Spadafora",
     "tipo": "autobus",
     "validoFino": "2026-12-26",
-    "codiceAbbonamento": "170697"
+    "codiceAbbonamento": "170697",
+    "dataAbb": "2023-09-06"
   },
   {
     "nome": "Pina",
     "cognome": "Lanfranchi-Cicala",
     "tipo": "autobus",
     "validoFino": "2025-12-17",
-    "codiceAbbonamento": "389425"
+    "codiceAbbonamento": "389425",
+    "dataAbb": "2023-12-06"
   },
   {
     "nome": "Adele",
     "cognome": "Martinelli",
     "tipo": "autobus",
     "validoFino": "2025-09-12",
-    "codiceAbbonamento": "369023"
+    "codiceAbbonamento": "369023",
+    "dataAbb": "2023-08-08"
   },
   {
     "nome": "Dott.",
     "cognome": "Gabrieli",
     "tipo": "treno",
     "validoFino": "2026-10-31",
-    "codiceAbbonamento": "493329"
+    "codiceAbbonamento": "493329",
+    "dataAbb": "2023-07-12"
   },
   {
     "nome": "Elladio",
     "cognome": "Depero-Finotto",
     "tipo": "autobus",
     "validoFino": "2026-11-02",
-    "codiceAbbonamento": "298198"
+    "codiceAbbonamento": "298198",
+    "dataAbb": "2022-03-28"
   },
   {
     "nome": "Lidia",
     "cognome": "Coppola",
     "tipo": "autobus",
     "validoFino": "2026-12-05",
-    "codiceAbbonamento": "585828"
+    "codiceAbbonamento": "585828",
+    "dataAbb": "2023-01-14"
   },
   {
     "nome": "Orlando",
     "cognome": "Tremonti",
     "tipo": "treno",
     "validoFino": "2025-09-15",
-    "codiceAbbonamento": "657936"
+    "codiceAbbonamento": "657936",
+    "dataAbb": "2022-01-19"
   },
   {
     "nome": "Dott.",
     "cognome": "Poerio",
     "tipo": "autobus",
     "validoFino": "2027-02-05",
-    "codiceAbbonamento": "985285"
+    "codiceAbbonamento": "985285",
+    "dataAbb": "2022-07-30"
   },
   {
     "nome": "Ricciotti",
     "cognome": "Parpinel",
     "tipo": "autobus",
     "validoFino": "2025-12-07",
-    "codiceAbbonamento": "281915"
+    "codiceAbbonamento": "281915",
+    "dataAbb": "2022-09-16"
   },
   {
     "nome": "Gustavo",
     "cognome": "Pasolini",
     "tipo": "treno",
     "validoFino": "2026-01-12",
-    "codiceAbbonamento": "259516"
+    "codiceAbbonamento": "259516",
+    "dataAbb": "2023-10-30"
   },
   {
     "nome": "Milena",
     "cognome": "Passalacqua",
     "tipo": "autobus",
     "validoFino": "2025-10-12",
-    "codiceAbbonamento": "535371"
+    "codiceAbbonamento": "535371",
+    "dataAbb": "2023-09-29"
   },
   {
     "nome": "Claudio",
     "cognome": "Casalodi",
     "tipo": "autobus",
     "validoFino": "2026-10-22",
-    "codiceAbbonamento": "879934"
+    "codiceAbbonamento": "879934",
+    "dataAbb": "2023-11-10"
   },
   {
     "nome": "Adele",
     "cognome": "Agostini",
     "tipo": "treno",
     "validoFino": "2026-08-14",
-    "codiceAbbonamento": "236997"
+    "codiceAbbonamento": "236997",
+    "dataAbb": "2023-05-19"
   },
   {
     "nome": "Marta",
     "cognome": "Porzio",
     "tipo": "autobus",
     "validoFino": "2026-07-07",
-    "codiceAbbonamento": "560311"
+    "codiceAbbonamento": "560311",
+    "dataAbb": "2022-04-11"
   },
   {
     "nome": "Daria",
     "cognome": "Cammarata",
     "tipo": "treno",
     "validoFino": "2026-11-15",
-    "codiceAbbonamento": "869799"
+    "codiceAbbonamento": "869799",
+    "dataAbb": "2022-08-02"
   },
   {
     "nome": "Rosina",
     "cognome": "Traversa",
     "tipo": "treno",
     "validoFino": "2025-12-04",
-    "codiceAbbonamento": "908738"
+    "codiceAbbonamento": "908738",
+    "dataAbb": "2022-09-08"
   },
   {
     "nome": "Ottavio",
     "cognome": "Manolesso",
     "tipo": "treno",
     "validoFino": "2025-12-30",
-    "codiceAbbonamento": "755162"
+    "codiceAbbonamento": "755162",
+    "dataAbb": "2022-06-28"
   },
   {
     "nome": "Berenice",
     "cognome": "Varano",
     "tipo": "treno",
     "validoFino": "2026-04-21",
-    "codiceAbbonamento": "322331"
+    "codiceAbbonamento": "322331",
+    "dataAbb": "2023-12-15"
   },
   {
     "nome": "Aria",
     "cognome": "Renier",
     "tipo": "treno",
     "validoFino": "2026-09-12",
-    "codiceAbbonamento": "015322"
+    "codiceAbbonamento": "015322",
+    "dataAbb": "2023-10-05"
   },
   {
     "nome": "Erika",
     "cognome": "Fischetti",
     "tipo": "treno",
     "validoFino": "2025-12-28",
-    "codiceAbbonamento": "195133"
+    "codiceAbbonamento": "195133",
+    "dataAbb": "2022-07-30"
   },
   {
     "nome": "Costanzo",
     "cognome": "Leopardi",
     "tipo": "autobus",
     "validoFino": "2026-05-03",
-    "codiceAbbonamento": "686131"
+    "codiceAbbonamento": "686131",
+    "dataAbb": "2022-04-14"
   },
   {
     "nome": "Gabriella",
     "cognome": "Gabbana-Endrizzi",
     "tipo": "treno",
     "validoFino": "2026-03-28",
-    "codiceAbbonamento": "068865"
+    "codiceAbbonamento": "068865",
+    "dataAbb": "2022-06-10"
   },
   {
     "nome": "Zaira",
     "cognome": "Zaccardo",
     "tipo": "treno",
     "validoFino": "2026-05-31",
-    "codiceAbbonamento": "963581"
+    "codiceAbbonamento": "963581",
+    "dataAbb": "2022-11-18"
   },
   {
     "nome": "Sole",
     "cognome": "Lollobrigida-Ferragamo",
     "tipo": "treno",
     "validoFino": "2026-05-21",
-    "codiceAbbonamento": "009695"
+    "codiceAbbonamento": "009695",
+    "dataAbb": "2022-09-06"
   },
   {
     "nome": "Geronimo",
     "cognome": "Parmitano-Barozzi",
     "tipo": "treno",
     "validoFino": "2027-04-04",
-    "codiceAbbonamento": "266421"
+    "codiceAbbonamento": "266421",
+    "dataAbb": "2023-06-10"
   },
   {
     "nome": "Luchino",
     "cognome": "Marazzi",
     "tipo": "autobus",
     "validoFino": "2026-03-12",
-    "codiceAbbonamento": "985936"
+    "codiceAbbonamento": "985936",
+    "dataAbb": "2023-05-29"
   },
   {
     "nome": "Carmelo",
     "cognome": "Babbo",
     "tipo": "autobus",
     "validoFino": "2027-02-13",
-    "codiceAbbonamento": "417367"
+    "codiceAbbonamento": "417367",
+    "dataAbb": "2023-08-14"
   },
   {
     "nome": "Fernanda",
     "cognome": "Borgia",
     "tipo": "autobus",
     "validoFino": "2025-09-02",
-    "codiceAbbonamento": "784562"
+    "codiceAbbonamento": "784562",
+    "dataAbb": "2022-04-08"
   },
   {
     "nome": "Simone",
     "cognome": "Bignardi",
     "tipo": "treno",
     "validoFino": "2027-02-26",
-    "codiceAbbonamento": "173889"
+    "codiceAbbonamento": "173889",
+    "dataAbb": "2022-09-29"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Scarfoglio",
     "tipo": "treno",
     "validoFino": "2027-02-22",
-    "codiceAbbonamento": "692970"
+    "codiceAbbonamento": "692970",
+    "dataAbb": "2022-07-05"
   },
   {
     "nome": "Cassandra",
     "cognome": "Pertile-Borromeo",
     "tipo": "treno",
     "validoFino": "2025-12-04",
-    "codiceAbbonamento": "117654"
+    "codiceAbbonamento": "117654",
+    "dataAbb": "2022-01-02"
   },
   {
     "nome": "Cipriano",
     "cognome": "Pietrangeli",
     "tipo": "autobus",
     "validoFino": "2026-08-09",
-    "codiceAbbonamento": "991027"
+    "codiceAbbonamento": "991027",
+    "dataAbb": "2022-12-29"
   },
   {
     "nome": "Annalisa",
     "cognome": "Nonis",
     "tipo": "autobus",
     "validoFino": "2025-10-11",
-    "codiceAbbonamento": "480638"
+    "codiceAbbonamento": "480638",
+    "dataAbb": "2022-04-27"
   },
   {
     "nome": "Sig.",
     "cognome": "Treves",
     "tipo": "treno",
     "validoFino": "2027-01-03",
-    "codiceAbbonamento": "364352"
+    "codiceAbbonamento": "364352",
+    "dataAbb": "2022-01-25"
   },
   {
     "nome": "Aurora",
     "cognome": "Ciani",
     "tipo": "autobus",
     "validoFino": "2025-11-14",
-    "codiceAbbonamento": "573877"
+    "codiceAbbonamento": "573877",
+    "dataAbb": "2022-03-20"
   },
   {
     "nome": "Fulvio",
     "cognome": "Liverotti-Rensi",
     "tipo": "treno",
     "validoFino": "2027-03-24",
-    "codiceAbbonamento": "026309"
+    "codiceAbbonamento": "026309",
+    "dataAbb": "2023-11-29"
   },
   {
     "nome": "Dott.",
     "cognome": "Chindamo",
     "tipo": "autobus",
     "validoFino": "2025-12-18",
-    "codiceAbbonamento": "702698"
+    "codiceAbbonamento": "702698",
+    "dataAbb": "2023-11-27"
   },
   {
     "nome": "Rosaria",
     "cognome": "Celentano",
     "tipo": "autobus",
     "validoFino": "2026-05-10",
-    "codiceAbbonamento": "766253"
+    "codiceAbbonamento": "766253",
+    "dataAbb": "2023-10-14"
   },
   {
     "nome": "Antonietta",
     "cognome": "Baggio",
     "tipo": "treno",
     "validoFino": "2025-09-27",
-    "codiceAbbonamento": "020187"
+    "codiceAbbonamento": "020187",
+    "dataAbb": "2022-03-24"
   },
   {
     "nome": "Agostino",
     "cognome": "Vespucci",
     "tipo": "treno",
     "validoFino": "2026-08-21",
-    "codiceAbbonamento": "336098"
+    "codiceAbbonamento": "336098",
+    "dataAbb": "2022-03-15"
   },
   {
     "nome": "Osvaldo",
     "cognome": "Canevascini",
     "tipo": "treno",
     "validoFino": "2026-12-27",
-    "codiceAbbonamento": "284898"
+    "codiceAbbonamento": "284898",
+    "dataAbb": "2023-09-27"
   },
   {
     "nome": "Dott.",
     "cognome": "Chiappetta",
     "tipo": "treno",
     "validoFino": "2027-04-24",
-    "codiceAbbonamento": "505276"
+    "codiceAbbonamento": "505276",
+    "dataAbb": "2023-07-29"
   },
   {
     "nome": "Dino",
     "cognome": "Broggini",
     "tipo": "autobus",
     "validoFino": "2025-12-16",
-    "codiceAbbonamento": "936748"
+    "codiceAbbonamento": "936748",
+    "dataAbb": "2022-02-19"
   },
   {
     "nome": "Evangelista",
     "cognome": "Randazzo",
     "tipo": "treno",
     "validoFino": "2026-08-12",
-    "codiceAbbonamento": "878772"
+    "codiceAbbonamento": "878772",
+    "dataAbb": "2022-07-02"
   },
   {
     "nome": "Fiorenzo",
     "cognome": "Frescobaldi",
     "tipo": "autobus",
     "validoFino": "2026-10-04",
-    "codiceAbbonamento": "954351"
+    "codiceAbbonamento": "954351",
+    "dataAbb": "2022-01-18"
   },
   {
     "nome": "Maria",
     "cognome": "Micheletti",
     "tipo": "treno",
     "validoFino": "2027-01-07",
-    "codiceAbbonamento": "578586"
+    "codiceAbbonamento": "578586",
+    "dataAbb": "2022-05-04"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Manzoni",
     "tipo": "autobus",
     "validoFino": "2026-11-12",
-    "codiceAbbonamento": "368732"
+    "codiceAbbonamento": "368732",
+    "dataAbb": "2023-10-10"
   },
   {
     "nome": "Sig.",
     "cognome": "Merisi",
     "tipo": "treno",
     "validoFino": "2025-10-27",
-    "codiceAbbonamento": "197212"
+    "codiceAbbonamento": "197212",
+    "dataAbb": "2023-11-13"
   },
   {
     "nome": "Morena",
     "cognome": "Giannetti",
     "tipo": "treno",
     "validoFino": "2026-03-17",
-    "codiceAbbonamento": "941835"
+    "codiceAbbonamento": "941835",
+    "dataAbb": "2023-10-29"
   },
   {
     "nome": "Gemma",
     "cognome": "Bodoni",
     "tipo": "treno",
     "validoFino": "2027-03-20",
-    "codiceAbbonamento": "503976"
+    "codiceAbbonamento": "503976",
+    "dataAbb": "2023-06-24"
   },
   {
     "nome": "Sig.",
     "cognome": "Gonzaga",
     "tipo": "autobus",
     "validoFino": "2025-07-26",
-    "codiceAbbonamento": "188900"
+    "codiceAbbonamento": "188900",
+    "dataAbb": "2022-07-20"
   },
   {
     "nome": "Fabio",
     "cognome": "Lombroso-Mazzocchi",
     "tipo": "treno",
     "validoFino": "2026-04-08",
-    "codiceAbbonamento": "458619"
+    "codiceAbbonamento": "458619",
+    "dataAbb": "2022-08-29"
   },
   {
     "nome": "Arnulfo",
     "cognome": "Travaglio",
     "tipo": "autobus",
     "validoFino": "2025-10-20",
-    "codiceAbbonamento": "953937"
+    "codiceAbbonamento": "953937",
+    "dataAbb": "2022-10-15"
   },
   {
     "nome": "Ippazio",
     "cognome": "Chiappetta",
     "tipo": "autobus",
     "validoFino": "2026-11-27",
-    "codiceAbbonamento": "992314"
+    "codiceAbbonamento": "992314",
+    "dataAbb": "2023-09-21"
   },
   {
     "nome": "Ornella",
     "cognome": "Murialdo",
     "tipo": "treno",
     "validoFino": "2026-11-05",
-    "codiceAbbonamento": "451746"
+    "codiceAbbonamento": "451746",
+    "dataAbb": "2022-08-29"
   },
   {
     "nome": "Gemma",
     "cognome": "Rusticucci",
     "tipo": "autobus",
     "validoFino": "2026-10-04",
-    "codiceAbbonamento": "739560"
+    "codiceAbbonamento": "739560",
+    "dataAbb": "2022-02-15"
   },
   {
     "nome": "Hugo",
     "cognome": "Sagese",
     "tipo": "treno",
     "validoFino": "2026-09-23",
-    "codiceAbbonamento": "689562"
+    "codiceAbbonamento": "689562",
+    "dataAbb": "2022-06-07"
   },
   {
     "nome": "Teresa",
     "cognome": "Borgia",
     "tipo": "autobus",
     "validoFino": "2027-03-17",
-    "codiceAbbonamento": "530271"
+    "codiceAbbonamento": "530271",
+    "dataAbb": "2022-03-29"
   },
   {
     "nome": "Jolanda",
     "cognome": "Pininfarina",
     "tipo": "autobus",
     "validoFino": "2026-08-03",
-    "codiceAbbonamento": "595229"
+    "codiceAbbonamento": "595229",
+    "dataAbb": "2022-04-23"
   },
   {
     "nome": "Ramona",
     "cognome": "Ceravolo",
     "tipo": "treno",
     "validoFino": "2027-01-31",
-    "codiceAbbonamento": "468072"
+    "codiceAbbonamento": "468072",
+    "dataAbb": "2023-10-04"
   },
   {
     "nome": "Dott.",
     "cognome": "Ortolani",
     "tipo": "autobus",
     "validoFino": "2025-12-17",
-    "codiceAbbonamento": "966637"
+    "codiceAbbonamento": "966637",
+    "dataAbb": "2022-04-09"
   },
   {
     "nome": "Hugo",
     "cognome": "Benedetti",
     "tipo": "autobus",
     "validoFino": "2026-11-11",
-    "codiceAbbonamento": "262532"
+    "codiceAbbonamento": "262532",
+    "dataAbb": "2022-02-15"
   },
   {
     "nome": "Maurizio",
     "cognome": "Farnese",
     "tipo": "treno",
     "validoFino": "2027-05-03",
-    "codiceAbbonamento": "638513"
+    "codiceAbbonamento": "638513",
+    "dataAbb": "2023-08-28"
   },
   {
     "nome": "Dott.",
     "cognome": "Majewski",
     "tipo": "treno",
     "validoFino": "2025-07-27",
-    "codiceAbbonamento": "034587"
+    "codiceAbbonamento": "034587",
+    "dataAbb": "2022-02-15"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Combi",
     "tipo": "treno",
     "validoFino": "2026-08-17",
-    "codiceAbbonamento": "576461"
+    "codiceAbbonamento": "576461",
+    "dataAbb": "2022-10-25"
   },
   {
     "nome": "Fedele",
     "cognome": "Piazzi",
     "tipo": "treno",
     "validoFino": "2027-01-14",
-    "codiceAbbonamento": "475576"
+    "codiceAbbonamento": "475576",
+    "dataAbb": "2023-04-26"
   },
   {
     "nome": "Romeo",
     "cognome": "Oscuro-Saragat",
     "tipo": "treno",
     "validoFino": "2027-05-24",
-    "codiceAbbonamento": "890938"
+    "codiceAbbonamento": "890938",
+    "dataAbb": "2023-12-01"
   },
   {
     "nome": "Calogero",
     "cognome": "Amaldi",
     "tipo": "treno",
     "validoFino": "2026-05-12",
-    "codiceAbbonamento": "875683"
+    "codiceAbbonamento": "875683",
+    "dataAbb": "2023-08-11"
   },
   {
     "nome": "Gianna",
     "cognome": "Grassi",
     "tipo": "autobus",
     "validoFino": "2025-07-16",
-    "codiceAbbonamento": "584170"
+    "codiceAbbonamento": "584170",
+    "dataAbb": "2022-12-07"
   },
   {
     "nome": "Melania",
     "cognome": "Jovinelli",
     "tipo": "autobus",
     "validoFino": "2027-03-23",
-    "codiceAbbonamento": "609424"
+    "codiceAbbonamento": "609424",
+    "dataAbb": "2022-08-07"
   },
   {
     "nome": "Claudio",
     "cognome": "Aloisio",
     "tipo": "treno",
     "validoFino": "2027-05-02",
-    "codiceAbbonamento": "349730"
+    "codiceAbbonamento": "349730",
+    "dataAbb": "2023-01-09"
   },
   {
     "nome": "Federico",
     "cognome": "Giannelli",
     "tipo": "treno",
     "validoFino": "2027-02-24",
-    "codiceAbbonamento": "218691"
+    "codiceAbbonamento": "218691",
+    "dataAbb": "2022-01-25"
   },
   {
     "nome": "Graziella",
     "cognome": "Armani",
     "tipo": "autobus",
     "validoFino": "2026-03-14",
-    "codiceAbbonamento": "534731"
+    "codiceAbbonamento": "534731",
+    "dataAbb": "2022-12-05"
   },
   {
     "nome": "Adriana",
     "cognome": "Alighieri",
     "tipo": "autobus",
     "validoFino": "2027-05-14",
-    "codiceAbbonamento": "076941"
+    "codiceAbbonamento": "076941",
+    "dataAbb": "2023-04-11"
   },
   {
     "nome": "Guarino",
     "cognome": "Russo",
     "tipo": "treno",
     "validoFino": "2026-04-16",
-    "codiceAbbonamento": "090710"
+    "codiceAbbonamento": "090710",
+    "dataAbb": "2022-05-08"
   },
   {
     "nome": "Ninetta",
     "cognome": "Toscanini",
     "tipo": "autobus",
     "validoFino": "2026-12-01",
-    "codiceAbbonamento": "896369"
+    "codiceAbbonamento": "896369",
+    "dataAbb": "2023-05-06"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Fittipaldi",
     "tipo": "autobus",
     "validoFino": "2026-12-14",
-    "codiceAbbonamento": "779647"
+    "codiceAbbonamento": "779647",
+    "dataAbb": "2022-10-04"
   },
   {
     "nome": "Vincenzo",
     "cognome": "Dovara",
     "tipo": "treno",
     "validoFino": "2026-03-01",
-    "codiceAbbonamento": "491492"
+    "codiceAbbonamento": "491492",
+    "dataAbb": "2022-02-15"
   },
   {
     "nome": "Donatella",
     "cognome": "Nosiglia",
     "tipo": "treno",
     "validoFino": "2026-10-16",
-    "codiceAbbonamento": "446637"
+    "codiceAbbonamento": "446637",
+    "dataAbb": "2023-02-07"
   },
   {
     "nome": "Carolina",
     "cognome": "Bernardi-Cattaneo",
     "tipo": "treno",
     "validoFino": "2027-02-13",
-    "codiceAbbonamento": "156561"
+    "codiceAbbonamento": "156561",
+    "dataAbb": "2023-06-10"
   },
   {
     "nome": "Ferdinando",
     "cognome": "Togliatti",
     "tipo": "autobus",
     "validoFino": "2027-03-07",
-    "codiceAbbonamento": "429431"
+    "codiceAbbonamento": "429431",
+    "dataAbb": "2022-01-05"
   },
   {
     "nome": "Gioele",
     "cognome": "Stefanelli",
     "tipo": "autobus",
     "validoFino": "2025-11-26",
-    "codiceAbbonamento": "991229"
+    "codiceAbbonamento": "991229",
+    "dataAbb": "2022-03-07"
   },
   {
     "nome": "Melissa",
     "cognome": "Monteverdi",
     "tipo": "autobus",
     "validoFino": "2027-01-20",
-    "codiceAbbonamento": "548916"
+    "codiceAbbonamento": "548916",
+    "dataAbb": "2022-12-24"
   },
   {
     "nome": "Liberto",
     "cognome": "Interminelli-Pisaroni",
     "tipo": "treno",
     "validoFino": "2026-01-04",
-    "codiceAbbonamento": "435582"
+    "codiceAbbonamento": "435582",
+    "dataAbb": "2022-02-19"
   },
   {
     "nome": "Agnolo",
     "cognome": "Nordio",
     "tipo": "autobus",
     "validoFino": "2027-05-24",
-    "codiceAbbonamento": "246792"
+    "codiceAbbonamento": "246792",
+    "dataAbb": "2023-11-28"
   },
   {
     "nome": "Gianni",
     "cognome": "Canil",
     "tipo": "treno",
     "validoFino": "2025-09-08",
-    "codiceAbbonamento": "472289"
+    "codiceAbbonamento": "472289",
+    "dataAbb": "2022-10-20"
   },
   {
     "nome": "Antonina",
     "cognome": "Inzaghi",
     "tipo": "autobus",
     "validoFino": "2025-11-03",
-    "codiceAbbonamento": "798892"
+    "codiceAbbonamento": "798892",
+    "dataAbb": "2023-02-03"
   },
   {
     "nome": "Milo",
     "cognome": "Gualtieri",
     "tipo": "autobus",
     "validoFino": "2025-07-28",
-    "codiceAbbonamento": "549497"
+    "codiceAbbonamento": "549497",
+    "dataAbb": "2022-01-30"
   },
   {
     "nome": "Sig.",
     "cognome": "Travia",
     "tipo": "autobus",
     "validoFino": "2025-09-19",
-    "codiceAbbonamento": "506241"
+    "codiceAbbonamento": "506241",
+    "dataAbb": "2022-01-05"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Villadicani",
     "tipo": "treno",
     "validoFino": "2026-10-12",
-    "codiceAbbonamento": "288801"
+    "codiceAbbonamento": "288801",
+    "dataAbb": "2022-10-26"
   },
   {
     "nome": "Greca",
     "cognome": "Bernetti",
     "tipo": "treno",
     "validoFino": "2026-10-05",
-    "codiceAbbonamento": "301379"
+    "codiceAbbonamento": "301379",
+    "dataAbb": "2022-06-10"
   },
   {
     "nome": "Aurora",
     "cognome": "Trebbi",
     "tipo": "autobus",
     "validoFino": "2026-02-27",
-    "codiceAbbonamento": "032434"
+    "codiceAbbonamento": "032434",
+    "dataAbb": "2022-12-20"
   },
   {
     "nome": "Mirco",
     "cognome": "Gozzano",
     "tipo": "treno",
     "validoFino": "2025-08-23",
-    "codiceAbbonamento": "654344"
+    "codiceAbbonamento": "654344",
+    "dataAbb": "2022-03-31"
   },
   {
     "nome": "Manuel",
     "cognome": "Baggio",
     "tipo": "autobus",
     "validoFino": "2026-03-24",
-    "codiceAbbonamento": "864469"
+    "codiceAbbonamento": "864469",
+    "dataAbb": "2023-09-17"
   },
   {
     "nome": "Piermaria",
     "cognome": "Torricelli",
     "tipo": "treno",
     "validoFino": "2025-08-22",
-    "codiceAbbonamento": "455084"
+    "codiceAbbonamento": "455084",
+    "dataAbb": "2022-03-26"
   },
   {
     "nome": "Marcello",
     "cognome": "Romiti",
     "tipo": "treno",
     "validoFino": "2027-02-06",
-    "codiceAbbonamento": "220971"
+    "codiceAbbonamento": "220971",
+    "dataAbb": "2023-01-06"
   },
   {
     "nome": "Orlando",
     "cognome": "Costanzi",
     "tipo": "treno",
     "validoFino": "2026-08-14",
-    "codiceAbbonamento": "292943"
+    "codiceAbbonamento": "292943",
+    "dataAbb": "2023-02-25"
   },
   {
     "nome": "Carla",
     "cognome": "Pace",
     "tipo": "treno",
     "validoFino": "2025-12-14",
-    "codiceAbbonamento": "995005"
+    "codiceAbbonamento": "995005",
+    "dataAbb": "2022-06-13"
   },
   {
     "nome": "Sandra",
     "cognome": "Argurio",
     "tipo": "autobus",
     "validoFino": "2026-12-02",
-    "codiceAbbonamento": "400629"
+    "codiceAbbonamento": "400629",
+    "dataAbb": "2022-03-01"
   },
   {
     "nome": "Delfino",
     "cognome": "Storladi",
     "tipo": "autobus",
     "validoFino": "2026-04-26",
-    "codiceAbbonamento": "365274"
+    "codiceAbbonamento": "365274",
+    "dataAbb": "2022-09-04"
   },
   {
     "nome": "Eleanora",
     "cognome": "Bersani-Bompiani",
     "tipo": "autobus",
     "validoFino": "2027-01-31",
-    "codiceAbbonamento": "679619"
+    "codiceAbbonamento": "679619",
+    "dataAbb": "2022-12-03"
   },
   {
     "nome": "Silvia",
     "cognome": "Abate",
     "tipo": "treno",
     "validoFino": "2027-05-19",
-    "codiceAbbonamento": "225891"
+    "codiceAbbonamento": "225891",
+    "dataAbb": "2022-10-07"
   },
   {
     "nome": "Valeria",
     "cognome": "Bottigliero",
     "tipo": "autobus",
     "validoFino": "2026-05-23",
-    "codiceAbbonamento": "794921"
+    "codiceAbbonamento": "794921",
+    "dataAbb": "2022-10-30"
   },
   {
     "nome": "Emma",
     "cognome": "Mogherini-Brugnaro",
     "tipo": "autobus",
     "validoFino": "2026-01-08",
-    "codiceAbbonamento": "319407"
+    "codiceAbbonamento": "319407",
+    "dataAbb": "2023-12-23"
   },
   {
     "nome": "Silvio",
     "cognome": "Vendetti",
     "tipo": "treno",
     "validoFino": "2026-06-07",
-    "codiceAbbonamento": "324078"
+    "codiceAbbonamento": "324078",
+    "dataAbb": "2022-08-12"
   },
   {
     "nome": "Piermaria",
     "cognome": "Juvara",
     "tipo": "treno",
     "validoFino": "2026-04-05",
-    "codiceAbbonamento": "746308"
+    "codiceAbbonamento": "746308",
+    "dataAbb": "2022-01-11"
   },
   {
     "nome": "Maurilio",
     "cognome": "Magnani",
     "tipo": "autobus",
     "validoFino": "2027-02-16",
-    "codiceAbbonamento": "060540"
+    "codiceAbbonamento": "060540",
+    "dataAbb": "2022-12-05"
   },
   {
     "nome": "Paola",
     "cognome": "Scotti",
     "tipo": "treno",
     "validoFino": "2026-12-17",
-    "codiceAbbonamento": "719158"
+    "codiceAbbonamento": "719158",
+    "dataAbb": "2022-03-23"
   },
   {
     "nome": "Eugenia",
     "cognome": "Napolitano-Missoni",
     "tipo": "treno",
     "validoFino": "2026-10-02",
-    "codiceAbbonamento": "791731"
+    "codiceAbbonamento": "791731",
+    "dataAbb": "2023-09-17"
   },
   {
     "nome": "Donna",
     "cognome": "Pedrazzini",
     "tipo": "autobus",
     "validoFino": "2027-03-31",
-    "codiceAbbonamento": "702413"
+    "codiceAbbonamento": "702413",
+    "dataAbb": "2022-11-29"
   },
   {
     "nome": "Chiara",
     "cognome": "Scaramucci",
     "tipo": "treno",
     "validoFino": "2027-03-04",
-    "codiceAbbonamento": "606589"
+    "codiceAbbonamento": "606589",
+    "dataAbb": "2023-03-31"
   },
   {
     "nome": "Valeria",
     "cognome": "Ricci-Borsellino",
     "tipo": "autobus",
     "validoFino": "2025-11-19",
-    "codiceAbbonamento": "785572"
+    "codiceAbbonamento": "785572",
+    "dataAbb": "2023-03-26"
   },
   {
     "nome": "Mattia",
     "cognome": "Carducci",
     "tipo": "autobus",
     "validoFino": "2026-08-11",
-    "codiceAbbonamento": "939334"
+    "codiceAbbonamento": "939334",
+    "dataAbb": "2022-09-25"
   },
   {
     "nome": "Paulina",
     "cognome": "Gaggini",
     "tipo": "treno",
     "validoFino": "2026-02-16",
-    "codiceAbbonamento": "187924"
+    "codiceAbbonamento": "187924",
+    "dataAbb": "2023-02-03"
   },
   {
     "nome": "Dott.",
     "cognome": "Gagliano",
     "tipo": "autobus",
     "validoFino": "2025-09-06",
-    "codiceAbbonamento": "661421"
+    "codiceAbbonamento": "661421",
+    "dataAbb": "2022-06-11"
   },
   {
     "nome": "Alessandro",
     "cognome": "Procacci-Odescalchi",
     "tipo": "autobus",
     "validoFino": "2026-09-21",
-    "codiceAbbonamento": "360463"
+    "codiceAbbonamento": "360463",
+    "dataAbb": "2022-01-28"
   },
   {
     "nome": "Lina",
     "cognome": "Montanelli",
     "tipo": "treno",
     "validoFino": "2025-09-09",
-    "codiceAbbonamento": "615714"
+    "codiceAbbonamento": "615714",
+    "dataAbb": "2022-11-02"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Morrocco",
     "tipo": "treno",
     "validoFino": "2027-03-14",
-    "codiceAbbonamento": "747963"
+    "codiceAbbonamento": "747963",
+    "dataAbb": "2023-02-02"
   },
   {
     "nome": "Dante",
     "cognome": "Roero",
     "tipo": "treno",
     "validoFino": "2026-09-10",
-    "codiceAbbonamento": "967156"
+    "codiceAbbonamento": "967156",
+    "dataAbb": "2022-09-06"
   },
   {
     "nome": "Natalia",
     "cognome": "Travia",
     "tipo": "autobus",
     "validoFino": "2026-11-12",
-    "codiceAbbonamento": "457347"
+    "codiceAbbonamento": "457347",
+    "dataAbb": "2022-05-25"
   },
   {
     "nome": "Lina",
     "cognome": "Lombardo",
     "tipo": "autobus",
     "validoFino": "2027-05-02",
-    "codiceAbbonamento": "079288"
+    "codiceAbbonamento": "079288",
+    "dataAbb": "2023-06-14"
   },
   {
     "nome": "Lolita",
     "cognome": "Marsili-Capecchi",
     "tipo": "autobus",
     "validoFino": "2025-07-17",
-    "codiceAbbonamento": "326102"
+    "codiceAbbonamento": "326102",
+    "dataAbb": "2023-12-02"
   },
   {
     "nome": "Dina",
     "cognome": "Petrocelli",
     "tipo": "treno",
     "validoFino": "2026-05-31",
-    "codiceAbbonamento": "016081"
+    "codiceAbbonamento": "016081",
+    "dataAbb": "2022-08-08"
   },
   {
     "nome": "Enrico",
     "cognome": "Alighieri-Stoppani",
     "tipo": "autobus",
     "validoFino": "2026-10-25",
-    "codiceAbbonamento": "183090"
+    "codiceAbbonamento": "183090",
+    "dataAbb": "2022-04-11"
   },
   {
     "nome": "Agostino",
     "cognome": "Pisaroni",
     "tipo": "treno",
     "validoFino": "2026-07-22",
-    "codiceAbbonamento": "477828"
+    "codiceAbbonamento": "477828",
+    "dataAbb": "2022-11-16"
   },
   {
     "nome": "Carlo",
     "cognome": "Caffarelli",
     "tipo": "treno",
     "validoFino": "2026-11-24",
-    "codiceAbbonamento": "114194"
+    "codiceAbbonamento": "114194",
+    "dataAbb": "2023-07-03"
   },
   {
     "nome": "Marina",
     "cognome": "Govoni",
     "tipo": "treno",
     "validoFino": "2025-08-26",
-    "codiceAbbonamento": "341555"
+    "codiceAbbonamento": "341555",
+    "dataAbb": "2022-12-21"
   },
   {
     "nome": "Matilda",
     "cognome": "Gucci-Lombardo",
     "tipo": "autobus",
     "validoFino": "2026-02-27",
-    "codiceAbbonamento": "586474"
+    "codiceAbbonamento": "586474",
+    "dataAbb": "2022-02-14"
   },
   {
     "nome": "Sig.",
     "cognome": "Sommaruga",
     "tipo": "autobus",
     "validoFino": "2026-09-27",
-    "codiceAbbonamento": "926763"
+    "codiceAbbonamento": "926763",
+    "dataAbb": "2022-06-08"
   },
   {
     "nome": "Roberto",
     "cognome": "Montalcini",
     "tipo": "autobus",
     "validoFino": "2026-02-24",
-    "codiceAbbonamento": "997641"
+    "codiceAbbonamento": "997641",
+    "dataAbb": "2023-08-16"
   },
   {
     "nome": "Graziella",
     "cognome": "Zoppetto",
     "tipo": "treno",
     "validoFino": "2025-09-04",
-    "codiceAbbonamento": "866529"
+    "codiceAbbonamento": "866529",
+    "dataAbb": "2023-12-18"
   },
   {
     "nome": "Danilo",
     "cognome": "Angiolello-Leblanc",
     "tipo": "treno",
     "validoFino": "2026-03-04",
-    "codiceAbbonamento": "151080"
+    "codiceAbbonamento": "151080",
+    "dataAbb": "2023-02-25"
   },
   {
     "nome": "Stefania",
     "cognome": "Vecoli",
     "tipo": "autobus",
     "validoFino": "2025-11-28",
-    "codiceAbbonamento": "692769"
+    "codiceAbbonamento": "692769",
+    "dataAbb": "2022-12-25"
   },
   {
     "nome": "Lucia",
     "cognome": "Pizziol-Buscetta",
     "tipo": "treno",
     "validoFino": "2025-08-05",
-    "codiceAbbonamento": "805881"
+    "codiceAbbonamento": "805881",
+    "dataAbb": "2023-09-09"
   },
   {
     "nome": "Achille",
     "cognome": "Nievo",
     "tipo": "autobus",
     "validoFino": "2026-08-19",
-    "codiceAbbonamento": "423115"
+    "codiceAbbonamento": "423115",
+    "dataAbb": "2023-07-30"
   },
   {
     "nome": "Livio",
     "cognome": "Sauli",
     "tipo": "treno",
     "validoFino": "2027-06-01",
-    "codiceAbbonamento": "285911"
+    "codiceAbbonamento": "285911",
+    "dataAbb": "2022-01-17"
   },
   {
     "nome": "Augusto",
     "cognome": "Ruberto",
     "tipo": "autobus",
     "validoFino": "2026-11-28",
-    "codiceAbbonamento": "125433"
+    "codiceAbbonamento": "125433",
+    "dataAbb": "2023-12-07"
   },
   {
     "nome": "Veronica",
     "cognome": "Sagnelli",
     "tipo": "treno",
     "validoFino": "2027-02-05",
-    "codiceAbbonamento": "074818"
+    "codiceAbbonamento": "074818",
+    "dataAbb": "2023-01-25"
   },
   {
     "nome": "Sig.",
     "cognome": "Bragadin",
     "tipo": "treno",
     "validoFino": "2027-02-28",
-    "codiceAbbonamento": "863176"
+    "codiceAbbonamento": "863176",
+    "dataAbb": "2023-03-15"
   },
   {
     "nome": "Bianca",
     "cognome": "Luna",
     "tipo": "treno",
     "validoFino": "2025-09-25",
-    "codiceAbbonamento": "907684"
+    "codiceAbbonamento": "907684",
+    "dataAbb": "2023-09-20"
   },
   {
     "nome": "Imelda",
     "cognome": "Trentini",
     "tipo": "treno",
     "validoFino": "2027-03-29",
-    "codiceAbbonamento": "945124"
+    "codiceAbbonamento": "945124",
+    "dataAbb": "2022-04-12"
   },
   {
     "nome": "Evangelista",
     "cognome": "Staglieno",
     "tipo": "autobus",
     "validoFino": "2025-09-11",
-    "codiceAbbonamento": "237092"
+    "codiceAbbonamento": "237092",
+    "dataAbb": "2023-02-25"
   },
   {
     "nome": "Fortunata",
     "cognome": "Tamburi-Santorio",
     "tipo": "treno",
     "validoFino": "2026-06-05",
-    "codiceAbbonamento": "566221"
+    "codiceAbbonamento": "566221",
+    "dataAbb": "2022-09-21"
   },
   {
     "nome": "Sig.",
     "cognome": "Torlonia",
     "tipo": "autobus",
     "validoFino": "2027-02-03",
-    "codiceAbbonamento": "864026"
+    "codiceAbbonamento": "864026",
+    "dataAbb": "2023-09-25"
   },
   {
     "nome": "Aria",
     "cognome": "Ramazzotti",
     "tipo": "treno",
     "validoFino": "2027-04-04",
-    "codiceAbbonamento": "295835"
+    "codiceAbbonamento": "295835",
+    "dataAbb": "2023-06-28"
   },
   {
     "nome": "Milena",
     "cognome": "Scotti-Bova",
     "tipo": "treno",
     "validoFino": "2027-01-28",
-    "codiceAbbonamento": "702883"
+    "codiceAbbonamento": "702883",
+    "dataAbb": "2023-03-01"
   },
   {
     "nome": "Marta",
     "cognome": "Gianetti",
     "tipo": "treno",
     "validoFino": "2027-06-02",
-    "codiceAbbonamento": "133215"
+    "codiceAbbonamento": "133215",
+    "dataAbb": "2022-03-08"
   },
   {
     "nome": "Piero",
     "cognome": "Rienzo-Broggini",
     "tipo": "autobus",
     "validoFino": "2026-05-03",
-    "codiceAbbonamento": "152859"
+    "codiceAbbonamento": "152859",
+    "dataAbb": "2022-07-19"
   },
   {
     "nome": "Francesca",
     "cognome": "Telesio",
     "tipo": "treno",
     "validoFino": "2026-05-22",
-    "codiceAbbonamento": "498647"
+    "codiceAbbonamento": "498647",
+    "dataAbb": "2023-07-03"
   },
   {
     "nome": "Dott.",
     "cognome": "Luciani",
     "tipo": "autobus",
     "validoFino": "2025-12-15",
-    "codiceAbbonamento": "654317"
+    "codiceAbbonamento": "654317",
+    "dataAbb": "2023-08-06"
   },
   {
     "nome": "Puccio",
     "cognome": "Murialdo",
     "tipo": "autobus",
     "validoFino": "2027-05-23",
-    "codiceAbbonamento": "817534"
+    "codiceAbbonamento": "817534",
+    "dataAbb": "2023-01-25"
   },
   {
     "nome": "Dott.",
     "cognome": "Castelli",
     "tipo": "treno",
     "validoFino": "2026-09-16",
-    "codiceAbbonamento": "891489"
+    "codiceAbbonamento": "891489",
+    "dataAbb": "2022-04-15"
   },
   {
     "nome": "Monica",
     "cognome": "Tornatore",
     "tipo": "autobus",
     "validoFino": "2026-03-25",
-    "codiceAbbonamento": "883476"
+    "codiceAbbonamento": "883476",
+    "dataAbb": "2022-01-22"
   },
   {
     "nome": "Dott.",
     "cognome": "Finotto",
     "tipo": "autobus",
     "validoFino": "2026-06-20",
-    "codiceAbbonamento": "234147"
+    "codiceAbbonamento": "234147",
+    "dataAbb": "2023-09-23"
   },
   {
     "nome": "Dott.",
     "cognome": "Einaudi",
     "tipo": "autobus",
     "validoFino": "2026-12-31",
-    "codiceAbbonamento": "152712"
+    "codiceAbbonamento": "152712",
+    "dataAbb": "2023-11-11"
   },
   {
     "nome": "Sig.ra",
     "cognome": "Leonardi",
     "tipo": "autobus",
     "validoFino": "2026-10-30",
-    "codiceAbbonamento": "267610"
+    "codiceAbbonamento": "267610",
+    "dataAbb": "2023-06-29"
   },
   {
     "nome": "Ivan",
     "cognome": "Inzaghi",
     "tipo": "autobus",
     "validoFino": "2026-07-26",
-    "codiceAbbonamento": "424031"
+    "codiceAbbonamento": "424031",
+    "dataAbb": "2023-04-18"
   },
   {
     "nome": "Gabriella",
     "cognome": "Venier",
     "tipo": "treno",
     "validoFino": "2026-02-24",
-    "codiceAbbonamento": "528849"
+    "codiceAbbonamento": "528849",
+    "dataAbb": "2022-08-28"
   },
   {
     "nome": "Renzo",
     "cognome": "Scalera",
     "tipo": "autobus",
     "validoFino": "2026-11-02",
-    "codiceAbbonamento": "268653"
+    "codiceAbbonamento": "268653",
+    "dataAbb": "2023-07-26"
   },
   {
     "nome": "Giada",
     "cognome": "Ariosto",
     "tipo": "autobus",
     "validoFino": "2026-07-11",
-    "codiceAbbonamento": "976666"
+    "codiceAbbonamento": "976666",
+    "dataAbb": "2023-02-22"
   },
   {
     "nome": "Vittoria",
     "cognome": "Bellini-Raimondi",
     "tipo": "autobus",
     "validoFino": "2026-04-20",
-    "codiceAbbonamento": "709509"
+    "codiceAbbonamento": "709509",
+    "dataAbb": "2022-04-11"
   },
   {
     "nome": "Adriana",
     "cognome": "Maglio",
     "tipo": "treno",
     "validoFino": "2027-02-15",
-    "codiceAbbonamento": "689858"
+    "codiceAbbonamento": "689858",
+    "dataAbb": "2023-12-16"
   },
   {
     "nome": "Sonia",
     "cognome": "Morandi",
     "tipo": "treno",
     "validoFino": "2026-01-21",
-    "codiceAbbonamento": "998368"
+    "codiceAbbonamento": "998368",
+    "dataAbb": "2023-02-25"
   },
   {
     "nome": "Matilda",
     "cognome": "Ferragamo",
     "tipo": "autobus",
     "validoFino": "2025-10-12",
-    "codiceAbbonamento": "763877"
+    "codiceAbbonamento": "763877",
+    "dataAbb": "2022-12-27"
   },
   {
     "nome": "Olga",
     "cognome": "Crespi-Berengario",
     "tipo": "treno",
     "validoFino": "2027-01-30",
-    "codiceAbbonamento": "003762"
+    "codiceAbbonamento": "003762",
+    "dataAbb": "2022-04-12"
   },
   {
     "nome": "Ermes",
     "cognome": "Luzi",
     "tipo": "treno",
     "validoFino": "2026-11-21",
-    "codiceAbbonamento": "951371"
+    "codiceAbbonamento": "951371",
+    "dataAbb": "2022-05-06"
   },
   {
     "nome": "Francesca",
     "cognome": "Papetti",
     "tipo": "treno",
     "validoFino": "2026-06-28",
-    "codiceAbbonamento": "444257"
+    "codiceAbbonamento": "444257",
+    "dataAbb": "2022-01-10"
   },
   {
     "nome": "Marco",
     "cognome": "Littizzetto-Bruscantini",
     "tipo": "autobus",
     "validoFino": "2027-05-30",
-    "codiceAbbonamento": "305735"
+    "codiceAbbonamento": "305735",
+    "dataAbb": "2023-12-14"
   },
   {
     "nome": "Dott.",
     "cognome": "Maccanelli",
     "tipo": "treno",
     "validoFino": "2025-12-15",
-    "codiceAbbonamento": "077583"
+    "codiceAbbonamento": "077583",
+    "dataAbb": "2023-04-01"
   },
   {
     "nome": "Sylvia",
     "cognome": "Gradenigo",
     "tipo": "autobus",
     "validoFino": "2026-07-23",
-    "codiceAbbonamento": "531626"
+    "codiceAbbonamento": "531626",
+    "dataAbb": "2022-05-16"
   },
   {
     "nome": "Cecilia Maria Asia",
     "cognome": "Cavosi",
     "tipo": "autobus",
+    "dataAbb": "2023-08-03",
     "validoFino": "2026-07-23",
     "codiceAbbonamento": "674635"
   }
 ]
-

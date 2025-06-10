@@ -56,7 +56,8 @@ const {
 const { rimuoviUtenze } = require("./gestione_utenze");
 
 
-const { applicaPenalitaMulteDaNominativo } = require("./gestione_multe");
+const { applicaPenalitaMulte } = require("./gestione_multe");
+const { applicaBonusAbbonamento } = require("./gestione_abbonamenti");
 
 //pagina principale
 app.get("/", (req, res) => {
@@ -206,7 +207,6 @@ app.post("/auth/register", async (req, res) => {
 /**
  * LOGIN: verifica le credenziali nel DB
  */
-
 app.post("/auth/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -217,37 +217,48 @@ app.post("/auth/login", async (req, res) => {
   if (!emailRegex.test(email.trim())) {
     return res.status(400).json({ detail: "Formato email non valido" });
   }
+
   try {
     const utente = await trovaCredenziali(email.trim(), password.trim());
-
     if (!utente) {
       return res.status(404).json({ detail: "Utente non trovato o credenziali non valide" });
     }
 
+    // Genera il token e salva sessione
     const token = jwt.sign({ email: email.trim() }, JWT_SECRET, { expiresIn: "1h" });
-
     salvaSessioneUtente(email.trim(), token);
 
-    res.json({
+    // **Ora recupero tutti i dati civici utili**
+    const datiCittadino = getDatiCittadino(email.trim()) || {};
+    const numeroPatente      = datiCittadino.driver_license;
+    const subscription_code  = datiCittadino.subscription_code;
+
+    // Applica penalità per eventuali multe (usa il numero di patente)
+    if (numeroPatente) {
+      applicaPenalitaMulte(utente.nome, utente.cognome, numeroPatente);
+    } else {
+      console.warn(`[LOGIN] Nessun numero di patente trovato per ${email}`);
+    }
+
+    // Applica bonus abbonamento (se presente)
+    if (subscription_code) {
+      applicaBonusAbbonamento(utente.nome, utente.cognome, subscription_code);
+    } else {
+      console.warn(`[LOGIN] Nessun codice abbonamento trovato per ${email}`);
+    }
+
+    // Rispondo al client **dopo** aver eseguito penalità e bonus
+    return res.json({
       status: "success",
       token,
       message: "Login effettuato"
     });
 
-    // Dopo autenticazione valida
-    const nome = utente.nome;
-    const cognome = utente.cognome;
-
-    // Applica penalità per eventuali multe
-    applicaPenalitaMulteDaNominativo(nome, cognome);
-
-
   } catch (error) {
     console.error("[LOGIN] Errore interno:", error);
-    res.status(500).json({ detail: "Errore interno del server durante il login" });
+    return res.status(500).json({ detail: "Errore interno del server durante il login" });
   }
 });
-
   
 /**
  * DELETE: elimina da DB e file JSON

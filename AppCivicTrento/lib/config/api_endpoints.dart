@@ -13,13 +13,14 @@
 // ======================================================
 
 /// Indirizzo del server (host + porta)
-const String apiHost = '172.20.10.3:8000'; 
+const String apiHost = '192.168.134.24:8000'; 
 // ceci_casa: 192.168.0.108 
 //mati: 172.20.10.3 
 //ceci_casa_luca: 192.168.1.66 
 //ceci_casa_luca_dese: 192.168.1.65 
 //elena_cell: 172.20.10.2 
 //elena_casa: 192.168.1.54
+//ceci_cell: 192.168.134.24
 
 /// URL base completo (protocollo + host + porta)
 const String baseUrl = 'http://$apiHost';

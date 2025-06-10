@@ -1,4 +1,3 @@
-// gestione_multe.js
 const fs = require("fs");
 const path = require("path");
 
@@ -40,8 +39,10 @@ function getMulteDaPatente(numeroPatente) {
   return utente ? utente.multe : null;
 }
 
-function applicaPenalitaMulteDaNominativo(nome, cognome) {
-  console.log(`➡️ Applicazione penalità per: ${nome} ${cognome}`);
+function applicaPenalitaMulte(nome, cognome, numeroPatente) {
+  console.log(`➡️ Applicazione penalità per: ${nome} ${cognome}, patente: ${numeroPatente}`);
+
+  // Trova utente nel file utenti
   const utente = utentiData.find(
     u => u.nome.toLowerCase() === nome.toLowerCase() && u.cognome.toLowerCase() === cognome.toLowerCase()
   );
@@ -50,35 +51,53 @@ function applicaPenalitaMulteDaNominativo(nome, cognome) {
     return;
   }
 
-  const multeUtente = getMulteUtente(nome, cognome);
-  if (!multeUtente) {
-    console.log(`ℹ️ Nessuna multa trovata per ${nome} ${cognome}.`);
+  // Inizializza storico se non esiste
+  if (!Array.isArray(utente.storico)) {
+    utente.storico = [];
+  }
+
+  // Recupera tutte le multe
+  const multeUtente = getMulteDaPatente(numeroPatente);
+  if (!Array.isArray(multeUtente) || multeUtente.length === 0) {
+    console.log(`ℹ️ Nessuna multa trovata per patente ${numeroPatente}.`);
     return;
   }
 
-  const haGrave = multeUtente.some(m => m.tipo === "grave");
+  // Per ogni multa crea una voce di penalità “singola”
+  multeUtente.forEach(m => {
+    // Chiave per controllare se già applicata
+    const already = utente.storico.some(entry =>
+      entry.azione === "penalità per multe" &&
+      entry.numeroPatente === numeroPatente &&
+      entry.data === m.data
+    );
+    if (already) {
+      console.log(`ℹ️ Penalità già inserita per multa del ${m.data}.`);
+      return;
+    }
 
-  if (haGrave) {
-    utente.storico.saldo = -200;
-    console.log(`🚨 Multe gravi trovate per ${nome} ${cognome}`);
-  } else {
-    const multeMedie = multeUtente.filter(m => m.tipo === "media").length;
-    utente.storico.saldo = -40 * multeMedie;
-  }
+    // Calcolo penalità per questa multa
+    const saldoPenalita = (m.tipo === "grave") ? -200 : -40;
 
-  if (!utente.storico) utente.storico = [];
-  utente.storico.push({
-    azione: "penalità per multe",
-    data: new Date().toISOString(),
-    saldo: utente.storico.saldo
+    // Inserimento nel storico con la data esatta della multa
+    utente.storico.push({
+      azione: "penalità per multe",
+      data: m.data,
+      numeroPatente,
+      saldo: saldoPenalita
+    });
+
+    console.log(`✅ Penalità ${saldoPenalita} inserita per multa del ${m.data}.`);
   });
 
+  // Salva file utenti UNA SOLA VOLTA, dopo aver processato tutte le multe
   fs.writeFileSync(pathUtenti, JSON.stringify(utentiData, null, 2), "utf-8");
-  console.log(`✅ Penalità applicata e file utenti aggiornato per ${nome} ${cognome}`);
+  console.log(`✅ File utenti aggiornato per ${nome} ${cognome}`);
 }
+
 
 module.exports = {
   getMulteUtente,
   getMulteDaPatente,
-  applicaPenalitaMulteDaNominativo
+  applicaPenalitaMulte
 };

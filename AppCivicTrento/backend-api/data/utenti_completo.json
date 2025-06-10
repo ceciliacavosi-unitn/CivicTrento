@@ -10,6 +10,23 @@
         "azione": "saldo iniziale",
         "data": "2025-06-09T13:13:57.790Z",
         "saldo": 800
+      },
+      {
+        "azione": "bonus abbonamento",
+        "data": "2023-08-03",
+        "saldo": 50
+      },
+      {
+        "azione": "penalità per multe",
+        "data": "2023-09-13",
+        "numeroPatente": "TN2323232C",
+        "saldo": -40
+      },
+      {
+        "azione": "penalità per multe",
+        "data": "2024-02-23",
+        "numeroPatente": "TN2323232C",
+        "saldo": -40
       }
     ]
   },
