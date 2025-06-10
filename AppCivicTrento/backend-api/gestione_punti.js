@@ -24,9 +24,12 @@ function aggiornaSaldiDaStorico() {
 
     let saldo = utente.saldo || 0;
     let modificato = false;
+    console.log("Entrato")
 
     utente.storico.forEach(voce => {
+      console.log(`👀 voce.azione=${voce.azione}, tipo daAggiungereAlSaldo=${typeof voce.daAggiungereAlSaldo}, valore=${voce.daAggiungereAlSaldo}`);
       if (voce.daAggiungereAlSaldo === true && typeof voce.saldo === "number") {
+        console.log("✅ Entrato 2");
         saldo += voce.saldo;
         voce.daAggiungereAlSaldo = false;
         modificato = true;

@@ -88,7 +88,8 @@ function applicaPenalitaMulte(nome, cognome, numeroPatente, utentiData) {
       azione: "Penalita' Multa",
       data: m.data,
       numeroPatente,
-      saldo: saldoPenalita
+      saldo: saldoPenalita,
+      daAggiungereAlSaldo: true
     });
 
     console.log(`✅ Penalità ${saldoPenalita} inserita per multa del ${m.data}.`);

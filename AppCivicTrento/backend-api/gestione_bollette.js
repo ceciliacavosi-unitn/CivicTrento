@@ -75,7 +75,7 @@ function applicaBonusBolletta(nome, cognome, codicePOD, utentiData) {
         // Imposta daAggiungereAlSaldo a false se esiste già
         const voceEsistente = utente.storico.find(entry =>
             entry.azione === `Consumi ${tipo} nel range` &&
-          voce.trimestre === trimestre
+          entry.trimestre === trimestre
         );
 
         if (voceEsistente && voceEsistente.daAggiungereAlSaldo !== false) {

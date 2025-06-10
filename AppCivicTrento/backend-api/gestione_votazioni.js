@@ -54,7 +54,7 @@ function applicaBonusVoto(nome, cognome, cartaID, utentiData) {
         const voceEsistente = utente.storico.find(entry =>
             entry.azione === "Voto" &&
             entry.data === dataVoto &&
-            entry.cartaID === m.cartaID
+            entry.cartaID === cartaID
         );
 
         if (voceEsistente && voceEsistente.daAggiungereAlSaldo !== false) {

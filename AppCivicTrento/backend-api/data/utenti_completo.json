@@ -18,12 +18,78 @@
     "cognome": "Prati",
     "email": "ecmatii@gmail.com",
     "punti": 800,
-    "saldo": 800,
+    "saldo": 890,
     "storico": [
       {
         "azione": "Bonus Registrazione",
         "data": "2025-06-09T17:37:21.050Z",
         "saldo": 800
+      },
+      {
+        "azione": "Penalita' Multa",
+        "data": "2024-03-29",
+        "numeroPatente": "BO5771737J",
+        "saldo": -40,
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Penalita' Multa",
+        "data": "2024-02-23",
+        "numeroPatente": "BO5771737J",
+        "saldo": -40,
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Penalita' Multa",
+        "data": "2024-05-25",
+        "numeroPatente": "BO5771737J",
+        "saldo": -40,
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Abbonamento autobus",
+        "data": "2023-09-03",
+        "saldo": 50,
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Voto",
+        "data": "2024-07-16",
+        "cartaID": "CA00499KT",
+        "saldo": 100,
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Consumi gas nel range",
+        "trimestre": "T1",
+        "consumo": 536,
+        "saldo": 15,
+        "data": "2025-06-10",
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Consumi gas nel range",
+        "trimestre": "T2",
+        "consumo": 860,
+        "saldo": 15,
+        "data": "2025-06-10",
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Consumi gas nel range",
+        "trimestre": "T3",
+        "consumo": 893,
+        "saldo": 15,
+        "data": "2025-06-10",
+        "daAggiungereAlSaldo": false
+      },
+      {
+        "azione": "Consumi gas nel range",
+        "trimestre": "T4",
+        "consumo": 740,
+        "saldo": 15,
+        "data": "2025-06-10",
+        "daAggiungereAlSaldo": false
       }
     ]
   }

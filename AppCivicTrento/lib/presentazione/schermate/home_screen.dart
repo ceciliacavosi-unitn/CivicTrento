@@ -34,7 +34,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Map<String, dynamic>> storico = [];
   bool isLoading = true;
-  int saldo = 800;
+  int saldo = 0;
 
   @override
   void initState() {
@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> caricaSaldo() async {
     try {
-      final profilo = await UtenteService.fetchProfile();
+      final profilo = await CittadinoService.fetchStorico();
       debugPrint('PROFILO: $profilo');
       final valore = int.tryParse(profilo['saldo'].toString()) ?? 0;
       debugPrint('SALDO PARSATO: $valore');
