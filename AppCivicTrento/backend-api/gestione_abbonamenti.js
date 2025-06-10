@@ -4,7 +4,7 @@ const path = require("path");
 
 // Percorsi ai file
 const pathAbbonamenti = path.join(__dirname, "data", "numeri_abbonamenti.json");
-const pathUtenti = path.join(__dirname, "data", "utenti_completo.json");
+//const pathUtenti = path.join(__dirname, "data", "utenti_completo.json");
 
 // Carica gli abbonamenti
 let abbonamentiData = [];
@@ -16,16 +16,6 @@ try {
   console.error("❌ Errore nella lettura del file degli abbonamenti:", error);
 }
 
-// Carica gli utenti
-let utentiData = [];
-try {
-  const rawUtenti = fs.readFileSync(pathUtenti, "utf-8");
-  utentiData = JSON.parse(rawUtenti);
-  console.log("✔️ File degli utenti caricato con successo. Utenti totali:", utentiData.length);
-} catch (error) {
-  console.error("❌ Errore nella lettura del file degli utenti:", error);
-}
-
 // Trova abbonamento da codice
 function getAbbonamentoDaCodice(codiceAbbonamento) {
   return abbonamentiData.find(
@@ -34,13 +24,13 @@ function getAbbonamentoDaCodice(codiceAbbonamento) {
 }
 
 // Applica bonus se il codice abbonamento corrisponde all'utente, è valido e non già registrato
-function applicaBonusAbbonamento(nome, cognome, codiceAbbonamento) {
+function applicaBonusAbbonamento(nome, cognome, codiceAbbonamento, utentiData) {
   console.log(`➡️ Applicazione bonus abbonamento per: ${nome} ${cognome}`);
 
   const abbonamento = getAbbonamentoDaCodice(codiceAbbonamento);
   if (!abbonamento) {
     console.warn(`⚠️ Nessun abbonamento trovato con codice: ${codiceAbbonamento}`);
-    return;
+    return false;
   }
 
   if (
@@ -48,14 +38,14 @@ function applicaBonusAbbonamento(nome, cognome, codiceAbbonamento) {
     abbonamento.cognome.toLowerCase() !== cognome.toLowerCase()
   ) {
     console.warn(`⚠️ Il codice abbonamento non corrisponde all'utente ${nome} ${cognome}`);
-    return;
+    return false;
   }
 
   const oggi = new Date();
   const dataValidoFino = new Date(abbonamento.validoFino);
   if (dataValidoFino < oggi) {
     console.warn(`⛔ Abbonamento scaduto il ${abbonamento.validoFino}`);
-    return;
+    return false;
   }
 
   const utente = utentiData.find(
@@ -64,35 +54,38 @@ function applicaBonusAbbonamento(nome, cognome, codiceAbbonamento) {
 
   if (!utente) {
     console.warn(`⚠️ Utente ${nome} ${cognome} non trovato nel file utenti.`);
-    return;
+    return false;
   }
 
-  if (!utente.storico) utente.storico = [];
+  if (!Array.isArray(utente.storico)) utente.storico = [];
 
-  // Controllo se il bonus è già stato applicato
-  const giàPresente = utente.storico.some(
-    voce =>
-      voce.azione === "bonus abbonamento" &&
-      voce.data === abbonamento.dataAbb
+  const azione = `Abbonamento ${abbonamento.tipo}`;
+  const data = abbonamento.dataAbb;
+
+  const voceEsistente = utente.storico.find(
+    voce => voce.azione === azione && voce.data === data
   );
 
-  if (giàPresente) {
-    console.log(`ℹ️ Bonus abbonamento già applicato per ${nome} ${cognome} in data ${abbonamento.dataAbb}`);
-    return;
+  if (voceEsistente) {
+    // Aggiorna flag se già presente
+    voceEsistente.daAggiungereAlSaldo = false;
+    console.log(`ℹ️ Bonus già presente — flag daAggiungereAlSaldo aggiornato a false per ${nome} ${cognome}`);
+    return false;
   }
 
-  // Imposta saldo fisso a 50
-  utente.storico.saldo = 50;
+  const punti = 50;
 
   utente.storico.push({
-    azione: "bonus abbonamento",
-    data: abbonamento.dataAbb,
-    saldo: utente.storico.saldo
+    azione,
+    data,
+    saldo: punti,
+    daAggiungereAlSaldo: true
   });
 
-  fs.writeFileSync(pathUtenti, JSON.stringify(utentiData, null, 2), "utf-8");
-  console.log(`✅ Bonus applicato e file utenti aggiornato per ${nome} ${cognome}`);
+  console.log(`✅ Bonus abbonamento applicato per ${nome} ${cognome}`);
+  return true;
 }
+
 
 module.exports = {
   getAbbonamentoDaCodice,

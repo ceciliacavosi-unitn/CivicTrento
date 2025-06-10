@@ -10,23 +10,6 @@
         "azione": "saldo iniziale",
         "data": "2025-06-09T13:13:57.790Z",
         "saldo": 800
-      },
-      {
-        "azione": "bonus abbonamento",
-        "data": "2023-08-03",
-        "saldo": 50
-      },
-      {
-        "azione": "penalità per multe",
-        "data": "2023-09-13",
-        "numeroPatente": "TN2323232C",
-        "saldo": -40
-      },
-      {
-        "azione": "penalità per multe",
-        "data": "2024-02-23",
-        "numeroPatente": "TN2323232C",
-        "saldo": -40
       }
     ]
   },
@@ -34,18 +17,13 @@
     "nome": "Matilde",
     "cognome": "Prati",
     "email": "ecmatii@gmail.com",
-    "punti": 680,
-    "saldo": 680,
+    "punti": 800,
+    "saldo": 800,
     "storico": [
       {
-        "azione": "saldo iniziale",
+        "azione": "Bonus Registrazione",
         "data": "2025-06-09T17:37:21.050Z",
         "saldo": 800
-      },
-      {
-        "azione": "penalità per multe",
-        "data": "2025-06-09T18:32:54.686Z",
-        "saldo": -120
       }
     ]
   }

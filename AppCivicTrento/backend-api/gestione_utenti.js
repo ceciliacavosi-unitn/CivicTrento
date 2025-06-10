@@ -33,7 +33,7 @@ const crypto = require("crypto");
 const utentiPath = path.join(__dirname, 'data', 'utenti.json');
 const pathUtentiCompleto = path.join(__dirname, "data", "utenti_completo.json");
 
-const { decrypt } = require("./gestione_autenticazione");
+const { decrypt } = require("./gestione_cittadino");
 
 const ALGORITHM = 'aes-256-cbc';
 const CRYPTO_SECRET = process.env.CRYPTO_SECRET;

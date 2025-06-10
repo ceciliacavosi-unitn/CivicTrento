@@ -1,59 +1,50 @@
-// =======================================================
-// gestione_punti.js basato su utenti_completo.json
-// Estrae i punteggi base dall'ultimo evento rilevante dello storico
-// =======================================================
+const fs = require("fs");
+const path = require("path");
 
-const fs = require('fs');
-const path = require('path');
+// Percorso al file utenti
+const pathUtenti = path.join(__dirname, "data", "utenti_completo.json");
 
-const utentiPath = path.join(__dirname, 'data', 'utenti_completo.json');
+// Carica gli utenti
+let utentiData = [];
+try {
+  const rawData = fs.readFileSync(pathUtenti, "utf-8");
+  utentiData = JSON.parse(rawData);
+  console.log("✔️ File utenti_completo.json caricato con successo.");
+} catch (error) {
+  console.error("❌ Errore nella lettura del file utenti:", error);
+  process.exit(1);
+}
 
-// MongoDB disattivato (commentato)
-/*
-const mongoose = require('mongoose');
-mongoose.connect(process.env.DB_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log('Connesso a MongoDB per assegnazione punti'))
-.catch(err => console.error('Errore connessione MongoDB:', err));
+// Funzione per aggiornare i saldi
+function aggiornaSaldiDaStorico() {
+  let utentiModificati = 0;
 
-const puntiSchema = new mongoose.Schema({
-  bonus_iniziale: Number,
-  bollette: {
-    acqua: Number,
-    elettrica: Number,
-    gas: Number
-  },
-  multe: {
-    "1_anno_senza_multe": Number,
-    medie: Number,
-    gravi: Number
-  },
-  spostamenti_piedi: {
-    "0_5_km": Number,
-    "oltre_5_km": Number
-  },
-  voto_elettorale: Number,
-  abbonamento_mezzi_pubblici: Number
-}, {
-  collection: 'configurazione_punti',
-  versionKey: false
-});
-const ConfigurazionePunti = mongoose.model('ConfigurazionePunti', puntiSchema);
-*/
+  utentiData.forEach(utente => {
+    if (!Array.isArray(utente.storico)) return;
 
-// =======================================================
-// gestione_punti.js
-// Calcola i punti in base ai km (non legge dallo storico)
-// =======================================================
+    let saldo = utente.saldo || 0;
+    let modificato = false;
 
-function calcolaPuntiSpostamento(km) {
-  if (km < 1) return 0;
-  if (km <= 5) return +(km * 0.5).toFixed(2);
-  return +(km * 1.0).toFixed(2);
+    utente.storico.forEach(voce => {
+      if (voce.daAggiungereAlSaldo === true && typeof voce.saldo === "number") {
+        saldo += voce.saldo;
+        voce.daAggiungereAlSaldo = false;
+        modificato = true;
+      }
+    });
+
+    if (modificato) {
+      utente.saldo = saldo;
+      utentiModificati++;
+      console.log(`✅ Saldo aggiornato per ${utente.nome} ${utente.cognome}: ${saldo}`);
+    }
+  });
+
+  // Salva il file aggiornato
+  fs.writeFileSync(pathUtenti, JSON.stringify(utentiData, null, 2), "utf-8");
+  console.log(`💾 File utenti aggiornato. ${utentiModificati} saldo/i modificato/i.`);
 }
 
 module.exports = {
-  calcolaPuntiSpostamento
-};
+  aggiornaSaldiDaStorico
+}

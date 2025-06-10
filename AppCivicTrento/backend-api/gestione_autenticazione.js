@@ -50,20 +50,6 @@ function encrypt(text) {
   return iv.toString('hex') + ':' + encrypted.toString('hex');
 }
 
-function decrypt(encryptedText) {
-  if (!encryptedText || typeof encryptedText !== 'string' || !encryptedText.includes(':')) {
-    console.warn("[decrypt] Testo cifrato mancante o in formato errato:", encryptedText);
-    return "";
-  }
-  const [ivHex, encryptedHex] = encryptedText.split(":");
-  const iv = Buffer.from(ivHex, 'hex');
-  const encrypted = Buffer.from(encryptedHex, 'hex');
-  const decipher = crypto.createDecipheriv(ALGORITHM, ENCRYPTION_KEY, iv);
-  let decrypted = decipher.update(encrypted, 'hex', 'utf8');
-  decrypted += decipher.final('utf8');
-  return decrypted;
-}
-
 //
 // FUNZIONI DI AUTENTICAZIONE (solo con file JSON)
 //
@@ -146,7 +132,7 @@ async function registraUtente({ nome, cognome, email, password, CF, cartaID, gdp
     });
 
   fs.writeFileSync(pathUtentiCompleto, JSON.stringify(utentiCompleto, null, 2));
-  aggiungiStorico(email, 'saldo iniziale', { saldo: saldo || 800 });
+  aggiungiStorico(email, 'Bonus Registrazione', { saldo: saldo || 800 });
 
 
   return true;
@@ -347,6 +333,5 @@ module.exports = {
   reimpostaPasswordConToken,
   verificaToken,
   salvaSessioneUtente,
-  encrypt,
-  decrypt
+  encrypt
 };

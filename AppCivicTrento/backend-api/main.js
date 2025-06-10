@@ -8,6 +8,8 @@ const { createObjectCsvWriter } = require("csv-writer");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
 
+const pathUtenti = path.join(__dirname, "data", "utenti_completo.json");
+
 const app = express();
 app.use(bodyParser.json()); // abilita il supporto JSON nel body delle richieste
 
@@ -58,6 +60,10 @@ const { rimuoviUtenze } = require("./gestione_utenze");
 
 const { applicaPenalitaMulte } = require("./gestione_multe");
 const { applicaBonusAbbonamento } = require("./gestione_abbonamenti");
+const { applicaBonusVoto } = require('./gestione_votazioni');
+const { applicaBonusBolletta } = require('./gestione_bollette');
+const { aggiornaSaldiDaStorico } = require('./gestione_punti');
+
 
 //pagina principale
 app.get("/", (req, res) => {
@@ -122,6 +128,22 @@ app.get("/", (req, res) => {
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   const cfRegex = /^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$/;
   const idCardRegex = /^(?:[A-Z]{2}\d{5}[A-Z]{1,2}|\d{7,9})$/;
+
+  let utentiData = [];
+    try {
+      const rawUtenti = fs.readFileSync(pathUtenti, "utf-8");
+      utentiData = JSON.parse(rawUtenti);
+      console.log("✔️ utenti_completo.json caricato in main.js");
+    } catch (error) {
+      console.error("❌ Errore nella lettura utenti_completo.json:", error);
+    }
+
+
+  function salvaUtentiAggiornati() {
+    const pathUtenti = path.join(__dirname, "data", "utenti_completo.json");
+    fs.writeFileSync(pathUtenti, JSON.stringify(utentiData, null, 2), "utf-8");
+    console.warn("✅ File utenti_completo.json salvato correttamente a fine login");
+  }
 
 //autenticazione
 app.post("/auth/register", async (req, res) => {
@@ -232,21 +254,49 @@ app.post("/auth/login", async (req, res) => {
     const datiCittadino = getDatiCittadino(email.trim()) || {};
     const numeroPatente      = datiCittadino.driver_license;
     const subscription_code  = datiCittadino.subscription_code;
+    const profiloUtente = await getProfiloUtente(email.trim()) || {};
+    const cartaID = profiloUtente.cartaID;
+    const codicePOD = datiCittadino.pod_code;
+
+    console.warn("codice POD letto: ", codicePOD);
 
     // Applica penalità per eventuali multe (usa il numero di patente)
     if (numeroPatente) {
-      applicaPenalitaMulte(utente.nome, utente.cognome, numeroPatente);
+      console.warn(`[DEBUG] Patente trovata per ${email}: ${numeroPatente}`);
+      applicaPenalitaMulte(utente.nome, utente.cognome, numeroPatente, utentiData);
     } else {
       console.warn(`[LOGIN] Nessun numero di patente trovato per ${email}`);
     }
 
     // Applica bonus abbonamento (se presente)
     if (subscription_code) {
-      applicaBonusAbbonamento(utente.nome, utente.cognome, subscription_code);
+      console.warn(`[DEBUG] Codice abbonamento trovato per ${email}: ${subscription_code}`);
+      applicaBonusAbbonamento(utente.nome, utente.cognome, subscription_code, utentiData);
     } else {
       console.warn(`[LOGIN] Nessun codice abbonamento trovato per ${email}`);
     }
 
+    // Applica bonus votazioni
+    if (cartaID) {
+      console.warn(`[DEBUG] Carta ID trovata per ${email}: ${cartaID}`);
+      applicaBonusVoto(utente.nome, utente.cognome, cartaID, utentiData);
+    } else {
+      console.warn(`[LOGIN] Nessun numero carta ID trovato per ${email}`);
+    }
+
+    // Applica bonus bollette (se presente codice POD)
+    if (codicePOD) {
+      console.warn(`[DEBUG] Codice POD trovato per ${email}: ${codicePOD}`);
+      applicaBonusBolletta(utente.nome, utente.cognome, codicePOD, utentiData);
+    } else {
+      console.warn(`[LOGIN] Nessun codice POD trovato per ${email}`);
+    }
+
+    salvaUtentiAggiornati();
+    const utenteAggiornato = utentiData.find(u => u.email === email);
+    console.log(`[DEBUG] Storico finale salvato per ${email}:`, JSON.stringify(utenteAggiornato?.storico, null, 2));
+
+    aggiornaSaldiDaStorico();
     // Rispondo al client **dopo** aver eseguito penalità e bonus
     return res.json({
       status: "success",

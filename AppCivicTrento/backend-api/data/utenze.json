@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "idUtente": "ecmatii@gmail.com",
+    "utenze": {
+      "luce": {
+        "codicePOD": "IT001E01001",
+        "fornitore": "711217",
+        "consenso": true
+      }
+    }
+  }
+]

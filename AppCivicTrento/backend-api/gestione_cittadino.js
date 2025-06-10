@@ -1,7 +1,8 @@
 // gestione_cittadino.js
 const fs = require("fs");
 const path = require("path");
-const { decrypt } = require("./gestione_autenticazione");
+const crypto = require("crypto");
+const bcrypt = require("bcrypt");
 
 const pathDatiCittadino = path.join(__dirname, 'data', "dati_cittadino.json");
 const pathStoricoMovimento = path.join(__dirname, "data", "monitoraggio_movimento.json");
@@ -13,6 +14,10 @@ const pathAbitazioni = path.join(__dirname, 'data', 'abitazioni.json');
 const pathUtentiCompleto = path.join(__dirname, 'data', 'utenti_completo.json');
 
 const header = ["email", "subscription_code", "pod_code", "driver_license"];
+
+const ALGORITHM = 'aes-256-cbc';
+const CRYPTO_SECRET = process.env.CRYPTO_SECRET;
+const DECRYPTION_KEY = crypto.scryptSync(CRYPTO_SECRET, 'salt', 32);
 
 // ===================================================
 // MongoDB disattivato (puoi riattivare se necessario)
@@ -35,6 +40,20 @@ const header = ["email", "subscription_code", "pod_code", "driver_license"];
 // });
 
 // const DatiCittadino = mongoose.model('DatiCittadino', cittadinoSchema);
+
+function decrypt(encryptedText) {
+  if (!encryptedText || typeof encryptedText !== 'string' || !encryptedText.includes(':')) {
+    console.warn("[decrypt] Testo cifrato mancante o in formato errato:", encryptedText);
+    return "";
+  }
+  const [ivHex, encryptedHex] = encryptedText.split(":");
+  const iv = Buffer.from(ivHex, 'hex');
+  const encrypted = Buffer.from(encryptedHex, 'hex');
+  const decipher = crypto.createDecipheriv(ALGORITHM,DECRYPTION_KEY, iv);
+  let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+  decrypted += decipher.final('utf8');
+  return decrypted;
+}
 
 function trovaUtente(email) {
   if (!fs.existsSync(pathUtenti)) return null;
@@ -355,5 +374,6 @@ module.exports = {
   registraMovimento,
   aggiungiStorico,
   visualizzaStorico,
-  eliminaUtenteCompleto
+  eliminaUtenteCompleto,
+  decrypt
 };

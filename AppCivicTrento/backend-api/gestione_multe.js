@@ -3,7 +3,7 @@ const path = require("path");
 
 // Percorso al file delle multe
 const pathMulte = path.join(__dirname, "data", "multe_abitantiTN.json");
-const pathUtenti = path.join(__dirname, "data", "utenti_completo.json");
+//const pathUtenti = path.join(__dirname, "data", "utenti_completo.json");
 
 // Carica le multe
 let multeData = [];
@@ -13,16 +13,6 @@ try {
   console.log("✔️ File delle multe caricato con successo. Voci totali:", multeData.length);
 } catch (error) {
   console.error("❌ Errore nella lettura del file delle multe:", error);
-}
-
-// Carica gli utenti
-let utentiData = [];
-try {
-  const rawUtenti = fs.readFileSync(pathUtenti, "utf-8");
-  utentiData = JSON.parse(rawUtenti);
-  console.log("✔️ File degli utenti caricato con successo. Utenti totali:", utentiData.length);
-} catch (error) {
-  console.error("❌ Errore nella lettura del file degli utenti:", error);
 }
 
 function getMulteUtente(nome, cognome) {
@@ -39,7 +29,7 @@ function getMulteDaPatente(numeroPatente) {
   return utente ? utente.multe : null;
 }
 
-function applicaPenalitaMulte(nome, cognome, numeroPatente) {
+function applicaPenalitaMulte(nome, cognome, numeroPatente, utentiData) {
   console.log(`➡️ Applicazione penalità per: ${nome} ${cognome}, patente: ${numeroPatente}`);
 
   // Trova utente nel file utenti
@@ -67,12 +57,26 @@ function applicaPenalitaMulte(nome, cognome, numeroPatente) {
   multeUtente.forEach(m => {
     // Chiave per controllare se già applicata
     const already = utente.storico.some(entry =>
-      entry.azione === "penalità per multe" &&
+      entry.azione === "Penalita' Multa" &&
       entry.numeroPatente === numeroPatente &&
       entry.data === m.data
     );
+
     if (already) {
-      console.log(`ℹ️ Penalità già inserita per multa del ${m.data}.`);
+      // Imposta daAggiungereAlSaldo a false se esiste già
+      const voceEsistente = utente.storico.find(entry =>
+        entry.azione === "Penalita' Multa" &&
+        entry.numeroPatente === numeroPatente &&
+        entry.data === m.data
+      );
+
+      if (voceEsistente && voceEsistente.daAggiungereAlSaldo !== false) {
+        voceEsistente.daAggiungereAlSaldo = false;
+        console.log(`ℹ️ Penalità già presente: aggiornata daAggiungereAlSaldo a false per data ${m.data}.`);
+      } else {
+        console.log(`ℹ️ Penalità già presente e già processata per data ${m.data}.`);
+      }
+
       return;
     }
 
@@ -81,7 +85,7 @@ function applicaPenalitaMulte(nome, cognome, numeroPatente) {
 
     // Inserimento nel storico con la data esatta della multa
     utente.storico.push({
-      azione: "penalità per multe",
+      azione: "Penalita' Multa",
       data: m.data,
       numeroPatente,
       saldo: saldoPenalita
@@ -91,7 +95,7 @@ function applicaPenalitaMulte(nome, cognome, numeroPatente) {
   });
 
   // Salva file utenti UNA SOLA VOLTA, dopo aver processato tutte le multe
-  fs.writeFileSync(pathUtenti, JSON.stringify(utentiData, null, 2), "utf-8");
+  //fs.writeFileSync(pathUtenti, JSON.stringify(utentiData, null, 2), "utf-8");
   console.log(`✅ File utenti aggiornato per ${nome} ${cognome}`);
 }
 
